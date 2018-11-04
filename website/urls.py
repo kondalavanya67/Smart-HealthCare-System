@@ -34,10 +34,8 @@ urlpatterns = [
     path('doctor/', include('doctor.urls')),
     path('search/', include('search.urls')),
     path('cart/', cart_home, name='cart_home'),
-    url(r'^chat/', include('chat.url'))
-
-
-
+    url(r'^chat/', include('chat.url')),
+    path('ShopOnline/', include('shoppingPortalApp.urls')),
 ]
 
 if settings.DEBUG:
