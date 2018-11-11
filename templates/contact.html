@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block contact %}
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      <a href="index.html" class="navbar-brand"><b></b>SMART HEALTHCATRE SYSTEM</b></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href='{% url "home" %}' class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href='{% url "about" %}' class="nav-link">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
+          </li>
+          <li class="nav-item active">
+            <a href='{% url "contact" %}' class="nav-link">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href='{% url "login" %}' class="nav-link">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+   <header id="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto text-center">
+          <b><h1>Contact Us</h1></b>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card p-4">
+            <div class="card-body">
+              <h4>Get In Touch</h4>
+              <p>Have any queries? Just leave a message or call us.</p>
+              <h4>Address</h4>
+              <p>IIIT Sricity,630 Gnan Marg, Sri City, Andhra Pradesh 517646, India</p>
+              <h4>Email</h4>
+              <p>smt.india@gmail.com</p>
+              <h4>Phone</h4>
+              <p>+91 0000 00 0000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card p-4">
+            <div class="card-body">
+              <h3 class="text-center">Please fill out this form to contact us</h3>
+              <hr>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="First Name">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Last Name">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Phone Number">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="Message"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-outline-danger btn-block">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAFF -->
+  <section id="staff" class="py-5 text-center bg-dark text-white">
+    <div class="container">
+      <h1>Our Staff</h1>
+      <hr>
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Shivam</h4>
+          <small>Developer</small>
+        </div>
+        <div class="col-md-4">
+          <h4>Jayendra</h4>
+          <small>Developer</small>
+        </div>
+        <div class="col-md-4">
+          
+          <h4>Lavnya</h4>
+          <small>Developer</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          
+          <h4>Deepika</h4>
+          <small>Developer</small>
+        </div>
+        <div class="col-md-4">
+          
+          <h4>Navyashree</h4>
+          <small>Developer</small>
+        </div>
+        <div class="col-md-4">
+      
+          <h4>Kalpajyoti</h4>
+          <small>Developer</small>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block search %}
+   Searched for {{ request.GET.q }}<br><hr/>
+ {% if request.GET.q %}
+{% for obj in object_list %}
+   {{ obj.id }}<br>
+   <a href="{{ obj.get_absolute_url }}">{{ obj.username }}</a>
+   <br>
+   {{ obj.description }}<br>
+   {{ obj.charges }}<br><br>
+   {{ obj.active }}<br>
+   
+   
+
+  
+   <img src="{{ obj.image.url }}" class="img-responsive" style="max-width: 500px;"><br>
+   <a href="{{obj.get_absolute_url }}"><button type="button" class="btn btn-default">View</button></a>{% endfor %}{% else %}
+ <input type="text" name="" class="form-control" placeholder="Search">
+
+  {% endif %}
+{% endblock %}
+

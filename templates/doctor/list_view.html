@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block list_view %}
+
+{% for obj in object_list %}
+   {{ obj.id }}<br>
+   <a href="{{ obj.get_absolute_url }}">{{ obj.username }}</a>
+   <br>
+   {{ obj.description }}<br>
+   {{ obj.charges }}<br><br>
+   {{ obj.active }}<br>
+
+   <img src="{{ obj.image.url }}" class="img-responsive" style="max-width: 500px;"><br>
+   <a href="{{obj.get_absolute_url }}"><button type="button" class="btn btn-default">View</button></a>
+{% endfor %}
+
+  
+{% endblock %}
+

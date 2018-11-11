@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block chat %}
+
+<div id="chat-log">
+  {% for msg in messages %}
+    <b>{{ msg.from }}</b>: {{ msg.text }}<br />
+  {% endfor %}
+</div>
+
+<script>
+  
+$('#send-form').submit(function () {
+  var text = $('#chat-input').val();
+  $.post('/rooms/{{ room_id }}/messages/', { from: nick, text: text }
+  ).done(function (data) {
+    console.log('send response: ' + JSON.stringify(data));
+  }).fail(function () {
+    alert('failed to send message');
+  });
+  return false;
+});
+</script>
+{% endblock %}
