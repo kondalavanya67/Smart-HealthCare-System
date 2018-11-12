@@ -4,25 +4,28 @@
 
 
 {% block content %}
-<div class="container" style="text-align: center;">
+<div class="container" style="text-align: center;background-color: #d6d6c2">
 	<div class="row">
 		<div class="col-md-12" style="font-size: 50px;">
-			Delete Your Desired Medicine Here
+			Delete the Medicine Here
 		</div>
 		<div class="col-md-12">
 			<form method="POST" action="">
 				{% csrf_token %}
 				<div class="container" style="text-align: center;">
 					<div class="row">
-					<div class="col-md-8">
-						{{ form.name | add_class:"del-name"}}<input type="submit">
+					<div class="col-md-12">
+						{{ form.name | add_class:"del-name"}}&nbsp&nbsp<input type="submit">
 					</div>
 					<div class="col-md-6"></div>
 					</div>
 				</div>
 			</form>				
 		</div>
-	</div>
+	</div><br>
+</div>
+<div>
+	<a href="{% url 'main' %}">Go To Main Page</a>
 </div>
 
 {% endblock content %}
