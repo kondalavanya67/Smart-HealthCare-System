@@ -2,6 +2,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404,redirect
 from .forms import ContactForm, LoginForm, RegisterForm
 from django.contrib.auth import authenticate, login, get_user_model
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate, get_user_model
+from doctor_home.forms import LoginForm , RegisterForm
 
 def home(request):
 	context={
@@ -29,7 +36,8 @@ def contact_page(request):
 	if contact_form.is_valid():
 		print(contact_form.cleaned_data)
 	return render(request, "contact.html", context=context)
-
+def home_page(request):
+    	return render(request, "base.html")
 def login_page(request):
 	form=LoginForm(request.POST or None)
 	context= {
@@ -50,7 +58,7 @@ def login_page(request):
 
 	return render(request, "login.html", context=context)
 
-User=get_user_model()
+User = get_user_model()
 def register_page(request):
 	form=RegisterForm(request.POST or None)
 	context= {
