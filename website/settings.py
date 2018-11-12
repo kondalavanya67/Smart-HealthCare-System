@@ -31,6 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
+    #'django.contrib.staticfiles',
+    'work_history.apps.WorkHistoryConfig',
+    'prescription.apps.PrescriptionConfig',
+    'doctor_profile.apps.doctor_profileConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,8 +47,13 @@ INSTALLED_APPS = [
     'doctor',
     'carts',
     'chat',
+<<<<<<< HEAD
     'shoppingPortalApp',
+=======
+    'doctor_home',
+>>>>>>> origin/shivam
 ]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,6 +66,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'website.urls'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'testsite_app'
+EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 
 TEMPLATES = [
     {
@@ -110,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -122,7 +140,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
+
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
@@ -134,4 +158,7 @@ STATIC_ROOT= os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn","media_root")
+
+
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn","media_root")
 
