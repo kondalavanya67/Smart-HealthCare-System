@@ -35,7 +35,7 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-9 col-sm-9 searchBar" >
+					<div class="col-md-6 col-sm-6 searchBar" >
 						<form id="searchForm" 	action="{% url 'result' %}" method="GET">
 							{% csrf_token %}
 								<input type="text" name="query" id="query" placeholder="Search For A Medicine Here...">
@@ -44,6 +44,9 @@
 					</div>
 					<div class="col-md-3 col-sm-3" >
 						<a href="{% url 'add_medicine' %}" class="bt-add-medicine" style="text-decoration: none;" ><i class="fa fa-plus"></i> Add Medicine</a>
+					</div>
+					<div class="col-md-3 col-sm-3" >
+						<a href="{% url 'del_medicine' %}" class="bt-del-medicine" style="text-decoration: none;" ><i class="fa fa-minus"></i> Delete Medicine</a>
 					</div>
 				</div>
 			</div>

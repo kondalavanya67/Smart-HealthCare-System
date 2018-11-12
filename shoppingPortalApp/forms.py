@@ -13,3 +13,12 @@ class add_medicine_Form(forms.ModelForm):
             "price",
             "manufacturedBy",
         ]
+        
+class del_medicine_Form(forms.ModelForm):
+    class Meta:
+        model = medicine
+        fields = [
+            "name",
+        ]
+            
+        

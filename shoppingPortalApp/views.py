@@ -3,17 +3,14 @@ from django.shortcuts import render,get_object_or_404
 from .models import medicine
 from django.http import HttpResponse
 
-from .forms import add_medicine_Form
+from .forms import *
 # Create your views here.
 
 
 def index(request):
 	medicines = medicine.objects.all()
 	content = {
-	"page_name" : "Main",
 	"all_medicines" : medicines,
-	"key1" : 1,
-	"key2" : 2,	
 	}
 	return render(request, 'shoppingPortalApp/index_list.html',content)
 
@@ -63,18 +60,23 @@ def index_add(request):
         "success" : "Succesfully Added",
         "failure" : "Not Succesfully Added"
     }
-    return render(request, 'shoppingPortalApp/index_add.html',context)
+    return render(request,'shoppingPortalApp/index_add.html',context)
 
-def index_delete(request, id=None):
-	instance = get_object_or_404(medicine, id=id)
-	instance.delete()
-	messages.success(request, "Succesfully Deleted")
-	return HttpResponse("Deleted")
+def added(request):
+	context = {}
+	return render(request,'shoppingPortalApp/added.html',context)
 
-"""def index_showMedicine(request, name):
-	instance = get_object_or_404(medicine, name=name)
+
+def index_delete(request):
+	form = del_medicine_Form(request.POST or None)
+	if form.is_valid():
+		to_del = request.POST['name']	
+		instance = get_object_or_404(medicine, name=to_del)
+		instance.delete()
+		messages.success(request, "Succesfully Deleted")
+	else:
+		messages.error(request, "No Such Medicine")
 	context = {
-		"instance" : instance,
-		"page_name": "display"
-	}
-	return render(request,'shoppingPortalApp/index_showMedicine.html',context)"""
+        "form" : form,
+    }
+	return render(request, 'shoppingPortalApp/index_del.html',context)
