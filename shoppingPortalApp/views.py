@@ -59,7 +59,9 @@ def index_add(request):
     	messages.error(request, "Not Succesfully Added")
     context = {
         "form" : form,
-        "page_name": "Add"
+        "page_name": "Add",
+        "success" : "Succesfully Added",
+        "failure" : "Not Succesfully Added"
     }
     return render(request, 'shoppingPortalApp/index_add.html',context)
 

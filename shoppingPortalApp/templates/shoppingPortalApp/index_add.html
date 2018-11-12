@@ -1,48 +1,55 @@
 {% extends "shoppingPortalApp/base.html" %}
+{% load widget_tweaks %}
+
+
+
 {% block content %}
-<div class="container">
-	
+<div class="container" style="margin-top: 2%">
+	<div class="row">
+		<div class="col-md-4" style="font-size: 80px;">
+			Add A New Medicine Here
+		</div>
+		<div class="col-md-8">
+		<div class="container add-container" style="max-width: 55%;">
 		<form method="POST" action="" enctype="multipart/form-data">
-	        {% csrf_token %}
+	        {% csrf_token %}<br>
 	        <div class="row">
-	        	<div class="col-md-6">Name </div>
-	        	<div class="col-md-6"> Manufactured By</div>
+	        	<div class="col-md-6">Medicine Name </div>
+	        	<div class="col-md-6">Price</div>
 	    	</div>
 	    	<div class="row">
-	        	<div class="col-md-6">{{ form.name }}</div>
-	        	<div class="col-md-6">{{ form.manufacturedBy }}</div>
+	        	<div class="col-md-6">{{ form.name | add_class:"md-input"}}</div>
+	        	<div class="col-md-6">{{ form.price | add_class:"md-input"}}</div>
+	    	</div><br>
+	        <div class="row">
+	        	<div class="col-md-12">Usage</div>
+	        	<div class="col-md-12">{{ form.usage | add_class:"big-input"}}</div>
+	        </div><br>
+	        <div class="row">
+	        	<div class="col-md-12">About</div>
+	        	<div class="col-md-12">{{ form.about | add_class:"big-input"}}</div>
 	    	</div>
 	        <div class="row">
-	        	<div class="col-md-12">Price</div>
-	        	<div class="col-md-6">{{ form.price }}</div>
-	        </div>
+	        	<div class="col-md-12">Manufactured By</div>
+	        	<div class="col-md-12">{{ form.manufacturedBy | add_class:"md-input"}}</div>
+	        </div><br>
 	        <div class="row">
-	        	<div class="col-md-6">Usage</div>
-	        	<div class="col-md-6">About</div>
-	        </div>
+	        	<div class="col-md-3">Image : </div>
+	        	<div >{{ form.image }}</div>
+	    	</div><br>
 	        <div class="row">
-	        	<div class="col-md-6">{{ form.usage }}</div>
-	        	<div class="col-md-6">{{ form.about }}</div>
-	    	</div>
-	        <div class="row">
-	        	<div class="col-md-1">Image :</div>
-	        	<div class="col-md-6">{{ form.image }}</div>
-	    	</div>
-	        <div class="row">
-	        	<div class="col-md-12"><input type="submit"></div>
+	        	<div class="col-md-12">
+	        		<input type="submit" class="submit-add" style="width: 100%;">
+	        	</div>
 	        </div>
 		</form>
+		<br>
+</div>	
+		</div>
+	</div>
 </div>
-	{% if messages %}
-		<ul class="messages">
-		    {% for message in messages %}
-		    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-		        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
-		        {{ message }}
-		    </li>
-		    {% endfor %}
-		</ul>
-	{% endif %}
+
+
 {% endblock content %}
 
 
