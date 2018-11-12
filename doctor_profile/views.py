@@ -6,29 +6,38 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import Add_Profile
 # Create your views here.
 def index(request):
+
+    #print(user)
+
     return render(request,'profile_home.html')
 ###############DJANGO FORMS ##############
 def make_profile(request):
+    user = request.user
     if request.method=="POST":
-        form=Add_Profile(request.POST, request.FILES)
+
+        form=Add_Profile(request.POST, request.FILES ,initial={'user':user,'email_id':user.email})
+
         if form.is_valid():
             profile_item=form.save(commit=False)
             profile_item.save()
-            return redirect('/profile/show_profile/'+str(profile_item.doctor_id))
+            return redirect('/profile/show_profile/')
     else:
-        form=Add_Profile()
+        
+        form=Add_Profile(initial={'user':user,'email_id':user.email})
     return render(request,'new.html',{'form':form})
 
-def modify_profile(request,doctor_id):
-    profile_item=get_object_or_404(Profile,doctor_id=doctor_id)
+def modify_profile(request):
+    user = request.user
+    profile_item = Profile.objects.get(user=user)
     form=Add_Profile(request.POST or None, instance=profile_item)
     if form.is_valid():
             form.save()
-            return redirect('/profile/show_profile/'+str(profile_item.doctor_id))
+            return redirect('/profile/show_profile/')
     return render(request,'new.html',{'form':form})
 
-def Show_Profile(request,doctor_id):
-        profile=get_object_or_404(Profile,doctor_id=doctor_id)
+def Show_Profile(request):
+        user = request.user
+        profile = Profile.objects.get(user=user)
         context={
             'profile':profile
         }
