@@ -47,11 +47,8 @@ INSTALLED_APPS = [
     'doctor',
     'carts',
     'chat',
-<<<<<<< HEAD
     'shoppingPortalApp',
-=======
     'doctor_home',
->>>>>>> origin/shivam
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
 
