@@ -6,7 +6,7 @@ class medicine(models.Model):
     name = models.CharField(max_length = 120)
     about = models.TextField()
     usage = models.TextField()
-    manufacturedBy = models.TextField(default="MedicPharmacies")
+    manufacturedBy = models.CharField(max_length = 120)
     price = models.FloatField(null=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     image = models.ImageField(null=True, blank=True)

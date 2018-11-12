@@ -10,12 +10,12 @@
 		<div class="col-md-4" style="text-align: center;">
 			<img src="{{ searched_medicine.image.url }}" class="medicine_image">
 			<br><br><br><br>
-			<button style="width: 90%">Add To Cart</button><br><br>
-			<button style="width: 90%">Buy</button>
+			<button class="button"><span>Add To Cart</span></button><br><br>
+			<button class="button"><span>Buy</span></button>
 		</div>
 		<div class="col-md-8">
 			<h1>{{ searched_medicine.name }}</h1><hr><br>
-			Sold By : <a href="#">{{ searched_medicine.manufacturedBy }}</a><br><br>
+			Manufactured  By : <a href="#">{{ searched_medicine.manufacturedBy }}</a><br><br>
 			Price : <span style="color: red;font-size: 20px;"><i style='font-size:15px' class='fas'>&#xf156;</i>{{ searched_medicine.price }}</span><br><br>
 			<div>
 				<h3>About</h3>

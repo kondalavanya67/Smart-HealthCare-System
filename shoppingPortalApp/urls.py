@@ -3,7 +3,7 @@ from shoppingPortalApp import views
 
 
 urlpatterns = [
-    path('main/',views.index),
+    path('main/search/previous',views.index),
     path('add/',views.index_add),
     path('main/search/',views.result, name='result'),
     path('main/<name>/',views.showMedicine_name, name='medicine'),

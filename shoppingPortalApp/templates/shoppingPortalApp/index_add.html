@@ -1,14 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Add Medicine</title>
-</head>
-<body>
-	<form method="POST" action="" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit">
-	</form>
+{% extends "shoppingPortalApp/base.html" %}
+{% block content %}
+<div class="container">
+	
+		<form method="POST" action="" enctype="multipart/form-data">
+	        {% csrf_token %}
+	        <div class="row">
+	        	<div class="col-md-6">Name </div>
+	        	<div class="col-md-6"> Manufactured By</div>
+	    	</div>
+	    	<div class="row">
+	        	<div class="col-md-6">{{ form.name }}</div>
+	        	<div class="col-md-6">{{ form.manufacturedBy }}</div>
+	    	</div>
+	        <div class="row">
+	        	<div class="col-md-12">Price</div>
+	        	<div class="col-md-6">{{ form.price }}</div>
+	        </div>
+	        <div class="row">
+	        	<div class="col-md-6">Usage</div>
+	        	<div class="col-md-6">About</div>
+	        </div>
+	        <div class="row">
+	        	<div class="col-md-6">{{ form.usage }}</div>
+	        	<div class="col-md-6">{{ form.about }}</div>
+	    	</div>
+	        <div class="row">
+	        	<div class="col-md-1">Image :</div>
+	        	<div class="col-md-6">{{ form.image }}</div>
+	    	</div>
+	        <div class="row">
+	        	<div class="col-md-12"><input type="submit"></div>
+	        </div>
+		</form>
+</div>
 	{% if messages %}
 		<ul class="messages">
 		    {% for message in messages %}
@@ -19,5 +43,6 @@
 		    {% endfor %}
 		</ul>
 	{% endif %}
-</body>
-</html>
+{% endblock content %}
+
+

@@ -14,18 +14,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-
-	<style>
-		.medicine_image{
-			width: 200px;
-			height: 300px;
-		}
-		.img_list{
-			width: 200px;
-			height: 166px;
-		}
-	</style>
+	<script>
+		$('#searchForm').submit(function(e) {
+		  if ($('#query').val().trim() == '') {
+		    e.preventDefault();
+		    alert('Enter a Search');
+		  }
+		});
+	</script>
 </head>
 <body>
 
@@ -35,13 +31,18 @@
 			  <h1>E - MEDICS</h1>
 			  <p>Medicines at your Doorstep</p> 
 			</div>
-			<div style="text-align: center;">
-				<form action="{% url 'result' %}" method="GET">
-					{% csrf_token %}
-					<input type="text" name="query" id="query" placeholder="Search For A Medicine Here..." size="50">
-					<input type="submit" value="Search">
-				</form>
-			</div><br>
+			<div class="container">
+				<div class="row>">
+						<form id="searchForm" 	action="{% url 'result' %}" method="GET">
+							{% csrf_token %}
+							<div class="col-md-12 searchBar">
+								<input type="text" name="query" id="query" placeholder="Search For A Medicine Here...">
+								<input type="submit" value="Search">
+							</div>
+						</form>
+				</div>
+			</div>
+			<br>
 		{% endblock content %}
 	</div>
 </body>
