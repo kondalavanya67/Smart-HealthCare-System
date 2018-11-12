@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <html>
+     <head>
+         <title>Title</title>
+         <style type="text/css">
+             body {
+                 font-weight: 200;
+                 font-size: 14px;
+             }
+             .header {
+                 font-size: 20px;
+                 font-weight: 100;
+                 text-align: center;
+                 color: #007cae;
+             }
+             .title {
+                 font-size: 22px;
+                 font-weight: 100;
+                /* text-align: right;*/
+                padding: 10px 20px 0px 20px;
+             }
+             .title span {
+                 color: #007cae;
+             }
+             .details {
+                 padding: 10px 20px 0px 20px;
+                 text-align: left !important;
+                 /*margin-left: 40%;*/
+             }
+             .hrItem {
+                 border: none;
+                 height: 1px;
+                 /* Set the hr color */
+                 color: #333; /* old IE */
+                 background-color: #fff; /* Modern Browsers */
+             }
+         </style>
+     </head>
+     <body>
+         <div class='wrapper'>
+             <div class='header'>
+                 <p class='title'>Prescription No. {{prescription_id}} </p>
+             </div>
+         <div>
+         <div class='details'>
+             Patient Name:Mr. Shivam Gupta <br/>
+             Date:{{prescription.prescription_date}}
+             <hr class='hrItem' />
+         </div>
+     </div>
+     <div class="container-fluid songs-container">
+       <!-- Right Song Info -->
+             <div class="col-sm-8 col-md-9">
+
+                 <div class="panel panel-default">
+                     <div class="panel-body">
+
+                         <h3>All Medicines</h3>
+
+                         {% if error_message %}
+                             <p><strong>{{ error_message }}</strong></p>
+                         {% endif %}
+
+                         <table class="table">
+                             <thead>
+                             <tr>
+                                 <th>Medicine Name</th>
+                                 <th>Days</th>
+                                 <th>Morning</th>
+                                 <th>Afternoon</th>
+                                 <th>Night</th>
+                             </tr>
+                             </thead>
+                             <tbody>
+                             {% for item in prescription.item_set.all %}
+                                 <tr>
+                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.medicine_name }}</td>
+                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.days}}</td>
+                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.morning}}</td>
+                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.afternoon}}</td>
+                                     <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.night}}</td>
+
+                                 </tr>
+                             {% endfor %}
+                             </tbody>
+                         </table>
+
+                     </div>
+                 </div>
+
+             </div>
+
+         </div>
+         <hr class='hrItem' />
+         <br>
+         <center>
+         <h2> GET WELL SOON <br> BEST WISHES FROM SMART HEALTHCARE SYSTEM </h2>
+         </center>
+
+
+     </body>
+ </html>

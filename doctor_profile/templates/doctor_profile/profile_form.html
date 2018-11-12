@@ -1,0 +1,49 @@
+<h1> MAKE PROFILE </h1>
+{% if error_message %}
+  <p><strong>{{error_message}}</strong></p>
+{% endif %}
+<!---- BOOTSTRAP FILES -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!------------------------>
+
+   <!--------------- BOOTSTRAP -------------->
+   <div class='container-fluid'>
+     <div class='row'>
+      <div class='col-sm-12 col-md-7'>
+        <div class='panel panel-default'>
+          <div class='panel-body'>
+            <form class="form-horizontal" action="{% url 'doctor_profile:add_profile' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {% include 'doctor_profile/form-template.html'}
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   Profile pic (URL) : <input type="text" name="profile_photo" id="profile_photo"><br>
+   First Name : <input type="text" name="first_name" id="first_name"><br>
+   Last Name : <input type="text" name="last_name" id="last_name"><br>
+   Gender :
+   <input type="radio" name="gender" value="male" checked> Male
+   <input type="radio" name="gender" value="female"> Female
+   <input type="radio" name="gender" value="other"> Other
+
+   Email Id : <input type="email" name="email" id="email"><br>
+   Mobile No : <input type="text" name="mobile_no" id="mobile_no"><br>
+   Speciality : <input type="text" name="speciality" id="speciality"><br>
+   Qualification : <input tpe="text" name="qualification" id="qualification"><br>
+   Locality : <input type="text" name="locality" id="locality"><br>
+   hospital : <input type="text" name="hospital" id="hospital"><br>
+   <input type="submit">
+</form>

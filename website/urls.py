@@ -62,8 +62,11 @@ urlpatterns = [
     
     path('search/', include('search.urls')),
     path('cart/', cart_home, name='cart_home'),
-    url(r'^chat/', include('chat.url'))
+    url(r'^chat/', include('chat.url')),
 
+    path('profile/',include('doctor_profile.urls')),
+    path('prescription/',include('prescription.urls')),
+    path('work_history/',include('work_history.urls')),
 
 
 ]
@@ -72,4 +75,3 @@ if settings.DEBUG:
 
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

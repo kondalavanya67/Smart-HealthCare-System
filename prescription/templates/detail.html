@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Prescription</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid songs-container">
+    <!-- Right Song Info -->
+          <div class="col-sm-8 col-md-9">
+
+              <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                  <li role="presentation" class="active"><a href="{% url 'prescription:detail' prescription.id %}">View All</a></li>
+                  <li role="presentation"><a href="{% url 'prescription:create_item' prescription.id %}">Add New Medicine</a></li>
+                  <li role="presentation"><a href="{% url 'prescription:print' prescription.id %}">Print</a></li>
+              </ul>
+
+              <div class="panel panel-default">
+                  <div class="panel-body">
+
+                      <h3>All Medicines</h3>
+
+                      {% if error_message %}
+                          <p><strong>{{ error_message }}</strong></p>
+                      {% endif %}
+
+                      <table class="table">
+                          <thead>
+                          <tr>
+                              <th>Medicine Name</th>
+                              <th>Days</th>
+                              <th>Morning</th>
+                              <th>Afternoon</th>
+                              <th>Night</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {% for item in prescription.item_set.all %}
+                              <tr>
+                                  <td>{{ item.medicine_name }}</td>
+                                  <td>{{ item.days}}</td>
+                                  <td>{{ item.morning}}</td>
+                                  <td>{{ item.afternoon}}</td>
+                                  <td>{{ item.night}}</td>
+
+                              </tr>
+                          {% endfor %}
+                          </tbody>
+                      </table>
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+
+
+
+
+</body>
+</html>
