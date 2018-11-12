@@ -41,13 +41,13 @@ def login_page(request):
 		password=form.cleaned_data.get("password")
 		user=authenticate(request, username=username, password=password)
 		if user is not None:
-            
+
 			print(user.is_authenticated)
 			login(request, user)
 			return redirect("/login")
 		else:
 			print("error")
-	
+
 	return render(request, "login.html", context=context)
 
 User=get_user_model()
