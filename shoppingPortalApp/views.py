@@ -34,12 +34,14 @@ def result(request):
 			k = search_medicine.id
 	if(k == 0):
 		content = {
+		"all_medicines" : medicines,
 		"page_name" : "Search",
 		"value" : False,
 		"searchItem" : query
 		}
 	else:
 		content = {
+		"all_medicines" : medicines,
 		"page_name" : "Search",
 		"searched_medicine" : get_object_or_404(medicine, id=k),
 		"value" : True,

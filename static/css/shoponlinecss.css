@@ -3,7 +3,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
 
 #query{
-    width: 50%;
     text-align: center;
 }
 
@@ -137,9 +136,7 @@
   
 }
 
-.del-name{
-    width: 40%;
-}
+
 
 
 
@@ -200,7 +197,7 @@ input[type=submit] {
   border-top: none;
   z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
+  top:100%;
   left: 0;
   right: 0;
 }
