@@ -8,16 +8,11 @@
 	<div class="row">
 		{% for medicine in all_medicines %}
 		<div class="col-md-3 medicine_1">
-			
 			<div class="col-md-12" >
-				<img src="{{ medicine.image.url }}" height="100" class="img-responsive"><br>
+				<img src="{{ medicine.image.url }}" class="img-responsive img_list"><br>
 				{{medicine.id}} <br>
 				<a href='{{ medicine.get_absolute_url_page }}'>{{medicine.name}}</a> <hr>
-				{{medicine.about}} <br>
-				{{medicine.usage}} <br>
-					<br><br>
-			</div>
-			
+			</div>	
 		</div>
 		{% endfor %}
 	</div>

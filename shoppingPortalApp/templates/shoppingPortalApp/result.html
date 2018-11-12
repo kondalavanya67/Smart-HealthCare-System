@@ -3,11 +3,33 @@
 {% block head_title %}{{searched_medicine.name}} | {{ block.super }}{% endblock head_title %}
 
 {% block content %}
-	{{searched_medicine.id}} <br>
-	{{ searched_medicine.name }}</a> <hr>
-	{{ searched_medicine.about }} <br>
-	{{ searched_medicine.usage }} <br>
-		<br><br>
+
+
+<div class="container" style="margin-top: 5%;">
+	<div class="row">
+		<div class="col-md-4" style="text-align: center;">
+			<img src="{{ searched_medicine.image.url }}" class="medicine_image">
+			<br><br><br><br>
+			<button style="width: 90%">Add To Cart</button><br><br>
+			<button style="width: 90%">Buy</button>
+		</div>
+		<div class="col-md-8">
+			<h1>{{ searched_medicine.name }}</h1><hr><br>
+			Sold By : <a href="#">{{ searched_medicine.manufacturedBy }}</a><br><br>
+			Price : <span style="color: red;font-size: 20px;"><i style='font-size:15px' class='fas'>&#xf156;</i>{{ searched_medicine.price }}</span><br><br>
+			<div>
+				<h3>About</h3>
+				<hr>
+				{{ searched_medicine.about }}
+			</div><br><br>
+			<div>
+				<h3>Usage</h3>
+				<hr>
+				{{ searched_medicine.usage }}
+			</div>
+		</div>
+	</div>	
+</div>
 {% endblock content %}
 
 

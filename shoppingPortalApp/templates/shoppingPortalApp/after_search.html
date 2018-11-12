@@ -6,12 +6,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 medicine_1">
-				<div class="col-md-12" >
+				<div class="col-md-12" style="text-align: center;">
+					<img src="{{ searched_medicine.image.url }}" width="220" class="img-responsive"><hr>
 					{{searched_medicine.id}} <br>
-					<a href='{{ searched_medicine.get_absolute_url_page }}'>{{ searched_medicine.name }}</a> <hr>
-					{{ searched_medicine.about }} <br>
-					{{ searched_medicine.usage }} <br>
-						<br><br>
+					<a href='{{ searched_medicine.get_absolute_url_page }}'>
+						{{ searched_medicine.name }}
+					</a> 
+					
 				</div>
 			</div>
 		</div>

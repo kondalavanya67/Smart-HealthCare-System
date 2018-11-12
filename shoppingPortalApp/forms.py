@@ -10,4 +10,6 @@ class add_medicine_Form(forms.ModelForm):
             "about",
             "usage",
             "image",
+            "price",
+            "manufacturedBy",
         ]

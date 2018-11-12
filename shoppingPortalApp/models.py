@@ -6,9 +6,10 @@ class medicine(models.Model):
     name = models.CharField(max_length = 120)
     about = models.TextField()
     usage = models.TextField()
+    manufacturedBy = models.TextField(default="MedicPharmacies")
+    price = models.FloatField(null=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     image = models.ImageField(null=True, blank=True)
-
     def get_absolute_url_page(self):
         return reverse("medicine",kwargs={"name": self.name})
 
