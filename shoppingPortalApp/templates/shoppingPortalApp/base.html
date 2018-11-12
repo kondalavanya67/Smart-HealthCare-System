@@ -36,23 +36,30 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-sm-6 searchBar" >
+					<div class="col-md-12 col-sm-12 searchBar" >
 						<form id="searchForm" 	action="{% url 'result' %}" method="GET">
 							{% csrf_token %}
 								<input type="text" name="query" id="query" placeholder="Search For A Medicine Here...">
 								<input type="submit" id="search-submit" value="Search">
 						</form>
 					</div>
-					<div class="col-md-3 col-sm-3" >
-						<a href="{% url 'add_medicine' %}" class="bt-add-medicine" style="text-decoration: none;" ><i class="fa fa-plus"></i> Add Medicine</a>
-					</div>
-					<div class="col-md-3 col-sm-3" >
-						<a href="{% url 'del_medicine' %}" class="bt-del-medicine" style="text-decoration: none;" ><i class="fa fa-minus"></i> Delete Medicine</a>
-					</div>
+
 				</div>
 			</div>
 			<br>
 		{% endblock content %}
 	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6" style="background-color: green;text-align: center;">
+				<a href="{% url 'add_medicine' %}" class="bt-add-medicine" style="text-decoration: none;" ><i class="fa fa-plus"></i> Add Medicine</a>
+			</div>
+			<div class="col-md-6 col-sm-6"  style="background-color: red;text-align: center;">
+				<a href="{% url 'del_medicine' %}" class="bt-del-medicine" style="text-decoration: none;" ><i class="fa fa-minus"></i> Delete Medicine</a>
+			</div>
+		</div>
+	</div>
+	<br><br>
+	
 </body>
 </html>
