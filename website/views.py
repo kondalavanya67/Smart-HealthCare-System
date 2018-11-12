@@ -39,6 +39,7 @@ def contact_page(request):
 def home_page(request):
     	return render(request, "base.html")
 def login_page(request):
+<<<<<<< HEAD
     form=LoginForm(request.POST or None)
     context={
        "form":form
@@ -53,9 +54,30 @@ def login_page(request):
         else:
             print("error")
     return render(request, "login.html" , context)
+=======
+	form=LoginForm(request.POST or None)
+	context= {
+	   "form":form
+	}
+	if form.is_valid():
+		print(form.cleaned_data)
+		username=form.cleaned_data.get("username")
+		password=form.cleaned_data.get("password")
+		user=authenticate(request, username=username, password=password)
+		if user is not None:
+
+			print(user.is_authenticated)
+			login(request, user)
+			return redirect("/login")
+		else:
+			print("error")
+
+	return render(request, "login.html", context=context)
+>>>>>>> origin/shivam
 
 User = get_user_model()
 def register_page(request):
+<<<<<<< HEAD
     form=RegisterForm(request.POST or None)
     context={
        "form":form
@@ -68,3 +90,17 @@ def register_page(request):
         new_user = User.objects.create_user(username, email, password)
         print(new_user)
     return render(request, "register.html",context)
+=======
+	form=RegisterForm(request.POST or None)
+	context= {
+	   "form":form
+	}
+	if form.is_valid():
+		print(form.cleaned_data)
+		username=form.cleaned_data.get("username")
+		email=form.cleaned_data.get("email")
+		password=form.cleaned_data.get("password")
+		new_user=User.objects.create_user(username=username, email=email, password=password)
+		print(new_user)
+	return render(request, "register.html", context=context)
+>>>>>>> origin/shivam
