@@ -9,4 +9,5 @@ class add_medicine_Form(forms.ModelForm):
             "name",
             "about",
             "usage",
+            "image",
         ]

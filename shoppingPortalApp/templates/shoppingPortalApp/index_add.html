@@ -4,7 +4,7 @@
 	<title>Add Medicine</title>
 </head>
 <body>
-	<form method="POST">
+	<form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit">

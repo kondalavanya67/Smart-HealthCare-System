@@ -50,7 +50,7 @@ def result(request):
 	return render(request, 'shoppingPortalApp/after_search.html',content)
 
 def index_add(request):
-    form = add_medicine_Form(request.POST or None)
+    form = add_medicine_Form(request.POST or None,request.FILES or None)
     if form.is_valid():
         instance = form.save(commit= False)
         instance.save()
