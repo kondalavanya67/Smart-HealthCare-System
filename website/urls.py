@@ -24,7 +24,7 @@ from django.conf.urls import url
 from django.conf import settings
 from django.contrib import admin
 from django.conf.urls import url, include
-from .views import home_page, login_page, register_page
+from .views import home_page, login_page, register_page, activate
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -67,6 +67,7 @@ urlpatterns = [
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('work_history/',include('work_history.urls')),
+    url(r'^activate/$', activate, name='activate'),
 
 
 ]
