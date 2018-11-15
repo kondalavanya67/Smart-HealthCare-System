@@ -4,7 +4,7 @@ from .forms import ContactForm, LoginForm, RegisterForm
 from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404,redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, get_user_model
@@ -64,7 +64,7 @@ def login_page(request):
 			print("error")
 
 	return render(request, "login.html", context=context)
-#>>>>>>> origin/shivam
+
 
 User = get_user_model()
 def register_page(request):
@@ -105,3 +105,24 @@ def activate(request, uidb64, token):
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
+
+
+User = get_user_model()
+def register_page(request):
+	form=RegisterForm(request.POST or None)
+	context= {
+	   "form":form
+	}
+
+	if form.is_valid():
+		print(form.cleaned_data)
+		username=form.cleaned_data.get("username")
+		email=form.cleaned_data.get("email")
+		password=form.cleaned_data.get("password")
+		new_user=User.objects.create_user(username=username, email=email, password=password)
+
+		login(request,new_user)
+		print(new_user)
+		return redirect('/profile/make_profile')
+
+	return render(request, "register.html", context=context)
