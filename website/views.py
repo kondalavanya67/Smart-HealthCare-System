@@ -58,7 +58,7 @@ def login_page(request):
 			print("error")
 
 	return render(request, "login.html", context=context)
->>>>>>> origin/shivam
+
 
 User = get_user_model()
 def register_page(request):
@@ -75,4 +75,4 @@ def register_page(request):
 		new_user=User.objects.create_user(username=username, email=email, password=password)
 		print(new_user)
 	return render(request, "register.html", context=context)
->>>>>>> origin/shivam
+
