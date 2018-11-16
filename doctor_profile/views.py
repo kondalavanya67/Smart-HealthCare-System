@@ -4,13 +4,14 @@ from .models import Profile
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import Add_Profile
+
 # Create your views here.
 def index(request):
 
     #print(user)
 
     return render(request,'profile_home.html')
-###############DJANGO FORMS ##############
+
 def make_profile(request):
     user = request.user
     if request.method=="POST":
@@ -22,7 +23,7 @@ def make_profile(request):
             profile_item.save()
             return redirect('/profile/show_profile/')
     else:
-        
+
         form=Add_Profile(initial={'user':user,'email_id':user.email})
     return render(request,'new.html',{'form':form})
 

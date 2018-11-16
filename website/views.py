@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, get_user_model
+from django.contrib.auth import login, authenticate, get_user_model, logout
 from doctor_home.forms import LoginForm , RegisterForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -107,8 +107,10 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 
+
 User = get_user_model()
 def register_page(request):
+
 	form=RegisterForm(request.POST or None)
 	context= {
 	   "form":form
@@ -126,3 +128,9 @@ def register_page(request):
 		return redirect('/profile/make_profile')
 
 	return render(request, "register.html", context=context)
+
+
+
+def log_out(request):
+	logout(request)
+	return redirect('/')

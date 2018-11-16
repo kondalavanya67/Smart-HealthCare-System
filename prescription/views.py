@@ -13,8 +13,9 @@ from .utils import render_to_pdf
 from django.template.loader import get_template
 from io import BytesIO
 from django.core.files import File
+from doctor_profile.models import Profile
 # Create your views here.
-
+from django.contrib.auth.models import User
 def index(request):
     return render(request,'prescription_home.html')
 
@@ -33,17 +34,30 @@ class DetailView(generic.DetailView):
     template_name='detail.html'
 
 class PrescriptionCreate(CreateView):
+
+
     model=Prescription
-    fields=['prescription_id']
+    fields=['prescription_id',]
 #################################TO PASS INITIAL VALUES ############
     def get_initial(self):
+
         max_id=Prescription.objects.all().aggregate(Max('prescription_id'))
         value=int(list(max_id.values())[0])
         value=value+1
+        #user = request.user
+
+
         #print(value)
         initial = super(PrescriptionCreate, self).get_initial()
         initial.update({'prescription_id': value})
         return initial
+
+    def form_valid(self, form):
+        user=self.request.user
+        profile = Profile.objects.get(user=user)
+        prescription = form.save(commit=False)
+        prescription.doctor = profile
+        return super(PrescriptionCreate, self).form_valid(form)
 
 def detail(request, pk):
     prescription = get_object_or_404(Prescription, pk=pk)

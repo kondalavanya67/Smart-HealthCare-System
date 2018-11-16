@@ -1,1 +1,4 @@
 <h1> You are currently viewing Work History App </h1>
+{% for prescription in prescriptions %}
+  <h2> {{prescription.prescription_date}} </h2>
+{% endfor %}
