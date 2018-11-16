@@ -11,7 +11,7 @@ def index(request):
     #print(user)
 
     return render(request,'profile_home.html')
-###############DJANGO FORMS ##############
+
 def make_profile(request):
     user = request.user
     if request.method=="POST":
