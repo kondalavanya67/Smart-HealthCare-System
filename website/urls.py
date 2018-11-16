@@ -10,12 +10,13 @@ from django.conf.urls import url
 from django.conf import settings
 from django.contrib import admin
 from django.conf.urls import url, include
-from .views import home_page, login_page, register_page
+from .views import home_page, login_page, register_page,log_out
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('logout/', log_out, name='logout'),
     path('contact_page/', contact_page , name='contact_page'),
     path('contact/', contact , name='contact'),
     path('about/', about , name='about'),
@@ -53,6 +54,7 @@ urlpatterns = [
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('work_history/',include('work_history.urls')),
+    path('rmp/',include('rmp.urls')),
 
 
 ]
