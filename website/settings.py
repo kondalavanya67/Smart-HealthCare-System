@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'carts',
     'chat',
     'doctor_home',
+    'booking'
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
 
