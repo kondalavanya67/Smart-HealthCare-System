@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'dal',
     'dal_select2',
-    #'django.contrib.staticfiles',
     'work_history.apps.WorkHistoryConfig',
     'prescription.apps.PrescriptionConfig',
     'doctor_profile.apps.doctor_profileConfig',
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     'doctor',
     'carts',
     'chat',
+    'shoppingPortalApp',
     'doctor_home',
     'booking'
 ]
@@ -153,5 +153,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT= os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root")
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn","media_root")
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn","media_root")
+

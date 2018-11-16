@@ -1,0 +1,29 @@
+{% extends "shoppingPortalApp/base.html" %}
+
+{% block content %}
+{{ block.super }}
+{% if value %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 medicine_1">
+				<div class="col-md-12">
+					<img src="{{ searched_medicine.image.url }}" width="220" class="img-responsive" style="margin-top: 5%"><hr>
+					<a href='{{ searched_medicine.get_absolute_url_page }}'>
+						{{ searched_medicine.name }}
+					</a> <br>
+					Price : <span style="color: red;"><i style='font-size:15px' class='fas'>&#xf156;</i>{{ searched_medicine.price }}</span><br><br>
+					<i><span style="font-size: 10px;">by <a href="#">{{searched_medicine.manufacturedBy}}</a></span></i>
+					<br><br><br><br>
+				</div>
+			</div>
+		</div>
+	</div>
+{% else %}
+	<div style="text-align: center;font-size: 25px;word-spacing: 4.5px;">
+		Sorry !! We couldn't find <span style="color: red;">{{searchItem}}</span>
+	</div>
+	<h4><a href="previous">Go To Previous Page <- </a></h4>
+{% endif %}
+{% endblock content %}
+
+

@@ -1,0 +1,22 @@
+{% extends "shoppingPortalApp/base.html" %}
+
+
+
+{% block content %}
+{{ block.super }}
+<div class="container">
+	<div class="row">
+		{% for medicine in all_medicines %}
+		<div class="col-md-3 medicine_1">
+			<div class="col-md-12" >
+				<img src="{{ medicine.image.url }}" class="img-responsive img_list"  style="margin-top: 5%"><br><hr>
+				<a href='{{ medicine.get_absolute_url_page }}'>{{medicine.name}}</a> <br>
+				Price : <span style="color: red;"><i style='font-size:15px' class='fas'>&#xf156;</i>{{ medicine.price }}</span><br><br>
+				<i><span style="font-size: 10px;">by <a href="#">{{medicine.manufacturedBy}}</a></span></i>
+				<br><br><br><br>
+			</div>	
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock content %}

@@ -51,10 +51,13 @@ urlpatterns = [
     path('cart/', cart_home, name='cart_home'),
     url(r'^chat/', include('chat.url')),
 
+    path('ShopOnline/', include('shoppingPortalApp.urls')),
+
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('work_history/',include('work_history.urls')),
     path('rmp/',include('rmp.urls')),
+
 
 
 ]
