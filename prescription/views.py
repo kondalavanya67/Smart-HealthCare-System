@@ -42,7 +42,10 @@ class PrescriptionCreate(CreateView):
     def get_initial(self):
 
         max_id=Prescription.objects.all().aggregate(Max('prescription_id'))
-        value=int(list(max_id.values())[0])
+        if list(max_id.values())[0] == None:
+            value=0
+        else:
+            value=int(list(max_id.values())[0])
         value=value+1
         #user = request.user
 
