@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+
 # Create your models here.
 class Profile(models.Model):
 #    doctor_id=models.CharField(max_length=200)
@@ -40,6 +41,13 @@ class Profile(models.Model):
     hospital=models.CharField(max_length=250)
 
     def get_absolute_url(self):
-        return reverse('doctor_profile:show_profile',kwargs={'pk':self.pk})
+        return reverse('doctor_detail',kwargs={'pk':self.pk})
     def __str__(self):
         return self.first_name+' - '+ self.last_name
+
+    def get_absolute_url_booking(self):
+        return reverse('enter_paitent_details',kwargs={'pk':self.pk})
+
+
+
+

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block doctor_detail %}
+
+<div class="container" style="margin-top: 5%;">
+	<div class="row">
+		<div class="col-md-4" style="text-align: center;">
+			<img src="{{ doctor.profile_photo.url }}" style="width: 100%;height: 400px;">
+			<br><br><br><br>
+			
+		</div>
+		<div class="col-md-8">
+			<h1>{{ doctor.first_name }} {{ doctor.last_name }}</h1><hr><br>
+			Email Id : <a href="#">{{ doctor.email_id }}</a><br><br>
+			Speciality : <span style="font-size: 20px;">{{ doctor.speciality }}</span><br>
+			<div><br>
+				Locality: {{ doctor.locality }}<br><br>
+				Hospital: {{ doctor.hospital }}
+				<hr>
+				<button class="btn btn-default"><a href='{{ doctor.get_absolute_url_booking}}'>Make Appointment</a></button>
+			</div>
+		</div>
+	</div>	
+</div>
+{% endblock %}

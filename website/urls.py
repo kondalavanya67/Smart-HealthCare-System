@@ -55,6 +55,7 @@ urlpatterns = [
 
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
+    path('rmp/booking/',include('booking.urls')),
     path('work_history/',include('work_history.urls')),
     path('rmp/',include('rmp.urls')),
 
