@@ -1,0 +1,49 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block head_title %}E-Medics{% endblock head_title %}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href='{% static "css/shoponlinecss.css" %}'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script>
+		$('#searchForm').submit(function(e) {
+		  if ($('#query').val().trim() == '') {
+		    e.preventDefault();
+		    alert('Enter a Search');
+		  }
+		});
+	</script>
+</head>
+<body>
+
+	<div class="block_container">
+		{% block content %}
+			<div class="jumbotron text-center">
+			  <h1>E - MEDICS</h1>
+			  <p>Medicines at your Doorstep</p> 
+			</div>
+			<div class="container">
+				<div class="row>">
+						<form id="searchForm" 	action="{% url 'result' %}" method="GET">
+							{% csrf_token %}
+							<div class="col-md-12 searchBar">
+								<input type="text" name="query" id="query" placeholder="Search For A Medicine Here...">
+								<input type="submit" value="Search">
+							</div>
+						</form>
+				</div>
+			</div>
+			<br>
+		{% endblock content %}
+	</div>
+</body>
+</html>

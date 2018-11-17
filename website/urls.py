@@ -55,14 +55,18 @@ urlpatterns = [
     path('cart/', cart_home, name='cart_home'),
     url(r'^chat/', include('chat.url')),
 
+    path('ShopOnline/', include('shoppingPortalApp.urls')),
+
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
+    path('rmp/booking/',include('booking.urls')),
     path('work_history/',include('work_history.urls')),
     #url(r'^activate/$', activate, name='activate'),
     path('rmp/',include('rmp.urls')),
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),
    # path('activate/<uidb64>/<token>', activate_account, name='activate'),
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
+
 
 
 ]

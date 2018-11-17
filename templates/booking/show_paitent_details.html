@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+
+{% block confirm %}
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center">Confirm your details</h1><br><br>
+
+<div class="card">
+  
+ <!--// <h1>{{paitent.paitent_photo}}</h1>-->
+  <h2> Name: {{paitent.first_name}} {{paitent.last_name}}</h2>
+  <h3>Doctor: {{ paitent.doctor_id }}</h3>
+    
+
+  <p class="title">Age:{{paitent.age}}<br>
+    {{paitent.gender}} {{paitent.description_of_illness}}<br>
+  Mobile No : {{paitent.mobile_no}}<br>
+  
+  Contact Info : {{paitent.mobile_no}}</p>
+  <button class="btn btn-default"><a href="{{ paitent.get_absolute_url_booking_confirmation }}">Proceed to Pay</a></button>
+
+</div><br><br><br><br><<br><br>
+
+{% endblock %}
