@@ -96,16 +96,16 @@ def user_register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password1'])
+            user.set_password(form.cleaned_data['password'])
             b=email_verify(form)
             print(b)
             username=form.data['username']
             email=form.data['email']
-            password1=form.data['password1']
+            password1=form.data['password']
             context={
             'username':username,
             'email':email,
-            'password1':password1,
+            'password':password1,
             'b':b,
             }
 
