@@ -29,17 +29,21 @@
             <li class="nav-item">
               <a href='{% url "home" %}' class="nav-link">Home</a>
             </li>
-            <li class="nav-item">
-              <a href='{% url "doctor_profile:show_profile" %}' class="nav-link">Your Profile</a>
-            </li>
+          
             <li class="nav-item">
               <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
             </li>
             <li class="nav-item">
               <a href='{% url "contact" %}' class="nav-link">Contact</a>
             </li>
+            <li class="nav-item">
+              <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+            </li>
             <li class="nav-item active">
-              <a href='{% url "login" %}' class="nav-link">Login</a>
+              <a href='{% url "logout" %}' class="nav-link">Logout</a>
             </li>
           </ul>
         </div>

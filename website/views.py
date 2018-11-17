@@ -27,6 +27,13 @@ def home(request):
 	if request.user.is_authenticated:
 		context["premium_content"]="you are logged in"
 	return render(request, "index.html", context=context)
+def doctor_home(request):
+	context={
+	   "premium_content":"Hello u r logged out"
+	}
+	if request.user.is_authenticated:
+		context["premium_content"]="you are logged in"
+	return render(request, "doctor_homepage.html", context=context)
 
 def about(request):
 	return render(request, "about.html", {})
@@ -63,7 +70,7 @@ def login_page(request):
 
 			print(user.is_authenticated)
 			login(request, user)
-			return redirect("/login")
+			return redirect("/doctor_home")
 		else:
 			print("error")
 

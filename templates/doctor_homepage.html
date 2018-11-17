@@ -1,0 +1,49 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+{% block home_doctor %}
+
+<!-- NAV BAR -->
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href='{% url "home" %}' class="nav-link">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "contact" %}' class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+            </li>
+            <li class="nav-item active">
+              <a href='{% url "logout" %}' class="nav-link">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<!-- Actual Code -->
+
+
+
+
+
+
+
+
+{% endblock %}
