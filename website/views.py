@@ -2,6 +2,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404,redirect
 from .forms import ContactForm, LoginForm, RegisterForm
 from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth.decorators import login_required
+from django.utils.encoding import force_bytes, force_text
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth import login, authenticate, logout
@@ -13,8 +15,10 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from doctor_home.tokens import account_activation_token
-from django.core.mail import EmailMessage
+from django.core.mail import send_mail
+from django.db import connection,IntegrityError
+import random
+from django.contrib.auth.models import User
 
 def home(request):
 	context={
@@ -65,72 +69,53 @@ def login_page(request):
 
 	return render(request, "login.html", context=context)
 
+def email_verify(form):
+	rand_numb=random.randint(10000, 999999)
+	b=str(rand_numb)
+	email=[form.data['email']]
+	response=send_mail("hi",b,"smarthealthcaresystemiiits@gmail.com",email)
+	return b
 
-User = get_user_model()
-def register_page(request):
+#User = get_user_model()
+def user_register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            message = render_to_string('acc_active_email.html', {
-                'user':user, 
-                'domain':current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
-            mail_subject = 'Activate your blog account.'
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(mail_subject, message, to=[to_email])
-            email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
-    
+            user.set_password(form.cleaned_data['password1'])
+            b=email_verify(form)
+            print(b)
+            username=form.data['username']
+            email=form.data['email']
+            password1=form.data['password1']
+            context={
+            'username':username,
+            'email':email,
+            'password1':password1,
+            'b':b,
+            }
+
+            return render(request,'verify.html', context)
     else:
-        form = RegisterForm()
-    
-    return render(request, 'register.html', {'form': form})	
-def activate(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user)
-        # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
-    else:
-        return HttpResponse('Activation link is invalid!')
+    	form=RegisterForm()
+    context={
+    'form':form
+    }
+    return render(request,'register.html',context)
 
-
-
-User = get_user_model()
-def register_page(request):
-
-	form=RegisterForm(request.POST or None)
-	context= {
-	   "form":form
-	}
-
-	if form.is_valid():
-		print(form.cleaned_data)
-		username=form.cleaned_data.get("username")
-		email=form.cleaned_data.get("email")
-		password=form.cleaned_data.get("password")
-		new_user=User.objects.create_user(username=username, email=email, password=password)
-
-		login(request,new_user)
-		print(new_user)
-		return redirect('/profile/make_profile')
-
-	return render(request, "register.html", context=context)
-
+#User = get_user_model()
+def new_user_reg(request):
+	if request.method =='POST':
+		username=request.POST['username']
+		email=request.POST['email']
+		password=request.POST['password'] 
+		new_user=User.objects.create(username=username,email=email)
+		new_user.set_password(request.POST['password'])
+		new_user.save()
+	return HttpResponse('register')
 
 
 def log_out(request):
 	logout(request)
 	return redirect('/')
+
