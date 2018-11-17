@@ -1,39 +1,46 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <div class="page-header">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  /* text-align: center; */
+  font-family: arial;
+}
 
-      <center><h1> Make Prescription </h1></center>
+.title {
+  color: grey;
+  font-size: 18px;
+}
 
-  </div>
-  <title>Make Prescription</title>
-  <meta charset="utf-8"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-</head>
-<body>
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+
 {% extends 'base.html' %}
 
 
 {% load static %}
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Prescription</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-   -->
-  {% block prescription_home %}
-
-
+<!-- NAV BAR -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
         <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
@@ -43,30 +50,69 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href='{% url "home" %}' class="nav-link">Home</a>
+              <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
             </li>
-            <li class="nav-item">
-              <a href='{% url "doctor_profile:show_profile" %}' class="nav-link">Your Profile</a>
-            </li>
+
             <li class="nav-item">
               <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
             </li>
             <li class="nav-item">
               <a href='{% url "contact" %}' class="nav-link">Contact</a>
             </li>
+            <li class="nav-item">
+              <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+            </li>
             <li class="nav-item active">
-              <a href='{% url "login" %}' class="nav-link">Login</a>
+              <a href='{% url "logout" %}' class="nav-link">Logout</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+  {% block prescription_home %}
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
+        </li>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 col-md-7">
-        <div class="panel-body">
+        <li class="nav-item">
+          <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
+        </li>
+        <li class="nav-item">
+          <a href='{% url "contact" %}' class="nav-link">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+        </li>
+        <li class="nav-item">
+          <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+        </li>
+        <li class="nav-item active">
+          <a href='{% url "logout" %}' class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+
+  <div class="container-fluid" style="background-image:url({% static 'img/prescription.jpg' %});background-repeat; background-size:cover;height:530px">
+
+    <!-- <div class="row ">
+      <div class="col-sm-6 col-md-6 ">
+        <div class="panel-body ">
           <form class="form-horizonatal" action="" method="post">
             {% csrf_token %}
             {% include 'prescription/prescription-template.html' %}
@@ -78,7 +124,24 @@
           </form>
         </div>
       </div>
+    </div> -->
+
+
+
+
+
+
+
+    <div class="card">
+      <form class="form-horizonatal" action="" method="post">
+        {% csrf_token %}
+        {% include 'prescription/prescription-template.html' %}
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit </button>
+            </div>
+            </div>
     </div>
-  </div>
+    </div>
 
 {% endblock %}

@@ -19,7 +19,7 @@ from django.core.mail import send_mail
 from django.db import connection,IntegrityError
 import random
 from django.contrib.auth.models import User
-
+from doctor_profile.views import Profile
 def home(request):
 	context={
 	   "premium_content":"Hello u r logged out"
@@ -27,13 +27,20 @@ def home(request):
 	if request.user.is_authenticated:
 		context["premium_content"]="you are logged in"
 	return render(request, "index.html", context=context)
+
 def doctor_home(request):
+	user = request.user
+	profile = Profile.objects.get(user=user)
+
 	context={
-	   "premium_content":"Hello u r logged out"
+
+	   "premium_content":"Hello u r logged out",
+	   "profile":profile
 	}
 	if request.user.is_authenticated:
 		context["premium_content"]="you are logged in"
 	return render(request, "doctor_homepage.html", context=context)
+
 
 def about(request):
 	return render(request, "about.html", {})
