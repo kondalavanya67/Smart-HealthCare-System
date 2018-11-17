@@ -112,7 +112,9 @@ def new_user_reg(request):
 		new_user=User.objects.create(username=username,email=email)
 		new_user.set_password(request.POST['password'])
 		new_user.save()
-	return HttpResponse('register')
+		login(request,new_user)
+		print(new_user)
+		return redirect('/profile/make_profile')
 
 
 def log_out(request):
