@@ -108,14 +108,15 @@ def new_user_reg(request):
 	if request.method =='POST':
 		username=request.POST['username']
 		email=request.POST['email']
-		password=request.POST['password'] 
+		password=request.POST['password']
 		new_user=User.objects.create(username=username,email=email)
 		new_user.set_password(request.POST['password'])
 		new_user.save()
-	return HttpResponse('register')
+		login(request,new_user)
+		print(new_user)
+		return redirect('/profile/make_profile')
 
 
 def log_out(request):
 	logout(request)
 	return redirect('/')
-
