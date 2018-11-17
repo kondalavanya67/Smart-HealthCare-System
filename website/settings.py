@@ -48,8 +48,10 @@ INSTALLED_APPS = [
     'carts',
     'chat',
     'doctor_home',
+    
+
 ]
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,16 +62,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 ROOT_URLCONF = 'website.urls'
 
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'testsite_app'
-EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'smarthealthcaresystemiiits@gmail.com'
+EMAIL_HOST_PASSWORD = 'smart@123'
+EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = False
+#AUTH_USER_MODEL = "users_management.UserManage" 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

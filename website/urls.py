@@ -4,13 +4,16 @@ from django.conf.urls import include
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import home, contact_page, login_page, register_page, about, contact, how_we_work
+from .views import home, contact_page, login_page, about, contact, how_we_work
 from carts.views import cart_home
 from django.conf.urls import url
 from django.conf import settings
 from django.contrib import admin
 from django.conf.urls import url, include
-from .views import home_page, login_page, register_page,log_out
+
+
+from .views import home_page, login_page,log_out,user_register, new_user_reg
+
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -25,7 +28,8 @@ urlpatterns = [
     url(r'^doctor/', include(("doctor_home.url","doctor"), namespace= 'doctor')),
     #(r'^$',home_page , name='home_page'),
     url(r'^login/$', login_page, name='login' ),
-    url(r'^register/$', register_page, name='register' ),
+    url(r'^register/$',user_register , name='user_register' ),
+    url(r'^new_user_reg/$',new_user_reg , name='new_user_reg' ),
     url(r'^password/change/$',
         auth_views.PasswordChangeView.as_view(),
         name='password_change'),
@@ -54,7 +58,11 @@ urlpatterns = [
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('work_history/',include('work_history.urls')),
+    #url(r'^activate/$', activate, name='activate'),
     path('rmp/',include('rmp.urls')),
+    #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),
+   # path('activate/<uidb64>/<token>', activate_account, name='activate'),
+  #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
 
 
 ]
