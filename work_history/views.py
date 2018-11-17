@@ -13,7 +13,7 @@ def index(request):
     last_name=profile.last_name
     print(user)
     print("**")
-    print(prescriptions[0].pdf)
-    print(prescriptions[0].prescription_date)
+    #print(prescriptions[0].pdf)
+    #print(prescriptions[0].prescription_date)
 
     return render(request,'work_history_home.html',{'prescriptions':prescriptions,'first_name':first_name,'last_name':last_name})
