@@ -19,7 +19,7 @@ from django.core.mail import send_mail
 from django.db import connection,IntegrityError
 import random
 from django.contrib.auth.models import User
-
+from doctor_profile.views import Profile
 def home(request):
 	context={
 	   "premium_content":"Hello u r logged out"
@@ -27,6 +27,20 @@ def home(request):
 	if request.user.is_authenticated:
 		context["premium_content"]="you are logged in"
 	return render(request, "index.html", context=context)
+
+def doctor_home(request):
+	user = request.user
+	profile = Profile.objects.get(user=user)
+
+	context={
+
+	   "premium_content":"Hello u r logged out",
+	   "profile":profile
+	}
+	if request.user.is_authenticated:
+		context["premium_content"]="you are logged in"
+	return render(request, "doctor_homepage.html", context=context)
+
 
 def about(request):
 	return render(request, "about.html", {})
@@ -63,7 +77,7 @@ def login_page(request):
 
 			print(user.is_authenticated)
 			login(request, user)
-			return redirect("/login")
+			return redirect("/doctor_home")
 		else:
 			print("error")
 
@@ -82,16 +96,16 @@ def user_register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password1'])
+            user.set_password(form.cleaned_data['password'])
             b=email_verify(form)
             print(b)
             username=form.data['username']
             email=form.data['email']
-            password1=form.data['password1']
+            password=form.data['password']
             context={
             'username':username,
             'email':email,
-            'password1':password1,
+            'password':password,
             'b':b,
             }
 
@@ -108,7 +122,7 @@ def new_user_reg(request):
 	if request.method =='POST':
 		username=request.POST['username']
 		email=request.POST['email']
-		password=request.POST['password'] 
+		password=request.POST['password']
 		new_user=User.objects.create(username=username,email=email)
 		new_user.set_password(request.POST['password'])
 		new_user.save()
@@ -120,4 +134,3 @@ def new_user_reg(request):
 def log_out(request):
 	logout(request)
 	return redirect('/')
-

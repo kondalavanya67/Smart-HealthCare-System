@@ -23,7 +23,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
-  <link rel="stylesheet" href=href="{% static  'css/style.css' %}">
+  <link rel="stylesheet" href="#">
   <!-- Latest compiled and minified CSS -->
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
 
@@ -36,29 +36,54 @@
     <title>Smart Healthcare System</title>
   </head>
   <body>
-   
-    {% block rmp_login %}{% endblock %}
-    {% block confirm %}{% endblock %}
-    {% block rmp_register %}{% endblock %}
-    {% block rmp_add_profile %}{% endblock %}
-    {% block rmp_show_profile %}{% endblock %}
-    {% block rmp_modify_profile %}{% endblock %}
-    {% block how_we_work %}{% endblock %}
-    {% block about %}{% endblock %}
-    {% block contact %}{% endblock %}
-    {% block home %}{% endblock %}
-    {% block contact_page %}{% endblock %}
-    {% block login %}{% endblock %}
-    {% block register %}{% endblock %}
-    {% block list_view %}{% endblock %}
-    {% block detail_view %}{% endblock %}
-    {% block doctor_list %}{% endblock %}
-    {% block doctor_detail %}{% endblock %}
-    {% block search %}{% endblock %}
-    {% block cart_home %}{% endblock %}
-    {% block chat %}{% endblock %}
-    {% block join %}{% endblock %}
 
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a href='{% url "booking:doctor_list" %}' class="nav-link">Book an Appointment</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">History</a>
+          </li>
+          {% if request.user %}
+          <li class="nav-item">
+            <a href='{% url "logout" %}' class="nav-link">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href='{% url "login_rmp_profile" %}' class="nav-link">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+   
+  {% block register %}{% endblock %}
+  {% block login %}{% endblock %}
+  {% block make_rmp_profile %}{% endblock %}
+  {% block show_rmp_profile %}{% endblock %}
+  {% block booking_confirmation %}{% endblock %}
+  {% block doctor_detail %}{% endblock %}
+  {% block doctor_list %}{% endblock %}
+  {% block enter_paitent_details %}{% endblock %}
+  {% block show_paitent_details %}{% endblock %}
+  
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  
 
   <footer id="main-footer" class="text-center p-4">
     <div class="container">

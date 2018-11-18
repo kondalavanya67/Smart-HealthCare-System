@@ -15,16 +15,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name='rmpContact',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('profile_photo', models.ImageField(upload_to='media_/profile_pic/')),
                 ('first_name', models.CharField(max_length=250)),
                 ('last_name', models.CharField(max_length=500)),
                 ('gender', models.CharField(choices=[('Male', 'Male'), ('Female', 'Female')], max_length=10)),
                 ('email_id', models.CharField(max_length=250)),
                 ('mobile_no', models.BigIntegerField()),
-                ('speciality', models.CharField(choices=[('ORTHOPAEDIC', 'ORTHOPAEDIC'), ('GYNACEOLOGIST', 'GYNACEOLOGIST'), ('ONCOLOGIST', 'ONCOLOGIST'), ('NEUROLOGIST', 'NEUROLOGIST')], max_length=250)),
                 ('qualification', models.CharField(max_length=250)),
                 ('locality', models.CharField(max_length=250)),
                 ('hospital', models.CharField(max_length=250)),
