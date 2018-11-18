@@ -54,15 +54,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'myapp.apps.MyappConfig',
     'users.apps.UsersConfig',
-
-
-    'myapp.apps.MyappConfig',
-    'users.apps.UsersConfig',
     'PIL',
 
-    'booking',
-    'crispy_forms',
-    'widget_tweaks',
 
 
 
