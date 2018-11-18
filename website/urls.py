@@ -18,7 +18,7 @@ from django.contrib.auth import views as auth_views
 from users import views as user_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
     path('', home, name='home'),
     path('logout/', log_out, name='logout'),
     path('contact_page/', contact_page , name='contact_page'),
@@ -65,7 +65,7 @@ urlpatterns = [
     path('appointments/',include('show_appointments.urls'),name='show_appointments'),
     path('work_history/',include('work_history.urls')),
     #url(r'^activate/$', activate, name='activate'),
-    path('rmp/',include('rmp.urls')),
+
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),
    # path('activate/<uidb64>/<token>', activate_account, name='activate'),
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
@@ -89,7 +89,6 @@ urlpatterns = [
     path('admin1/password_reset-complete/',
          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
-    path('doctor/', include('doctor_profile.urls')),
     path('', include('myapp.urls'), name='myapp'),
     path('rmp/', include('rmp.urls')),
 ]
