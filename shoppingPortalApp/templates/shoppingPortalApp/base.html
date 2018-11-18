@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load widget_tweaks %}
 
 <!DOCTYPE html>
 <html>
@@ -22,6 +23,8 @@
 		  }
 		});
 	</script>
+	<style>
+	</style>
 </head>
 <body>
 
@@ -31,19 +34,15 @@
 			  <h1>E - MEDICS</h1>
 			  <p>Medicines at your Doorstep</p> 
 			</div>
-			<div class="container">
-				<div class="row>">
-						<form id="searchForm" 	action="{% url 'result' %}" method="GET">
-							{% csrf_token %}
-							<div class="col-md-12 searchBar">
-								<input type="text" name="query" id="query" placeholder="Search For A Medicine Here...">
-								<input type="submit" value="Search">
-							</div>
-						</form>
-				</div>
-			</div>
+
 			<br>
+
 		{% endblock content %}
 	</div>
+
+
+	
+
+
 </body>
 </html>

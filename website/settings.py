@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'doctor_home',
     'booking',
     'crispy_forms',
-
+    'widget_tweaks',
 
 ]
 

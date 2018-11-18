@@ -56,7 +56,7 @@ urlpatterns = [
     path('cart/', cart_home, name='cart_home'),
     url(r'^chat/', include('chat.url')),
 
-    path('ShopOnline/', include('shoppingPortalApp.urls')),
+    path('shoponline/', include('shoppingPortalApp.urls')),
 
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
