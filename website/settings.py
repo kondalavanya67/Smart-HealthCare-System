@@ -56,6 +56,16 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
 
 
+    'myapp.apps.MyappConfig',
+    'users.apps.UsersConfig',
+    'PIL',
+
+    'booking',
+    'crispy_forms',
+    'widget_tweaks',
+
+
+
 ]
 
 
@@ -160,6 +170,11 @@ STATICFILES_DIRS = [
 
 
 STATIC_ROOT= os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'myapp-home'
+LOGIN_URL = 'login'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn","media_root")

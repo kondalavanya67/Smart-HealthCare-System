@@ -18,7 +18,7 @@ from django.contrib.auth import views as auth_views
 from users import views as user_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
     path('', home, name='home'),
     path('logout/', log_out, name='logout'),
     path('contact_page/', contact_page , name='contact_page'),
@@ -65,24 +65,32 @@ urlpatterns = [
     path('appointments/',include('show_appointments.urls'),name='show_appointments'),
     path('work_history/',include('work_history.urls')),
     #url(r'^activate/$', activate, name='activate'),
-    path('rmp/',include('rmp.urls')),
+
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),
    # path('activate/<uidb64>/<token>', activate_account, name='activate'),
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
 
 
-
-
-    path('admin1/register/', user_views.register, name='register'),
-    path('admin1/profile/',user_views.profile,name='profile'),
-    path('admin1/login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('admin1/logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
-    path('admin1/password_reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), name='password_reset'),
-    path('admin1/password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name='password_reset_done'),
-    path('admin1/password_reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name='password_reset_confirm'),
-    path('admin1/password_reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), name='password_reset_complete'),
-    path('admin1/', include('myapp.urls')),
-
+    path('admin/', admin.site.urls),
+    path('admin1/', user_views.register, name='register'),
+    path('admin1/profile/', user_views.profile, name='profile'),
+    path('admin1/login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login_admin'),
+    path('admin1/logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'),
+         name='logout_admin'),
+    path('admin1/password_reset/',
+         auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
+         name='password_reset'),
+    path('admin1/password_reset/done/',
+         auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'),
+         name='password_reset_done'),
+    path('admin1/password_reset-confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('admin1/password_reset-complete/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
+         name='password_reset_complete'),
+    path('', include('myapp.urls'), name='myapp'),
+    path('rmp/', include('rmp.urls')),
 ]
 
 if settings.DEBUG:

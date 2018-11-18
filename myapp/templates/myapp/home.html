@@ -1,18 +1,20 @@
 {% extends "myapp/base.html" %}
 {% block content %}
- {% for post in posts %}
-     <article class="media content-section">
-      <img class="rounded-circle article-img"src="{{ post.doctor_name.profile.image.url }}">
-         <div class="media-body">
-             <div class="article-metadata">
-                 <a class="mr-2" href="{% url 'user-posts' post.doctor_name.username %}">{{ post.doctor_name }}</a>
-                 <small class="text-muted">{{ post.date_posted |date:"d F, Y"}}</small>
-             </div>
-             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.doctor_id }}</a></h2>
-             <p class="article-content">{{ post.doctor_name }}</p>
-         </div>
-     </article>
- {% endfor %}
+    <small class="text-muted">
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'myapp-index' %}">DOCTOR LIST</a>
+    </small><br>
+    <small class="text-muted">
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'myapp-rmpdetails' %}">RMP DOCTOR LIST</a>
+    </small><br>
+    <small class="text-muted">
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'myapp-payment' %}">Payment Details</a>
+    </small><br>
+    <small class="text-muted">
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'myapp-appointment' %}">Appointment Details</a>
+    </small><br>
+    <small class="text-muted">
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'myapp-feedback' %}">Feedbacks</a>
+    </small>
  {% if is_paginated %}
 
       {% if page_obj.has_previous %}
