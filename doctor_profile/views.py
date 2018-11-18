@@ -21,7 +21,7 @@ def make_profile(request):
         if form.is_valid():
             profile_item=form.save(commit=False)
             profile_item.save()
-            return redirect('/profile/show_profile/')
+            return redirect('/doctor_home/')
     else:
 
         form=Add_Profile(initial={'user':user,'email_id':user.email})
@@ -33,7 +33,7 @@ def modify_profile(request):
     form=Add_Profile(request.POST or None, instance=profile_item)
     if form.is_valid():
             form.save()
-            return redirect('/profile/show_profile/')
+            return redirect('/doctor_home/')
     return render(request,'new.html',{'form':form})
 
 def Show_Profile(request):

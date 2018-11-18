@@ -4,7 +4,7 @@ from django.conf.urls import include
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import home, contact_page, login_page, about, contact, how_we_work
+from .views import home, contact_page, login_page, about, contact, how_we_work,doctor_home,doctor_contact
 from carts.views import cart_home
 from django.conf.urls import url
 from django.conf import settings
@@ -22,9 +22,10 @@ urlpatterns = [
     path('logout/', log_out, name='logout'),
     path('contact_page/', contact_page , name='contact_page'),
     path('contact/', contact , name='contact'),
+    path('doctor_contact/', doctor_contact , name='contact_doctor'),
     path('about/', about , name='about'),
     path('how_we_work/', how_we_work , name='how_we_work'),
-
+    url(r'^doctor_home/$',doctor_home, name='doctor_home'),
     url(r'^doctor/', include(("doctor_home.url","doctor"), namespace= 'doctor')),
     #(r'^$',home_page , name='home_page'),
     url(r'^login/$', login_page, name='login' ),
@@ -60,6 +61,7 @@ urlpatterns = [
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('rmp/booking/',include('booking.urls')),
+    path('appointments/',include('show_appointments.urls'),name='show_appointments'),
     path('work_history/',include('work_history.urls')),
     #url(r'^activate/$', activate, name='activate'),
     path('rmp/',include('rmp.urls')),

@@ -1,0 +1,231 @@
+[33mcommit 58fef203206c52e8d8d6a469c5e70de61043388d[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sun Nov 18 00:17:05 2018 +0530
+
+    Changed Front-End of Many Templates and HTML PAGES WARN PRESCRIPTION AND ITEMS ADD PAGE
+
+[33mcommit eefc2b28621ba81085cbf462a346993e3835ec82[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 18:55:44 2018 +0530
+
+    Removed base_doctor.html and added links to base.html
+
+[33mcommit c598437e565e1a70557013efa5f4128ce5f1f606[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 18:52:28 2018 +0530
+
+    Resolved issue that Footer Not Comming in bottam and Added Doctor Nav Bar
+
+[33mcommit b51a2a2f7945c3a24e856b2590cf05eb1fbbe937[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 11:41:05 2018 +0530
+
+    Linked Everything to lavanya code
+
+[33mcommit 10125e9fd1968a0955f734d5db8762454823659f[m
+Merge: 113e6c3 2e6f224
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 11:30:04 2018 +0530
+
+    Added lavanya code
+
+[33mcommit 113e6c394500728cc26d801c8b9a0d121ac0305a[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 11:23:51 2018 +0530
+
+    changed doctor base template
+
+[33mcommit 2e6f2240800a073c546be6be113e9153307db90c[m[33m ([m[1;31morigin/lavanya[m[33m)[m
+Author: kondalavanya67 <lavanya.k17@iiits.in>
+Date:   Sat Nov 17 11:23:05 2018 +0530
+
+    modified register and added email verification
+
+[33mcommit 6a813dd59670e2d2f7ee08ac03dc2d649e1a6f25[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 10:05:17 2018 +0530
+
+    Added base_doctor.html to prescription template
+
+[33mcommit b7b4c65b8a70d178a7277d1561824c24aeafe8c2[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 09:53:41 2018 +0530
+
+    Added Doctor Profile to Nav bar
+
+[33mcommit dd3d7d8c82cd764f0ad3fb777e0f8dcdddaddf1e[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 09:46:03 2018 +0530
+
+    Removed HTML syntax error
+
+[33mcommit c8ca3adb1b0d3ee44f6f32307f4b0cba9fd4f7fe[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sat Nov 17 09:44:16 2018 +0530
+
+    Added base_doctor.html to work_history template
+
+[33mcommit 147430996460147cc8f4ead5fed239eeaaff72fa[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Fri Nov 16 19:14:23 2018 +0530
+
+    Basic Work_history App completed
+
+[33mcommit a74805533bab21fb779df0c4b0ff0c7ae17aef62[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Fri Nov 16 17:08:49 2018 +0530
+
+    Solved prescription item cannot be None problem
+
+[33mcommit c7b97a7fb6e5373b6ec6f2f1880049caa4692b41[m
+Merge: e759911 4cb04dc
+Author: kondalavanya67 <lavanya.k17@iiits.in>
+Date:   Fri Nov 16 13:39:33 2018 +0530
+
+    Merged with shivam
+
+[33mcommit 4cb04dc9cf96ca96c0c2e9a425e178fcfc546312[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Fri Nov 16 12:07:33 2018 +0530
+
+    Working
+
+[33mcommit 20728e88b9fa4312005dc9b2d08474e61a7227ea[m
+Merge: c5a0721 d72513f
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Fri Nov 16 11:48:59 2018 +0530
+
+    Removed merge conflict
+
+[33mcommit d72513f9102530558e68a828c35ff94f74340e3e[m
+Merge: 5b1eee7 290424e
+Author: Kalpajyoti <kalpahe@gmail.com>
+Date:   Fri Nov 16 11:41:42 2018 +0530
+
+    a
+
+[33mcommit 290424e62792e9313608c8f92c4f8e22e40ab2cb[m
+Author: Kalpajyoti <kalpahe@gmail.com>
+Date:   Fri Nov 16 11:36:51 2018 +0530
+
+    rmp_profile
+
+[33mcommit c5a0721877fcb70df465405dd3a7857317cfa12d[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Fri Nov 16 00:35:14 2018 +0530
+
+    Worked on  Work_History app
+
+[33mcommit 85a435d0aebcd5fa683f9f5742b62701611ae515[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Thu Nov 15 23:53:29 2018 +0530
+
+    Added doctor to prescription model for doctor profile
+
+[33mcommit e7599112ddfe885f1b448a5c530ff9bf0d01d1af[m
+Merge: 8fd4c09 da14cdb
+Author: kondalavanya67 <lavanya.k17@iiits.in>
+Date:   Thu Nov 15 23:06:27 2018 +0530
+
+    a
+
+[33mcommit 8fd4c09731e294c87219585dbe33f10e943429ea[m
+Author: kondalavanya67 <lavanya.k17@iiits.in>
+Date:   Thu Nov 15 23:01:53 2018 +0530
+
+    a
+
+[33mcommit 5b1eee7880c7c9348130ea45bad176a02a5242ea[m
+Merge: be84500 da14cdb
+Author: Kalpajyoti <kalpahe@gmail.com>
+Date:   Thu Nov 15 21:21:07 2018 +0530
+
+    A
+
+[33mcommit be84500dd6017605f8135735e9151018b7c2cc19[m
+Author: Kalpajyoti <kalpahe@gmail.com>
+Date:   Thu Nov 15 21:13:36 2018 +0530
+
+    A
+
+[33mcommit da14cdba3dc1d61347dfce9e6ae04357354b36f9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Tue Nov 13 21:35:52 2018 +0530
+
+    added models
+
+[33mcommit 052a6e8f519439d1095f82877a164dc3fb7a1f65[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Mon Nov 12 21:11:07 2018 +0530
+
+    Integerated User Authentication to Profiles App
+
+[33mcommit 74251edd17516bd30178b6b9ce566509359fd363[m
+Author: kondalavanya67 <lavanya.k17@iiits.in>
+Date:   Mon Nov 12 14:27:19 2018 +0530
+
+    A
+
+[33mcommit 32de4c5b854b54e85731c3fdb617949ecbbc6124[m
+Merge: b145435 bf73704
+Author: kondalavanya67 <lavanya.k17@iiits.in>
+Date:   Mon Nov 12 14:23:49 2018 +0530
+
+    a
+
+[33mcommit b145435d13426de2957c800ee3fe2b6b1a252d5d[m
+Merge: a298c44 2933676
+Author: kondalavanya67 <lavanya.k17@iiits.in>
+Date:   Mon Nov 12 14:03:48 2018 +0530
+
+    a
+
+[33mcommit e2ee4476461e25c762541cc445466899025652b1[m
+Merge: bf73704 a298c44
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Mon Nov 12 13:36:46 2018 +0530
+
+    A
+
+[33mcommit bf73704ed2e828423b0b1cc9fa735e8fed999563[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Mon Nov 12 13:24:05 2018 +0530
+
+    A
+
+[33mcommit a298c44fd6f204b4d7a6cb85f040be7b87826d4c[m
+Author: kondalavanya67 <lavanya.k17@iiits.in>
+Date:   Mon Nov 12 13:18:51 2018 +0530
+
+    Lavanya Initial commit removed kalpo code
+
+[33mcommit 29336760232c5b3538cff3d71cce8cd82e23b82b[m
+Author: Shivam Gupta <shivamguptahdr98@gmail.com>
+Date:   Sun Nov 11 22:56:05 2018 +0530
+
+    Prescription, Profile and work history working
+
+[33mcommit 8c9514d8a7bdf20296be4a384a4e92492746c13f[m[33m ([m[1;31morigin/navyasree[m[33m, [m[1;31morigin/deepika[m[33m)[m
+Merge: 83e2db7 96a2691
+Author: Kalpajyoti <kalpahe@gmail.com>
+Date:   Sun Nov 11 21:31:23 2018 +0530
+
+    Merge branch 'master' of https://github.com/kalpa-iiits/ase
+
+[33mcommit 96a2691eddbc574881006d49515b780695d1b88a[m
+Author: Kalpajyoti Handique <34826928+kalpa-iiits@users.noreply.github.com>
+Date:   Sun Nov 11 21:29:05 2018 +0530
+
+    Delete .gitignore
+
+[33mcommit 83e2db7b9f811549a3880b89632ef708bd5b4723[m
+Author: Kalpajyoti <kalpahe@gmail.com>
+Date:   Sun Nov 11 21:28:02 2018 +0530
+
+    initialised repo and added gitignore
+
+[33mcommit cf15ca5f142403e63c89c9ef99383b64b64ba705[m
+Author: Kalpajyoti Handique <34826928+kalpa-iiits@users.noreply.github.com>
+Date:   Sun Nov 11 21:23:22 2018 +0530
+
+    Initial commit

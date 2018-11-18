@@ -51,6 +51,8 @@ def how_we_work(request):
 def contact(request):
 	return render(request, "contact.html", {})
 
+def doctor_contact(request):
+	return render(request, "contact_doctor.html", {})
 
 def contact_page(request):
 	contact_form=ContactForm(request.POST or None)
@@ -101,11 +103,11 @@ def user_register(request):
             print(b)
             username=form.data['username']
             email=form.data['email']
-            password=form.data['password']
+            password1=form.data['password']
             context={
             'username':username,
             'email':email,
-            'password':password,
+            'password':password1,
             'b':b,
             }
 
@@ -133,4 +135,8 @@ def new_user_reg(request):
 
 def log_out(request):
 	logout(request)
+<<<<<<< HEAD
 	return redirect('/')
+=======
+	return redirect('/')
+>>>>>>> 3f1f9ce0b9c6bb10b082c5eaec6dbf835faf39d1

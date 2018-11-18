@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
@@ -36,7 +37,8 @@
     <title>Smart Healthcare System</title>
   </head>
   <body>
-   
+
+    {% block appointments %}{% endblock %}
     {% block rmp_login %}{% endblock %}
     {% block confirm %}{% endblock %}
     {% block rmp_register %}{% endblock %}
@@ -59,8 +61,13 @@
     {% block chat %}{% endblock %}
     {% block join %}{% endblock %}
 
+    {% block home_doctor %}{% endblock %}
+    {% block work_history %}{% endblock %}
+    {% block prescription_home %}{% endblock %}
+    {% block prescription_detail %}{% endblock %}
+    {% block prescription_item %}{% endblock %}
+     <footer id="main-footer" class="footer text-center p-4 navbar-bottom w-100" style="position:relative;bottom:0;">
 
-  <footer id="main-footer" class="text-center p-4">
     <div class="container">
       <div class="row">
         <div class="col">
