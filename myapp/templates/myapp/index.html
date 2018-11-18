@@ -1,0 +1,9 @@
+{% extends "myapp/base.html" %}
+{% block content %}
+{% for item in all_data %}
+    <form method="post" action="{% url 'myapp-index' %}">
+    {% csrf_token %}
+    <input type="submit" value="{{ item.doctor_name.first_name }}" name="doctor">
+    </form>
+{% endfor %}
+{% endblock content %}

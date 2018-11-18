@@ -36,7 +36,7 @@ def enter_paitent_details(request, pk):
 
 
 			paitent_details=form.save(commit=False)
-			request.session['patient_id']=paitent_details.pk
+			#request.session['patient_id']=paitent_details.pk
 			paitent_details.save()
 			print(paitent_details)
 
@@ -59,6 +59,7 @@ def view_paitent_details(request, pk):
 	return render(request, 'booking/show_paitent_details.html',context=context)
 
 def booking_confirmation(request, pk):
+	print("**")
 	string= random.randint(100000000,10000000000000)
 	viedo_chat_link="https://appr.tc/r/"+str(string)
 	max_id=AppointmentDetials.objects.all().aggregate(Max('appointment_id'))
@@ -80,8 +81,6 @@ def booking_confirmation(request, pk):
 	#patient_obj=get_object_or_404(PaitentDetails,pk=patient_id)
 	obj=AppointmentDetials.objects.create(viedo_chat_link=viedo_chat_link,transaction_id=transaction_id,appointment_id=appointment_id,doctor_id=doctor_id,paitent=instance)
 	obj.save()
-
-
 
 	context={
 	   "paitent":instance,
