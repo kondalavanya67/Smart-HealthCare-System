@@ -60,6 +60,7 @@ urlpatterns = [
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('rmp/booking/',include('booking.urls')),
+    path('appointments/',include('show_appointments.urls')),
     path('work_history/',include('work_history.urls')),
     #url(r'^activate/$', activate, name='activate'),
     path('rmp/',include('rmp.urls')),
