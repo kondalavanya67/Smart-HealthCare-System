@@ -15,6 +15,7 @@ from django.conf.urls import url, include
 from .views import home_page, login_page,log_out,user_register, new_user_reg
 
 from django.contrib.auth import views as auth_views
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -70,6 +71,17 @@ urlpatterns = [
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
 
 
+
+
+    path('admin1/register/', user_views.register, name='register'),
+    path('admin1/profile/',user_views.profile,name='profile'),
+    path('admin1/login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('admin1/logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('admin1/password_reset/', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), name='password_reset'),
+    path('admin1/password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'), name='password_reset_done'),
+    path('admin1/password_reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name='password_reset_confirm'),
+    path('admin1/password_reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), name='password_reset_complete'),
+    path('admin1/', include('myapp.urls')),
 
 ]
 

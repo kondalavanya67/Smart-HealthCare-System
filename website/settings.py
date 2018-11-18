@@ -49,9 +49,14 @@ INSTALLED_APPS = [
     'chat',
     'shoppingPortalApp',
     'doctor_home',
+<<<<<<< HEAD
     'booking',
     'crispy_forms',
     'widget_tweaks',
+=======
+    'myapp.apps.MyappConfig',
+    'users.apps.UsersConfig',
+>>>>>>> 793f0bf4cfb06e339c4665a0ae673b2a872f4dfb
 
 ]
 
