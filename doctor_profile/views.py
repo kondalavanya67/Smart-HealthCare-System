@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
+
+from myapp.models import Post
 from .models import Profile
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -14,12 +16,13 @@ def index(request):
 def make_profile(request):
     user = request.user
     if request.method=="POST":
-
         form=Add_Profile(request.POST, request.FILES ,initial={'user':user,'email_id':user.email})
 
         if form.is_valid():
             profile_item=form.save(commit=False)
             profile_item.save()
+            new = Profile.objects.last()
+            Post.objects.create(doctor_name=new)
             return redirect('/profile/show_profile/')
     else:
         

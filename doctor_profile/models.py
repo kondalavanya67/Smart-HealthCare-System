@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 # Create your models here.
 class Profile(models.Model):
-#    doctor_id=models.CharField(max_length=200)
+
     Male = 'Male'
     Female = 'Female'
 
@@ -27,6 +27,7 @@ class Profile(models.Model):
 
 
     )
+    doctor_id=models.CharField(max_length=200)
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True,blank=True)
     profile_photo=models.ImageField(upload_to='media_/profile_pic/')
     first_name=models.CharField(max_length=250)

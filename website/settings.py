@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'rmp',
     'doctor',
     'carts',
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'doctor_home',
     'myapp.apps.MyappConfig',
     'users.apps.UsersConfig',
+    'PIL',
 
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
@@ -155,5 +157,9 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT= os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root")
 
+#MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn","media_root")
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn","media_root")
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'myapp-home'
+LOGIN_URL = 'login'

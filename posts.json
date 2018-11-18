@@ -1,0 +1,67 @@
+[
+  {
+    "doctor_id": "123456",
+    "user_id":"Navya",
+    "speciality":"sdfgh"
+  },
+  {
+    "doctor_id": "123457",
+    "user_id":"Navya",
+    "speciality":"xcvbn"
+  },
+  {
+    "doctor_id": "123458",
+    "user_id":"Navya",
+    "speciality":"sdfg"
+  },
+  {
+    "doctor_id": "123459",
+    "user_id":"Navya",
+    "speciality":"sdwerty"
+  },
+  {
+    "doctor_id": "123460",
+    "user_id":"Navya",
+    "speciality":"sdfgh"
+  },
+  {
+    "doctor_id": "123461",
+    "user_id":"Navya",
+    "speciality":"xcvbn"
+  },
+  {
+    "doctor_id": "123462",
+    "user_id":"Navya",
+    "speciality":"sdfg"
+  },
+  {
+    "doctor_id": "123463",
+    "user_id":"Navya",
+    "speciality":"sdwerty"
+  },
+  {
+    "doctor_id": "123464",
+    "user_id":"Navya",
+    "speciality":"sdfgh"
+  },
+  {
+    "doctor_id": "123465",
+    "user_id":"Navya",
+    "speciality":"xcvbn"
+  },
+  {
+    "doctor_id": "123466",
+    "user_id":"Navya",
+    "speciality":"sdfg"
+  },
+  {
+    "doctor_id": "123467",
+    "user_id":"Navya",
+    "speciality":"sdwerty"
+  },
+  {
+    "doctor_id": "123468",
+    "user_id":"Navya",
+    "speciality":"sdfgh"
+  }
+]

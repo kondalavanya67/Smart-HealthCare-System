@@ -1,0 +1,10 @@
+{% extends "myapp/base.html" %}
+{% block content %}
+{% for temp in x %}
+
+    {{ temp.doctor_name.first_name }}
+    {{ temp.doctor_name.gender }}
+    {{ temp.doctor_name.last_name }}
+
+{% endfor %}
+{% endblock content %}

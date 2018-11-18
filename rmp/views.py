@@ -7,12 +7,13 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import  LoginForm, RegisterForm,Add_Rmp_Profile
 from .models import rmpContact
+from myapp.models import Rmplist,Profile
 
 
 def login_page(request):
 	form=LoginForm(request.POST or None)
 	context= {
-	   "form":form
+		"form":form
 	}
 	if form.is_valid():
 		print(form.cleaned_data)
@@ -33,7 +34,7 @@ User = get_user_model()
 def register_page(request):
 	form=RegisterForm(request.POST or None)
 	context= {
-	   "form":form
+		"form":form
 	}
 
 	if form.is_valid():
@@ -50,33 +51,34 @@ def register_page(request):
 	return render(request, "rmp/register.html", context=context)
 
 def make_profile(request):
-    user = request.user
-    if request.method=="POST":
+	user = request.user
+	if request.method=="POST":
 
-        form=Add_Rmp_Profile(request.POST, request.FILES ,initial={'user':user,'email_id':user.email})
+		form=Add_Rmp_Profile(request.POST, request.FILES ,initial={'user':user,'email_id':user.email})
 
-        if form.is_valid():
-            profile=form.save(commit=False)
-            profile.save()
-            return redirect('/rmp/show_rmp_profile/')
-    else:
-        
-        form=Add_Rmp_Profile(initial={'user':user,'email_id':user.email})
-    return render(request,'rmp/make_rmp_profile.html',{'form':form})
+		if form.is_valid():
+			profile=form.save(commit=False)
+			profile.save()
+			new = rmpContact.objects.last()
+			Rmplist.objects.create(rmp_list=new)
+		return redirect('/rmp/show_rmp_profile/')
+	else:
+		form=Add_Rmp_Profile(initial={'user':user,'email_id':user.email})
+		return render(request,'rmp/make_rmp_profile.html',{'form':form})
 
 def modify_profile(request):
-    user = request.user
-    profile = Profile.objects.get(user=user)
-    form=Add_Rmp_Profile(request.POST or None, instance=profile)
-    if form.is_valid():
-            form.save()
-            return redirect('/show_rmp_profile/')
-    return render(request,'rmp/make_rmp_profile.html',{'form':form})
+	user = request.user
+	profile = Profile.objects.get(user=user)
+	form=Add_Rmp_Profile(request.POST or None, instance=profile)
+	if form.is_valid():
+		form.save()
+		return redirect('/show_rmp_profile/')
+	return render(request,'rmp/make_rmp_profile.html',{'form':form})
 
 def Show_Profile(request):
-        user = request.user
-        profile = rmpContact.objects.get(user=user)
-        context={
-            'profile':profile
-        }
-        return render(request,'rmp/show_rmp_profile.html',context)
+	user = request.user
+	profile = rmpContact.objects.get(user=user)
+	context={
+		'profile':profile
+	}
+	return render(request,'rmp/show_rmp_profile.html',context)
