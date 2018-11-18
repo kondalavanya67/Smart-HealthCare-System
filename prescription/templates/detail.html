@@ -5,8 +5,9 @@
 
   <title>Prescription</title>
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- NAV BAR -->
+
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
           <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
@@ -19,12 +20,10 @@
                 <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
               </li>
 
+  <!--
               <li class="nav-item">
-                <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
-              </li>
-              <li class="nav-item">
-                <a href='{% url "contact" %}' class="nav-link">Contact</a>
-              </li>
+                <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
+              </li> -->
               <li class="nav-item">
                 <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
               </li>
@@ -38,6 +37,7 @@
           </div>
         </div>
       </nav>
+
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <div class="container-fluid">
     <!-- Right Song Info -->

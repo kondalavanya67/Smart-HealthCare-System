@@ -8,8 +8,12 @@ function relocate_edit()
 {
      location.href = "/profile/modify_profile";
 }
-</script>
 
+function relocate_appointment()
+{
+     location.href = "/appointments/";
+}
+</script>
 <!-- NAV BAR -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
@@ -23,12 +27,10 @@ function relocate_edit()
               <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
             </li>
 
+<!-- 
             <li class="nav-item">
-              <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
-            </li>
-            <li class="nav-item">
-              <a href='{% url "contact" %}' class="nav-link">Contact</a>
-            </li>
+              <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
+            </li> -->
             <li class="nav-item">
               <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
             </li>
@@ -104,8 +106,8 @@ function relocate_edit()
 			    <div class="btn-group btn-group-md">
 				    <button class="button button1">Send Message</button>
 				    <button class="button button2">Contact</button>
-				    <button class="button button3">Report</button>
-            <butoon class="button button3" onclick=" relocate_edit()">Edit</butoon>
+				    <butoon class="button button3" onclick=" relocate_edit()">Edit</butoon>
+            <butoon class="button button3" onclick=" relocate_appointment()">Show Appointments</butoon>
 			    </div>
 
 			    	<br><br>

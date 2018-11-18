@@ -51,6 +51,8 @@ def how_we_work(request):
 def contact(request):
 	return render(request, "contact.html", {})
 
+def doctor_contact(request):
+	return render(request, "contact_doctor.html", {})
 
 def contact_page(request):
 	contact_form=ContactForm(request.POST or None)

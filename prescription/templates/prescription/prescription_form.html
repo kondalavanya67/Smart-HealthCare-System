@@ -40,7 +40,7 @@ button:hover, a:hover {
 
 
 {% load static %}
-<!-- NAV BAR -->
+-- NAV BAR -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
         <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
@@ -53,12 +53,10 @@ button:hover, a:hover {
               <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
             </li>
 
+<!--
             <li class="nav-item">
-              <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
-            </li>
-            <li class="nav-item">
-              <a href='{% url "contact" %}' class="nav-link">Contact</a>
-            </li>
+              <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
+            </li> -->
             <li class="nav-item">
               <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
             </li>
@@ -72,6 +70,7 @@ button:hover, a:hover {
         </div>
       </div>
     </nav>
+    
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
