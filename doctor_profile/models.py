@@ -32,7 +32,7 @@ class Profile(models.Model):
     profile_photo=models.ImageField(upload_to='media_/profile_pic/')
     first_name=models.CharField(max_length=250)
     last_name=models.CharField(max_length=500)
-    dob=dob = models.DateField(default=date.today )
+    dob= models.DateField(default=date.today )
     gender=models.CharField(max_length=10, choices=GENDER_CHOICES)
     email_id=models.CharField(max_length=250)
     mobile_no=models.BigIntegerField()

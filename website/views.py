@@ -135,8 +135,5 @@ def new_user_reg(request):
 
 def log_out(request):
 	logout(request)
-<<<<<<< HEAD
+
 	return redirect('/')
-=======
-	return redirect('/')
->>>>>>> 3f1f9ce0b9c6bb10b082c5eaec6dbf835faf39d1
