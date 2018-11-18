@@ -7,15 +7,15 @@ from django.contrib.auth.models import User
 
 
 class LoginForm(forms.Form):
-	username=forms.CharField(widget=forms.TextInput)
-	password=forms.CharField(widget=forms.PasswordInput)
+	username=forms.CharField(widget=forms.TextInput(attrs={'class': 'form-label-group'}))
+	password=forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-label-group'}))
 	
 
 class RegisterForm(forms.ModelForm):
-	username=forms.CharField(widget=forms.TextInput)
-	email=forms.EmailField(widget=forms.TextInput)
-	password=forms.CharField(widget=forms.PasswordInput)
-	password1=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'confirm password'}), label='confirm_password')
+	username=forms.CharField(widget=forms.TextInput(attrs={'class': 'form-label-group'}))
+	email=forms.EmailField(widget=forms.TextInput(attrs={'class': 'form-label-group'}))
+	password=forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-label-group'}))
+	password1=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'confirm password','class': 'form-label-group'}), label='confirm_password')
 	class Meta:
    		model=User
    		fields=('username','email','password','password1')
@@ -38,3 +38,18 @@ class RegisterForm(forms.ModelForm):
 		if password != confirm_password:
 			raise forms.ValidationError("Passwords are not matching!!!!!!") 
 		return confirm_password
+
+#class ResetForm(forms.ModelForm):
+#	email=forms.EmailField(widget=forms.TextInput(attrs={'autocomplete':'off'}))
+#	class Meta:
+#		model=User
+#		fields=('email',)
+#	def clean(self):
+#		cleaned_data=super().clean()
+#		email=cleaned_data.get("email")
+##		email_set=User.objects.filter(email=email)
+#
+#		if not email_set.exists():
+#			raise forms.ValidationError('Email is not yet registered.')
+#			return email
+

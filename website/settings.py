@@ -25,7 +25,7 @@ SECRET_KEY = '@7^q^1$kzn=+ul^r4^(bs4)xm@@s@^7p-v0mw*ai^m!yj0x7ld'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'chat',
     'shoppingPortalApp',
     'doctor_home',
-    'booking'
+    'booking',
+    'crispy_forms',
+
 
 ]
 

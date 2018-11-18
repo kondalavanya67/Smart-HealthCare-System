@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'^password/change/done/$',
         auth_views.PasswordChangeDoneView.as_view(),
         name='password_change_done'),
-    url(r'^password/reset/$',
+    url(r'^login/password/reset/$',
         auth_views.PasswordResetView.as_view(),
         name='password_reset'),
     url(r'^password/reset/done/$',
