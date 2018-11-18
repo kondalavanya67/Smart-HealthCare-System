@@ -35,24 +35,25 @@ button:hover, a:hover {
 <h1 style="text-align:center">Appointment Details</h1><br><br>
 
 <div class="card">
-  
+
  <!--// <h1>{{paitent.paitent_photo}}</h1>-->
   <h2> Name: {{paitent.first_name}} {{paitent.last_name}}</h2>
   <h3>Doctor Id: {{ paitent.doctor_id}}</h3>
-    
+
 
   <p class="title">Age:{{paitent.age}}<br>
     {{paitent.gender}} {{paitent.description_of_illness}}<br>
   Mobile No : {{paitent.mobile_no}}<br>
 
-  
+
   Contact Info : {{paitent.mobile_no}}<br>
   Transaction id: {{ object.transaction_id }}<br>
   Appointment_id:{{ object.appointment_id }}<br></p>
+  Patient Name : {{object.paitent.first_name}}
   <a href='{{ object.viedo_chat_link }}'><button class="btn btn-default">Connect to doctor</button></a>
-  
-  
- 
+
+
+
 
 </div><br><br><br><br><<br><br>
 

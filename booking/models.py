@@ -15,7 +15,7 @@ def generateUUID():
     return str(uuid4())
 
 class PaitentDetails(models.Model):
-    
+
     Male = 'Male'
     Female = 'Female'
 
@@ -25,7 +25,7 @@ class PaitentDetails(models.Model):
 
     )
 
- 
+
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
     doctor_id=models.ForeignKey(Profile,max_length=250, null=True,blank=True, on_delete=models.CASCADE)
     first_name=models.CharField(max_length=250)
@@ -36,7 +36,7 @@ class PaitentDetails(models.Model):
     symptoms=models.CharField(max_length=250)
     description_of_illness=models.CharField(max_length=250)
     checkout_id = models.CharField(default=generateUUID, max_length=36, unique=True,editable=False)
-    
+
 
     def __str__(self):
     	return str(self.id)
@@ -52,37 +52,3 @@ class AppointmentDetials(models.Model):
     appointment_id=models.CharField(max_length=20)
     transaction_id=models.CharField(max_length=250)
     paitent=models.ForeignKey(PaitentDetails, on_delete=models.CASCADE, null=True, blank=True)
-	
-	
-
-	
-
-
-
-
-
-
-   
-     
-         
-
-
-
-
-
-
-    
-    
-
-        
-   
-        
-
-
-
-
-
-    
-    
-
-    
