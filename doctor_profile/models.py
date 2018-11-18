@@ -28,7 +28,7 @@ class Profile(models.Model):
 
 
     )
-    doctor_id=models.CharField(max_length=200)
+    
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True,blank=True)
     profile_photo=models.ImageField(upload_to='media_/profile_pic/')
     first_name=models.CharField(max_length=250)
