@@ -10,7 +10,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, get_user_model, logout
-from doctor_home.forms import LoginForm , RegisterForm
+from doctor_home.forms import LoginForm , RegisterForm 
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -82,16 +82,16 @@ def user_register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password1'])
+            user.set_password(form.cleaned_data['password'])
             b=email_verify(form)
             print(b)
             username=form.data['username']
             email=form.data['email']
-            password1=form.data['password1']
+            password=form.data['password']
             context={
             'username':username,
             'email':email,
-            'password1':password1,
+            'password':password,
             'b':b,
             }
 
@@ -116,6 +116,52 @@ def new_user_reg(request):
 		print(new_user)
 		return redirect('/profile/make_profile')
 
+def reset_password(request):
+	if request.method=='POST':
+		form=ResetForm(request.POST)
+		if form.is_valid():
+			mail=form.cleaned_data.get('email')
+			global otp2
+			for i in range(6):
+				otp2=otp2_str(random.randint(0,9))
+			mail_subject='otp verification to reset yoour password'
+			message='your otp is' + otp2
+			send_mail(
+				mail_subject,
+				message,
+				'smarthealthcaresystemiiits@gmail.com'
+				[mail],
+
+				)
+			request.session['email']=mail
+			return render(request, 'otp2.html')
+		else:
+			return HttpResponse('Please give correct email')
+	else:
+		form1=ResetForm()
+		return render(request, 'reset_email.html' , {'form':form1}) 
+
+#def reset_otp_verify(request):
+#	if request.method=='POST':
+#		global otp2
+#		otp=str(request.POST['otp'])
+#		otp=otp.upper()
+#		if otp2==otp:
+#			otp2=''
+#			return render(request, 'reset_password.html',{})
+#		else:
+#			otp2=''
+#			del request.session['email']
+#			return HttpResponse('Wrong Otp')
+#	else:
+#		return HttpResponse('404 error')
+
+#def save_password(request):
+#	mail=request.session['email']
+#	user=User.objects.get(email=mail)
+#	user.set_password(request.POST['password'])
+#	user.save()
+#	return HttpResponse('password has bet reset')
 
 def log_out(request):
 	logout(request)

@@ -8,7 +8,7 @@
 <body>
  <form action="{% url 'new_user_reg' %}" method="post">
  	{% csrf_token %}
- 	username:<br>
+	username:<br>
  	<input type="hidden" name="username" id="username" value="{{ username }}"><br>
  	email:<br>
  	<input type="hidden" name="email" id="email" value="{{ email }}"><br>

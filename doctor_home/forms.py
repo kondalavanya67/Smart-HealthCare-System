@@ -38,3 +38,18 @@ class RegisterForm(forms.ModelForm):
 		if password != confirm_password:
 			raise forms.ValidationError("Passwords are not matching!!!!!!") 
 		return confirm_password
+
+#class ResetForm(forms.ModelForm):
+#	email=forms.EmailField(widget=forms.TextInput(attrs={'autocomplete':'off'}))
+#	class Meta:
+#		model=User
+#		fields=('email',)
+#	def clean(self):
+#		cleaned_data=super().clean()
+#		email=cleaned_data.get("email")
+##		email_set=User.objects.filter(email=email)
+#
+#		if not email_set.exists():
+#			raise forms.ValidationError('Email is not yet registered.')
+#			return email
+
