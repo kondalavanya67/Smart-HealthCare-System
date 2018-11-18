@@ -6,7 +6,7 @@ from django.urls import reverse
 from doctor_profile.models import Profile
 
 class Prescription(models.Model):
-#    doctor_id=models.CharField(max_length=200)
+    #doctor_id=models.CharField(max_length=200)
     doctor=models.ForeignKey(Profile,on_delete=models.CASCADE,null=True,blank=True)
     prescription_id=models.CharField(max_length=30,unique=True)
     prescription_date=models.DateTimeField(auto_now_add=True)

@@ -2,89 +2,115 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0c3713b-5c04-4e32-be15-12a0ba08058d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/posts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0002_doctor_image.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0003_auto_20181103_1656.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0004_auto_20181103_1659.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0005_auto_20181103_1702.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0006_doctor_active.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0007_doctor_slug.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0008_auto_20181103_1729.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0009_auto_20181107_2117.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0010_auto_20181107_2136.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0011_auto_20181107_2145.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/migrations/0012_auto_20181109_2336.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_home/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_home/migrations/0002_register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0002_auto_20181028_1523.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0003_profile_userid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0004_auto_20181028_1721.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0005_auto_20181028_1804.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0006_auto_20181028_1805.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0007_auto_20181103_0003.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0008_auto_20181111_1721.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0009_auto_20181112_1910.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doctor_home/templates/doctor_home_page" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doctor_home/templates/otp2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doctor_home/templates/verify.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doctor_home/tokens.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/req.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/templates/shoppingPortalApp/added.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/templates/shoppingPortalApp/after_search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/templates/shoppingPortalApp/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/templates/shoppingPortalApp/index_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/templates/shoppingPortalApp/index_del.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/templates/shoppingPortalApp/index_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/templates/shoppingPortalApp/result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingPortalApp/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/show_appointments/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/show_appointments/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/show_appointments/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/show_appointments/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/show_appointments/templates/appointments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/show_appointments/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/show_appointments/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/show_appointments/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/shoponlinecss.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ShopOnline/add-back.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ShopOnline/back-emedics.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ShopOnline/back-emedics1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/prescription.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base_doctor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/booking/booking_confirmation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/booking/doctor_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/booking/doctor_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/booking/enter_paitent_details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/booking/show_paitent_details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/doctor_homepage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/nav_doctor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db2.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_home/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_home/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_home/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_home/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_home/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/facebook" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/facebook" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/password_change_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_change_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/password_change_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_change_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_reset_complete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_reset_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_reset_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/password_reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_reset_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/password_reset_email.txt" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_reset_email.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_home/templates/registration/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_reset_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_profile/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_profile/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_profile/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_profile/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doctor_profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_profile/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor_profile/templates/show_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_profile/templates/show_profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doctor_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor_profile/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/media/default.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/media/profile_pics/music15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/media/profile_pics/music_fi.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/media/profile_pics/music_fi_H9BHb0k.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/static/myapp/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/templates/myapp/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/templates/myapp/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/templates/myapp/post_confirm_delete.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/templates/myapp/post_detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/templates/myapp/post_form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/templates/myapp/user_posts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0002_auto_20181101_2117.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0003_medicine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0004_auto_20181103_1355.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0005_auto_20181103_1429.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0006_auto_20181103_1431.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0007_auto_20181103_1432.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0008_auto_20181103_1442.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0009_medicine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0010_prescription_pdf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prescription/migrations/0011_prescription_doctor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rmp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prescription/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/prescription/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prescription/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/prescription/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prescription/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/prescription/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prescription/templates/prescription/create_item.html" beforeDir="false" afterPath="$PROJECT_DIR$/prescription/templates/prescription/create_item.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prescription/templates/prescription/prescription-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/prescription/templates/prescription/prescription-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prescription/templates/prescription/prescription_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/prescription/templates/prescription/prescription_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prescription/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/prescription/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rmp/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/rmp/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rmp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rmp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rmp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rmp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/booking/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0002_auto_20181116_1844.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/signals.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/logout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/password_reset.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/password_reset_complete.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/password_reset_confirm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/password_reset_done.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/how_we_work.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/how_we_work.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rmp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rmp/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rmp/make_rmp_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rmp/make_rmp_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rmp/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rmp/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rmp/show_rmp_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rmp/show_rmp_profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_history/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/booking/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_history/templates/work_history_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/work_history/templates/work_history_home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work_history/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/work_history/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +164,7 @@
           <entry key="css" value="2" />
           <entry key="html" value="20" />
           <entry key="json" value="1" />
-          <entry key="py" value="82" />
+          <entry key="py" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -146,19 +172,19 @@
           <entry key="CSS" value="2" />
           <entry key="HTML" value="20" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="82" />
+          <entry key="Python" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="102" />
-          <entry key="py" value="841" />
+          <entry key="py" value="850" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="102" />
-          <entry key="Python" value="841" />
+          <entry key="Python" value="850" />
         </counts>
       </usages-collector>
     </session>
@@ -166,102 +192,89 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/forms.py">
+        <entry file="file://$PROJECT_DIR$/website/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+            <state relative-caret-position="252">
+              <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rmp/migrations/0001_initial.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prescription/migrations/0001_initial.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doctor_profile/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
               <folding>
-                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/models.py">
+        <entry file="file://$PROJECT_DIR$/doctor_profile/migrations/0001_initial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+            <state relative-caret-position="493">
+              <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#1#16#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/signals.py">
+        <entry file="file://$PROJECT_DIR$/doctor_home/migrations/0001_initial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#46#0" expanded="true" />
-              </folding>
-            </state>
+            <state relative-caret-position="-3" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/tests.py">
+        <entry file="file://$PROJECT_DIR$/doctor/migrations/0001_initial.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/views.py">
+        <entry file="file://$PROJECT_DIR$/chat/migrations/0001_initial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="61" column="46" lean-forward="true" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1524">
-              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/templates/myapp/rmplist.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-            </state>
+            <state relative-caret-position="-258" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myapp/templates/myapp/post_form.html">
+        <entry file="file://$PROJECT_DIR$/carts/migrations/0001_initial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+            <state relative-caret-position="204">
+              <caret line="14" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myapp/urls.py">
+        <entry file="file://$PROJECT_DIR$/myapp/templates/myapp/post_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-              <folding>
-                <element signature="e#0#108#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -290,9 +303,7 @@
         <option value="$PROJECT_DIR$/notifications/views.py" />
         <option value="$PROJECT_DIR$/notifications/utils.py" />
         <option value="$PROJECT_DIR$/notifications/templatetags/notifiacations_tags.py" />
-        <option value="$PROJECT_DIR$/website/settings.py" />
         <option value="$PROJECT_DIR$/rmp/views.py" />
-        <option value="$PROJECT_DIR$/doctor_profile/views.py" />
         <option value="$PROJECT_DIR$/users/templates/users/profile.html" />
         <option value="$PROJECT_DIR$/users/views.py" />
         <option value="$PROJECT_DIR$/myapp/admin.py" />
@@ -300,7 +311,6 @@
         <option value="$PROJECT_DIR$/myapp/templates/myapp/feedback.html" />
         <option value="$PROJECT_DIR$/templates/contact.html" />
         <option value="$PROJECT_DIR$/myapp/views.py" />
-        <option value="$PROJECT_DIR$/doctor_home/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/myapp/models.py" />
         <option value="$PROJECT_DIR$/myapp/templates/myapp/rmplist.html" />
         <option value="$PROJECT_DIR$/website/urls.py" />
@@ -308,6 +318,15 @@
         <option value="$PROJECT_DIR$/users/forms.py" />
         <option value="$PROJECT_DIR$/users/models.py" />
         <option value="$PROJECT_DIR$/users/signals.py" />
+        <option value="$PROJECT_DIR$/website/settings.py" />
+        <option value="$PROJECT_DIR$/rmp/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/prescription/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/doctor_profile/views.py" />
+        <option value="$PROJECT_DIR$/doctor_profile/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/doctor_home/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/doctor/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/chat/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/carts/migrations/0001_initial.py" />
       </list>
     </option>
   </component>
@@ -317,9 +336,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="285" />
-    <option name="y" value="140" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="741" />
+    <option name="y" value="68" />
     <option name="width" value="1750" />
     <option name="height" value="970" />
   </component>
@@ -355,6 +374,50 @@
             <path>
               <item name="ase" type="b2602c69:ProjectViewProjectNode" />
               <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="carts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="carts" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor_home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor_home" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor_profile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor_profile" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -369,6 +432,33 @@
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="myapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="prescription" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="prescription" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="rmp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="rmp" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ase" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -440,10 +530,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="593" y="55" width="1400" height="776" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23489933" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26119402" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -457,7 +546,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.30028328" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49932885" visible="true" weight="0.30028328" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49932885" visible="true" weight="0.32919255" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -473,33 +562,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myapp/templates/myapp/post_detail.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/work_history/models.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/templates/myapp/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/templates/myapp/user_posts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="12" selection-start-line="15" selection-start-column="1" selection-end-line="33" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/work_history/templates/work_history_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../tests/notifications/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -577,22 +639,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rmp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-884">
           <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rmp/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/migrations/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -657,9 +709,6 @@
     <entry file="file://$PROJECT_DIR$/templates/contact_page.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/doctor_home/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -700,16 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doctor_profile/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -746,7 +785,7 @@
     <entry file="file://$PROJECT_DIR$/users/signals.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
           </folding>
@@ -759,7 +798,6 @@
     <entry file="file://$PROJECT_DIR$/users/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret lean-forward="true" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
@@ -769,21 +807,21 @@
     <entry file="file://$PROJECT_DIR$/website/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="61" column="46" lean-forward="true" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
+          <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1524">
-          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+          <caret line="116" selection-start-line="116" selection-end-line="116" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="e#0#108#0" expanded="true" />
           </folding>
@@ -793,14 +831,75 @@
     <entry file="file://$PROJECT_DIR$/myapp/templates/myapp/rmplist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/templates/myapp/post_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rmp/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prescription/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doctor_profile/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doctor_profile/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
+          <folding>
+            <element signature="e#1#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doctor_home/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doctor/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chat/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-258" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/carts/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="14" />
         </state>
       </provider>
     </entry>

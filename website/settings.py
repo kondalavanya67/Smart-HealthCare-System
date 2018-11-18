@@ -25,7 +25,7 @@ SECRET_KEY = '@7^q^1$kzn=+ul^r4^(bs4)xm@@s@^7p-v0mw*ai^m!yj0x7ld'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -33,9 +33,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'dal',
     'dal_select2',
-    #'django.contrib.staticfiles',
     'work_history.apps.WorkHistoryConfig',
     'prescription.apps.PrescriptionConfig',
+    'show_appointments.apps.ShowAppointmentsConfig',
     'doctor_profile.apps.doctor_profileConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,13 +48,20 @@ INSTALLED_APPS = [
     'doctor',
     'carts',
     'chat',
+    'shoppingPortalApp',
     'doctor_home',
+
     'myapp.apps.MyappConfig',
     'users.apps.UsersConfig',
     'PIL',
 
+    'booking',
+    'crispy_forms',
+    'widget_tweaks',
+
+
 ]
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,16 +72,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 ROOT_URLCONF = 'website.urls'
 
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'testsite_app'
-EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'smarthealthcaresystemiiits@gmail.com'
+EMAIL_HOST_PASSWORD = 'smart@123'
+EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = False
+#AUTH_USER_MODEL = "users_management.UserManage"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -157,9 +165,11 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT= os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root")
 
-#MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn","media_root")
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'myapp-home'
 LOGIN_URL = 'login'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn","media_root")
+

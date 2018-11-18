@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from datetime import date
 # Create your models here.
 class Profile(models.Model):
 
@@ -32,6 +33,7 @@ class Profile(models.Model):
     profile_photo=models.ImageField(upload_to='media_/profile_pic/')
     first_name=models.CharField(max_length=250)
     last_name=models.CharField(max_length=500)
+    dob= models.DateField(default=date.today )
     gender=models.CharField(max_length=10, choices=GENDER_CHOICES)
     email_id=models.CharField(max_length=250)
     mobile_no=models.BigIntegerField()
@@ -41,6 +43,9 @@ class Profile(models.Model):
     hospital=models.CharField(max_length=250)
 
     def get_absolute_url(self):
-        return reverse('doctor_profile:show_profile',kwargs={'pk':self.pk})
+        return reverse('booking:doctor_detail',kwargs={'pk':self.pk})
     def __str__(self):
-        return self.first_name+' - '+ self.last_name
+        return str(self.id)
+
+    def get_absolute_url_booking(self):
+        return reverse('booking:enter_paitent_details',kwargs={'pk':self.pk})

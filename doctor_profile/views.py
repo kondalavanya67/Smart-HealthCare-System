@@ -6,6 +6,7 @@ from .models import Profile
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import Add_Profile
+
 # Create your views here.
 def index(request):
 
@@ -21,11 +22,15 @@ def make_profile(request):
         if form.is_valid():
             profile_item=form.save(commit=False)
             profile_item.save()
+
             new = Profile.objects.last()
             Post.objects.create(doctor_name=new)
-            return redirect('/profile/show_profile/')
+
+
+            return redirect('/doctor_home/')
+
     else:
-        
+
         form=Add_Profile(initial={'user':user,'email_id':user.email})
     return render(request,'new.html',{'form':form})
 
@@ -35,7 +40,7 @@ def modify_profile(request):
     form=Add_Profile(request.POST or None, instance=profile_item)
     if form.is_valid():
             form.save()
-            return redirect('/profile/show_profile/')
+            return redirect('/doctor_home/')
     return render(request,'new.html',{'form':form})
 
 def Show_Profile(request):

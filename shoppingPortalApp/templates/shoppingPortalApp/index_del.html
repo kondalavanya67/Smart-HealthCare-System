@@ -1,0 +1,36 @@
+{% extends "shoppingPortalApp/base.html" %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+{{block.super}}
+<div class="container" style="text-align: center;background-color: #d6d6c2">
+	<div class="row">
+		<div class="col-md-12" style="font-size: 50px;">
+			Delete the Medicine Here
+		</div>
+		<div class="col-md-12">
+			<form method="POST" action="">
+				{% csrf_token %}
+				<div class="container" style="text-align: center;">
+					<div class="row">
+					<div class="col-md-12">
+						{{ form.name | add_class:"del-name" | attr:"placeholder:Enter Medicine Name.."}}<input type="submit" value="Delete">
+					</div>
+					</div>
+				</div>
+			</form>				
+		</div>
+	</div><br>
+</div>
+<div>
+<div>
+	<h4 style="text-align: center;"><a href="{% url 'main' %}" style="text-decoration: none;">Go To Main Page</a></h4>
+</div>
+	
+</div>
+
+{% endblock content %}
+
+

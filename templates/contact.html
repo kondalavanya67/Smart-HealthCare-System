@@ -27,6 +27,9 @@
           <li class="nav-item">
             <a href='{% url "login" %}' class="nav-link">Login</a>
           </li>
+           <li class="nav-item">
+            <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link">Rmp Login</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -37,7 +40,7 @@
       <div class="row">
         <div class="col-md-6 m-auto text-center">
           <b><h1>Contact Us</h1></b>
-          
+
         </div>
       </div>
     </div>
@@ -55,9 +58,17 @@
               <h4>Address</h4>
               <p>IIIT Sricity,630 Gnan Marg, Sri City, Andhra Pradesh 517646, India</p>
               <h4>Email</h4>
-              <p>smt.india@gmail.com</p>
+              <p>smarthealthcaresystemiiits@gmail.com</p>
               <h4>Phone</h4>
               <p>+91 0000 00 0000</p>
+              <p>You can also contact us on facebook. Please click on message us button below to message us.</p>
+
+<div class="fb-messengermessageus" 
+  messenger_app_id="323145528483418" 
+  page_id="255118918510880"
+  color="white"
+  size="large" >
+</div>  
             </div>
           </div>
         </div>
@@ -106,6 +117,25 @@
       </div>
     </div>
   </section>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '323145528483418',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
   <!-- STAFF -->
   <section id="staff" class="py-5 text-center bg-dark text-white">
@@ -122,24 +152,24 @@
           <small>Developer</small>
         </div>
         <div class="col-md-4">
-          
+
           <h4>Lavnya</h4>
           <small>Developer</small>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
-          
+
           <h4>Deepika</h4>
           <small>Developer</small>
         </div>
         <div class="col-md-4">
-          
+
           <h4>Navyashree</h4>
           <small>Developer</small>
         </div>
         <div class="col-md-4">
-      
+
           <h4>Kalpajyoti</h4>
           <small>Developer</small>
         </div>
