@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'dal_select2',
     'work_history.apps.WorkHistoryConfig',
     'prescription.apps.PrescriptionConfig',
+    'show_appointments.apps.ShowAppointmentsConfig',
     'doctor_profile.apps.doctor_profileConfig',
     'django.contrib.admin',
     'django.contrib.auth',

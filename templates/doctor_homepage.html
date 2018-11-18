@@ -3,6 +3,12 @@
 {% load static %}
 
 {% block home_doctor %}
+<script>
+function relocate_edit()
+{
+     location.href = "/profile/modify_profile";
+}
+</script>
 
 <!-- NAV BAR -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -99,6 +105,7 @@
 				    <button class="button button1">Send Message</button>
 				    <button class="button button2">Contact</button>
 				    <button class="button button3">Report</button>
+            <butoon class="button button3" onclick=" relocate_edit()">Edit</butoon>
 			    </div>
 
 			    	<br><br>
