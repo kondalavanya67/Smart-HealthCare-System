@@ -6,7 +6,7 @@
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a href="index.html" class="navbar-brand"><b></b>SMART HEALTHCATRE SYSTEM</b></a>
+      <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,6 +27,12 @@
           <li class="nav-item">
             <a href='{% url "login" %}' class="nav-link">Login</a>
           </li>
+          <li class="nav-item">
+            <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link">Rmp Login</a>
+          </li>
+          <li class="nav-item nav-item-shop" style="background-color:red;border: 15px;">
+            <a href='{% url "shoppingPortalApp:main" %}' class="nav-link-shop" style="text-decoration: none;margin-top: 3px;">Shop Medicines</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -44,7 +50,7 @@
           <div class="container">
             <div class="carousel-caption d-none d-sm-block text-right mb-5">
               <h1 class="display-2 text-black">Complete rural health care</h1>
-              <p class="lead text-black">Get connected to specialised docor in every field thopurh your regional medicl practitioner. Also the hassle of getting out of your town.
+              <p class="lead text-black">Get connected to specialised docor in every field thopurh your RMP. Also the hassle of getting out of your town.
                 </p>
               <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
             </div>
@@ -99,19 +105,19 @@
           
           <h3>Doctors</h3>
           <p>Doctors of villages having proper knowlege and proper knowlege of using technology and having knowlwge in various domains of medical sciences can use this portal. They can contribute to this service. Be a part of this amazing journey for extending healthcare to your fellow villagers. </p>
-          <button type="button" class="btn btn-dark">Sign Up</button>
+          <a href='{% url "rmp:make_rmp_profile" %}'><button type="button" class="btn btn-dark">Sign Up</button></a>
         </div>
         <div class="col-md-4 mb-4 text-center">
          
           <h3>Specialists</h3>
           <p>Specialists with proper knownlege in a specific domain can register for this domain. Be a member of smart health care and help in the growth of rural india. Also you can increase your paitents and earn some extra credits. Upgrade your carrier and take yourself to the next level.</p>
-          <button type="button" class="btn btn-dark">Sign Up</button>
+          <a href='{% url "user_register" %}'><button type="button" class="btn btn-dark">Sign Up</button></a>
         </div>
         <div class="col-md-4 mb-4 text-center">
           
           <h3>Medicines</h3>
           <p>We have medicies of all diseases. Whether its a small fever or a complicated disease.Some medicines needs to be pedcribed form a speacilist and others can be brought without iys need. Get your medicines delivered at your doorstep without any hasssle. </p>
-          <button type="button" class="btn btn-dark">Sign Up</button>
+          <a href='{% url "rmp:make_rmp_profile" %}'><button type="button" class="btn btn-dark">Shop Now</button></a>
         </div>
       </div>
     </div>
@@ -170,21 +176,21 @@
       <p class="text-center">Check out our photos</p>
       <div class="row mb-4">
         <div class="col-md-4">
-          <a href="https://source.unsplash.com/random/560x560" data-toggle="lightbox" data-gallery="img-gallery" data-height="560"
+          <a href="https://source.unsplash.com/random/560x560" data-toggle="lightbox" data-gallery="img-gallery" data-height="400"
             data-width="560">
             <img src='{% static "img/gallery/1.jpg" %}' alt="" class="img-fluid gallery">
           </a>
         </div>
 
         <div class="col-md-4">
-          <a href="https://source.unsplash.com/random/561x561" data-toggle="lightbox" data-gallery="img-gallery" data-height="561"
+          <a href="https://source.unsplash.com/random/561x561" data-toggle="lightbox" data-gallery="img-gallery" data-height="400"
             data-width="561">
             <img src='{% static "img/gallery/2.jpg" %}' alt="" class="img-fluid gallery">
           </a>
         </div>
 
         <div class="col-md-4">
-          <a href="https://source.unsplash.com/random/562x562" data-toggle="lightbox" data-gallery="img-gallery" data-height="562"
+          <a href="https://source.unsplash.com/random/562x562" data-toggle="lightbox" data-gallery="img-gallery" data-height="400"
             data-width="562">
             <img src='{% static "img/gallery/3.jpg" %}' alt="" class="img-fluid gallery">
           </a>
@@ -193,21 +199,21 @@
 
       <div class="row mb-4">
         <div class="col-md-4">
-          <a href="https://source.unsplash.com/random/563x563" data-toggle="lightbox" data-gallery="img-gallery" data-height="563"
+          <a href="https://source.unsplash.com/random/563x563" data-toggle="lightbox" data-gallery="img-gallery" data-height="400"
             data-width="563">
             <img src='{% static "img/gallery/4.jpg" %}' alt="" class="img-fluid gallery">
           </a>
         </div>
 
         <div class="col-md-4">
-          <a href="https://source.unsplash.com/random/564x564" data-toggle="lightbox" data-gallery="img-gallery" data-height="564"
+          <a href="https://source.unsplash.com/random/564x564" data-toggle="lightbox" data-gallery="img-gallery" data-height="400"
             data-width="564">
             <img src='{% static "img/gallery/5.jpg" %}' alt="" class="img-fluid gallery">
           </a>
         </div>
 
         <div class="col-md-4">
-          <a href="https://source.unsplash.com/random/565x565" data-toggle="lightbox" data-gallery="img-gallery" data-height="565"
+          <a href="https://source.unsplash.com/random/565x565" data-toggle="lightbox" data-gallery="img-gallery" data-height="400"
             data-width="565">
             <img src='{% static "img/gallery/6.jpg" %}' alt="" class="img-fluid gallery">
           </a>

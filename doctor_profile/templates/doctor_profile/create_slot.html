@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block slot %}
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<div class="container">
+  <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
+      </li>
+      <li class="nav-item">
+        <a href='{% url "contact" %}' class="nav-link">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+      </li>
+      <li class="nav-item">
+        <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+      </li>
+      <li class="nav-item active">
+        <a href='{% url "logout" %}' class="nav-link">Logout</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+<br><br><br>
+<div class='container'>
+  <div class="row">
+    <div class='col-5' style="background-image:url({% static 'img/appointment.jpg' %});background-repeat; background-size:cover;height:355px">
+
+    </div>
+    <div class='col-7'>
+      <form class="form-horizontal text-left" action="" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <div class="alert alert-warning">
+                <strong>Warning!</strong> Slots once made cannot be modified later
+            </div>
+        {% csrf_token %}
+        {% include 'doctor_profile/create_item_template.html' %}
+
+
+          <div class="col-sm-offset-2 col-sm-5 text-right">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+            <br><br><br>
+{% endblock %}

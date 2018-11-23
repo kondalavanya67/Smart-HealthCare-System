@@ -1,0 +1,11 @@
+{% extends "myapp/base.html" %}
+{% block content %}
+
+{% for item in data %}
+    <form method="post" action="{% url 'myapp-rmpdetails' %}">
+    {% csrf_token %}
+    <input type="submit" value="{{ item.rmp_list.first_name }}" name="rmp">
+    </form>
+{% endfor %}
+{% endblock content %}
+

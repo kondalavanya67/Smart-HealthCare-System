@@ -1,9 +1,10 @@
 from django.urls import path
 from shoppingPortalApp import views
 
+app_name = 'shoppingPortalApp'
 
 urlpatterns = [
-    path('main/',views.index,name='main'),
+    path('',views.index,name='main'),
     path('add/',views.index_add,name='add_medicine'),
     path('added/',views.added,name='successful_add'),
     path('main/search/',views.result, name='result'),

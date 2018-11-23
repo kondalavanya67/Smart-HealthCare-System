@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block login %}
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      <a href="index.html" class="navbar-brand"><b></b>SMART HEALTHCATRE SYSTEM</b></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href='{% url "home" %}' class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href='{% url "about" %}' class="nav-link">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
+          </li>
+          <li class="nav-item">
+            <a href='{% url "contact" %}' class="nav-link">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href='{% url "login" %}' class="nav-link">Login</a>
+          </li>
+           <li class="nav-item active">
+            <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link">Rmp Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<br><br><br><br>
+<div class="container border-light">
+	<div class="row">
+
+      <div class="col-lg-4 col-sm-6 mx-auto">
+         <form class="text-center border border-light p-5" method="POST">{% csrf_token %}
+
+   
+
+
+         {{ form.as_p }}
+
+        <button class="btn btn-block btn-dark" type="submit">Log in</button>
+
+
+       </form>
+       <a href='#'>Forgot password?</a><br>
+       <a href='{% url "rmp:make_rmp_profile" %}'>Dont have a account?create one!</a>
+     </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

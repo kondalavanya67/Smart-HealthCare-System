@@ -1,0 +1,25 @@
+{% extends 'base1.html' %}
+
+{% load static %}
+
+{% block doctor_list %}
+<br>
+<h1 style="text-align: center">List of Doctors</h1>
+<div class="container">
+	<div class="row">
+		{% for doctors in doctor %}
+		<div class="col-md-3 medicine_1">
+			<div class="col-md-12" >
+				<img src="{{ doctors.profile_photo.url }}" class="img-responsive img_list"  style="margin-top: 5%; height:250px;width:100%"><br><hr>
+				<h5>{{doctors.first_name}} {{doctors.last_name}}</h5>
+				Speciality : <span>{{ doctors.speciality }}</span><br>
+				Hospital:<a href="#"> {{doctors.hospital}}</a><br><br>
+				<button class="btn btn-default"><a href='{{ doctors.get_absolute_url }}'>View</a></button>
+				<br><br><br><br>
+			</div>	
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

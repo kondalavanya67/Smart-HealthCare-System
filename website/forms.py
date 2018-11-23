@@ -6,7 +6,7 @@ User=get_user_model()
 class ContactForm(forms.Form):
 	fullname=forms.CharField(widget=forms.TextInput(
 		attrs={
-		    "class":"form-control", 
+		    "class":"form-control form-group", 
 		    "id":"form_full_name", 
 		    "placeholder":"Your full name"}))
 	email=forms.EmailField(
@@ -26,7 +26,11 @@ class ContactForm(forms.Form):
 		return email
 
 class LoginForm(forms.Form):
-	username=forms.CharField()
+	username=forms.TextInput(
+		attrs={
+		    "class":"form-control form-group col-sm-12 col-lg-12", 
+		    "id":"form_full_name", 
+		    "placeholder":"Your full name"})
 	password=forms.CharField(widget=forms.PasswordInput())
 
 class RegisterForm(forms.Form):

@@ -1,38 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Add Item</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block prescription_item %}
+
+
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+         <div class="container">
+           <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+           <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarCollapse">
+             <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                 <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
+               </li>
+
+   <!--
+               <li class="nav-item">
+                 <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
+               </li> -->
+               <li class="nav-item">
+                 <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+               </li>
+               <li class="nav-item">
+                 <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+               </li>
+               <li class="nav-item active">
+                 <a href='{% url "logout" %}' class="nav-link">Logout</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav>
+
+
   <div class="col-sm-8 col-md-9">
 
-            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+            <!-- <ul class="nav nav-pills" style="margin-bottom: 10px;">
                 <li role="presentation"><a href="{% url 'prescription:detail' prescription.id %}">View All</a></li>
                 <li role="presentation" class="active"><a href="{% url 'prescription:create_item' prescription.id %}">Add New medicine</a></li>
-            </ul>
+            </ul> -->
+            <br>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{% url 'prescription:detail' prescription.id %}" alt="link" style="text-decoration:none;"><button class="btn btn-primary" type="submit">View Prescription </button></a>
+            <br>
+            <!-- <a href="{% url 'prescription:print' prescription.id %}"><button class="btn btn-primary" type="submit">Print Prescription</button></a> -->
   </div><br>
 <div class="panel panel-default">
-                <div class="panel-body">
-                    <h3>Add a New Medicine</h3>
+                <div class="panel-body col-sm-offset-2 col-sm-3 text-right">
+                    <h3>Add a New Medicine</h3><br>
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
-                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <input type="hidden" name="prescription" value="{{ prescription }}">
-                        {% include 'prescription/create_item_template.html' %}
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
+                  </div>
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group col-sm-offset-2 col-sm-3 text-right" style="border-color:solid black">
+                      {% csrf_token %}
+                      {% include 'prescription/create_item_template.html' %}
+
                         </div>
+                        <div class="col-sm-offset-2 col-sm-2 text-right">
+                          <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+
                     </form>
-                </div>
-            </div>
-</body>
-</html>
+
+            <br><br><br>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'base1.html' %}
+
+{% load static %}
+
+{% block show_rmp_profile  %}
+
+
+<script>
+function relocate_edit()
+{
+     location.href = "/profile/modify_profile";
+}
+
+function relocate_appointment()
+{
+     location.href = "/appointments/";
+}
+</script>
+
+    <style>
+      .checked{
+        color: orange;
+      }
+      .button {
+        border: none;
+        color: black;
+        background-color: #edecea;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .button:hover{
+      background-color: rgb(244, 173, 66);
+      color: white;
+    }
+    td{
+      padding:15px 45px;
+      font-size: 17px;
+    }
+    .heading_btn{
+      padding:15px 45px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .heading_btn:hover{
+      background-color: rgb(244, 173, 66);
+    }
+
+    </style>
+
+
+<div class="container-fluid" style="margin-top: 5%">
+    <div class="row mx-auto">
+      <div class="col-md-3 col-lg-3 mx-auto col-sm-0">
+    <br>
+        <div>
+          <a href="#">Dashboard</a><br><br>
+          <a href="#">Make an appointment</a><br><br>
+          <a href="#">Booking History</a>
+        </div>
+
+        <br>
+
+
+
+      </div>
+      <div class="col-md-8 col-sm-offset-2">
+        <div>
+          <span style="font-size: 35px;">Dr. {{profile.first_name}} {{profile.last_name}}</span>&nbsp&nbsp&nbsp
+
+        </div>
+        <div style="margin-top: 7px;color: blue;font-size: 20px;" >
+          {{profile.speciality}}
+        </div>
+
+          <br><br>
+         
+
+            <br><br>
+
+          <div>
+            <span class="heading_btn About" onclick=" about_display()">About</span>
+
+          </div><hr>
+
+            <br>
+
+          <div style="display: none;" id="Experience">
+            <span style="font-size: 17px;">Doctors's experience will be here.</span>
+          </div>
+          <div id ="About">
+            <div style="padding: 15px 45px;font-size: 16px;opacity: 0.5;">
+              BASIC INFORMATION
+            </div><br>
+            <div>
+              <table>
+                <tr>
+                  <td>Locality</td>
+                  <td>{{profile.locality}}</td>
+                </tr>
+                <tr>
+                  <td>Gender</td>
+                  <td>{{profile.gender}}</td>
+                </tr>
+              </table>
+            </div><br>
+            <div style="padding: 15px 45px;font-size: 16px;opacity: 0.5;">
+              CONTACT INFORMATION
+            </div><br>
+            <table>
+              <tr>
+                <td>Phone</td>
+                <td>+91{{profile.mobile_no}}</td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td>{{profile.locality}}</td>
+              </tr>
+              <tr>
+                <td>E-Mail</td>
+                <td>{{profile.email_id}}</td>
+              </tr>
+
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+
+<br><br><br><br>
+{% endblock %}
+

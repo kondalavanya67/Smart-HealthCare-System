@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-
 {% load static %}
 
 {% block login %}
+
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
@@ -28,22 +28,36 @@
           <li class="nav-item active">
             <a href='{% url "login" %}' class="nav-link">Login</a>
           </li>
+           <li class="nav-item">
+            <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link">Rmp Login</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col">
-		  <div class="col-sm-6 col-12" >
-            <form method="POST">
-	       {% csrf_token %}
-           	{{ form }}
-        	<button type="submit" class="btn btn-default align-center">Submit</button>
-         </form>
-  		</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-6 col-lg-4 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h3 class="card-title text-center font-weight-bold">Sign In</h3>
+
+<form method='POST' class="form-signin mx-auto"> {% csrf_token %}
+
+  {{ form.as_p }}
+
+  <button type='submit' class="btn btn-dark btn-block text-uppercase">Submit</button>
+
+
+</form>
+<a href='{%url "password_reset" %}'>Forgot password?</a><br>
+<a href='{%url "user_register" %}'>Dont have a account?create one!</a>
+</div>
+        </div>
       </div>
     </div>
 </div>
+
+<br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

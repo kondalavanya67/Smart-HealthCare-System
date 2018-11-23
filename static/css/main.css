@@ -12,6 +12,18 @@ body {
 .navbar .nav-item.active {
   border-left: #444 3px solid;
 }
+.nav-link-shop{
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.nav-link-shop:hover{
+  color: white;
+}
 
 .carousel-item {
   height: 450px;

@@ -1,0 +1,14 @@
+{% extends 'base1.html' %}
+
+{% load static %}
+
+{% block enter_paitent_details %}
+
+
+  <form method=POST>{% csrf_token %}
+  	{{ form.as_p }}
+  	<button class="btn btn-default" type="submit">Submit</button>
+  </form>
+	
+
+{% endblock %}

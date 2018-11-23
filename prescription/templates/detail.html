@@ -1,29 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html' %}
+{% load static %}
+{% block prescription_detail %}
+
+
   <title>Prescription</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <div class="container-fluid songs-container">
+
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <!-- NAV BAR -->
+
+
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+          <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
+              </li>
+
+  <!--
+              <li class="nav-item">
+                <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
+              </li> -->
+              <li class="nav-item">
+                <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+              </li>
+              <li class="nav-item">
+                <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+              </li>
+              <li class="nav-item active">
+                <a href='{% url "logout" %}' class="nav-link">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <div class="container-fluid">
     <!-- Right Song Info -->
           <div class="col-sm-8 col-md-9">
 
-              <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                  <li role="presentation" class="active"><a href="{% url 'prescription:detail' prescription.id %}">View All</a></li>
-                  <li role="presentation"><a href="{% url 'prescription:create_item' prescription.id %}">Add New Medicine</a></li>
-                  <li role="presentation"><a href="{% url 'prescription:print' prescription.id %}">Print</a></li>
-              </ul>
+              <!-- <ul class="nav nav-pills">
+                  <li class="nav-item active"><a href="{% url 'prescription:detail' prescription.id %}">View All</a></li>
+                  <li class="nav-item"><a href="{% url 'prescription:create_item' prescription.id %}">Add New Medicine</a></li>
+                  <li class="nav-item"><a href="{% url 'prescription:print' prescription.id %}">Print</a></li>
+              </ul> -->
+              <br>
+              <!-- <button class="btn btn-primary" type="submit">View </button> -->
+              <a href="{% url 'prescription:create_item' prescription.id %}" alt="link" style="text-decoration:none;"><button class="btn btn-primary" type="submit">Add New Medicine </button></a>
+              <a href="{% url 'prescription:print' prescription.id %}"><button class="btn btn-primary" type="submit">Print Prescription</button></a>
+              <br>
+              <br>
 
               <div class="panel panel-default">
                   <div class="panel-body">
 
-                      <h3>All Medicines</h3>
+                      <!-- <h3>All Medicines</h3> -->
+                      <h3>Patient Name : {{prescription.appointment.paitent.first_name}} {{prescription.appointment.paitent.last_name}}</h3>
+                      <h3>Dr. {{prescription.doctor.first_name}} {{prescription.doctor.last_name}}</h3>
 
+                      <br>
                       {% if error_message %}
                           <p><strong>{{ error_message }}</strong></p>
                       {% endif %}
@@ -63,5 +104,6 @@
 
 
 
-</body>
-</html>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
