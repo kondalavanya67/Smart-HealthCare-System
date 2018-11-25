@@ -2,6 +2,9 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from datetime import date
+from datetime import datetime
+#from booking.models import AppointmentDetials
+
 # Create your models here.
 class Profile(models.Model):
 
@@ -28,7 +31,7 @@ class Profile(models.Model):
 
 
     )
-    
+
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True,blank=True)
     profile_photo=models.ImageField(upload_to='media_/profile_pic/')
     first_name=models.CharField(max_length=250)
@@ -50,20 +53,17 @@ class Profile(models.Model):
     def get_absolute_url_booking(self):
         return reverse('booking:enter_paitent_details',kwargs={'pk':self.pk})
 
-
 class BookingDate(models.Model):
-    doctor=models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
-    date=models.DateField(default=date.today)
+    doctor=models.ForeignKey(Profile,on_delete=models.CASCADE, null=True,blank=True)
+    date=models.DateField(default=datetime.now,unique=True)
+
     def __str__(self):
         return str(self.date)
+    def get_absolute_url(self):
+        return reverse('doctor_profile:create_slot',kwargs={'pk':self.pk})
 
 class Slot(models.Model):
-    date=models.ForeignKey(BookingDate,on_delete=models.CASCADE, null=True, blank=True)
+    date=models.ForeignKey(BookingDate,on_delete=models.CASCADE, null=True,blank=True)
     slot1=models.BooleanField(default=False)
     slot2=models.BooleanField(default=False)
     slot3=models.BooleanField(default=False)
-
-
-
-
-  

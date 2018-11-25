@@ -107,7 +107,7 @@ button:hover, a:hover {
   </div>
   </nav>
 
-  <div class="container-fluid" style="background-image:url({% static 'img/prescription.jpg' %});background-repeat; background-size:cover;height:530px">
+  <div class="container-fluid" style="background-image:url({% static 'img/dates.jpg' %});background-repeat; background-size:cover;height:530px">
 
     <!-- <div class="row ">
       <div class="col-sm-6 col-md-6 ">
@@ -134,7 +134,7 @@ button:hover, a:hover {
     <div class="card">
       <form class="form-horizonatal" action="" method="post">
         {% csrf_token %}
-        {% include 'prescription/prescription-template.html' %}
+        {% include 'doctor_profile/date-template.html' %}
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-success">Submit </button>

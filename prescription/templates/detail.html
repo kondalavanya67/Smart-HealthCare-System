@@ -5,12 +5,14 @@
 
   <title>Prescription</title>
 
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- -->  <!-- NAV BAR -->
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <!-- NAV BAR -->
+
 
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
-          <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+          <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
           <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -43,20 +45,26 @@
     <!-- Right Song Info -->
           <div class="col-sm-8 col-md-9">
 
-              <!-- <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                  <li role="presentation" class="active"><a href="{% url 'prescription:detail' prescription.id %}">View All</a></li>
-                  <li role="presentation"><a href="{% url 'prescription:create_item' prescription.id %}">Add New Medicine</a></li>
-                  <li role="presentation"><a href="{% url 'prescription:print' prescription.id %}">Print</a></li>
+              <!-- <ul class="nav nav-pills">
+                  <li class="nav-item active"><a href="{% url 'prescription:detail' prescription.id %}">View All</a></li>
+                  <li class="nav-item"><a href="{% url 'prescription:create_item' prescription.id %}">Add New Medicine</a></li>
+                  <li class="nav-item"><a href="{% url 'prescription:print' prescription.id %}">Print</a></li>
               </ul> -->
               <br>
-              <a href="{% url 'prescription:create_item' prescription.id %}" alt="link" style="text-decoration:none;"><button class="btn btn-primary" type="submit"> Add new Medicine </button></a>
-              <a href="{% url 'prescription:print' prescription.id %}" alt="link" style="text-decoration:none;"><button class="btn btn-primary" type="submit"> Print Prescription </button></a>
-              <br><br>
+              <!-- <button class="btn btn-primary" type="submit">View </button> -->
+              <a href="{% url 'prescription:create_item' prescription.id %}" alt="link" style="text-decoration:none;"><button class="btn btn-primary" type="submit">Add New Medicine </button></a>
+              <a href="{% url 'prescription:print' prescription.id %}"><button class="btn btn-primary" type="submit">Print Prescription</button></a>
+              <br>
+              <br>
+
               <div class="panel panel-default">
                   <div class="panel-body">
 
-                      <h3>All Medicines</h3>
+                      <!-- <h3>All Medicines</h3> -->
+                      <h3>Patient Name : {{prescription.appointment.paitent.first_name}} {{prescription.appointment.paitent.last_name}}</h3>
+                      <h3>Dr. {{prescription.doctor.first_name}} {{prescription.doctor.last_name}}</h3>
 
+                      <br>
                       {% if error_message %}
                           <p><strong>{{ error_message }}</strong></p>
                       {% endif %}

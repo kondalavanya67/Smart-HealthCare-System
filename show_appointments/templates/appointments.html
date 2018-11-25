@@ -46,7 +46,7 @@
           </div>
         </div>
       </nav>
-    
+
   <div class="container-fluid songs-container">
     <!-- Right Song Info -->
           <div class="col-sm-8 col-md-9">
@@ -67,6 +67,7 @@
                               <!-- <th>RMP Name </th> -->
                               <th>Symptoms</th>
                               <th>Connect</th>
+                              <th> Make Prescription </th>
 
                           </tr>
                           </thead>
@@ -77,6 +78,7 @@
                                   <!-- <td> {{appointment.paitent.user.}} -->
                                   <td> {{appointment.paitent.symptoms}}</td>
                                   <td><a href="{{appointment.viedo_chat_link}}"> Attend Patient </a></td>
+                                  <td><a href='{% url "prescription:Prescription_Add1" appointment_id=appointment.pk %}'> Make Prescription </a></td>
                                   <!-- <td><a href="/media/{{prescription.pdf}}"> Download Prescription </a></td> -->
 
 
