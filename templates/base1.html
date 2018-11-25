@@ -46,7 +46,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="#" class="nav-link">Dashboard</a>
+            <a href='{% url "rmp:show_rmp_profile" %}' class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">Appointments</a>
@@ -70,7 +70,7 @@
       </div>
     </div>
   </nav>
-   
+ 
   {% block register %}{% endblock %}
   {% block login %}{% endblock %}
   {% block make_rmp_profile %}{% endblock %}

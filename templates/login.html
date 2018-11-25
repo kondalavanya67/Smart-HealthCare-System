@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block login %}
-<link rel="stylesheet" href="{% static  'css/style.css' %}">
 
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -39,24 +38,26 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-3 mx-auto">
+      <div class="col-sm-9 col-md-6 col-lg-4 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Sign In</h5>
+            <h3 class="card-title text-center font-weight-bold">Sign In</h3>
 
-<form method='POST'class="form-signin"> {% csrf_token %}
-  {{ form }}
-  <button type='submit'class="btn btn-lg btn-primary btn-block text-uppercase">Submit</button>
+<form method='POST' class="form-signin mx-auto"> {% csrf_token %}
+
+  {{ form.as_p }}
+
+  <button type='submit' class="btn btn-dark btn-block text-uppercase">Submit</button>
 
 
 </form>
-<a href='{%url "password_reset"%}'>Forgot password?</a><br>
-<a href='{%url "user_register"%}'>Dont have a account?create one!</a>
+<a href='{%url "password_reset" %}'>Forgot password?</a><br>
+<a href='{%url "user_register" %}'>Dont have a account?create one!</a>
 </div>
         </div>
       </div>
     </div>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

@@ -5,8 +5,8 @@
 
   <title>Prescription</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- NAV BAR -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ -->  <!-- NAV BAR -->
 
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
@@ -43,12 +43,15 @@
     <!-- Right Song Info -->
           <div class="col-sm-8 col-md-9">
 
-              <ul class="nav nav-pills" style="margin-bottom: 10px;">
+              <!-- <ul class="nav nav-pills" style="margin-bottom: 10px;">
                   <li role="presentation" class="active"><a href="{% url 'prescription:detail' prescription.id %}">View All</a></li>
                   <li role="presentation"><a href="{% url 'prescription:create_item' prescription.id %}">Add New Medicine</a></li>
                   <li role="presentation"><a href="{% url 'prescription:print' prescription.id %}">Print</a></li>
-              </ul>
-
+              </ul> -->
+              <br>
+              <a href="{% url 'prescription:create_item' prescription.id %}" alt="link" style="text-decoration:none;"><button class="btn btn-primary" type="submit"> Add new Medicine </button></a>
+              <a href="{% url 'prescription:print' prescription.id %}" alt="link" style="text-decoration:none;"><button class="btn btn-primary" type="submit"> Print Prescription </button></a>
+              <br><br>
               <div class="panel panel-default">
                   <div class="panel-body">
 

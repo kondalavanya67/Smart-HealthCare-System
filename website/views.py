@@ -87,9 +87,10 @@ def login_page(request):
 
 def email_verify(form):
 	rand_numb=random.randint(10000, 999999)
+	global b
 	b=str(rand_numb)
 	email=[form.data['email']]
-	response=send_mail("hi",b,"smarthealthcaresystemiiits@gmail.com",email)
+	response=send_mail("OTP for email activation",b,"smarthealthcaresystemiiits@gmail.com",email)
 	return b
 
 #User = get_user_model()
@@ -121,16 +122,17 @@ def user_register(request):
 
 #User = get_user_model()
 def new_user_reg(request):
-	if request.method =='POST':
-		username=request.POST['username']
-		email=request.POST['email']
-		password=request.POST['password']
-		new_user=User.objects.create(username=username,email=email)
-		new_user.set_password(request.POST['password'])
-		new_user.save()
-		login(request,new_user)
-		print(new_user)
-		return redirect('/profile/make_profile')
+	if b == request.POST['token']:
+		if request.method =='POST':
+			username=request.POST.get('username',False)
+			email=request.POST.get('email',False)
+			password=request.POST.get('password',False)
+			new_user=User.objects.create(username=username,email=email)
+			new_user.set_password(request.POST['password'])
+			new_user.save()
+			login(request,new_user)
+			print(new_user)
+			return redirect('/profile/make_profile')
 
 def reset_password(request):
 	if request.method=='POST':
@@ -157,27 +159,7 @@ def reset_password(request):
 		form1=ResetForm()
 		return render(request, 'reset_email.html' , {'form':form1})
 
-#def reset_otp_verify(request):
-#	if request.method=='POST':
-#		global otp2
-#		otp=str(request.POST['otp'])
-#		otp=otp.upper()
-#		if otp2==otp:
-#			otp2=''
-#			return render(request, 'reset_password.html',{})
-#		else:
-#			otp2=''
-#			del request.session['email']
-#			return HttpResponse('Wrong Otp')
-#	else:
-#		return HttpResponse('404 error')
 
-#def save_password(request):
-#	mail=request.session['email']
-#	user=User.objects.get(email=mail)
-#	user.set_password(request.POST['password'])
-#	user.save()
-#	return HttpResponse('password has bet reset')
 
 def log_out(request):
 	logout(request)
