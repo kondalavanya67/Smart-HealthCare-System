@@ -50,10 +50,15 @@
              <div class='header'>
                  <p class='title'>Prescription No. {{prescription_id}} </p>
              </div>
+              <hr class='hrItem' />
+               <!-- <hr class='hrItem' /> -->
          <div>
          <div class='details'>
-             Patient Name:Mr. Shivam Gupta <br/>
-             Date:{{prescription.prescription_date}}
+             Patient Name:{{prescription.appointment.paitent.first_name}} {{paitent.appointment.paitent.last_name}}<br/>
+             Doctor Name :Dr. {{prescription.doctor.first_name}} {{prescription.doctor.last_name}}<br>
+             Date and Time:{{prescription.prescription_date}}
+             <br><br>
+             Prescription Computer Generated Signature Not Required
              <hr class='hrItem' />
          </div>
      </div>
@@ -64,7 +69,7 @@
                  <div class="panel panel-default">
                      <div class="panel-body">
 
-                         <h3>All Medicines</h3>
+                         <!-- <h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAll Medicines</h3> -->
 
                          {% if error_message %}
                              <p><strong>{{ error_message }}</strong></p>
@@ -90,6 +95,7 @@
                                      <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.night}}</td>
 
                                  </tr>
+                                  <hr class='hrItem' />
                              {% endfor %}
                              </tbody>
                          </table>
@@ -101,8 +107,9 @@
 
          </div>
          <hr class='hrItem' />
-         <br>
+         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
          <center>
+
          <h2> GET WELL SOON <br> BEST WISHES FROM SMART HEALTHCARE SYSTEM </h2>
          </center>
 

@@ -13,11 +13,15 @@ function relocate_appointment()
 {
      location.href = "/appointments/";
 }
+function relocate_slots()
+{
+     location.href = "/profile/date_add/";
+}
 </script>
 <!-- NAV BAR -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
-        <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +31,7 @@ function relocate_appointment()
               <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
             </li>
 
-<!-- 
+<!--
             <li class="nav-item">
               <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
             </li> -->
@@ -94,20 +98,22 @@ function relocate_appointment()
 
 			</div>
 			<div class="col-md-8 col-sm-offset-1">
-				<div>
-					<span style="font-size: 35px;">Dr. {{profile.first_name}} {{profile.last_name}}</span>&nbsp&nbsp&nbsp
+				<div class="col-xs-8 text-left" style='padding: 15px 45px'>
+					<span style="font-size: 35px; ">Dr. {{profile.first_name}} {{profile.last_name}}</span>&nbsp&nbsp&nbsp
 
 				</div>
-				<div style="margin-top: 7px;color: blue;font-size: 20px;" >
+				<div style="margin-top: 7px;color: blue;font-size: 20px; padding: 1px 45px" >
 					{{profile.speciality}}
 				</div>
 
           <br><br>
-			    <div class="btn-group btn-group-md">
-				    <button class="button button1">Send Message</button>
-				    <button class="button button2">Contact</button>
+			    <div class="btn-group btn-group-md" style='padding: 2px 45px'>
+				    <!-- <button class="button button1">Send Message</button> -->
+            <a href="#contact" class="button button3" role="button">Contact</a>
+				    <!-- <button class="button button2" href="#contact"> Contact</button> -->
 				    <butoon class="button button3" onclick=" relocate_edit()">Edit</butoon>
             <butoon class="button button3" onclick=" relocate_appointment()">Show Appointments</butoon>
+            <butoon class="button button3" onclick=" relocate_slots()">Make Slot</butoon>
 			    </div>
 
 			    	<br><br>
@@ -115,15 +121,18 @@ function relocate_appointment()
 			    <div>
 				    <span class="heading_btn About" onclick=" about_display()">About</span>
 
-			    </div><hr>
 
+			    </div>
+          <div style='padding: 0px 45px'>
+          <hr>
+          </div>
 			    	<br>
 
-			    <div style="display: none;" id="Experience">
+			    <!-- <div style="display: none;" id="Experience">
 			    	<span style="font-size: 17px;">Doctors's experience will be here.</span>
-			    </div>
+			    </div> -->
 			    <div id ="About">
-			    	<div style="padding: 15px 45px;font-size: 16px;opacity: 0.5;">
+			    	<div style="padding: 5px 45px;font-size: 16px;opacity: 0.5;">
 			    		BASIC INFORMATION
 			    	</div><br>
 			    	<div>
@@ -139,6 +148,7 @@ function relocate_appointment()
 			    		</table>
 			    	</div><br>
 			    	<div style="padding: 15px 45px;font-size: 16px;opacity: 0.5;">
+              <a name="contact"></a>
 			    		CONTACT INFORMATION
 			    	</div><br>
 			    	<table>
@@ -147,8 +157,12 @@ function relocate_appointment()
 			    			<td>+91{{profile.mobile_no}}</td>
 			    		</tr>
 			    		<tr>
-			    			<td>Address</td>
+			    			<td>Locality</td>
 			    			<td>{{profile.locality}}</td>
+			    		</tr>
+              <tr>
+			    			<td>Hospital</td>
+			    			<td>{{profile.hospital}}</td>
 			    		</tr>
 			    		<tr>
 			    			<td>E-Mail</td>

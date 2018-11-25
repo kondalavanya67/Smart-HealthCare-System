@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %} -->
 <!-- {% for field in form %}
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
@@ -8,9 +8,8 @@
         <div class="col-sm-10">{{ field }}</div>
     </div>
 {% endfor %} -->
-
 {% for field in form %}
-  <div class="form-group text">
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <span class="text-danger small">{{field.errors}}</span>
     </div>
@@ -18,5 +17,3 @@
     <label class="col-sm-5 text-left">{{ field }}</label>
   </div>
 {% endfor %}
-<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
-{{form.media}}

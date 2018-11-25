@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
-from .models import Profile
+from .models import Profile,BookingDate,Slot
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import Add_Profile
-
+from .forms import Add_Profile,Modify_Profile,SlotForm
+import datetime
+from django.db.models import Max
 # Create your views here.
 def index(request):
 
@@ -26,11 +27,67 @@ def make_profile(request):
 
         form=Add_Profile(initial={'user':user,'email_id':user.email})
     return render(request,'new.html',{'form':form})
+'''
+class DetailView(generic.DetailView):
+    model=BookingDate
+    template_name='detail.html'
+'''
+def create_slot(request, pk):
+    form = SlotForm(request.POST or None, initial={'date':pk})
+    date = get_object_or_404(BookingDate, pk=pk)
+    if form.is_valid():
+
+        item = form.save(commit=False)
+        item.date = date
+        item.save()
+        return redirect('/doctor_home/')
+    context = {
+        'date': date,
+        'form': form,
+    }
+    return render(request, 'doctor_profile/create_slot.html', context)
+
+class DateCreate(CreateView):
+
+    model=BookingDate
+    fields=['date',]
+
+    def get_initial(self):
+
+         max_date=BookingDate.objects.all().aggregate(Max('date'))
+         key, value = max_date.popitem()
+         value += datetime.timedelta(days=1)
+         print(value)
+        # value=int(list(max_id.values())[0])
+        # value=value+1
+        # #user = request.user
+        #
+        #
+        # #print(value)
+         initial = super(DateCreate, self).get_initial()
+         initial.update({'date': value})
+         return initial
+    def form_valid(self, form):
+        user=self.request.user
+
+        profile = Profile.objects.get(user=user)
+        date = form.save(commit=False)
+        date.doctor = profile
+        return super(DateCreate, self).form_valid(form)
+
+
+def date_create(request):
+    user=request.user
+    profile=Profile.objects.get(user=user)
+
+    date=BookingDate.objects.create(doctor=profile,date=datetime.now())
+
+    return HttpResponse('Done')
 
 def modify_profile(request):
     user = request.user
     profile_item = Profile.objects.get(user=user)
-    form=Add_Profile(request.POST or None, instance=profile_item)
+    form=Modify_Profile(request.POST or None, instance=profile_item)
     if form.is_valid():
             form.save()
             return redirect('/doctor_home/')
@@ -43,6 +100,8 @@ def Show_Profile(request):
             'profile':profile
         }
         return render(request,'show_profile.html',context)
+
+
 '''
 def make_profie(request):
     return render(request,'make_profile.html')

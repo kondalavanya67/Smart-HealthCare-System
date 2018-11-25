@@ -1,3 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block doctor_edit %}
+<!-- NAV BAR -->
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
+            </li>
+
+<!--
+            <li class="nav-item">
+              <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
+            </li> -->
+            <li class="nav-item">
+              <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+            </li>
+            <li class="nav-item active">
+              <a href='{% url "logout" %}' class="nav-link">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 <!--
 <form method="POST" action="">
   {% csrf_token %}
@@ -5,11 +40,12 @@
   <input type="submit" value="save">
 </form>
 -->
-<div class="page-header">
+
+<!-- <div class="page-header">
 
     <center><h1> Profile </h1></center>
 
-</div>
+</div> -->
 <title> profile </title>
 {% if error_message %}
   <p><strong>{{error_message}}</strong></p>
@@ -17,30 +53,43 @@
 <!-- BOOTSTRAP FILES -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!------------------------>
 
    <!--- BOOTSTRAP -------------->
-   <div class='container-fluid'>
+   <!-- <div class='container-fluid'>
      <div class='row'>
       <div class='col-sm-12 col-md-7'>
         <div class='panel panel-default'>
-          <div class='panel-body'>
-            <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              {% include 'doctor_profile/profile_template.html' %}
+          <div class='panel-body'> -->
+          <br><br><br>
+          <div class='container'>
+            <div class="row">
+              <div class='col-5' style="background-image:url({% static 'img/profile.jpg' %});background-repeat; background-size:cover;height:600px">
 
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-success">Submit</button>
-                </div>
               </div>
-            </form>
+              <div class='col-7'>
+                <form class="form-horizontal text-left" action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                  {% csrf_token %}
+                  {% include 'doctor_profile/profile_template.html' %}
+
+
+                    <div class="col-sm-offset-2 col-sm-5 text-right">
+                      <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
+
+          <!-- </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+{% endblock %}
