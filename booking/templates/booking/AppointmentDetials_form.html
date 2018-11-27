@@ -134,10 +134,10 @@ button:hover, a:hover {
     <div class="card">
       <form class="form-horizonatal" action="" method="post" id="AppointmentCreateForm" data-slots-url="{% url 'booking:ajax_load_slots' %}" novalidate>
         {% csrf_token %}
-        <!-- {% include 'prescription/prescription-template.html' %} -->
-        <table>
+        {% include 'prescription/prescription-template.html' %} 
+        <!-- <table>
           {{ form.as_table }}
-      </table>
+      </table> -->
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-success">Submit </button>
