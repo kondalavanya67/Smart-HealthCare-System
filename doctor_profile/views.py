@@ -27,6 +27,8 @@ def make_profile(request):
     else:
 
         form=Add_Profile(initial={'user':user,'email_id':user.email})
+        form.fields['user'].widget.attrs['disabled'] = True
+        #form.fields['user'].editable=False
     return render(request,'new.html',{'form':form})
 '''
 class DetailView(generic.DetailView):
@@ -73,6 +75,12 @@ class DateCreate(CreateView):
 
         profile = Profile.objects.get(user=user)
         date = form.save(commit=False)
+        print(date)
+        # context={
+        #
+		#     "object":appointment,
+		# }
+		# return render(self.request,'booking/booking_confirmation.html', context=context)
         date.doctor = profile
         return super(DateCreate, self).form_valid(form)
 

@@ -55,7 +55,7 @@ class Profile(models.Model):
 
 class BookingDate(models.Model):
     doctor=models.ForeignKey(Profile,on_delete=models.CASCADE, null=True,blank=True)
-    date=models.DateField(default=datetime.now,unique=True)
+    date=models.DateField(default=datetime.now)
 
     def __str__(self):
         return str(self.date)
@@ -63,7 +63,11 @@ class BookingDate(models.Model):
         return reverse('doctor_profile:create_slot',kwargs={'pk':self.pk})
 
 class Slot(models.Model):
+    TIME_CHOICES = (('09:00:00', '6 am'),
+                    ('12:00:00', '12 pm'),
+                    ('04:00:00', '4 pm'), )
     date=models.ForeignKey(BookingDate,on_delete=models.CASCADE, null=True,blank=True)
-    slot1=models.BooleanField(default=False)
-    slot2=models.BooleanField(default=False)
-    slot3=models.BooleanField(default=False)
+    start_time=models.CharField(max_length=200,choices=TIME_CHOICES,null=True,blank=True)
+
+    def __str__(self):
+    	return str(self.start_time)

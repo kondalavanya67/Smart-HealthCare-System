@@ -1,0 +1,169 @@
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  /* text-align: center; */
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+
+{% extends 'base.html' %}
+
+
+{% load static %}
+-- NAV BAR -->
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
+            </li>
+
+<!--
+            <li class="nav-item">
+              <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
+            </li> -->
+            <li class="nav-item">
+              <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+            </li>
+            <li class="nav-item active">
+              <a href='{% url "logout" %}' class="nav-link">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  {% block prescription_home %}
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    <a href="index.html" class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a href='{% url "how_we_work" %}' class="nav-link">How we work</a>
+        </li>
+        <li class="nav-item">
+          <a href='{% url "contact" %}' class="nav-link">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+        </li>
+        <li class="nav-item">
+          <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+        </li>
+        <li class="nav-item active">
+          <a href='{% url "logout" %}' class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+
+  <div class="container-fluid" style="background-image:url({% static 'img/prescription.jpg' %});background-repeat; background-size:cover;height:530px">
+
+    <!-- <div class="row ">
+      <div class="col-sm-6 col-md-6 ">
+        <div class="panel-body ">
+          <form class="form-horizonatal" action="" method="post">
+            {% csrf_token %}
+            {% include 'prescription/prescription-template.html' %}
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">Submit </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> -->
+
+
+
+
+
+
+
+    <div class="card">
+      <form class="form-horizonatal" action="" method="post" id="AppointmentCreateForm" data-slots-url="{% url 'booking:ajax_load_slots' %}" novalidate>
+        {% csrf_token %}
+        <!-- {% include 'prescription/prescription-template.html' %} -->
+        <table>
+          {{ form.as_table }}
+      </table>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit </button>
+            </div>
+            </div>
+        </form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  $("#id_date").change(function () {
+    var url = $("#AppointmentCreateForm").attr("data-slots-url");  // get the url of the `load_cities` view
+    var dateId = $(this).val();  // get the selected country ID from the HTML input
+
+    $.ajax({                       // initialize an AJAX request
+      url: url,               // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+      data: {
+        'date': dateId       // add the country id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `load_cities` view function
+        $("#id_time").html(data);  // replace the contents of the city input with the data that came from the server
+      }
+    });
+
+  });
+</script>
+
+    </div>
+    </div>
+
+{% endblock %}

@@ -38,16 +38,17 @@ button:hover, a:hover {
 <div class="card">
 
  <!--// <h1>{{paitent.paitent_photo}}</h1>-->
-  <h2> Name: {{paitent.first_name}} {{paitent.last_name}}</h2>
-  <h3>Doctor Id: {{ paitent.doctor_id}}</h3>
+  <h2> Name: {{object.paitent.first_name}} {{object.paitent.last_name}}</h2>
+  <h3>Doctor Id: {{ object.paitent.doctor_id}}</h3>
+  <h3>Maa :{{object.date.date}}</h3>
+  <h3>Maa1 :{{object.time.start_time}}</h3>
+
+  <p class="title">Age:{{object.paitent.age}}<br>
+    {{object.paitent.gender}} {{object.paitent.description_of_illness}}<br>
+  Mobile No : {{object.paitent.mobile_no}}<br>
 
 
-  <p class="title">Age:{{paitent.age}}<br>
-    {{paitent.gender}} {{paitent.description_of_illness}}<br>
-  Mobile No : {{paitent.mobile_no}}<br>
 
-
- 
   Transaction id: {{ object.transaction_id }}<br>
   Appointment_id:{{ object.appointment_id }}<br></p>
   Patient Name : {{object.paitent.first_name}}
