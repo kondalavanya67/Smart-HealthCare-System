@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from datetime import date
 from datetime import datetime
+from django.db.models.signals import pre_save
 #from booking.models import AppointmentDetials
 
 # Create your models here.
@@ -53,6 +54,11 @@ class Profile(models.Model):
     def get_absolute_url_booking(self):
         return reverse('booking:enter_paitent_details',kwargs={'pk':self.pk})
 
+# def profile_pre_save_reciever(sender,instance,*args,**kwargs):
+#     if len(instance.mobile_no) != 10:
+#         raise
+
+
 class BookingDate(models.Model):
     doctor=models.ForeignKey(Profile,on_delete=models.CASCADE, null=True,blank=True)
     date=models.DateField(default=datetime.now)
@@ -68,6 +74,11 @@ class Slot(models.Model):
                     ('04:00:00', '4 pm'), )
     date=models.ForeignKey(BookingDate,on_delete=models.CASCADE, null=True,blank=True)
     start_time=models.CharField(max_length=200,choices=TIME_CHOICES,null=True,blank=True)
+
+    class Meta:
+        unique_together = ('start_time','date')
+
+
 
     def __str__(self):
     	return str(self.start_time)

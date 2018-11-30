@@ -21,6 +21,7 @@ def make_profile(request):
 
         if form.is_valid():
             profile_item=form.save(commit=False)
+            profile_item.user = user
             profile_item.save()
 
             return redirect('/doctor_home/')
@@ -28,7 +29,7 @@ def make_profile(request):
     else:
 
         form=Add_Profile(initial={'user':user,'email_id':user.email})
-        form.fields['user'].widget.attrs['disabled'] = True
+        #form.fields['user'].widget.attrs['disabled'] = True
         #form.fields['user'].editable=False
     return render(request,'new.html',{'form':form})
 '''
