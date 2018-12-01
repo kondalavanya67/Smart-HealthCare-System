@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load widget_tweaks %}
 {% load static %}
 
 {% block register %}
@@ -33,20 +33,36 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav><br>
 
-<div class="container-fluid">
-	<div class="row mx-auto pt-5">
 
-		  <div class="col-sm-12 col-lg-4 mx-auto border border-primary mt-5 p-3 pl-5">
-            <form method="POST">
-	       {% csrf_token %}
-           	{{ form.as_p }}
-        	<button type="submit" class="btn btn-default align-center">Submit</button>
-         </form>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-6 col-lg-4 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h3 class="card-title text-center font-weight-bold">Sign In</h3>
+
+          <form method='POST' class="form-signin mx-auto"> {% csrf_token %}
+
+           {{ form.username | add_class:"form-control" | attr:"placeholder:Username"  }}<br>
+           {{ form.email | add_class:"form-control" | attr:"placeholder:Email Id" }}<br>
+           {{ form.password | add_class:"form-control" | attr:"placeholder:Password" }}<br>
+          {{ form.password2 | add_class:"form-control" | attr:"placeholder:Confirm Password" }}<br>
+
+            <button type='submit' class="btn btn-dark btn-block text-uppercase">Submit</button>
+
+
+          </form>
+
+          </div>
+        </div>
       </div>
     </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+<br><br><br><br><br>
 {% endblock %}

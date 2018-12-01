@@ -54,10 +54,11 @@ def make_profile(request):
 	user = request.user
 	if request.method=="POST":
 
-		form=Add_Rmp_Profile(request.POST, request.FILES ,initial={'user':user,'email_id':user.email})
+		form=Add_Rmp_Profile(request.POST, request.FILES ,initial={'email_id':user.email})
 
 		if form.is_valid():
 			profile=form.save(commit=False)
+			profile.user=user
 			profile.save()
 			new = rmpContact.objects.last()
 			Rmplist.objects.create(rmp_list=new)

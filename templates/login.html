@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load widget_tweaks %}
 {% load static %}
 
 {% block login %}
@@ -45,7 +45,8 @@
 
 <form method='POST' class="form-signin mx-auto"> {% csrf_token %}
 
-  {{ form.as_p }}
+  {{ form.username | add_class:"form-control" | attr:"placeholder:Username"  }}<br>
+  {{ form.password | add_class:"form-control" | attr:"placeholder:Password" }}<br>
 
   <button type='submit' class="btn btn-dark btn-block text-uppercase">Submit</button>
 

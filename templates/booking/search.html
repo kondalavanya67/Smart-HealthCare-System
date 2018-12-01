@@ -1,0 +1,81 @@
+{% extends 'base1.html' %}
+
+{% load static %}
+
+{% block doctor_list_search %}
+<br>
+<h1 style="text-align: center">List of Doctors</h1>
+<br><br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<form action="{% url 'booking:search_doctor' %}" method="GET">
+				{% csrf_token %}
+				<div class="wrap">
+				   <div class="search">
+				      <input type="text" name="searching_doctor" class="searchTerm" placeholder="Whom are you looking for?">
+				      <button type="submit" class="searchButton">
+				        <i class="fa fa-search"></i>
+				     </button>
+				   </div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<br><br><br><br>
+
+{% if key %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 medicine_1">
+			<div class="col-md-12" >
+				<img src="{{ searched_doctor.profile_photo.url }}" class="img-responsive img_list"  style="margin-top: 5%; height:250px;width:100%"><br><hr>
+				<h5>{{searched_doctor.first_name}} {{searched_doctor.last_name}}</h5>
+				Speciality : <span>{{ searched_doctor.speciality }}</span><br>
+				Hospital:<a href="#"> {{searched_doctor.hospital}}</a><br><br>
+				<button class="btn btn-default"><a href='{{ searched_doctors.get_absolute_url }}'>View</a></button>
+				<br><br><br><br>
+			</div>	
+		</div>
+	</div>
+</div>
+{% endif %}
+
+	{% if key1 %}
+
+
+<div class="container">
+	<div class="row">
+		{% for searched_doctor1 in speciality_doctors %}
+		<div class="col-md-3 medicine_1">
+			<div class="col-md-12" >
+				<img src="{{ searched_doctor1.profile_photo.url }}" class="img-responsive img_list"  style="margin-top: 5%; height:250px;width:100%"><br><hr>
+				<h5>{{searched_doctor1.first_name}} {{searched_doctor1.last_name}}</h5>
+				Speciality : <span>{{ searched_doctor1.speciality }}</span><br>
+				Hospital:<a href="#"> {{searched_doctor1.hospital}}</a><br><br>
+				<button class="btn btn-default"><a href='{{ searched_doctor1s.get_absolute_url }}'>View</a></button>
+				<br><br><br><br>
+			</div>	
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	{% endif %}
+<!-- 
+	<h2 style="text-align: center;">No doctor with <span style="color: red;">{{ query }}</span> found.</h2> -->
+
+{% endblock %}

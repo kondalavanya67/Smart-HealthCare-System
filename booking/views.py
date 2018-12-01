@@ -26,6 +26,54 @@ def doctor_detail(request, pk):
     }
     return render(request, 'booking/doctor_detail.html',context=context)
 
+def search_doctor(request):
+	search = request.GET['searching_doctor']
+	temp = search.upper()
+	doctors = Profile.objects.all()
+	k_name = 404
+	k_speciality = 404
+	for doctor in doctors:
+		if doctor.first_name.upper() == temp:
+			k_name = doctor.id
+	if(k_name==404):
+		for doctor in doctors:
+			if doctor.last_name.upper() == temp:
+				k_name = doctor.id
+	speciality_doctors = Profile.objects.filter(speciality=temp)
+	if(speciality_doctors.count()):
+		k_speciality = 1
+	if(k_name==404):
+		if(k_speciality==1):
+			context = {
+			"key" : False,
+			"key1": True,
+			"speciality_doctors":speciality_doctors,
+			}
+		else:
+			context = {
+			"key" : False,
+			"query":search,
+			"key1" : False,
+			}
+	else:
+		if(k_speciality==1):
+			context = {
+			"key" : True,
+			"searched_doctor" : get_object_or_404(Profile,id=k_name),
+			"key1": True,
+			"speciality_doctors":speciality_doctors,
+			}
+		else:
+			context = {
+			"key" : True,
+			"searched_doctor" : get_object_or_404(Profile,id=k_name),
+			"key1" : False,
+			}
+	print()
+	print(context)
+	print()
+	return render(request, 'booking/search.html',context)
+
 def enter_paitent_details(request, pk):
 	user=request.user
 	instance = get_object_or_404(Profile, pk=pk)

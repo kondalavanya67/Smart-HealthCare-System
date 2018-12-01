@@ -1,14 +1,44 @@
 {% extends 'base1.html' %}
+{% load widget_tweaks %}
 
 {% load static %}
 
 {% block enter_paitent_details %}
 
 
-  <form method=POST>{% csrf_token %}
-  	{{ form.as_p }}
-  	<button class="btn btn-default" type="submit">Submit</button>
-  </form>
-	
+{% if error_message %}
+  <p><strong>{{error_message}}</strong></p>
+{% endif %}<br>
 
+  <h1 style="text-align: center;">Please enter the patient details</h1><br>
+
+   <div class='container-fluid'>
+     <div class='row mx-auto'>
+      <div class='col-sm-5 col-md-7 col-lg-3 mx-auto'>
+            <div class="form-group">
+            <form method="POST">
+              {% csrf_token %}
+             User:{{ form.user | add_class:"form-control"  }}
+              Doctor Id:{{ form.doctor_id | add_class:"form-control"  }}
+              First Name:{{ form.first_name | add_class:"form-control"  }}
+              Last Name:{{ form.last_name | add_class:"form-control" }}
+              Age:{{ form.age | add_class:"form-control" }}
+              Gender:{{ form.gender | add_class:"form-control"  }}
+              Mobile No:{{ form.mobile_no | add_class:"form-control" }}
+      
+              Symptoms:{{ form.symptoms | add_class:"form-control" }}
+              Description of Illness:{{ form.description_of_illness | add_class:"form-control"}}
+              Doctor Name:{{ form.doctor_name | add_class:"form-control"}}
+              <br>
+               
+                  <button type="submit" class="btn btn-dark form-control">Submit</button>
+                
+              
+          </form>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <br><br>
 {% endblock %}
