@@ -61,7 +61,7 @@ def load_time(request):
 	print('**')
 	date_id = request.GET.get('date')
 	print(date_id)
-	slots = Slot.objects.filter(date_id=date_id)
+	slots = Slot.objects.filter(date_id=date_id).filter(slot_status=False)
 	print(slots)
 	return render(request, 'booking/slot_dropdown_list_options.html', {'slots': slots})
 
@@ -115,9 +115,13 @@ class AppointmentDetialsCreate(CreateView):
 		appointment.paitent=instance
 		appointment.transaction_id=transaction_id
 		appointment.viedo_chat_link=viedo_chat_link
-
+		date=appointment.date
+		time=appointment.time
+		slots = Slot.objects.filter(date_id=date).filter(start_time=time).first()
+		slots.slot_status=True
+		slots.save()
 		appointment.save()
-        
+
 		context={
 
 		    "object":appointment,

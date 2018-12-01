@@ -36,4 +36,4 @@ class SlotForm(forms.ModelForm):
 
     class Meta:
         model = Slot
-        fields = '__all__'
+        fields=['date','start_time']

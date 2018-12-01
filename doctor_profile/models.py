@@ -72,11 +72,13 @@ class Slot(models.Model):
     TIME_CHOICES = (('09:00:00', '6 am'),
                     ('12:00:00', '12 pm'),
                     ('04:00:00', '4 pm'), )
+    doctor=models.ForeignKey(Profile,on_delete=models.CASCADE, null=True,blank=True)
     date=models.ForeignKey(BookingDate,on_delete=models.CASCADE, null=True,blank=True)
     start_time=models.CharField(max_length=200,choices=TIME_CHOICES,null=True,blank=True)
+    slot_status=models.BooleanField(default=False)
 
     class Meta:
-        unique_together = ('start_time','date')
+        unique_together = ('doctor','start_time','date')
 
 
 
