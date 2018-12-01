@@ -38,12 +38,15 @@ class DetailView(generic.DetailView):
     template_name='detail.html'
 '''
 def create_slot(request, pk):
+    user=request.user
     form = SlotForm(request.POST or None, initial={'date':pk})
     date = get_object_or_404(BookingDate, pk=pk)
     if form.is_valid():
 
         item = form.save(commit=False)
         item.date = date
+        profile = Profile.objects.get(user=user)
+        item.doctor=profile
         item.save()
         return redirect('/doctor_home/')
     context = {

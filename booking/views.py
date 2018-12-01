@@ -109,7 +109,7 @@ def load_time(request):
 	print('**')
 	date_id = request.GET.get('date')
 	print(date_id)
-	slots = Slot.objects.filter(date_id=date_id)
+	slots = Slot.objects.filter(date_id=date_id).filter(slot_status=False)
 	print(slots)
 	return render(request, 'booking/slot_dropdown_list_options.html', {'slots': slots})
 
@@ -119,20 +119,27 @@ class AppointmentDetialsCreate(CreateView):
 	other_variable=None
 	# fields=['doctor_id','appointment_id','paitent','date','time','transaction_id']
 	#################################TO PASS INITIAL VALUES ############
-	def get_initial(self):
-        #appointment_id=appointment_id
+	def get_form_kwargs(self):
 		self.pk=self.kwargs['pk']
-        # max_id=Prescription.objects.all().aggregate(Max('prescription_id'))
-        # if list(max_id.values())[0] == None:
-        #     value=0
-        # else:
-        #     value=int(list(max_id.values())[0])
-        # value=value+1
-        #user = request.user
+		#user = request.user
+		instance=get_object_or_404(PaitentDetails,pk=self.pk)
+		self.doctor_id=instance.doctor_id
+		doctor_id=self.doctor_id
+		kwargs = super(AppointmentDetialsCreate, self).get_form_kwargs()
+		kwargs.update({'other_variable': self.doctor_id})
+		return kwargs
 
+	def get_initial(self):
+		pass
 
-        #print(value)
-        #appointment_id=self.kwargs['appointment_id']
+	def form_valid(self, form):
+
+		appointment = form.save(commit=False)
+		print('##')
+		print(appointment)
+
+		self.pk=self.kwargs['pk']
+
 		string= random.randint(100000000,10000000000000)
 		viedo_chat_link="https://appr.tc/r/"+str(string)
 		max_id=AppointmentDetials.objects.all().aggregate(Max('appointment_id'))
@@ -151,33 +158,18 @@ class AppointmentDetialsCreate(CreateView):
 		instance=get_object_or_404(PaitentDetails,pk=self.pk)
 
 		self.doctor_id=instance.doctor_id
-		doctor_id=self.doctor_id
-		initial = super(AppointmentDetialsCreate, self).get_initial()
-		initial.update({'doctor_id': self.doctor_id , 'appointment_id':appointment_id, 'paitent':instance, 'transaction_id':transaction_id, 'viedo_chat_link':viedo_chat_link})
-		return initial
-	def get_form_kwargs(self):
-	        kwargs = super(AppointmentDetialsCreate, self).get_form_kwargs()
-	        kwargs.update({'other_variable': self.doctor_id})
-	        return kwargs
-
-
-	# def get_form_kwargs(self, *args, **kwargs):
-	# 	kwargs = super(AppointmentDetialsCreate, self).get_form_kwargs(*args, **kwargs)
-	# 	doctor=get_object_or_404(Profile,pk=self.doctor_id)
-	# 	self.fields['date'].queryset = BookingDate.objects.filter(doctor=doctor)
-	# 	return kwargs
-
-	def form_valid(self, form):
-        #event = Event.objects.get(pk=self.kwargs['appointment_id'])
-        # user=self.request.user
-        # profile = Profile.objects.get(user=user)
-        # #appointment_id=int(self.kwargs['appointment_id'])
-        # appointment = AppointmentDetials.objects.get(pk=self.kwargs['appointment_id'])
-        #print('**')
-		appointment = form.save(commit=False)
+		appointment.doctor_id=self.doctor_id
+		appointment.appointment_id=appointment_id
+		appointment.paitent=instance
+		appointment.transaction_id=transaction_id
+		appointment.viedo_chat_link=viedo_chat_link
+		date=appointment.date
+		time=appointment.time
+		slots = Slot.objects.filter(date_id=date).filter(start_time=time).first()
+		slots.slot_status=True
+		slots.save()
 		appointment.save()
-        # prescription.appointment=appointment
-        # prescription.doctor = profile
+
 		context={
 
 		    "object":appointment,
