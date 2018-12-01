@@ -22,10 +22,6 @@ def make_profile(request):
             profile_item=form.save(commit=False)
             profile_item.save()
 
-            new = Profile.objects.last()
-            Post.objects.create(doctor_name=new)
-
-
             return redirect('/doctor_home/')
 
     else:

@@ -77,6 +77,7 @@ def booking_confirmation(request, pk):
 	transaction_id=value+1
 	instance=get_object_or_404(PaitentDetails,pk=pk)
 	doctor_id=instance.doctor_id
+	
 	#patient_id=request.session['patient_id']
 	#patient_obj=get_object_or_404(PaitentDetails,pk=patient_id)
 	obj=AppointmentDetials.objects.create(viedo_chat_link=viedo_chat_link,transaction_id=transaction_id,appointment_id=appointment_id,doctor_id=doctor_id,paitent=instance)
@@ -87,3 +88,4 @@ def booking_confirmation(request, pk):
 	    "object":obj,
 	}
 	return render(request,'booking/booking_confirmation.html', context=context)
+
