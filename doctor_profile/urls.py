@@ -10,7 +10,7 @@ urlpatterns=[
     path('date_add/',views.DateCreate.as_view(),name='Date_Create'),
     #url(r'^(?P<pk>[0-9]+)/$',views.DetailView.as_view(),name='date_detail'),
     path('date_create/',views.date_create,name='date_create'),
-    url(r'^(?P<pk>[0-9]+)/slot/$', views.create_slot, name='create_slot'),
+    url(r'^date_add/(?P<pk>[0-9]+)/slot/$', views.create_slot, name='create_slot'),
 
     #path('make_profile/',views.make_profie,name='make_profie'),
     #path('add_profile/',views.add_profile,name='add_profile'),

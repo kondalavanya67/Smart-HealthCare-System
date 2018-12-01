@@ -1,12 +1,12 @@
 from django.contrib import messages
 from django.shortcuts import render,get_object_or_404,redirect
-from doctor_profile.models import Profile
+from doctor_profile.models import Profile,BookingDate
 from django.http import HttpResponse
 from .forms import *
 from .models import PaitentDetails,AppointmentDetials
 import random
 from django.db.models import Max
-
+from django.views.generic import FormView, CreateView
 
 def doctor_list(request):
 	doctors = Profile.objects.all()
@@ -57,6 +57,85 @@ def view_paitent_details(request, pk):
 	    "paitent":instance
 	}
 	return render(request, 'booking/show_paitent_details.html',context=context)
+def load_time(request):
+	print('**')
+	date_id = request.GET.get('date')
+	print(date_id)
+	slots = Slot.objects.filter(date_id=date_id)
+	print(slots)
+	return render(request, 'booking/slot_dropdown_list_options.html', {'slots': slots})
+
+class AppointmentDetialsCreate(CreateView):
+	model=AppointmentDetials
+	form_class = AppointmentCreateForm
+	other_variable=None
+	# fields=['doctor_id','appointment_id','paitent','date','time','transaction_id']
+	#################################TO PASS INITIAL VALUES ############
+	def get_initial(self):
+        #appointment_id=appointment_id
+		self.pk=self.kwargs['pk']
+        # max_id=Prescription.objects.all().aggregate(Max('prescription_id'))
+        # if list(max_id.values())[0] == None:
+        #     value=0
+        # else:
+        #     value=int(list(max_id.values())[0])
+        # value=value+1
+        #user = request.user
+
+
+        #print(value)
+        #appointment_id=self.kwargs['appointment_id']
+		string= random.randint(100000000,10000000000000)
+		viedo_chat_link="https://appr.tc/r/"+str(string)
+		max_id=AppointmentDetials.objects.all().aggregate(Max('appointment_id'))
+		if list(max_id.values())[0] == None:
+			value=0
+		else:
+			value=int(list(max_id.values())[0])
+		appointment_id=value+1
+
+		max_id=AppointmentDetials.objects.all().aggregate(Max('transaction_id'))
+		if list(max_id.values())[0] == None:
+			value=100000
+		else:
+			value=int(list(max_id.values())[0])
+		transaction_id=value+1
+		instance=get_object_or_404(PaitentDetails,pk=self.pk)
+
+		self.doctor_id=instance.doctor_id
+		doctor_id=self.doctor_id
+		initial = super(AppointmentDetialsCreate, self).get_initial()
+		initial.update({'doctor_id': self.doctor_id , 'appointment_id':appointment_id, 'paitent':instance, 'transaction_id':transaction_id, 'viedo_chat_link':viedo_chat_link})
+		return initial
+	def get_form_kwargs(self):
+	        kwargs = super(AppointmentDetialsCreate, self).get_form_kwargs()
+	        kwargs.update({'other_variable': self.doctor_id})
+	        return kwargs
+
+
+	# def get_form_kwargs(self, *args, **kwargs):
+	# 	kwargs = super(AppointmentDetialsCreate, self).get_form_kwargs(*args, **kwargs)
+	# 	doctor=get_object_or_404(Profile,pk=self.doctor_id)
+	# 	self.fields['date'].queryset = BookingDate.objects.filter(doctor=doctor)
+	# 	return kwargs
+
+	def form_valid(self, form):
+        #event = Event.objects.get(pk=self.kwargs['appointment_id'])
+        # user=self.request.user
+        # profile = Profile.objects.get(user=user)
+        # #appointment_id=int(self.kwargs['appointment_id'])
+        # appointment = AppointmentDetials.objects.get(pk=self.kwargs['appointment_id'])
+        #print('**')
+		appointment = form.save(commit=False)
+		appointment.save()
+        # prescription.appointment=appointment
+        # prescription.doctor = profile
+		context={
+
+		    "object":appointment,
+		}
+		return render(self.request,'booking/booking_confirmation.html', context=context)
+		# return super(AppointmentDetialsCreate, self).form_valid(form)
 
 def booking_confirmation(request, pk):
 	print("**")

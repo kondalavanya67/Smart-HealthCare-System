@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import Add_Profile,Modify_Profile,SlotForm
 import datetime
+from django.urls import reverse
 from django.db.models import Max
 # Create your views here.
 def index(request):
@@ -20,6 +21,7 @@ def make_profile(request):
 
         if form.is_valid():
             profile_item=form.save(commit=False)
+            profile_item.user = user
             profile_item.save()
 
             return redirect('/doctor_home/')
@@ -27,6 +29,8 @@ def make_profile(request):
     else:
 
         form=Add_Profile(initial={'user':user,'email_id':user.email})
+        #form.fields['user'].widget.attrs['disabled'] = True
+        #form.fields['user'].editable=False
     return render(request,'new.html',{'form':form})
 '''
 class DetailView(generic.DetailView):
@@ -73,8 +77,32 @@ class DateCreate(CreateView):
 
         profile = Profile.objects.get(user=user)
         date = form.save(commit=False)
-        date.doctor = profile
-        return super(DateCreate, self).form_valid(form)
+        print(date)
+        try:
+            obj = BookingDate.objects.get(date=str(date))
+        except BookingDate.DoesNotExist:
+            obj = None
+        # obj=get_object_or_404(BookingDate, date=str(date))
+        print('SHIVAM')
+        print(obj)
+        #print(obj.pk)
+        if(obj==None):
+            print("no")
+            date.doctor = profile
+            return super(DateCreate, self).form_valid(form)
+        else:
+            print('Yes')
+            #return create_slot(self.request,pk=obj.pk-1)
+            return redirect(str(obj.pk) + '/slot/')
+            #return reverse('doctor_profile:create_slot',kwargs={'pk':int(obj.pk)})
+            #return HttpResponse('OK')
+            #return super(DateCreate, self).form_invalid(form)
+        # context={
+        #
+		#     "object":appointment,
+		# }
+		# return render(self.request,'booking/booking_confirmation.html', context=context)
+
 
 
 def date_create(request):
