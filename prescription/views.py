@@ -65,13 +65,26 @@ class PrescriptionCreate(CreateView):
         initial.update({'prescription_id': value})
         return initial
 
+    def get_context_data(self, **kwargs):
+        context = super(PrescriptionCreate, self).get_context_data(**kwargs)
+        user=self.request.user
+        profile = Profile.objects.get(user=user)
+        #appointment_id=int(self.kwargs['appointment_id'])
+        appointment = AppointmentDetials.objects.get(pk=self.kwargs['appointment_id'])
+        context['appointment']=appointment
+        context['doctor']=profile
+        return context
+
+
+
     def form_valid(self, form):
         #event = Event.objects.get(pk=self.kwargs['appointment_id'])
         user=self.request.user
         profile = Profile.objects.get(user=user)
         #appointment_id=int(self.kwargs['appointment_id'])
         appointment = AppointmentDetials.objects.get(pk=self.kwargs['appointment_id'])
-
+        appointment.is_attended=True
+        appointment.save()
         #print('**')
         prescription = form.save(commit=False)
         prescription.appointment=appointment

@@ -38,6 +38,7 @@ class PaitentDetails(models.Model):
     checkout_id = models.CharField(default=generateUUID, max_length=36, unique=True,editable=False)
 
 
+
     def __str__(self):
     	return str(self.id)
 
@@ -55,6 +56,7 @@ class AppointmentDetials(models.Model):
     appointment_id=models.CharField(max_length=20)
     transaction_id=models.CharField(max_length=250)
     paitent=models.ForeignKey(PaitentDetails, on_delete=models.CASCADE, null=True, blank=True)
-
+    is_attended=models.BooleanField(default=False)
+    
     def __str__(self):
         return str(self.pk)

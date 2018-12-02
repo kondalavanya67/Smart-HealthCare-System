@@ -69,7 +69,7 @@ class BookingDate(models.Model):
         return reverse('doctor_profile:create_slot',kwargs={'pk':self.pk})
 
 class Slot(models.Model):
-    TIME_CHOICES = (('09:00:00', '6 am'),
+    TIME_CHOICES = (('09:00:00', '9 am'),
                     ('12:00:00', '12 pm'),
                     ('04:00:00', '4 pm'), )
     doctor=models.ForeignKey(Profile,on_delete=models.CASCADE, null=True,blank=True)
