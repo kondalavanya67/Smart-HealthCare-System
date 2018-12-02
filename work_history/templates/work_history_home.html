@@ -66,6 +66,7 @@
                           <thead>
                           <tr>
                               <th>Appointment Date and time</th>
+                              <th> Patient's Name </th>
                               <th>Prescription</th>
 
                           </tr>
@@ -74,6 +75,7 @@
                           {% for prescription in prescriptions %}
                               <tr>
                                   <td> {{prescription.prescription_date}}</td>
+                                  <td> {{prescription.appointment.paitent.first_name}} {{prescription.appointment.paitent.last_name}}</td>
                                   <td><a href="/media/{{prescription.pdf}}"> Download Prescription </a></td>
 
 

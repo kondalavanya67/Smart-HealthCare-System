@@ -16,12 +16,15 @@ from django.core.files import File
 from doctor_profile.models import Profile
 from django.views.generic import FormView, CreateView
 from booking.models import AppointmentDetials
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.contrib.auth.models import User
 def index(request):
     return render(request,'prescription_home.html')
 
+@login_required(login_url=reverse_lazy('login'))
 def make_prescription(request):
     if request.method=="POST":
         form=Make_Prescription(request.POST)
@@ -32,9 +35,12 @@ def make_prescription(request):
     else:
         form=Make_Prescription()
     return render(request,'new_file.html',{'form':form})
+
+
 class DetailView(generic.DetailView):
     model=Prescription
     template_name='detail.html'
+
 
 class PrescriptionCreate(CreateView):
 
@@ -72,11 +78,12 @@ class PrescriptionCreate(CreateView):
         prescription.doctor = profile
         return super(PrescriptionCreate, self).form_valid(form)
 
+@login_required(login_url=reverse_lazy('login'))
 def detail(request, pk):
     prescription = get_object_or_404(Prescription, pk=pk)
     return render(request, 'prescription/detail.html', {'prescription':prescription,'prescription_id':pk})
 
-
+@login_required(login_url=reverse_lazy('login'))
 def create_item(request, prescription_id):
     form = ItemForm(request.POST or None, request.FILES or None , initial={'prescription':prescription_id})
     prescription = get_object_or_404(Prescription, pk=prescription_id)
@@ -99,6 +106,7 @@ def create_item(request, prescription_id):
         'form': form,
     }
     return render(request, 'prescription/create_item.html', context)
+
 
 class MedicineAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
