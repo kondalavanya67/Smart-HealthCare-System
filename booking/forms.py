@@ -1,5 +1,6 @@
 from django import forms
 from .models import PaitentDetails,AppointmentDetials
+from doctor_profile.models import BookingDate
 
 class Add_PaitentDetails(forms.ModelForm):
     class Meta:
