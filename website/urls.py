@@ -16,6 +16,7 @@ from .views import home_page, login_page,log_out,user_register, new_user_reg
 from django.contrib.auth import views as auth_views
 from users import views as user_views
 
+# app_name='website'
 urlpatterns = [
 
     path('', home, name='home'),
@@ -53,8 +54,8 @@ urlpatterns = [
         name='password_reset_complete'),
 
     path('search/', include('search.urls')),
-    
-    
+
+
 
     path('shoponline/', include('shoppingPortalApp.urls')),
 

@@ -4,7 +4,10 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from booking.models import PaitentDetails, AppointmentDetials
 from doctor_profile.models import Profile, Slot
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url=reverse_lazy('login'))
 def index(request):
     user=request.user
     profile = Profile.objects.get(user=user)
@@ -18,6 +21,7 @@ def index(request):
 
     return render(request,'appointments.html',{'appointments':appointments,'first_name':first_name,'last_name':last_name})
 
+@login_required(login_url=reverse_lazy('login'))
 def show_slots(request):
     user=request.user
     profile = Profile.objects.get(user=user)
