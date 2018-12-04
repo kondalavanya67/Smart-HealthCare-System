@@ -57,7 +57,7 @@ urlpatterns = [
     
 
     path('shoponline/', include('shoppingPortalApp.urls')),
-
+    path('shoponline/', include('shopping_cart.urls')),
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('rmp/booking/',include('booking.urls')),

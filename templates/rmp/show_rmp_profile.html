@@ -60,7 +60,8 @@ function relocate_appointment()
         <div>
           <a href="#">Dashboard</a><br><br>
           <a href="#">Make an appointment</a><br><br>
-          <a href="#">Booking History</a>
+          <a href="{% url 'shopping_cart:order' %}">Shopping Order History</a><br><br>
+          <a href="{% url 'shopping_cart:order_summary' %}">Current Pending Order</a>
         </div>
 
         <br>

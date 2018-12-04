@@ -53,10 +53,7 @@ INSTALLED_APPS = [
     'myapp.apps.MyappConfig',
     'users.apps.UsersConfig',
     'PIL',
-
-
-
-
+    'shopping_cart',
 ]
 
 

@@ -3,6 +3,8 @@ from django.conf import settings
 from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
+
+from shoppingPortalApp.models import medicine
 # Create your models here.
 
 
@@ -28,21 +30,10 @@ class rmpContact(models.Model):
     locality=models.CharField(max_length=250)
     hospital=models.CharField(max_length=250)
 
-    
-
-    
-    
-    
-        
-        
-   
-        
+    medicines = models.ManyToManyField(medicine, blank=True)
 
 
 
 
 
-    
-    
 
-    
