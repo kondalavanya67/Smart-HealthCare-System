@@ -21,7 +21,9 @@ def index(request):
     if not appointments:
         context="Hurray No Pending Appointments"
     else:
-        context=" "
+        context="Pending Appointments"
+    print(appointments[0].date)
+    print(appointments[0].time)    
     return render(request,'appointments.html',{'context':context,'appointments':appointments,'first_name':first_name,'last_name':last_name})
 
 @login_required(login_url=reverse_lazy('login'))
