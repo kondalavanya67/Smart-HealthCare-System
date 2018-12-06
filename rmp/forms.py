@@ -27,14 +27,18 @@ class RegisterForm(forms.Form):
 
 
 
+       
 class Add_Rmp_Profile(forms.ModelForm):
-    email=forms.CharField(widget=forms.EmailInput)
+    email_id=forms.CharField(widget=forms.EmailInput)
     class Meta:
         model=rmpContact
-        fields='__all__'
+        exclude = ('user',)
 
-       
-
+    def clean_mobile_no(self):
+        mobile_no = self.cleaned_data['mobile_no']
+        if len(str(mobile_no)) != 10:
+            raise forms.ValidationError('enter  a 10 digit number')
+        return self.cleaned_data['mobile_no']
 
 		
 

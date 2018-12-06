@@ -1,11 +1,12 @@
 from django import forms
 from .models import PaitentDetails,AppointmentDetials
-from doctor_profile.models import BookingDate,Profile,Slot
-from django.shortcuts import render,get_object_or_404,redirect
+from doctor_profile.models import BookingDate
+
 class Add_PaitentDetails(forms.ModelForm):
     class Meta:
         model=PaitentDetails
         fields='__all__'
+        exclude=('user','doctor_id',)
 
 class Add_PatientToAppointment(forms.ModelForm):
     class Meta:

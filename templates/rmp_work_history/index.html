@@ -1,0 +1,60 @@
+{% extends "base1.html" %}
+
+{% load static %}
+   
+{% block rmp_work_history %}
+ <div class="container-fluid songs-container">
+    <!-- Right Song Info -->
+          <div class="col-sm-8 col-md-9 col-lg-8 mx-auto">
+
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                    <br>
+                      <h3 style="text-align: center;">&nbsp&nbspUpcoming Appointments  </h3><br>
+
+                      {% if error_message %}
+                          <p><strong>{{ error_message }}</strong></p>
+                      {% endif %}
+
+                      <table class="table">
+                          <thead>
+                          <tr>
+                              <th>Date</th>
+                              <th>Time</th>
+                              <th>Patient Name</th>
+                              <!-- <th>RMP Name </th> -->
+                              <th>Symptoms</th>
+                              <th>Connect</th>
+                              
+
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {% for appointment in appointments %}
+                              <tr>
+                                  <td> {{appointment.date.date}}</td>
+                                  <td> {{appointment.time.start_time}}</td>
+                                  <td> {{appointment.paitent.first_name}} {{appointment.paitent.last_name}}</td>
+                                  <!-- <td> {{appointment.paitent.user.}} -->
+                                  <td> {{appointment.paitent.symptoms}}</td>
+                                  <td><a href="{{appointment.viedo_chat_link}}"> Attend Patient </a></td>
+                                  
+                                  <!-- <td><a href="/media/{{prescription.pdf}}"> Download Prescription </a></td> -->
+
+
+                              </tr>
+                          {% endfor %}
+                          </tbody>
+                      </table>
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+<br><br><br><br><br><br><br><br>
+
+
+
+{% endblock %}

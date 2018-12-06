@@ -1,0 +1,67 @@
+{% extends 'base1.html' %}
+
+
+{% load static %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Prescription</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+   -->
+  {% block work_history_rmp %}
+
+
+
+  <div class="container-fluid">
+    <!-- Right Song Info -->
+          <div class="col-sm-8 col-md-9">
+
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                    <br>
+                      <h3>&nbsp&nbspHello Dr. {{first_name}}  {{last_name}}  </h3>
+
+                      {% if error_message %}
+                          <p><strong>{{ error_message }}</strong></p>
+                      {% endif %}
+
+                      <table class="table">
+                          <thead>
+                          <tr>
+                              <th>Appointment Date and time</th>
+                              <th>Prescription</th>
+
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {% for prescription in prescriptions %}
+                              <tr>
+                                  <td> {{prescription.prescription_date}}</td>
+                                  <td><a href="/media/{{prescription.pdf}}"> Download Prescription </a></td>
+
+
+                              </tr>
+                          {% endfor %}
+                          </tbody>
+                      </table>
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+
+      </br></br></br></br></br></br></br></br></br></br></br></br>
+      {% endblock %}
+
+</body>
+</html>

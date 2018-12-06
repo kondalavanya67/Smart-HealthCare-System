@@ -4,7 +4,33 @@
 
 {% block doctor_list %}
 <br>
-<h1 style="text-align: center">List of Doctors</h1>
+<h1 style="text-align: center">Doctor List</h1>
+<br><br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<form action="{% url 'booking:search_doctor' %}" method="GET">
+				{% csrf_token %}
+				<div class="wrap">
+				   <div class="search">
+				      <input type="text" name="searching_doctor" class="searchTerm" placeholder="Whom are you looking for?">
+				      <button type="submit" class="searchButton">
+				        <i class="fa fa-search"></i>
+				     </button>
+				   </div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+<br><br><br><br>
+
+
+
 <div class="container">
 	<div class="row">
 		{% for doctors in doctor %}
