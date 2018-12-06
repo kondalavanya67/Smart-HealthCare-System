@@ -1,0 +1,27 @@
+{% extends "shopping_cart/base.html" %}
+{% load widget_tweaks %}
+
+
+
+{% block purchase_success %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			Your Purchase has been Succesfull.
+			<a href="{% url 'shoppingPortalApp:main' %}">Buy more medicines?</a>
+		</div>
+	</div>
+</div>
+
+	<footer id="footer2" class="text-center p-4">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<p>Copyright &copy;
+					<span id="year"></span> Smart HealthCare</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+{% endblock purchase_success %}

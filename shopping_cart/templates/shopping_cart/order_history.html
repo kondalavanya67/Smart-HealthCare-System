@@ -1,0 +1,89 @@
+{% extends "shopping_cart/base.html" %}
+{% load widget_tweaks %}
+
+
+{% block order_summary %}
+<br>
+<div class="container">
+	<h1>Previous Orders</h1>
+	<table class="table table-striped" style="border:1px solid black;">
+		<thead>
+			<tr>
+				<th>Order Id</th>
+				<th>Medicines Ordered</th>
+				<th>Date Ordered</th>
+				<th>Total Cost</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if check_orders %}
+				{% for order in orders %}
+				<tr>
+					<td>{{ order.ref_code }}</td>
+					<td>
+						{% for item in order.get_cart_items %}
+							{{ forloop.counter }} . {{ item.product.name }} <br>
+						{% endfor %}
+					</td>
+					<td>{{ order.date_added }}</td>
+					<td style="color: red;">{{ order.get_cart_total }}/-</td>
+				</tr>
+				{% endfor %}
+				{% else %}
+				<tr>
+					<td colspan="4" style="text-align: center;">
+						No Orders Yet
+					</td>
+				</tr>
+			{% endif %}
+		</tbody>
+	</table>
+</div><br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h3>All Orders Summary</h3>
+			<table class="table table-striped" style="border:1px solid black;">
+				<tbody>
+					<tr>
+						<td>Total no. of orders</td>
+						<td>{{ order_count }}</td>
+					</tr>
+					<tr>
+						<td>Total Cost of All Orders</td>
+						<td style="color: red;">{{ total_order_count }}/-</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<h3>User Details</h3>
+			<table class="table table-striped" style="border:1px solid black;">
+				<tbody>
+					<tr>
+						<td>RMP Name</td>
+						<td>{{ user.first_name }} {{ user.last_name }}</td>
+					</tr>
+					<tr>
+						<td>Locality</td>
+						<td>{{ user.locality }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div><br><br><br>
+
+
+	<footer id="main-footer" class="text-center p-4">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<p>Copyright &copy;
+					<span id="year"></span> Smart HealthCare</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+{% endblock order_summary %}
