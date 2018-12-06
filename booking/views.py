@@ -79,12 +79,14 @@ def enter_paitent_details(request, pk):
 	instance = get_object_or_404(Profile, pk=pk)
 
 	if request.method=="POST":
-		form=Add_PaitentDetails(request.POST, request.FILES ,initial={'user':user,'doctor_id':pk})
+		form=Add_PaitentDetails(request.POST, request.FILES)
 		if form.is_valid():
 
 
 			paitent_details=form.save(commit=False)
 			#request.session['patient_id']=paitent_details.pk
+			paitent_details.user=user
+			paitent_details.doctor_id=instance
 			paitent_details.save()
 			print(paitent_details)
 
@@ -133,7 +135,7 @@ class AppointmentDetialsCreate(CreateView):
 		pass
 
 	def form_valid(self, form):
-
+		user=self.request.user
 		appointment = form.save(commit=False)
 		print('##')
 		print(appointment)
@@ -158,6 +160,7 @@ class AppointmentDetialsCreate(CreateView):
 		instance=get_object_or_404(PaitentDetails,pk=self.pk)
 
 		self.doctor_id=instance.doctor_id
+		appointment.user=user
 		appointment.doctor_id=self.doctor_id
 		appointment.appointment_id=appointment_id
 		appointment.paitent=instance
@@ -179,6 +182,7 @@ class AppointmentDetialsCreate(CreateView):
 
 def booking_confirmation(request, pk):
 	print("**")
+	user=request.user
 	string= random.randint(100000000,10000000000000)
 	viedo_chat_link="https://appr.tc/r/"+str(string)
 	max_id=AppointmentDetials.objects.all().aggregate(Max('appointment_id'))
@@ -199,7 +203,7 @@ def booking_confirmation(request, pk):
 
 	#patient_id=request.session['patient_id']
 	#patient_obj=get_object_or_404(PaitentDetails,pk=patient_id)
-	obj=AppointmentDetials.objects.create(viedo_chat_link=viedo_chat_link,transaction_id=transaction_id,appointment_id=appointment_id,doctor_id=doctor_id,paitent=instance)
+	obj=AppointmentDetials.objects.create(user=user,viedo_chat_link=viedo_chat_link,transaction_id=transaction_id,appointment_id=appointment_id,doctor_id=doctor_id,paitent=instance)
 	obj.save()
 
 	context={

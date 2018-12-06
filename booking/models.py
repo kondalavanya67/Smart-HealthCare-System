@@ -48,7 +48,7 @@ class PaitentDetails(models.Model):
 
 
 class AppointmentDetials(models.Model):
-    # time_id=models.CharField(max_length=200,null=True,blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
     viedo_chat_link=models.CharField(max_length=100)
     appointment_slot=models.CharField(max_length=150)
     doctor_id=models.ForeignKey(Profile,max_length=250, null=True,blank=True, on_delete=models.CASCADE)

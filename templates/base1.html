@@ -49,7 +49,7 @@
             <a href='{% url "rmp:show_rmp_profile" %}' class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Upcoming Appointments</a>
+            <a href='{% url "rmp_work_history:rmp_work_history" %}' class="nav-link">Upcoming Appointments</a>
           </li>
           <li class="nav-item">
             <a href='{% url "booking:doctor_list" %}' class="nav-link">Book an Appointment</a>
@@ -70,7 +70,8 @@
       </div>
     </div>
   </nav>
-   {% block work_history_rmp %}{% endblock %}
+
+   {% block rmp_work_history %}{% endblock %}
   {% block register %}{% endblock %}
   {% block login %}{% endblock %}
   {% block make_rmp_profile %}{% endblock %}

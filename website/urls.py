@@ -64,6 +64,7 @@ urlpatterns = [
     path('rmp/booking/',include('booking.urls')),
     path('appointments/',include('show_appointments.urls'),name='show_appointments'),
     path('work_history/',include('work_history.urls')),
+    path('rmp_work_history/',include('rmp_work_history.urls')),
     #url(r'^activate/$', activate, name='activate'),
 
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),

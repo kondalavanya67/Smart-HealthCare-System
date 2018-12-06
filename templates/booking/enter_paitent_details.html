@@ -18,8 +18,6 @@
             <div class="form-group">
             <form method="POST">
               {% csrf_token %}
-             User:{{ form.user | add_class:"form-control"  }}
-              Doctor Id:{{ form.doctor_id | add_class:"form-control"  }}
               First Name:{{ form.first_name | add_class:"form-control"  }}
               Last Name:{{ form.last_name | add_class:"form-control" }}
               Age:{{ form.age | add_class:"form-control" }}

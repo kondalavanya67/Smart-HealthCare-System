@@ -4,7 +4,7 @@
 
 {% block doctor_list_search %}
 <br>
-<h1 style="text-align: center">List of Doctors</h1>
+<h1 style="text-align: center">Doctor List</h1>
 <br><br>
 <div class="container">
 	<div class="row">
@@ -35,7 +35,7 @@
 				<h5>{{searched_doctor.first_name}} {{searched_doctor.last_name}}</h5>
 				Speciality : <span>{{ searched_doctor.speciality }}</span><br>
 				Hospital:<a href="#"> {{searched_doctor.hospital}}</a><br><br>
-				<button class="btn btn-default"><a href='{{ searched_doctors.get_absolute_url }}'>View</a></button>
+				<button class="btn btn-default"><a href='{{ searched_doctor.get_absolute_url }}'>View</a></button>
 				<br><br><br><br>
 			</div>	
 		</div>
@@ -55,7 +55,7 @@
 				<h5>{{searched_doctor1.first_name}} {{searched_doctor1.last_name}}</h5>
 				Speciality : <span>{{ searched_doctor1.speciality }}</span><br>
 				Hospital:<a href="#"> {{searched_doctor1.hospital}}</a><br><br>
-				<button class="btn btn-default"><a href='{{ searched_doctor1s.get_absolute_url }}'>View</a></button>
+				<button class="btn btn-default"><a href='{{ searched_doctor1.get_absolute_url }}'>View</a></button>
 				<br><br><br><br>
 			</div>	
 		</div>
