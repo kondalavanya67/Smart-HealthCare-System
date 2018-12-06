@@ -3,11 +3,10 @@
 {% block prescription_item %}
 
 
-   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
          <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
          <div class="container">
-           <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+           <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
              <span class="navbar-toggler-icon"></span>
            </button>
@@ -17,12 +16,8 @@
                  <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
                </li>
 
-   <!--
-               <li class="nav-item">
-                 <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
-               </li> -->
-               <li class="nav-item">
-                 <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
+                 <li class="nav-item">
+                <a href='{% url "show_appointments:index" %}' class="nav-link">Show Appointments</a>
                </li>
                <li class="nav-item">
                  <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
@@ -38,14 +33,10 @@
 
   <div class="col-sm-8 col-md-9">
 
-            <!-- <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                <li role="presentation"><a href="{% url 'prescription:detail' prescription.id %}">View All</a></li>
-                <li role="presentation" class="active"><a href="{% url 'prescription:create_item' prescription.id %}">Add New medicine</a></li>
-            </ul> -->
+
             <br>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{% url 'prescription:detail' prescription.id %}" alt="link" style="text-decoration:none;"><button class="btn btn-primary" type="submit">View Prescription </button></a>
             <br>
-            <!-- <a href="{% url 'prescription:print' prescription.id %}"><button class="btn btn-primary" type="submit">Print Prescription</button></a> -->
   </div><br>
 <div class="panel panel-default">
                 <div class="panel-body col-sm-offset-2 col-sm-3 text-right">

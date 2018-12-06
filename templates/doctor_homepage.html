@@ -21,7 +21,7 @@ function relocate_slots()
 <!-- NAV BAR -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
-        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,11 +35,12 @@ function relocate_slots()
             <li class="nav-item">
               <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
             </li> -->
-            <li class="nav-item">
-              <a href='{% url "prescription:Prescription_Add" %}' class="nav-link">Make Prescription</a>
-            </li>
+
             <li class="nav-item">
               <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "show_appointments:show_slots" %}' class="nav-link">Show Slots</a>
             </li>
             <li class="nav-item active">
               <a href='{% url "logout" %}' class="nav-link">Logout</a>
@@ -118,11 +119,7 @@ function relocate_slots()
 
 			    	<br><br>
 
-			    <div>
-				    <span class="heading_btn About" onclick=" about_display()">About</span>
 
-
-			    </div>
           <div style='padding: 0px 45px'>
           <hr>
           </div>
@@ -131,7 +128,7 @@ function relocate_slots()
 			    <!-- <div style="display: none;" id="Experience">
 			    	<span style="font-size: 17px;">Doctors's experience will be here.</span>
 			    </div> -->
-			    <div id ="About">
+
 			    	<div style="padding: 5px 45px;font-size: 16px;opacity: 0.5;">
 			    		BASIC INFORMATION
 			    	</div><br>

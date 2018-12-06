@@ -11,15 +11,18 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     user=request.user
     profile = Profile.objects.get(user=user)
-    appointments=AppointmentDetials.objects.filter(doctor_id=profile.id)
+    appointments=AppointmentDetials.objects.filter(doctor_id=profile.id).filter(is_attended=False)
     first_name=profile.first_name
     last_name=profile.last_name
     print(user)
-    print("**")
+    print(appointments)
     #print(prescriptions[0].pdf)
     #print(prescriptions[0].prescription_date)
-
-    return render(request,'appointments.html',{'appointments':appointments,'first_name':first_name,'last_name':last_name})
+    if not appointments:
+        context="Hurray No Pending Appointments"
+    else:
+        context=" "
+    return render(request,'appointments.html',{'context':context,'appointments':appointments,'first_name':first_name,'last_name':last_name})
 
 @login_required(login_url=reverse_lazy('login'))
 def show_slots(request):
