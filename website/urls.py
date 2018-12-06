@@ -16,6 +16,7 @@ from .views import home_page, login_page,log_out,user_register, new_user_reg
 from django.contrib.auth import views as auth_views
 from users import views as user_views
 
+# app_name='website'
 urlpatterns = [
 
     path('', home, name='home'),
@@ -53,16 +54,17 @@ urlpatterns = [
         name='password_reset_complete'),
 
     path('search/', include('search.urls')),
-    
-    
+
+
 
     path('shoponline/', include('shoppingPortalApp.urls')),
-
+    path('shoponline/', include('shopping_cart.urls')),
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('rmp/booking/',include('booking.urls')),
     path('appointments/',include('show_appointments.urls'),name='show_appointments'),
     path('work_history/',include('work_history.urls')),
+    path('rmp_work_history/',include('rmp_work_history.urls')),
     #url(r'^activate/$', activate, name='activate'),
 
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),

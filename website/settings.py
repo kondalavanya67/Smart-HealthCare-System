@@ -53,9 +53,8 @@ INSTALLED_APPS = [
     'myapp.apps.MyappConfig',
     'users.apps.UsersConfig',
     'PIL',
-
-
-
+    'rmp_work_history',
+    'shopping_cart',
 
 ]
 

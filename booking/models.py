@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from rmp.models import rmpContact
 import uuid
 from uuid import uuid4
-from doctor_profile.models import Profile
+from doctor_profile.models import Profile,BookingDate,Slot
 # Create your models here.
 
 from uuid import uuid4
@@ -36,6 +36,8 @@ class PaitentDetails(models.Model):
     symptoms=models.CharField(max_length=250)
     description_of_illness=models.CharField(max_length=250)
     checkout_id = models.CharField(default=generateUUID, max_length=36, unique=True,editable=False)
+    doctor_name=models.CharField(max_length=150)
+
 
 
     def __str__(self):
@@ -47,8 +49,16 @@ class PaitentDetails(models.Model):
 
 
 class AppointmentDetials(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
     viedo_chat_link=models.CharField(max_length=100)
+    appointment_slot=models.CharField(max_length=150)
     doctor_id=models.ForeignKey(Profile,max_length=250, null=True,blank=True, on_delete=models.CASCADE)
+    date=models.ForeignKey(BookingDate,max_length=250, null=True,blank=True, on_delete=models.CASCADE)
+    time=models.ForeignKey(Slot,max_length=250,null=True,blank=True, on_delete=models.CASCADE)
     appointment_id=models.CharField(max_length=20)
     transaction_id=models.CharField(max_length=250)
     paitent=models.ForeignKey(PaitentDetails, on_delete=models.CASCADE, null=True, blank=True)
+    is_attended=models.BooleanField(default=False)
+    
+    def __str__(self):
+        return str(self.pk)

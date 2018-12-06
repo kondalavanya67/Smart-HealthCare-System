@@ -111,10 +111,68 @@ body {
 #main-footer {
   background: #000;
   color: #fff;
+  position: fixed;
+  height: 50px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
 }
 
 .gallery{
   height: 250px;
   width: 350px;
 
+}
+
+
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 2px solid #00B4CC;
+  padding: 23px;
+  height: 20px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: black;
+}
+
+.searchButton {
+  position: absolute;
+  width: 10%;
+  height: 50px;
+  border: 0.5px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

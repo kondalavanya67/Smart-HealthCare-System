@@ -16,12 +16,15 @@ from django.core.files import File
 from doctor_profile.models import Profile
 from django.views.generic import FormView, CreateView
 from booking.models import AppointmentDetials
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.contrib.auth.models import User
 def index(request):
     return render(request,'prescription_home.html')
 
+@login_required(login_url=reverse_lazy('login'))
 def make_prescription(request):
     if request.method=="POST":
         form=Make_Prescription(request.POST)
@@ -32,9 +35,12 @@ def make_prescription(request):
     else:
         form=Make_Prescription()
     return render(request,'new_file.html',{'form':form})
+
+
 class DetailView(generic.DetailView):
     model=Prescription
     template_name='detail.html'
+
 
 class PrescriptionCreate(CreateView):
 
@@ -59,24 +65,38 @@ class PrescriptionCreate(CreateView):
         initial.update({'prescription_id': value})
         return initial
 
+    def get_context_data(self, **kwargs):
+        context = super(PrescriptionCreate, self).get_context_data(**kwargs)
+        user=self.request.user
+        profile = Profile.objects.get(user=user)
+        #appointment_id=int(self.kwargs['appointment_id'])
+        appointment = AppointmentDetials.objects.get(pk=self.kwargs['appointment_id'])
+        context['appointment']=appointment
+        context['doctor']=profile
+        return context
+
+
+
     def form_valid(self, form):
         #event = Event.objects.get(pk=self.kwargs['appointment_id'])
         user=self.request.user
         profile = Profile.objects.get(user=user)
         #appointment_id=int(self.kwargs['appointment_id'])
         appointment = AppointmentDetials.objects.get(pk=self.kwargs['appointment_id'])
-
+        appointment.is_attended=True
+        appointment.save()
         #print('**')
         prescription = form.save(commit=False)
         prescription.appointment=appointment
         prescription.doctor = profile
         return super(PrescriptionCreate, self).form_valid(form)
 
+@login_required(login_url=reverse_lazy('login'))
 def detail(request, pk):
     prescription = get_object_or_404(Prescription, pk=pk)
     return render(request, 'prescription/detail.html', {'prescription':prescription,'prescription_id':pk})
 
-
+@login_required(login_url=reverse_lazy('login'))
 def create_item(request, prescription_id):
     form = ItemForm(request.POST or None, request.FILES or None , initial={'prescription':prescription_id})
     prescription = get_object_or_404(Prescription, pk=prescription_id)
@@ -99,6 +119,7 @@ def create_item(request, prescription_id):
         'form': form,
     }
     return render(request, 'prescription/create_item.html', context)
+
 
 class MedicineAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):

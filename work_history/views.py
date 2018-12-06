@@ -4,7 +4,10 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from prescription.models import Prescription
 from doctor_profile.models import Profile
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url=reverse_lazy('login'))
 def index(request):
     user=request.user
     profile = Profile.objects.get(user=user)

@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import  LoginForm, RegisterForm,Add_Rmp_Profile
 from .models import rmpContact
 from myapp.models import Rmplist,Profile
+from shopping_cart.models import Order
 
 
 def login_page(request):
@@ -54,10 +55,11 @@ def make_profile(request):
 	user = request.user
 	if request.method=="POST":
 
-		form=Add_Rmp_Profile(request.POST, request.FILES ,initial={'user':user,'email_id':user.email})
+		form=Add_Rmp_Profile(request.POST, request.FILES ,initial={'email_id':user.email})
 
 		if form.is_valid():
 			profile=form.save(commit=False)
+			profile.user=user
 			profile.save()
 			new = rmpContact.objects.last()
 			Rmplist.objects.create(rmp_list=new)
@@ -82,3 +84,13 @@ def Show_Profile(request):
 		'profile':profile
 	}
 	return render(request,'rmp/show_rmp_profile.html',context)
+
+def myOrders(request):
+	user = request.user
+	my_user_profile = rmpContact.objects.get(user=user)
+	my_orders = Order.objects.filter(is_ordered=True, owner=my_user_profile)
+	context = {
+		'my_orders' : my_orders,
+	}
+	return render(request,'rmp/show_rmp_profile.html',context)
+

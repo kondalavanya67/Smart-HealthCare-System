@@ -20,6 +20,9 @@ from django.db import connection,IntegrityError
 import random
 from django.contrib.auth.models import User
 from doctor_profile.views import Profile
+from django.urls import reverse_lazy
+
+
 def home(request):
 	context={
 	   "premium_content":"Hello u r logged out"
@@ -28,6 +31,7 @@ def home(request):
 		context["premium_content"]="you are logged in"
 	return render(request, "index.html", context=context)
 
+@login_required(login_url=reverse_lazy('login'))
 def doctor_home(request):
 	user = request.user
 	profile = Profile.objects.get(user=user)

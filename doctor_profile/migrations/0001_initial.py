@@ -44,15 +44,19 @@ class Migration(migrations.Migration):
             name='Slot',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slot1', models.BooleanField(default=False)),
-                ('slot2', models.BooleanField(default=False)),
-                ('slot3', models.BooleanField(default=False)),
+                ('start_time', models.CharField(blank=True, choices=[('09:00:00', '6 am'), ('12:00:00', '12 pm'), ('04:00:00', '4 pm')], max_length=200, null=True)),
+                ('slot_status', models.BooleanField(default=False)),
                 ('date', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='doctor_profile.BookingDate')),
+                ('doctor', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='doctor_profile.Profile')),
             ],
         ),
         migrations.AddField(
             model_name='bookingdate',
             name='doctor',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='doctor_profile.Profile'),
+        ),
+        migrations.AlterUniqueTogether(
+            name='slot',
+            unique_together={('doctor', 'start_time', 'date')},
         ),
     ]

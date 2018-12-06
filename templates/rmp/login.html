@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load widget_tweaks %}
 {% load static %}
 
 
@@ -7,7 +7,7 @@
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
-      <a href="index.html" class="navbar-brand"><b></b>SMART HEALTHCATRE SYSTEM</b></a>
+      <a href="index.html" class="navbar-brand"><b></b>SMART HEALTHCARE SYSTEM</b></a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,31 +31,39 @@
            <li class="nav-item active">
             <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link">Rmp Login</a>
           </li>
+          <li class="nav-item nav-item-shop" style="background-color:red;border: 15px;">
+            <a href='{% url "shoppingPortalApp:main" %}' class="nav-link-shop" style="text-decoration: none;margin-top: 3px;">Shop Medicines</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-<br><br><br><br>
-<div class="container border-light">
-	<div class="row">
-
-      <div class="col-lg-4 col-sm-6 mx-auto">
-         <form class="text-center border border-light p-5" method="POST">{% csrf_token %}
-
-   
+<br>
 
 
-         {{ form.as_p }}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-6 col-lg-4 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h3 class="card-title text-center font-weight-bold">Sign In</h3>
 
-        <button class="btn btn-block btn-dark" type="submit">Log in</button>
+<form method='POST' class="form-signin mx-auto"> {% csrf_token %}
+
+  {{ form.username | add_class:"form-control" | attr:"placeholder:Username"  }}<br>
+  {{ form.password | add_class:"form-control" | attr:"placeholder:Password" }}<br>
+
+  <button type='submit' class="btn btn-dark btn-block text-uppercase">Submit</button>
 
 
-       </form>
-       <a href='#'>Forgot password?</a><br>
-       <a href='{% url "rmp:make_rmp_profile" %}'>Dont have a account?create one!</a>
-     </div>
-  </div>
+</form>
+<a href='#'>Forgot password?</a><br>
+<a href='{%url "rmp:make_rmp_profile" %}'>Dont have a account?create one!</a>
+</div>
+        </div>
+      </div>
+    </div>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 {% endblock %}
