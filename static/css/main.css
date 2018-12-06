@@ -12,6 +12,7 @@ body {
 .navbar .nav-item.active {
   border-left: #444 3px solid;
 }
+
 .nav-link-shop{
   color: white;
   font-size: 18px;

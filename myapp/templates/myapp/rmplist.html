@@ -1,11 +1,28 @@
 {% extends "myapp/base.html" %}
 {% block content %}
 
-{% for item in data %}
     <form method="post" action="{% url 'myapp-rmpdetails' %}">
-    {% csrf_token %}
-    <input type="submit" value="{{ item.rmp_list.first_name }}" name="rmp">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>RMP Doctor Name</th>
+                <th>Clinic Name</th>
+                <th>Region</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in data %}
+                <tr>
+                    <td> {{ item.rmp_list.first_name }} {{ item.rmp_list.last_name }}</td>
+                    <td> {{ item.rmp_list.hospital }}</td>
+                    <td>{{ item.rmp_list.locality }}</td>
+                    <td><button formaction="{% url 'myapp-fullrmplist' %}" value="{{ item.rmp_list.user }}" name="rmp">View</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </form>
-{% endfor %}
 {% endblock content %}
 

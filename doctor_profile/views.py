@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import Add_Profile,Modify_Profile,SlotForm
 import datetime
 from django.db.models import Max
+from myapp.models import Post
 # Create your views here.
 def index(request):
 
