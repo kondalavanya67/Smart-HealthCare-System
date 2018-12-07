@@ -71,7 +71,7 @@ def create_slot(request, pk):
 
     return render(request, 'doctor_profile/create_slot.html', context)
 
-@method_decorator(login_url=reverse_lazy('login'))
+# @method_decorator(login_url=reverse_lazy('login'))
 class DateCreate(CreateView):
 
     model=BookingDate
