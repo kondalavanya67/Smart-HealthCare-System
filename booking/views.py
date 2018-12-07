@@ -8,6 +8,9 @@ import random
 from django.db.models import Max
 from django.views.generic import FormView, CreateView
 from doctor_profile.models import BookingDate,Slot
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url=('rmp:login_rmp_profile'))
 def doctor_list(request):
 	doctors = Profile.objects.all()
 	context = {
@@ -18,7 +21,7 @@ def doctor_list(request):
 
 
 
-
+@login_required(login_url=('rmp:login_rmp_profile'))
 def doctor_detail(request, pk):
     instance = get_object_or_404(Profile, pk=pk)
     context = {
@@ -26,6 +29,7 @@ def doctor_detail(request, pk):
     }
     return render(request, 'booking/doctor_detail.html',context=context)
 
+@login_required(login_url=('rmp:login_rmp_profile'))
 def search_doctor(request):
 	search = request.GET['searching_doctor']
 	temp = search.upper()
@@ -74,6 +78,7 @@ def search_doctor(request):
 	print()
 	return render(request, 'booking/search.html',context)
 
+@login_required(login_url=('rmp:login_rmp_profile'))
 def enter_paitent_details(request, pk):
 	user=request.user
 	instance = get_object_or_404(Profile, pk=pk)
@@ -100,13 +105,15 @@ def enter_paitent_details(request, pk):
 	return render(request, 'booking/enter_paitent_details.html',context=context)
 
 
-
+@login_required(login_url=('rmp:login_rmp_profile'))
 def view_paitent_details(request, pk):
 	instance=get_object_or_404(PaitentDetails, pk=pk)
 	context={
 	    "paitent":instance
 	}
 	return render(request, 'booking/show_paitent_details.html',context=context)
+
+@login_required(login_url=('rmp:login_rmp_profile'))
 def load_time(request):
 	print('**')
 	date_id = request.GET.get('date')
@@ -115,6 +122,8 @@ def load_time(request):
 	print(slots)
 	return render(request, 'booking/slot_dropdown_list_options.html', {'slots': slots})
 
+
+@login_required(login_url=('rmp:login_rmp_profile'))
 class AppointmentDetialsCreate(CreateView):
 	model=AppointmentDetials
 	form_class = AppointmentCreateForm
@@ -179,6 +188,7 @@ class AppointmentDetialsCreate(CreateView):
 		}
 		return render(self.request,'booking/booking_confirmation.html', context=context)
 		# return super(AppointmentDetialsCreate, self).form_valid(form)
+
 
 def booking_confirmation(request, pk):
 	print("**")
