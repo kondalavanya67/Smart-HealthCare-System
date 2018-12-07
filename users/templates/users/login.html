@@ -1,24 +1,22 @@
-{% extends "myapp/base.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
-    <div class="content-section">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <link rel="stylesheet" type="text/css"href="{% static 'users/style.css' %}">
+</head>
+<body>
+    <div class="loginbox">
+    <img src="{% static 'avatar.png' %}" class="avatar">
+        <h1>ADMIN LOGIN</h1>
         <form method="POST">
             {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
-                <small class="text-muted ml-2">
-                    <a href="{% url 'password_reset' %}">Forgot Password?</a>
-                </small>
-            </div>
+           {{ form|crispy }}
+            <input type="submit" name="submit" value="LOGIN">
+            <a href="{% url 'admin1_password_reset' %}">FORGET PASSWORD?</a><br>
         </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
-            </small>
-        </div>
     </div>
-{% endblock content %}
+</body>
+</html>

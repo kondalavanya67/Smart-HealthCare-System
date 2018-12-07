@@ -7,10 +7,11 @@ from .forms import Add_Profile,Modify_Profile,SlotForm
 import datetime
 from django.urls import reverse,reverse_lazy
 from django.db.models import Max
+from myapp.models import Post
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+
 
 def index(request):
 
