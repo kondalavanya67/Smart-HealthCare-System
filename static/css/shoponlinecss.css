@@ -66,16 +66,14 @@
     padding: 10px;
 }
 
+.card{
 
-.medicine_1{
-	border: 1px solid white;
-}
-.medicine_1:hover{
-	border: 1px solid #f2f2f2;
-	background-color: #f2f2f2;
-	cursor: pointer;
 }
 
+.card:hover{
+  
+  cursor: pointer;
+}
 .jumbotron{
     margin-bottom: 0px;
     background-image: url(../img/ShopOnline/back-emedics.jpg);
@@ -153,19 +151,102 @@
 .back-link2:hover{
   color: white;
 }
+.back-main{
+  color: black;
+}
+
+.back-main:hover{
+  border-radius: 50%;
+  background-color: #ebebe0;
+}
 
 
 
 
+.button-cart{
+    border: none;
+    color: white;
+    padding: 7px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button-cart{
+    background-color: #ff751a;
+    color: white; 
+    border: 2px solid #ff751a;
+}
+
+.button-cart:hover{
+  word-spacing: 1px;
+    color: white;
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+}
 
 
 
+.navbar .nav-link {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.navbar .nav-item.active {
+  border-left: #444 3px solid;
+}
+.nav-link-shop{
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.nav-link-shop:hover{
+  color: white;
+}
 
 
 
+.carousel-content {
+  position: absolute;
+  color: black !important;
+  bottom: 60%;
+  left: 20%;
+  z-index: 20;
+  color: white;
+}
+
+#main-footer {
+  background: #000;
+  color: #fff;
+  position: fixed;
+  height: 50px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+
+
+}
 
 
 
+  .medicine_hover{
+    padding: 10px;
+    border: 1px solid white;
+  }
+  .medicine_hover:hover{
+    border: 1px solid #e8e8e8;
+  }
 
 
 

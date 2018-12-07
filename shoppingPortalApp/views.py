@@ -1,23 +1,42 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,get_object_or_404
 from .models import medicine
 from django.http import HttpResponse
 
 from .forms import *
+from shopping_cart.models import Order, OrderItem
+from rmp.models import rmpContact
 # Create your views here.
 
-
+@login_required(login_url='/rmp/login/')
 def index(request):
 	medicines = medicine.objects.all()
+	if request.user:
+		login_status = True
+	else:
+		login_status = False
+	print(login_status)
 	content = {
 	"all_medicines" : medicines,
+	"login_status"  : login_status,
+
 	}
 	return render(request, 'shoppingPortalApp/index_list.html',content)
 
 def showMedicine_name(request, name):
     instance = get_object_or_404(medicine, name=name)
+    user_profile = get_object_or_404(rmpContact, user=request.user)
+    order = Order.objects.filter(owner=user_profile, is_ordered=False)
+    item_status = False
+    if order:
+    	order_temp = Order.objects.filter(owner=user_profile, is_ordered=False).first()
+    	for item in order_temp.items.all():
+    		if(instance.name==item.product.name):
+    			item_status = True
     context_data = {
         "searched_medicine" : instance,
+        "status" : item_status,
     }
     return render(request, 'shoppingPortalApp/result.html',context_data)
 
@@ -35,14 +54,12 @@ def result(request):
 	if(k == 0):
 		content = {
 		"all_medicines" : medicines,
-		"page_name" : "Search",
 		"value" : False,
 		"searchItem" : query
 		}
 	else:
 		content = {
 		"all_medicines" : medicines,
-		"page_name" : "Search",
 		"searched_medicine" : get_object_or_404(medicine, id=k),
 		"value" : True,
 		}

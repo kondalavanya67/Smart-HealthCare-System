@@ -8,6 +8,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import  LoginForm, RegisterForm,Add_Rmp_Profile
 from .models import rmpContact
 from myapp.models import Rmplist,Profile
+from shopping_cart.models import Order
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 
 def login_page(request):
@@ -50,6 +53,7 @@ def register_page(request):
 
 	return render(request, "rmp/register.html", context=context)
 
+@login_required(login_url=reverse_lazy('rmp:login_rmp_profile'))
 def make_profile(request):
 	user = request.user
 	if request.method=="POST":
@@ -67,6 +71,7 @@ def make_profile(request):
 		form=Add_Rmp_Profile(initial={'user':user,'email_id':user.email})
 		return render(request,'rmp/make_rmp_profile.html',{'form':form})
 
+@login_required(login_url=reverse_lazy('rmp:login_rmp_profile'))
 def modify_profile(request):
 	user = request.user
 	profile = Profile.objects.get(user=user)
@@ -76,6 +81,7 @@ def modify_profile(request):
 		return redirect('/show_rmp_profile/')
 	return render(request,'rmp/make_rmp_profile.html',{'form':form})
 
+@login_required(login_url=reverse_lazy('rmp:login_rmp_profile'))
 def Show_Profile(request):
 	user = request.user
 	profile = rmpContact.objects.get(user=user)
@@ -83,3 +89,14 @@ def Show_Profile(request):
 		'profile':profile
 	}
 	return render(request,'rmp/show_rmp_profile.html',context)
+
+@login_required(login_url=reverse_lazy('rmp:login_rmp_profile'))
+def myOrders(request):
+	user = request.user
+	my_user_profile = rmpContact.objects.get(user=user)
+	my_orders = Order.objects.filter(is_ordered=True, owner=my_user_profile)
+	context = {
+		'my_orders' : my_orders,
+	}
+	return render(request,'rmp/show_rmp_profile.html',context)
+

@@ -6,5 +6,7 @@ from . import views
 app_name='rmp_work_history'
 
 urlpatterns=[
-path('',views.index, name='rmp_work_history'),
+path('upcoming/',views.index, name='rmp_work_history'),
+path('history',views.history, name='rmp_history'),
+
  ];

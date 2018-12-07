@@ -54,9 +54,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'PIL',
     'rmp_work_history',
-
-
-
+    'shopping_cart',
 
 ]
 
@@ -165,7 +163,7 @@ STATIC_ROOT= os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'myapp-home'
+LOGIN_REDIRECT_URL = 'adminpage'
 LOGIN_URL = 'login'
 
 MEDIA_URL = '/media/'

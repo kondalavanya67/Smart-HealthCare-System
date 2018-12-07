@@ -1,9 +1,26 @@
 {% extends "myapp/base.html" %}
 {% block content %}
-{% for item in all_data %}
     <form method="post" action="{% url 'myapp-index' %}">
-    {% csrf_token %}
-    <input type="submit" value="{{ item.doctor_name.first_name }}" name="doctor">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Doctor Name</th>
+                <th>Departments</th>
+                <th>Hospital</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in all_data %}
+                <tr>
+                    <td> {{ item.doctor_name.first_name }} {{ item.doctor_name.last_name }}</td>
+                    <td> {{ item.doctor_name.speciality }}</td>
+                    <td>{{ item.doctor_name.hospital }}</td>
+                    <td><button formaction="{% url 'myapp-fullindex' %}" value="{{ item.doctor_name.user }}" name="doctor">View</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </form>
-{% endfor %}
 {% endblock content %}

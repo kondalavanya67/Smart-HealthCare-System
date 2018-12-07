@@ -1,0 +1,69 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Order Summary</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href='{% static "css/shopping_cart.css" %}'>
+
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<div class="container">
+			<a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a href='{% url "rmp:show_rmp_profile" %}' class="nav-link">Dashboard</a>
+						</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link">Appointments</a>
+						</li>
+					<li class="nav-item">
+						<a href='{% url "booking:doctor_list" %}' class="nav-link">Book an Appointment</a>
+						</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link">History</a>
+						</li>
+					{% if request.user %}
+					<li class="nav-item">
+						<a href='{% url "logout" %}' class="nav-link">Logout</a>
+						</li>
+					{% else %}
+					<li class="nav-item">
+						<a href='{% url "login_rmp_profile" %}' class="nav-link">Login</a>
+						</li>
+					{% endif %}
+					<li class="nav-item nav-item-shop" style="background-color:red;border: 15px;">
+						<a href='{% url "shoppingPortalApp:main" %}' class="nav-link-shop" style="text-decoration: none;margin-top: 3px;">Shop Medicines</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div>
+		{% block order_summary %}{% endblock order_summary %}
+		{% block purchase_success %}{% endblock purchase_success %}
+	</div>
+
+
+
+</body>
+</html>

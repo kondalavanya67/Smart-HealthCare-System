@@ -58,7 +58,7 @@ urlpatterns = [
 
 
     path('shoponline/', include('shoppingPortalApp.urls')),
-
+    path('shoponline/', include('shopping_cart.urls')),
     path('profile/',include('doctor_profile.urls')),
     path('prescription/',include('prescription.urls')),
     path('rmp/booking/',include('booking.urls')),
@@ -70,27 +70,9 @@ urlpatterns = [
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),
    # path('activate/<uidb64>/<token>', activate_account, name='activate'),
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
-
-
-    path('admin/', admin.site.urls),
-    path('admin1/', user_views.register, name='register'),
-    path('admin1/profile/', user_views.profile, name='profile'),
-    path('admin1/login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login_admin'),
-    path('admin1/logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'),
-         name='logout_admin'),
-    # path('admin1/password_reset/',
-    #      auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
-    #      name='password_reset'),
-    # path('admin1/password_reset/done/',
-    #      auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'),
-    #      name='password_reset_done'),
-    # path('admin1/password_reset-confirm/<uidb64>/<token>/',
-    #      auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
-    #      name='password_reset_confirm'),
-    # path('admin1/password_reset-complete/',
-    #      auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
-    #      name='password_reset_complete'),
+    path('admin', admin.site.urls),
     path('', include('myapp.urls'), name='myapp'),
+    path('users/',include('users.urls'), name='users'),
     path('rmp/', include('rmp.urls')),
 ]
 

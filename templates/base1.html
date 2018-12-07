@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
@@ -31,15 +31,16 @@
 
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
     <title>Smart Healthcare System</title>
   </head>
   <body>
 
+      <div class="block_container">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
-      <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+      <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -47,30 +48,31 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a href='{% url "rmp:show_rmp_profile" %}' class="nav-link">Dashboard</a>
-          </li>
+            </li>
           <li class="nav-item">
-            <a href='{% url "rmp_work_history:rmp_work_history" %}' class="nav-link">Upcoming Appointments</a>
-          </li>
+            <a href='{% url "rmp_work_history:rmp_work_history" %}' class="nav-link">Appointments</a>
+            </li>
           <li class="nav-item">
             <a href='{% url "booking:doctor_list" %}' class="nav-link">Book an Appointment</a>
-          </li>
+            </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">History</a>
+            <a href='{% url "rmp_work_history:rmp_history" %}' class="nav-link">History</a>
+            </li>
+          <li class="nav-item">
+            <a href='{% url "shoppingPortalApp:main" %}' class="nav-link" >Shop Medicines</a>
           </li>
-          {% if request.user %}
+          
           <li class="nav-item">
             <a href='{% url "logout" %}' class="nav-link">Logout</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a href='{% url "login_rmp_profile" %}' class="nav-link">Login</a>
-          </li>
-          {% endif %}
+            </li>
+      
+          
+
         </ul>
       </div>
     </div>
   </nav>
-
+        
    {% block rmp_work_history %}{% endblock %}
   {% block register %}{% endblock %}
   {% block login %}{% endblock %}

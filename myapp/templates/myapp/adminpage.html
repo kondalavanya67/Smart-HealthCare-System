@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Admin Page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'myapp/main1.css' %}" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="all-ie-only.css" />
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2" />
+
+	</head>
+	<body class="landing">
+
+		<!-- Header -->
+			<header id="header" class="alt">
+				<h1><a href="{% url 'myapp-index' %}">ADMIN PAGE</a></h1>
+				<a href="#nav">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+                        <li><a href="{% url 'myapp-index' %}">Doctor</a></li>
+                        <li><a href="{% url 'myapp-rmpdetails' %}">RMP Doctor</a></li>
+                        <li><a href="{% url 'myapp-payment' %}">Payment Details</a></li>
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+			<section id="banner">
+				<i class="icon fa fa-user-md"></i>
+				<h2>Smart</h2>
+				<p> Health Care System</p>
+				<ul class="actions">
+					<li><a href="#" class="button big special">Welcome</a></li>
+				</ul>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="wrapper style1">
+				<div class="inner">
+					<article class="feature left">
+						<span class="image"><img src="{% static 'myapp/images/pic01.jpg' %}" alt="" /></span>
+						<div class="content">
+							<h2>Doctor</h2>
+							<p>To help the people to make them happy to slove their problems and make the HEALTHY</p>
+							<ul class="actions">
+								<li>
+									<a href="{% url 'myapp-index' %}" class="button alt">Detail</a>
+								</li>
+							</ul>
+						</div>
+					</article>
+					<article class="feature right">
+						<span class="image"><img src="{% static 'myapp/images/pic02.jpg' %}" alt="" /></span>
+						<div class="content">
+							<h2>Rmp Doctor</h2>
+							<p>Here,the doctor to help you even in rural areas</p>
+							<ul class="actions">
+								<li>
+									<a href="{% url 'myapp-rmpdetails' %}" class="button alt">Detail</a>
+								</li>
+							</ul>
+						</div>
+					</article>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper special">
+				<div class="inner">
+					<header class="major narrow">
+						<h2>Smart Health Care System</h2>
+						<p>Here, the services we provide</p>
+					</header>
+					<div class="image-grid">
+						<a href="#" class="image"><img src="{% static 'myapp/images/pic03.jpg' %}" alt="" /></a>
+						<a href="{% url 'myapp-index' %}" class="image"><img src="{% static 'myapp/images/pic04.jpg' %}" alt="" /></a>
+						<a href="{% url 'myapp-payment' %}" class="image"><img src="{% static 'myapp/images/pic05.jpg' %}" alt="" /></a>
+						<a href="#" class="image"><img src="{% static 'myapp/images/pic06.jpg' %}" alt="" /></a>
+						<a href="{% url 'myapp-rmpdetails' %}" class="image"><img src="{% static 'myapp/images/pic07.jpg' %}" alt="" /></a>
+						<a href="#" class="image"><img src="{% static 'myapp/images/pic08.jpg' %}" alt="" /></a>
+						<a href="{% url 'myapp-feedback' %}" class="image"><img src="{% static 'myapp/images/pic09.jpg' %}" alt="" /></a>
+						<a href="{% url 'myapp-appointment' %}" class="image"><img src="{% static 'myapp/images/pic10.jpg' %}" alt="" /></a>
+					</div>
+					<ul class="actions">
+						<li><a href="#" class="button big alt">Go to website</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="wrapper style3 special">
+				<div class="inner">
+					<header class="major narrow	">
+						<h2>Online Hospital</h2>
+						<p>The art of medicine consists of amusing the patient while nature cures the disease</p>
+					</header>
+					<ul class="actions">
+						<li><a href="#" class="button big alt">Login</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Four -->
+			<section id="four" class="wrapper style2 special">
+				<div class="inner">
+					<header class="major narrow">
+						<h2>Get in touch</h2>
+						<p>A smart health care system</p>
+					</header>
+					<form action="#" method="POST">
+						<div class="container 75%">
+							<div class="row">
+								<div class="6u 12u$(xsmall)">
+									<input name="name" placeholder="Name" type="text" />
+								</div>
+								<div class="6u$ 12u$(xsmall)">
+									<input name="email" placeholder="Email" type="email" />
+								</div>
+								<div class="12u$">
+									<textarea name="message" placeholder="Message" rows="4"></textarea>
+								</div>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" class="special" value="Submit" /></li>
+							<li><input type="reset" class="alt" value="Reset" /></li>
+						</ul>
+					</form>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-facebook">
+							<span class="label">Facebook</span>
+						</a></li>
+						<li><a href="#" class="icon fa-twitter">
+							<span class="label">Twitter</span>
+						</a></li>
+						<li><a href="#" class="icon fa-instagram">
+							<span class="label">Instagram</span>
+						</a></li>
+						<li><a href="#" class="icon fa-linkedin">
+							<span class="label">LinkedIn</span>
+						</a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Health@</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<!-- Scripts -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+			<script src="{% static 'myapp/util.js' %}"></script>
+			<script src="{% static 'myapp/main1.js' %}"></script>
+
+	</body>
+</html>
