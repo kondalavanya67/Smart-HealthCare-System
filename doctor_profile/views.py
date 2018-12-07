@@ -10,6 +10,8 @@ from django.db.models import Max
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
+from django.utils.decorators import method_decorator
 # Create your views here.
 
 def index(request):
@@ -50,15 +52,25 @@ def create_slot(request, pk):
         item.date = date
         profile = Profile.objects.get(user=user)
         item.doctor=profile
-        item.save()
+        try:
+            item.save()
+        except IntegrityError as e:
+            context = {
+                'date': date,
+                'form': form,
+                'message':"Slot already Exists"
+            }
+            return render(request, 'doctor_profile/create_slot.html', context)
+
         return redirect('/doctor_home/')
     context = {
         'date': date,
         'form': form,
     }
+
     return render(request, 'doctor_profile/create_slot.html', context)
 
-
+@method_decorator(login_url=reverse_lazy('login'))
 class DateCreate(CreateView):
 
     model=BookingDate
@@ -110,7 +122,7 @@ class DateCreate(CreateView):
 		# }
 		# return render(self.request,'booking/booking_confirmation.html', context=context)
 
-
+@login_required(login_url=reverse_lazy('login'))
 def date_create(request):
     user=request.user
     profile=Profile.objects.get(user=user)

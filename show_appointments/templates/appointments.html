@@ -6,21 +6,35 @@
 
   {% block appointments %}
   <script type="text/javascript">
-    window.onload = function() {
-
-
-    document.getElementById('attend').disabled=true;
-
-    link = document.getElementById('attend').href;
-
-    document.getElementById('attend').removeAttribute('href');
-
-    document.getElementById('prescription').disabled=true;
-
-    link1 = document.getElementById('prescription').href;
-
-    document.getElementById('prescription').removeAttribute('href');
-  }
+  //   window.onload = function() {
+  //
+  //
+  //   document.getElementById('attend').disabled=true;
+  //
+  //   link = document.getElementById('attend').href;
+  //
+  //   document.getElementById('attend').removeAttribute('href');
+  //
+  //   document.getElementById('prescription').disabled=true;
+  //
+  //   link1 = document.getElementById('prescription').href;
+  //
+  //   document.getElementById('prescription').removeAttribute('href');
+  // }
+    // function disable()
+    // {
+    //   document.getElementById('attend').disabled=true;
+    //
+    //   link = document.getElementById('attend').href;
+    //
+    //   document.getElementById('attend').removeAttribute('href');
+    //
+    //   document.getElementById('prescription').disabled=true;
+    //
+    //   link1 = document.getElementById('prescription').href;
+    //
+    //   document.getElementById('prescription').removeAttribute('href');
+    // }
 
     function checkTime(i) {
       if (i < 10) {
@@ -29,7 +43,7 @@
       return i;
       }
 
-    function check_link(date1,time1)
+    function check_link(date1,time1,pk)
     {
       var today = new Date();
       var h = today.getHours();
@@ -65,8 +79,11 @@
       console.log(check1)
       if(check1==0 && time2[0]==time3[0] && (time3[1]-time2[1])<15)
       {
-        document.getElementById('attend').setAttribute("href",link);
-        document.getElementById('prescription').setAttribute("href",link1);
+        id1='attend'+pk;
+        id2='prescription'+pk;
+        document.getElementById(id1.toString()).setAttribute("style", "pointer-events: auto;");
+        document.getElementById(id2.toString()).setAttribute("style", "pointer-events: auto;");
+
 
       }
 
@@ -129,14 +146,15 @@
                           </thead>
                           <tbody>
                           {% for appointment in appointments %}
+                          disable()
                               <tr>
                                   <td id="a"> {{appointment.date.date}}</td>
                                   <td id="b"> {{appointment.time.start_time}}</td>
                                   <td> {{appointment.paitent.first_name}} {{appointment.paitent.last_name}}</td>
                                   <td> {{appointment.paitent.symptoms}}</td>
-                                  <td><a id='attend' href="{{appointment.viedo_chat_link}}"> Attend Patient </a></td>
-                                  <td><a id='prescription' href='{% url "prescription:Prescription_Add1" appointment_id=appointment.pk %}'> Make Prescription </a></td>
-                                  <td><button type="button" name="check" onclick='check_link("{{appointment.date}}","{{appointment.time.start_time}}");'> Refresh </button>
+                                  <td><a style="pointer-events: none; display: inline-block;" id='attend{{appointment.id}}' href="{{appointment.viedo_chat_link}}"> Attend Patient </a></td>
+                                  <td><a style="pointer-events: none; display: inline-block;" id='prescription{{appointment.id}}' href='{% url "prescription:Prescription_Add1" appointment_id=appointment.pk %}'> Make Prescription </a></td>
+                                  <td><button type="button" name="check" onclick='check_link("{{appointment.date}}","{{appointment.time.start_time}}","{{appointment.id}}");'> Refresh </button>
 
                               </tr>
                           {% endfor %}
