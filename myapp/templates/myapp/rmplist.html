@@ -1,28 +1,22 @@
 {% extends "myapp/base.html" %}
 {% block content %}
 
-    <form method="post" action="{% url 'myapp-rmpdetails' %}">
-        {% csrf_token %}
-        <table class="table">
-            <thead>
-            <tr>
-                <th>RMP Doctor Name</th>
-                <th>Clinic Name</th>
-                <th>Region</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for item in data %}
-                <tr>
-                    <td> {{ item.rmp_list.first_name }} {{ item.rmp_list.last_name }}</td>
-                    <td> {{ item.rmp_list.hospital }}</td>
-                    <td>{{ item.rmp_list.locality }}</td>
-                    <td><button formaction="{% url 'myapp-fullrmplist' %}" value="{{ item.rmp_list.user }}" name="rmp">View</button></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </form>
+ <div class="container">
+    <div class="row">
+        {% for doctors in doctor %}
+        <div class="col-md-5 medicine_1">
+            <div class="col-md-12" >
+                <img src="{{ doctors.profile_photo.url }}" class="img-responsive img_list"  style="margin-top: 5%; height:250px;width:100%"><br><hr>
+                <h5>{{doctors.first_name}} {{doctors.last_name}}</h5>
+                Speciality : <span>{{ doctors.speciality }}</span><br>
+                Hospital:<a href="#"> {{doctors.hospital}}</a><br><br>
+                <button class="btn btn-default"><a href='{{ doctors.get_absolute_url }}'>View</a></button>
+                <br><br><br><br>
+            </div>  
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock content %}
 

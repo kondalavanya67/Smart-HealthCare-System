@@ -33,30 +33,21 @@ def fullviewdoc(request):
         all_data = Post.objects.all()
         return render(request, 'myapp/fullviewdoc.html', {'all_data': all_data})
 
-
-
 def rmpdetails(request):
-        data = Rmplist.objects.all()
-        return render(request, 'myapp/rmplist.html', {'data':data})
+    doctors = rmpContact.objects.all()
+    context = {
+
+       "doctor" : doctors,
+    }
+    return render(request, 'myapp/rmplist.html',context=context)
 
 
-def fullviewrmp(request):
-    if (request.method == "POST"):
-        name = request.POST['rmp']
-        u = Rmplist.objects.get(rmp_list=rmpContact.objects.get(user=User.objects.get(username=name)))
-        return render(request,'myapp/fullviewrmp.html',{
-            'first_name': u.rmp_list.first_name,
-            'last_name' : u.rmp_list.last_name,
-            'gender' : u.rmp_list.gender,
-            'email_id': u.rmp_list.email_id,
-            'qualification': u.rmp_list.qualification,
-            'mobile_no': u.rmp_list.mobile_no,
-            'locality': u.rmp_list.locality,
-            'hospital': u.rmp_list.hospital,
-        })
-    else:
-        all_data = Post.objects.all()
-        return render(request, 'myapp/fullviewdoc.html', {'all_data': all_data})
+def fullviewrmp(request, pk):
+    instance = get_object_or_404(rmpContact, pk=pk)
+    context = {
+        "profile" : instance,
+    }
+    return render(request, 'myapp/fullviewrmp.html',context=context)
 
 
 def adminpage(request):

@@ -123,7 +123,7 @@ def load_time(request):
 	return render(request, 'booking/slot_dropdown_list_options.html', {'slots': slots})
 
 
-@login_required(login_url=('rmp:login_rmp_profile'))
+
 class AppointmentDetialsCreate(CreateView):
 	model=AppointmentDetials
 	form_class = AppointmentCreateForm

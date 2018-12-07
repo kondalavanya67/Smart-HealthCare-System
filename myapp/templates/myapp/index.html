@@ -1,6 +1,6 @@
 {% extends "myapp/base.html" %}
 {% block content %}
-    <form method="post" action="{% url 'myapp-index' %}">
+    <form method="post" action="{% url 'myapp:myapp-index' %}">
         {% csrf_token %}
         <table class="table">
             <thead>
@@ -17,7 +17,7 @@
                     <td> {{ item.doctor_name.first_name }} {{ item.doctor_name.last_name }}</td>
                     <td> {{ item.doctor_name.speciality }}</td>
                     <td>{{ item.doctor_name.hospital }}</td>
-                    <td><button formaction="{% url 'myapp-fullindex' %}" value="{{ item.doctor_name.user }}" name="doctor">View</button></td>
+                    <td><button formaction="{% url 'myapp:myapp-fullindex' %}" value="{{ item.doctor_name.user }}" name="doctor">View</button></td>
                 </tr>
             {% endfor %}
             </tbody>

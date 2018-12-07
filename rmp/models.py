@@ -32,6 +32,9 @@ class rmpContact(models.Model):
 
     medicines = models.ManyToManyField(medicine, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('myapp:myapp-fullrmplist',kwargs={'pk':self.pk})
+
 
 
 
