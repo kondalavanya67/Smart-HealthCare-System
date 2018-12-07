@@ -48,6 +48,17 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return reverse('booking:doctor_detail',kwargs={'pk':self.pk})
+
+    def get_absolute_url_show(self):
+        return reverse('myapp:doctor_detail',kwargs={'pk':self.pk})
+
+    def get_absolute_url_upcoming_appointments(self):
+        return reverse('myapp:doctor_upcoming_appointments',kwargs={'pk':self.pk})
+    def get_absolute_url_attended_appointments(self):
+        return reverse('myapp:doctor_attended_appointments',kwargs={'pk':self.pk})
+    def get_absolute_url_slot(self):
+        return reverse('myapp:doctor_slot',kwargs={'pk':self.pk})
+
     def __str__(self):
         return str(self.id)
 
@@ -71,7 +82,7 @@ class BookingDate(models.Model):
 class Slot(models.Model):
     TIME_CHOICES = (('09:00:00', '9 am'),
                     ('12:00:00', '12 pm'),
-                    ('04:00:00', '4 pm'), )
+                    ('16:00:00', '4 pm'), )
     doctor=models.ForeignKey(Profile,on_delete=models.CASCADE, null=True,blank=True)
     date=models.ForeignKey(BookingDate,on_delete=models.CASCADE, null=True,blank=True)
     start_time=models.CharField(max_length=200,choices=TIME_CHOICES,null=True,blank=True)

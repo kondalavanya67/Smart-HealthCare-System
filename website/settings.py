@@ -163,7 +163,7 @@ STATIC_ROOT= os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'adminpage'
+LOGIN_REDIRECT_URL = 'myapp:adminpage'
 LOGIN_URL = 'login'
 
 MEDIA_URL = '/media/'

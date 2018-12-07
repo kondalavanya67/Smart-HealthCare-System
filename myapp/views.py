@@ -4,15 +4,62 @@ from django.contrib.auth.models import User
 from booking.models import AppointmentDetials,PaitentDetails
 from prescription.models import Prescription
 from .models import Post, Rmplist
-from doctor_profile.models import Profile
+from doctor_profile.models import Profile,Slot
 from rmp.models import rmpContact
+from booking.models import AppointmentDetials
 # Create your views here.
 
 
 def index(request):
+
         all_data = Post.objects.all()
         return render(request, 'myapp/index.html', {'all_data': all_data})
+        doctors = Profile.objects.all()
+        context = {
 
+    	   "doctor" : doctors,
+    	}
+        return render(request, 'myapp/index.html',context=context)
+
+def doctor_detail(request, pk):
+    instance = get_object_or_404(Profile, pk=pk)
+    context = {
+        "doctor" : instance,
+    }
+    return render(request, 'myapp/doctor_detail1.html',context=context)
+
+def doctor_upcoming_appointments(request, pk):
+
+    profile = get_object_or_404(Profile, pk=pk)
+    appointments=AppointmentDetials.objects.filter(doctor_id=profile.id).filter(is_attended=False)
+
+    if not appointments:
+        context="Hurray No Pending Appointments"
+    else:
+        context="Pending Appointments"
+
+    return render(request,'myapp/upcoming_appointments.html',{'context':context,'appointments':appointments})
+
+def doctor_attended_appointments(request, pk):
+
+    profile = get_object_or_404(Profile, pk=pk)
+    appointments=AppointmentDetials.objects.filter(doctor_id=profile.id).filter(is_attended=True)
+    #
+    # if not appointments:
+    #     context="Hurray No Pending Appointments"
+    # else:
+    #     context="Pending Appointments"
+
+    return render(request,'myapp/attended_appointments.html',{'appointments':appointments})
+    
+
+def show_slots(request,pk):
+
+    profile = get_object_or_404(Profile, pk=pk)
+    first_name=profile.first_name
+    last_name=profile.last_name
+    dates=Slot.objects.filter(doctor=profile)
+    return render(request,'myapp/slots.html',{'slots':dates})
 
 def fullviewdoc(request):
     if (request.method == "POST"):
@@ -35,30 +82,21 @@ def fullviewdoc(request):
         all_data = Post.objects.all()
         return render(request, 'myapp/fullviewdoc.html', {'all_data': all_data})
 
-
-
 def rmpdetails(request):
-        data = Rmplist.objects.all()
-        return render(request, 'myapp/rmplist.html', {'data':data})
+    doctors = rmpContact.objects.all()
+    context = {
+
+       "doctor" : doctors,
+    }
+    return render(request, 'myapp/rmplist.html',context=context)
 
 
-def fullviewrmp(request):
-    if (request.method == "POST"):
-        name = request.POST['rmp']
-        u = Rmplist.objects.get(rmp_list=rmpContact.objects.get(user=User.objects.get(username=name)))
-        return render(request,'myapp/fullviewrmp.html',{
-            'first_name': u.rmp_list.first_name,
-            'last_name' : u.rmp_list.last_name,
-            'gender' : u.rmp_list.gender,
-            'email_id': u.rmp_list.email_id,
-            'qualification': u.rmp_list.qualification,
-            'mobile_no': u.rmp_list.mobile_no,
-            'locality': u.rmp_list.locality,
-            'hospital': u.rmp_list.hospital,
-        })
-    else:
-        all_data = Post.objects.all()
-        return render(request, 'myapp/fullviewdoc.html', {'all_data': all_data})
+def fullviewrmp(request, pk):
+    instance = get_object_or_404(rmpContact, pk=pk)
+    context = {
+        "profile" : instance,
+    }
+    return render(request, 'myapp/fullviewrmp.html',context=context)
 
 
 def adminpage(request):
@@ -120,5 +158,3 @@ def doc_work_history(request):
 
 def feedback(request):
     return render(request, 'myapp/feedback.html')
-
-
