@@ -71,8 +71,7 @@ urlpatterns = [
    # path('activate/<uidb64>/<token>', activate_account, name='activate'),
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls')),
-
+    path('', include('myapp.urls'), name='myapp'),
     path('users/',include('users.urls'), name='users'),
     path('rmp/', include('rmp.urls')),
 ]
