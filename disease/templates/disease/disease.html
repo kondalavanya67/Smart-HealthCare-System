@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block doctor_edit %}
+<!-- NAV BAR -->
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
+            </li>
+
+<!--
+            <li class="nav-item">
+              <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
+            </li> -->
+
+            <li class="nav-item">
+              <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "show_appointments:show_slots" %}' class="nav-link">Show Slots</a>
+            </li>
+            <li class="nav-item">
+              <a href='{% url "data" %}' class="nav-link">Disease Details</a>
+            </li>
+            <li class="nav-item active">
+              <a href='{% url "logout" %}' class="nav-link">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<h2>Get Disease Detail</h2>
+
+  <form method="get">
+    {{ form.as_p }}
+    <button type="submit">search</button>
+  </form>
+  <!-- {% for key in search_result.disease.keys %}
+    <h3>{{search_result.disease.key}}</h3>
+   <h3>{{search_result.disease.symptoms}}</h3>
+    <h3>{{search_result.disease.symptoms}}</h3> -->
+  <!-- {% endfor %}    -->
+{% if search_result %}
+<h3>symptoms</h3>
+<h4>{{search_result.disease.symptoms}}</h4>
+<h3>transmission</h3>
+<h4>{{search_result.disease.transmission}}</h4>
+<h3>diagnosis</h3>
+<h4>{{search_result.disease.diagnosis}}</h4>
+<h3>treatment</h3>
+<h4>{{search_result.disease.treatment}}</h4>
+<h3>prevention</h3>
+<h4>{{search_result.disease.prevention}}</h4>
+
+{% endif %}
+{% endblock %}

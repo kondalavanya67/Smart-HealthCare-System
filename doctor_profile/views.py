@@ -13,6 +13,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.utils.decorators import method_decorator
+
 # Create your views here.
 
 def index(request):
@@ -76,6 +77,7 @@ class DateCreate(CreateView):
 
     model=BookingDate
     fields=['date',]
+
 
     def get_initial(self):
 
