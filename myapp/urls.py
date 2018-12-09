@@ -17,6 +17,7 @@ urlpatterns = [
     path('admin1/doctorlist/search/doctor_upcoming_appointments/<pk>/',views.doctor_upcoming_appointments, name='doctor_upcoming_appointments'),
     path('admin1/doctorlist/search/doctor_attended_appointments/<pk>/',views.doctor_attended_appointments, name='doctor_attended_appointments'),
     path('admin1/doctorlist/search/slot/<pk>/',views.show_slots, name='doctor_slot'),
+    path('admin1/rmp_appointments_past/<pk>/',views.rmp_appointments_past, name='rmp_appointments_past'),
 
     url('',include('users.urls')),
 ]

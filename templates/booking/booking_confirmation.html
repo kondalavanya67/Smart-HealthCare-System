@@ -110,10 +110,7 @@
               <p class="item-name">Name: </p>
               
             </div>
-            <div class="item">
-              <span class="price">{{ object.paitent.doctor_id}}</span>
-              <p class="item-name">Doctor: </p>  
-            </div>
+           
             <div class="item">
               <span class="price">{{object.date.date}}</span>
               <p class="item-name">Date </p>  
@@ -133,7 +130,7 @@
             
             
             <div class="form-group col-sm-12" style="padding-bottom: 30px; padding-top: 30px;">
-                <a href='{{ object.viedo_chat_link }}'><button type="button" class="btn btn-primary btn-block">Connect to doctor</button></a>
+                <a href='{% url "rmp_work_history:rmp_work_history" %}'><button type="button" class="btn btn-primary btn-block">Go to appointments</button></a>
               </div>
           </div>
           

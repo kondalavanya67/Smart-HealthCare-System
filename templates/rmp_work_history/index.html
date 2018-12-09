@@ -3,6 +3,91 @@
 {% load static %}
    
 {% block rmp_work_history %}
+  <script type="text/javascript">
+  //   window.onload = function() {
+  //
+  //
+  //   document.getElementById('attend').disabled=true;
+  //
+  //   link = document.getElementById('attend').href;
+  //
+  //   document.getElementById('attend').removeAttribute('href');
+  //
+  //   document.getElementById('prescription').disabled=true;
+  //
+  //   link1 = document.getElementById('prescription').href;
+  //
+  //   document.getElementById('prescription').removeAttribute('href');
+  // }
+    // function disable()
+    // {
+    //   document.getElementById('attend').disabled=true;
+    //
+    //   link = document.getElementById('attend').href;
+    //
+    //   document.getElementById('attend').removeAttribute('href');
+    //
+    //   document.getElementById('prescription').disabled=true;
+    //
+    //   link1 = document.getElementById('prescription').href;
+    //
+    //   document.getElementById('prescription').removeAttribute('href');
+    // }
+
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+      }
+
+    function check_link(date1,time1,pk)
+    {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      h = checkTime(h);
+      m = checkTime(m);
+      s = checkTime(s);
+      time=h+':'+m+':'+s;
+
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+      if(dd<10) {
+          dd = '0'+dd
+      }
+      if(mm<10) {
+          mm = '0'+mm
+      }
+      today = yyyy + '-' + mm + '-' + dd;
+
+      console.log(date1);
+      console.log(today);
+      console.log(time1);
+      console.log(time);
+      var time2= time1.split(":");
+      console.log(time2);
+      var time3 = time.split(":");
+      console.log(time3);
+
+
+      check1=date1.localeCompare(today)
+      console.log(check1)
+      if(check1==0 && time2[0]==time3[0] && (time3[1]-time2[1])<15)
+      {
+        id1='attend'+pk;
+        id2='prescription'+pk;
+        document.getElementById(id1.toString()).setAttribute("style", "pointer-events: auto;");
+        document.getElementById(id2.toString()).setAttribute("style", "pointer-events: auto;");
+
+
+      }
+
+
+    }
+</script>
  <div class="container-fluid songs-container">
     <!-- Right Song Info -->
           <div class="col-sm-8 col-md-9 col-lg-8 mx-auto">
@@ -16,7 +101,7 @@
                           <p><strong>{{ error_message }}</strong></p>
                       {% endif %}
 
-                      <table class="table">
+                      <table class="table table-striped table-hover">
                           <thead>
                           <tr>
                               <th>Date</th>
@@ -25,6 +110,7 @@
                               <!-- <th>RMP Name </th> -->
                               <th>Symptoms</th>
                               <th>Connect</th>
+                              <th>Refresh to activate link</th>
                               
 
                           </tr>
@@ -37,7 +123,8 @@
                                   <td> {{appointment.paitent.first_name}} {{appointment.paitent.last_name}}</td>
                                   <!-- <td> {{appointment.paitent.user.}} -->
                                   <td> {{appointment.paitent.symptoms}}</td>
-                                  <td><a href="{{appointment.viedo_chat_link}}"> Attend Patient </a></td>
+                                  <td><a style="pointer-events: none; display: inline-block;" id='attend{{appointment.id}}' href="{{appointment.viedo_chat_link}}"> Attend Patient </a></td>
+                                  <td> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  <button type="button" class="btn btn-default" name="check" onclick='check_link("{{appointment.date}}","{{appointment.time.start_time}}","{{appointment.id}}");'>Refresh </button></td>
                                   
                                   <!-- <td><a href="/media/{{prescription.pdf}}"> Download Prescription </a></td> -->
 
@@ -53,8 +140,7 @@
           </div>
 
       </div>
-<br><br><br><br><br><br><br><br>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 {% endblock %}

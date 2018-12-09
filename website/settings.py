@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'PIL',
     'rmp_work_history',
     'shopping_cart',
+    'rest_framework',
+    'restframework',
 
 ]
 

@@ -13,6 +13,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.utils.decorators import method_decorator
+from rest_framework import viewsets
+from .serializers import ProfileSerializer
 # Create your views here.
 
 def index(request):
@@ -150,3 +152,10 @@ def Show_Profile(request):
             'profile':profile
         }
         return render(request,'show_profile.html',context)
+
+
+
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer

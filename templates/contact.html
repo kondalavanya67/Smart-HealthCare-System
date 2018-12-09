@@ -24,11 +24,19 @@
           <li class="nav-item active">
             <a href='{% url "contact" %}' class="nav-link">Contact</a>
           </li>
+         {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a href='{% url "logout" %}' class="nav-link">Logout</a>
+          </li>
+          {% else %}
+          
           <li class="nav-item">
             <a href='{% url "login" %}' class="nav-link">Login</a>
           </li>
            <li class="nav-item">
             <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link">Rmp Login</a>
+          </li>
+          {% endif %}
           </li>
           <li class="nav-item nav-item-shop" style="background-color:red;border: 15px;">
             <a href='{% url "shoppingPortalApp:main" %}' class="nav-link-shop" style="text-decoration: none;margin-top: 3px;">Shop Medicines</a>

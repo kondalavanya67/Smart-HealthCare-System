@@ -103,3 +103,13 @@ def appointment(request):
     return render(request, 'myapp/appointment.html')
 def feedback(request):
     return render(request, 'myapp/feedback.html')
+
+
+def rmp_appointments_past(request,pk):
+    appointments = AppointmentDetials.objects.filter(user=pk)
+    context={
+        "appointments":appointments,
+    }
+    
+    return render(request,'myapp/rmp_appointments_past.html',context=context)
+

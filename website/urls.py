@@ -54,6 +54,7 @@ urlpatterns = [
         name='password_reset_complete'),
 
     path('search/', include('search.urls')),
+    path('restframework/', include('restframework.urls')),
 
 
 
