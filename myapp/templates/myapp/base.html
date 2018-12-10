@@ -16,29 +16,29 @@
 <header class="site-header" style="color:#000000 ">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'adminpage' %}">ADMIN PAGE</a>
+            <a class="navbar-brand mr-4" href="{% url 'myapp:adminpage' %}">ADMIN PAGE</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href='{% url "myapp-index" %}' class="nav-link">DOCTOR</a>
+                        <a href='{% url "myapp:myapp-index" %}' class="nav-link">DOCTOR</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp-rmpdetails" %}' class="nav-link">RMP DOCTOR</a>
+                        <a href='{% url "myapp:myapp-rmpdetails" %}' class="nav-link">RMP DOCTOR</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp-appointment" %}' class="nav-link">Appointments</a>
+                        <a href='{% url "myapp:myapp-appointment" %}' class="nav-link">Appointments</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp-payment" %}' class="nav-link">Payments</a>
+                        <a href='{% url "myapp:myapp-payment" %}' class="nav-link">Payments</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp-feedback" %}' class="nav-link">Feedbacks</a>
+                        <a href='{% url "myapp:myapp-feedback" %}' class="nav-link">Feedbacks</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "logout_admin" %}' class="nav-link">Logout</a>
+                        <a href='{% url "myapp:logout_admin" %}' class="nav-link">Logout</a>
                     </li>
                 </ul>
             </div>

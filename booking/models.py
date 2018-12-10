@@ -7,6 +7,7 @@ from rmp.models import rmpContact
 import uuid
 from uuid import uuid4
 from doctor_profile.models import Profile,BookingDate,Slot
+from prescription.models import Prescription
 # Create your models here.
 
 from uuid import uuid4
@@ -59,6 +60,7 @@ class AppointmentDetials(models.Model):
     transaction_id=models.CharField(max_length=250)
     paitent=models.ForeignKey(PaitentDetails, on_delete=models.CASCADE, null=True, blank=True)
     is_attended=models.BooleanField(default=False)
-    
+    prescription=models.ForeignKey(Prescription,on_delete=models.CASCADE,null=True,blank=True)
+
     def __str__(self):
         return str(self.pk)
