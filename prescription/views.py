@@ -82,13 +82,16 @@ class PrescriptionCreate(CreateView):
         user=self.request.user
         profile = Profile.objects.get(user=user)
         #appointment_id=int(self.kwargs['appointment_id'])
-        appointment = AppointmentDetials.objects.get(pk=self.kwargs['appointment_id'])
-        appointment.is_attended=True
-        appointment.save()
+
         #print('**')
         prescription = form.save(commit=False)
-        prescription.appointment=appointment
+
         prescription.doctor = profile
+        prescription=form.save()
+        appointment = AppointmentDetials.objects.get(pk=self.kwargs['appointment_id'])
+        appointment.is_attended=True
+        appointment.prescription=prescription
+        appointment.save()
         return super(PrescriptionCreate, self).form_valid(form)
 
 @login_required(login_url=reverse_lazy('login'))

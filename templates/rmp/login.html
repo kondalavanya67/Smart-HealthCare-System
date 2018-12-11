@@ -48,7 +48,17 @@
           <div class="card-body">
             <h3 class="card-title text-center font-weight-bold">Sign In</h3>
 
-<form method='POST' class="form-signin mx-auto"> {% csrf_token %}
+<form method='POST' class="form-signin mx-auto"> {%csrf_token %}
+               
+ {% for message in messages %}
+
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
 
   {{ form.username | add_class:"form-control" | attr:"placeholder:Username"  }}<br>
   {{ form.password | add_class:"form-control" | attr:"placeholder:Password" }}<br>
@@ -56,9 +66,10 @@
   <button type='submit' class="btn btn-dark btn-block text-uppercase">Submit</button>
 
 
+
 </form>
-<a href='#'>Forgot password?</a><br>
-<a href='{%url "rmp:make_rmp_profile" %}'>Dont have a account?create one!</a>
+<a href='{%url "password_reset" %}'>Forgot password?</a><br>
+<a href='{%url "rmp:user_register" %}'>Dont have a account?create one!</a>
 </div>
         </div>
       </div>

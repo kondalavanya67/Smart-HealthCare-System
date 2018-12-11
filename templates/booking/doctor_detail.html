@@ -9,7 +9,7 @@
 		<div class="col-md-4" style="text-align: center;">
 			<img src="{{ doctor.profile_photo.url }}" style="width: 100%;height: 400px;">
 			<br><br><br><br>
-			
+
 		</div>
 		<div class="col-md-8">
 			<h1>{{ doctor.first_name }} {{ doctor.last_name }}</h1><hr><br>
@@ -22,7 +22,7 @@
 				<button class="btn btn-default"><a href='{{ doctor.get_absolute_url_booking}}'>Make Appointment</a></button>
 			</div>
 		</div>
-	</div>	
+	</div>
 </div>
 <br><br><br>
 {% endblock %}

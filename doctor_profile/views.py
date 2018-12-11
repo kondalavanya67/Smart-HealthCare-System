@@ -11,6 +11,10 @@ from myapp.models import Post
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
+from django.utils.decorators import method_decorator
+from rest_framework import viewsets
+from .serializers import ProfileSerializer
 
 
 def index(request):
@@ -28,9 +32,11 @@ def make_profile(request):
         if form.is_valid():
             profile_item=form.save(commit=False)
             profile_item.user = user
+            profile_item.verified=False
             profile_item.save()
 
-            return redirect('/doctor_home/')
+            return render(request, "verification.html", {})
+
 
     else:
 
@@ -43,7 +49,7 @@ def make_profile(request):
 @login_required(login_url=reverse_lazy('login'))
 def create_slot(request, pk):
     user=request.user
-    form = SlotForm(request.POST or None, initial={'date':pk})
+    form = SlotForm(request.POST or None)
     date = get_object_or_404(BookingDate, pk=pk)
     if form.is_valid():
 
@@ -51,19 +57,30 @@ def create_slot(request, pk):
         item.date = date
         profile = Profile.objects.get(user=user)
         item.doctor=profile
-        item.save()
+        try:
+            item.save()
+        except IntegrityError as e:
+            context = {
+                'date': date,
+                'form': form,
+                'message':"*Slot already Exists"
+            }
+            return render(request, 'doctor_profile/create_slot.html', context)
+
         return redirect('/doctor_home/')
     context = {
         'date': date,
         'form': form,
     }
+
     return render(request, 'doctor_profile/create_slot.html', context)
 
-
+# @method_decorator(login_url=reverse_lazy('login'))
 class DateCreate(CreateView):
 
     model=BookingDate
     fields=['date',]
+
 
     def get_initial(self):
 
@@ -111,7 +128,7 @@ class DateCreate(CreateView):
 		# }
 		# return render(self.request,'booking/booking_confirmation.html', context=context)
 
-
+@login_required(login_url=reverse_lazy('login'))
 def date_create(request):
     user=request.user
     profile=Profile.objects.get(user=user)
@@ -137,4 +154,16 @@ def Show_Profile(request):
         context={
             'profile':profile
         }
-        return render(request,'show_profile.html',context)
+        if(profile.verified==True):
+            print('&&')
+            return render(request,'show_profile.html',context)
+        else:
+            print('%%')
+            return render(request, "verification.html", {})
+
+
+
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer

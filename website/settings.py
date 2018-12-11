@@ -50,10 +50,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'myapp.apps.MyappConfig',
+    'disease.apps.DiseaseConfig',
     'users.apps.UsersConfig',
     'PIL',
     'rmp_work_history',
     'shopping_cart',
+    'rest_framework',
+    'restframework',
 
 ]
 
@@ -162,7 +165,7 @@ STATIC_ROOT= os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'adminpage'
+LOGIN_REDIRECT_URL = 'myapp:adminpage'
 LOGIN_URL = 'login'
 
 MEDIA_URL = '/media/'

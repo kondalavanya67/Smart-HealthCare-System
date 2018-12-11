@@ -6,7 +6,7 @@ class Add_PaitentDetails(forms.ModelForm):
     class Meta:
         model=PaitentDetails
         fields='__all__'
-        exclude=('user','doctor_id',)
+        exclude=('user','doctor_id','doctor_name',)
 
 class Add_PatientToAppointment(forms.ModelForm):
     class Meta:

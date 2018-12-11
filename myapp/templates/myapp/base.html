@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'myapp/main.css' %}">
     <title>Adminpage</title>
@@ -16,29 +16,26 @@
 <header class="site-header" style="color:#000000 ">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'adminpage' %}">ADMIN PAGE</a>
+            <a class="navbar-brand mr-4" href="{% url 'myapp:adminpage' %}">ADMIN PAGE</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href='{% url "myapp-index" %}' class="nav-link">DOCTOR</a>
+                        <a href='{% url "myapp:myapp-index" %}' class="nav-link">DOCTOR</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp-rmpdetails" %}' class="nav-link">RMP DOCTOR</a>
+                        <a href='{% url "myapp:myapp-rmpdetails" %}' class="nav-link">RMP DOCTOR</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp-appointment" %}' class="nav-link">Appointments</a>
+                        <a href='{% url "myapp:myapp-payment" %}' class="nav-link">Payments</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp-payment" %}' class="nav-link">Payments</a>
+                        <a href='{% url "myapp:myapp-feedback" %}' class="nav-link">Feedbacks</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp-feedback" %}' class="nav-link">Feedbacks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href='{% url "logout_admin" %}' class="nav-link">Logout</a>
+                        <a href='{% url "logout" %}' class="nav-link">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -47,18 +44,32 @@
 </header>
 <main role="main" class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">
                         {{ message }}
                     </div>
                 {% endfor %}
-            {% endif%}
+            {% endif %}
             {% block content %}{% endblock %}
         </div>
     </div>
 </main>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+
+ <footer id="main-footer" class="text-center p-4" style="background-color: black; color: #fff;">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>Copyright &copy;
+            <span id="year"></span> Smart HealthCare</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

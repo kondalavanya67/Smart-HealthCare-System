@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load widget_tweaks %}
 {% load static %}
 
 {% block login %}
-
+<link rel="stylesheet" href="{% static  'css/style.css' %}">
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
@@ -25,17 +26,24 @@
           <li class="nav-item">
             <a href='{% url "contact" %}' class="nav-link">Contact</a>
           </li>
-          <li class="nav-item active">
-            <a href='{% url "login" %}' class="nav-link">Login</a>
+         {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a href='{% url "logout" %}' class="nav-link">Logout</a>
+          </li>
+          {% else %}
+          
+          <li class="nav-item">
+            <a href='{% url "login" %}' class="nav-link active">Login</a>
           </li>
            <li class="nav-item">
-            <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link">Rmp Login</a>
+            <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link ">Rmp Login</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </div>
   </nav>
-
+<body>
   <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-6 col-lg-4 mx-auto">
@@ -43,7 +51,18 @@
           <div class="card-body">
             <h3 class="card-title text-center font-weight-bold">Sign In</h3>
 
-<form method='POST' class="form-signin mx-auto"> {% csrf_token %}
+<form method='POST' class="form-signin mx-auto">
+{%csrf_token %}
+               
+ {% for message in messages %}
+
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
 
   {{ form.username | add_class:"form-control" | attr:"placeholder:Username"  }}<br>
   {{ form.password | add_class:"form-control" | attr:"placeholder:Password" }}<br>
@@ -59,6 +78,7 @@
       </div>
     </div>
 </div>
-
+</body>
 <br><br><br><br><br><br><br><br><br><br>
+
 {% endblock %}

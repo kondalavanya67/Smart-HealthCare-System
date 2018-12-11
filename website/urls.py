@@ -28,11 +28,12 @@ urlpatterns = [
     path('about/', about , name='about'),
     path('how_we_work/', how_we_work , name='how_we_work'),
     url(r'^doctor_home/$',doctor_home, name='doctor_home'),
+    # url(r'^doctor_home/$',doctor_verification_required, name='doctor_verification_required'),
     url(r'^doctor/', include(("doctor_home.url","doctor"), namespace= 'doctor')),
     #(r'^$',home_page , name='home_page'),
     url(r'^login/$', login_page, name='login' ),
-    url(r'^register/$',user_register , name='user_register' ),
-    url(r'^new_user_reg/$',new_user_reg , name='new_user_reg' ),
+    url(r'^doctor/register/$',user_register , name='user_register' ),
+    url(r'^doctor/new_user_reg/$',new_user_reg , name='new_user_reg' ),
     url(r'^password/change/$',
         auth_views.PasswordChangeView.as_view(),
         name='password_change'),
@@ -54,13 +55,12 @@ urlpatterns = [
         auth_views.PasswordResetCompleteView.as_view(),
         name='password_reset_complete'),
 
-   
-
-
+    path('restframework/', include('restframework.urls')),
 
     path('shoponline/', include('shoppingPortalApp.urls')),
     path('shoponline/', include('shopping_cart.urls')),
     path('profile/',include('doctor_profile.urls')),
+    path('disease/',include('disease.urls')),
     path('prescription/',include('prescription.urls')),
     path('rmp/booking/',include('booking.urls')),
     path('appointments/',include('show_appointments.urls'),name='show_appointments'),
@@ -69,8 +69,11 @@ urlpatterns = [
     #url(r'^activate/$', activate, name='activate'),
 
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),
-   # path('activate/<uidb64>/<token>', activate_account, name='activate'),
+   # path('activate/<uidb64>/token>', activate_account, name='activate'),
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
+
+
+
     path('', include('myapp.urls'), name='myapp'),
     path('users/',include('users.urls'), name='users'),
     path('rmp/', include('rmp.urls')),
