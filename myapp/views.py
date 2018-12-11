@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.models import User
-from django.urls import reverse_lazy
-
+from django.urls import reverse_lazy,reverse
+from django.shortcuts import redirect
 from booking.models import AppointmentDetials,PaitentDetails
 from prescription.models import Prescription
 from .models import Post, Rmplist

@@ -6,7 +6,7 @@
 
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
-      <a href="index.html" class="navbar-brand"><b></b>SMART HEALTHCARE SYSTEM</b></a>
+      <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,7 +24,7 @@
           <li class="nav-item">
             <a href='{% url "contact" %}' class="nav-link">Contact</a>
           </li>
-   
+
         </ul>
       </div>
     </div>
@@ -42,4 +42,5 @@
  	<input type="text" name="token" value="" ><br>
  	<input type="submit" >
  </form>
+ <br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

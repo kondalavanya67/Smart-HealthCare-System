@@ -20,7 +20,7 @@ from django.db import connection,IntegrityError
 import random
 from django.contrib.auth.models import User
 from doctor_profile.views import Profile
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 
 
