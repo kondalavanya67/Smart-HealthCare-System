@@ -25,8 +25,3 @@ urlpatterns=[
 
 
 
-router = routers.DefaultRouter()
-router.register(r'doctor_api', ProfileViewSet)
-
-
-urlpatterns = router.urls

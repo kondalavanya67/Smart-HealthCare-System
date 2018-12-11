@@ -13,6 +13,14 @@ from myapp.models import Rmplist,Profile
 from shopping_cart.models import Order
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.db import connection,IntegrityError
+import random
+from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 
 
 def login_page(request):
@@ -22,9 +30,9 @@ def login_page(request):
 	}
 	if form.is_valid():
 		print(form.cleaned_data)
-		username6=form.cleaned_data.get("username6")
-		password6=form.cleaned_data.get("password6")
-		user=authenticate(request, username=username6, password=password6)
+		username=form.cleaned_data.get("username")
+		password=form.cleaned_data.get("password")
+		user=authenticate(request, username=username, password=password)
 		if user is not None:
 
 			print(user.is_authenticated)

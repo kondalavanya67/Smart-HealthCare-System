@@ -7,7 +7,7 @@
 	<title>{% block head_title %}E-Medics{% endblock head_title %}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+   <link rel="stylesheet" href="{% static  'css/main.css' %}">
 	<link rel="stylesheet" type="text/css" href='{% static "css/shoponlinecss.css" %}'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
@@ -38,40 +38,40 @@
 </head>
 <body>
 
-	<div class="block_container">
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<div class="container">
-			<a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
-			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a href='{% url "rmp:show_rmp_profile" %}' class="nav-link">Dashboard</a>
-						</li>
-					<li class="nav-item">
-						<a href="#" class="nav-link">Appointments</a>
-						</li>
-					<li class="nav-item">
-						<a href='{% url "booking:doctor_list" %}' class="nav-link">Book an Appointment</a>
-						</li>
-					<li class="nav-item">
-						<a href="#" class="nav-link">History</a>
-						</li>
-					{% if request.user %}
-					<li class="nav-item">
-						<a href='{% url "logout" %}' class="nav-link">Logout</a>
-						</li>
-					{% else %}
-					<li class="nav-item">
-						<a href='{% url "login_rmp_profile" %}' class="nav-link">Login</a>
-					</li>
-					{% endif %}
-				</ul>
-			</div>
-		</div>
-	</nav>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href='{% url "rmp:show_rmp_profile" %}' class="nav-link">Dashboard</a>
+            </li>
+          <li class="nav-item">
+            <a href='{% url "rmp_work_history:rmp_work_history" %}' class="nav-link">Appointments</a>
+            </li>
+          <li class="nav-item">
+            <a href='{% url "booking:doctor_list" %}' class="nav-link">Book an Appointment</a>
+            </li>
+          <li class="nav-item">
+            <a href='{% url "rmp_work_history:rmp_history" %}' class="nav-link">History</a>
+            </li>
+          <li class="nav-item">
+            <a href='{% url "shoppingPortalApp:main" %}' class="nav-link" >Shop Medicines</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href='{% url "logout" %}' class="nav-link">Logout</a>
+            </li>
+      
+          
+
+        </ul>
+      </div>
+    </div>
+  </nav>
 		 {% block content %}{% endblock content %}
 		
 
