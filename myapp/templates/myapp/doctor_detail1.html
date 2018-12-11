@@ -19,106 +19,108 @@
                 cursor: pointer;
             }
             .button:hover{
-                background-color: rgb(244, 173, 66);
+                background-color: #777777;
                 color: white;
             }
             td{
                 padding:15px 45px;
                 font-size: 17px;
             }
-            .heading_btn{
-                padding:15px 45px;
-                font-size: 20px;
-                cursor: pointer;
+            .bg{
+                height: 1000px;
+                min-width: 1200px;
+                left: -50px;
+                border-radius: 12px;
+                position: relative;
+                bottom: -100px;
+                background-color: rgba(124,135,140,0.33);
+                padding: 30px;
+                box-shadow: 0px 20px 80px 0px grey;
             }
-            .heading_btn:hover{
-                background-color: rgb(244, 173, 66);
+            image{
+                border-radius: 15px;
+            }
+            button{
+                border-radius: 15px;
+                width: 180px;
             }
 
         </style>
 
-
-        <div class="container" style="margin-top: 5%">
-            <div class="row">
-                <div class="col-md-4">
-                    <br>
-                    <div>
-                        <img src="/media/{{doctor.profile_photo}}" class="img-rounded" alt="DOCTOR" width="250" height="250" >
+        <h3><em style="font-size: 50px;">Personal Info</em></h3>
+        <div class="bg">
+            <div class="container" style="margin-top: 5%">
+                <div class="row">
+                    <div class="col-md-5">
+                        <br>
+                        <div class="image">
+                            <img src="/media/{{doctor.profile_photo}}" class="img-rounded" alt="DOCTOR" width="380" height="550" >
+                        </div>
                     </div>
+                    <div class="col-md-7">
+                        <div class="col-md-8" style='padding: 5px 15px'>
+                            <span style="font-size: 35px; ">Dr. {{doctor.first_name}} {{doctor.last_name}}</span>&nbsp&nbsp&nbsp
 
-                    <br>
+                        </div>
+                        <div style="margin-top: 7px;color: blue;font-size: 20px; padding: 1px 45px" >
+                            {{doctor.speciality}}
+                        </div>
+                        <br><br>
+                        <div class="btn-group btn-group-md" style='padding: 2px 15px'>
+                            <!-- <a href="#contact" class="button button3" role="button">Work History</a> -->
+                            <!-- <button class="button button3" >Show appointments</button>
+                            <button class="button button3" >Orders</button>
+                            <button class="button button3" >Patient Details</button> -->
+                            <button class="button"><a href='{{ doctor.get_absolute_url_upcoming_appointments}}'>Upcoming Appointments</a></button>
+                            <button class="button"><a href='{{ doctor.get_absolute_url_attended_appointments}}'>Attended Appointments</a></button>
+                            <button class="button"><a href='{{ doctor.get_absolute_url_slot}}'>Doctor Slots</a></button>
+                        </div>
 
-
-
-                </div>
-                <div class="col-md-8 col-sm-offset-1">
-                    <div class="col-xs-8 text-left" style='padding: 15px 45px'>
-                        <span style="font-size: 35px; ">Dr. {{doctor.first_name}} {{doctor.last_name}}</span>&nbsp&nbsp&nbsp
-
-                    </div>
-                    <div style="margin-top: 7px;color: blue;font-size: 20px; padding: 1px 45px" >
-                        {{speciality}}
-                    </div>
-
-                    <br><br>
-                    <div class="btn-group btn-group-md" style='padding: 2px 45px'>
-                        <!-- <a href="#contact" class="button button3" role="button">Work History</a> -->
-                        <!-- <button class="button button3" >Show appointments</button>
-                        <button class="button button3" >Orders</button>
-                        <button class="button button3" >Patient Details</button> -->
-                        <button class="button button3"><a href='{{ doctor.get_absolute_url_upcoming_appointments}}'>Show Upcoming Appointments</a></button>
-                        <button class="button button3"><a href='{{ doctor.get_absolute_url_attended_appointments}}'>Show Attended Appointments</a></button>
-                        <button class="button button3"><a href='{{ doctor.get_absolute_url_slot}}'>Show Doctor Slots</a></button>
-                    </div>
-
-                    <br><br>
-
-
-                    <div style='padding: 0px 45px'>
-                        <hr>
-                    </div>
-                    <br>
-                    <div style="padding: 5px 45px;font-size: 16px;opacity: 0.5;">
-                        BASIC INFORMATION
-                    </div><br>
-                    <div>
+                        <br>
+                        <div style='padding: 0px 45px'>
+                            <hr>
+                        </div>
+                        <br>
+                        <div style="padding: 5px 45px;font-size: 16px;opacity: 0.5;">
+                            BASIC INFORMATION
+                        </div><br>
+                        <div>
+                            <table>
+                                <tr>
+                                    <td>Date of Birth</td>
+                                    <td>{{doctor.dob}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>{{doctor.gender}}</td>
+                                </tr>
+                            </table>
+                        </div><br>
+                        <div style="padding: 15px 45px;font-size: 16px;opacity: 0.5;">
+                            <a name="contact"></a>
+                            CONTACT INFORMATION
+                        </div><br>
                         <table>
                             <tr>
-                                <td>Date of Birth</td>
-                                <td>{{doctor.dob}}</td>
+                                <td>Phone</td>
+                                <td>+91{{doctor.mobile_no}}</td>
                             </tr>
                             <tr>
-                                <td>Gender</td>
-                                <td>{{doctor.gender}}</td>
+                                <td>Locality</td>
+                                <td>{{doctor.locality}}</td>
+                            </tr>
+                            <tr>
+                                <td>Hospital</td>
+                                <td>{{doctor.hospital}}</td>
+                            </tr>
+                            <tr>
+                                <td>E-Mail</td>
+                                <td>{{doctor.email_id}}</td>
                             </tr>
                         </table>
-                    </div><br>
-                    <div style="padding: 15px 45px;font-size: 16px;opacity: 0.5;">
-                        <a name="contact"></a>
-                        CONTACT INFORMATION
-                    </div><br>
-                    <table>
-                        <tr>
-                            <td>Phone</td>
-                            <td>+91{{doctor.mobile_no}}</td>
-                        </tr>
-                        <tr>
-                            <td>Locality</td>
-                            <td>{{doctor.locality}}</td>
-                        </tr>
-                        <tr>
-                            <td>Hospital</td>
-                            <td>{{doctor.hospital}}</td>
-                        </tr>
-                        <tr>
-                            <td>E-Mail</td>
-                            <td>{{doctor.email_id}}</td>
-                        </tr>
-
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>
-
     </form>
 {% endblock content %}

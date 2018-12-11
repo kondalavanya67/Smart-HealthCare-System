@@ -1,6 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+
 from booking.models import AppointmentDetials,PaitentDetails
 from prescription.models import Prescription
 from .models import Post, Rmplist
@@ -9,11 +12,9 @@ from rmp.models import rmpContact
 from booking.models import AppointmentDetials
 # Create your views here.
 
-
+@login_required(login_url=reverse_lazy('login_admin'))
 def index(request):
 
-        all_data = Post.objects.all()
-        return render(request, 'myapp/index.html', {'all_data': all_data})
         doctors = Profile.objects.all()
         context = {
 
@@ -21,6 +22,7 @@ def index(request):
     	}
         return render(request, 'myapp/index.html',context=context)
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def doctor_detail(request, pk):
     instance = get_object_or_404(Profile, pk=pk)
     context = {
@@ -28,6 +30,7 @@ def doctor_detail(request, pk):
     }
     return render(request, 'myapp/doctor_detail1.html',context=context)
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def doctor_upcoming_appointments(request, pk):
 
     profile = get_object_or_404(Profile, pk=pk)
@@ -40,6 +43,7 @@ def doctor_upcoming_appointments(request, pk):
 
     return render(request,'myapp/upcoming_appointments.html',{'context':context,'appointments':appointments})
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def doctor_attended_appointments(request, pk):
 
     profile = get_object_or_404(Profile, pk=pk)
@@ -51,8 +55,8 @@ def doctor_attended_appointments(request, pk):
     #     context="Pending Appointments"
 
     return render(request,'myapp/attended_appointments.html',{'appointments':appointments})
-    
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def show_slots(request,pk):
 
     profile = get_object_or_404(Profile, pk=pk)
@@ -61,27 +65,7 @@ def show_slots(request,pk):
     dates=Slot.objects.filter(doctor=profile)
     return render(request,'myapp/slots.html',{'slots':dates})
 
-def fullviewdoc(request):
-    if (request.method == "POST"):
-        name = request.POST['doctor']
-        u = Post.objects.get(doctor_name=Profile.objects.get(user=User.objects.get(username=name)))
-        return render(request,'myapp/fullviewdoc.html',{
-            'profile_photo':u.doctor_name.profile_photo,
-            'dob':u.doctor_name.dob,
-            'first_name': u.doctor_name.first_name,
-            'last_name' : u.doctor_name.last_name,
-            'gender' : u.doctor_name.gender,
-            'email_id': u.doctor_name.email_id,
-            'speciality': u.doctor_name.speciality,
-            'qualification': u.doctor_name.qualification,
-            'mobile_no': u.doctor_name.mobile_no,
-            'locality': u.doctor_name.locality,
-            'hospital': u.doctor_name.hospital,
-        })
-    else:
-        all_data = Post.objects.all()
-        return render(request, 'myapp/fullviewdoc.html', {'all_data': all_data})
-
+@login_required(login_url=reverse_lazy('login_admin'))
 def rmpdetails(request):
     doctors = rmpContact.objects.all()
     context = {
@@ -90,7 +74,7 @@ def rmpdetails(request):
     }
     return render(request, 'myapp/rmplist.html',context=context)
 
-
+@login_required(login_url=reverse_lazy('login_admin'))
 def fullviewrmp(request, pk):
     instance = get_object_or_404(rmpContact, pk=pk)
     context = {
@@ -98,14 +82,15 @@ def fullviewrmp(request, pk):
     }
     return render(request, 'myapp/fullviewrmp.html',context=context)
 
-
+@login_required(login_url=reverse_lazy('login_admin'))
 def adminpage(request):
     return render(request, 'myapp/adminpage.html')
 
-
+@login_required(login_url=reverse_lazy('login_admin'))
 def payment(request):
     return render(request, 'myapp/payment.html')
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def appointment(request):
         user = request.user
         profile = Profile.objects.get(user=user)
@@ -122,25 +107,7 @@ def appointment(request):
                       {'context': context, 'appointments': appointments, 'first_name': first_name,
                        'last_name': last_name})
 
-
-def fullappointment(request):
-    if (request.method == "POST"):
-        name = request.POST['booking']
-        u = appointment.objects.get(patient_name=PaitentDetails.objects.get(user=User.objects.get(username=name)))
-        return render(request, 'myapp/fullappointment.html', {
-            'first_name': u.patient_name.first_name,
-            'last_name': u.patient_name.last_name,
-            'age': u.patient_name.age,
-            'gender': u.patient_name.gender,
-            'mobile_no':u.patient_name.mobile_no,
-            'symptoms':u.patient_name.symptoms,
-            'description_of_illness':u.patient_name.description_of_illness,
-
-        })
-    else:
-        all_data = Post.objects.all()
-        return render(request, 'myapp/fullappointment.html', {'all_data': all_data})
-
+@login_required(login_url=reverse_lazy('login_admin'))
 def doc_work_history(request):
     user = request.user
     profile = Profile.objects.get(user=user)
@@ -155,6 +122,43 @@ def doc_work_history(request):
     return render(request, 'myapp/fullappointment.html',
                   {'prescriptions': prescriptions, 'first_name': first_name, 'last_name': last_name})
 
+@login_required(login_url=reverse_lazy('login_admin'))
+def rmpdetail(request):
+    instance = get_object_or_404(rmpContact)
+    context = {
+        "profile": instance,
+    }
+    return render(request, 'myapp/rmp_detail.html', context=context)
 
+@login_required(login_url=reverse_lazy('login_admin'))
+def rmp_upcoming_appointments(request, pk):
+    profile = get_object_or_404(rmpContact, pk=pk)
+    appointments = AppointmentDetials.objects.filter(user=profile.user).filter(is_attended=False)
+    if not appointments:
+        context = "Hurray No Pending Appointments"
+    else:
+        context = "Pending Appointments"
+
+    return render(request,'myapp/rmp_upcoming_appointments.html',{'context':context,'appointments':appointments})
+
+@login_required(login_url=reverse_lazy('login_admin'))
+def rmp_attended_appointments(request, pk):
+    profile = get_object_or_404(rmpContact, pk=pk)
+    appointments = AppointmentDetials.objects.filter(user=profile.user).filter(is_attended=True)
+    return render(request,'myapp/rmp_attended_appointments.html',{'appointments':appointments})
+
+@login_required(login_url=reverse_lazy('login_admin'))
+def patientdetails(request, pk):
+    instance = get_object_or_404(rmpContact, pk=pk)
+    paitents = PaitentDetails.objects.filter(user=instance.user)
+    context = {
+        "paitents": paitents,
+        "instance":instance,
+    }
+    return render(request,'myapp/details.html',context=context)
+
+@login_required(login_url=reverse_lazy('login_admin'))
 def feedback(request):
     return render(request, 'myapp/feedback.html')
+
+
