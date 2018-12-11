@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'myapp.apps.MyappConfig',
+    'disease.apps.DiseaseConfig',
     'users.apps.UsersConfig',
     'PIL',
     'rmp_work_history',

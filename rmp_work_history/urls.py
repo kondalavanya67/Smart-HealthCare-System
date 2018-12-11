@@ -9,4 +9,4 @@ urlpatterns=[
 path('upcoming/',views.index, name='rmp_work_history'),
 path('history',views.history, name='rmp_history'),
 
- ];
+ ]

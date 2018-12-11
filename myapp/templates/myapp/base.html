@@ -29,16 +29,13 @@
                         <a href='{% url "myapp:myapp-rmpdetails" %}' class="nav-link">RMP DOCTOR</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp:myapp-appointment" %}' class="nav-link">Appointments</a>
-                    </li>
-                    <li class="nav-item">
                         <a href='{% url "myapp:myapp-payment" %}' class="nav-link">Payments</a>
                     </li>
                     <li class="nav-item">
                         <a href='{% url "myapp:myapp-feedback" %}' class="nav-link">Feedbacks</a>
                     </li>
                     <li class="nav-item">
-                        <a href='{% url "myapp:logout_admin" %}' class="nav-link">Logout</a>
+                        <a href='{% url "logout" %}' class="nav-link">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -47,19 +44,21 @@
 </header>
 <main role="main" class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">
                         {{ message }}
                     </div>
                 {% endfor %}
-            {% endif%}
+            {% endif %}
             {% block content %}{% endblock %}
         </div>
     </div>
 </main>
-<br><br><br>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+
  <footer id="main-footer" class="text-center p-4" style="background-color: black; color: #fff;">
     <div class="container">
       <div class="row">

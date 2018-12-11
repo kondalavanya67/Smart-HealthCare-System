@@ -1,0 +1,22 @@
+{% extends "myapp/base.html" %}
+{% block content %}
+    <form>
+        {% csrf_token %}
+            <ul>
+                <li>Doctor Name   :{{ first_name }} {{ last_name }}</li>
+                <li>Age           :{{ age }}</li>
+                <li>Gender        :{{ gender }}</li>
+                <li>Mobile        :{{ mobile_no }}</li>
+                <li>Symptoms      :{{ symptoms }}</li>
+                <li>Description of illness:{{ description_of_illness }}</li>
+            </ul>
+            </form>
+{% endblock content %}
+
+
+
+
+
+
+
+

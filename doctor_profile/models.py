@@ -34,6 +34,7 @@ class Profile(models.Model):
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True,blank=True)
+    verified=models.BooleanField(default=True)
     profile_photo=models.ImageField(upload_to='media_/profile_pic/')
     first_name=models.CharField(max_length=250)
     last_name=models.CharField(max_length=500)
