@@ -3,10 +3,23 @@
 {% block head_title %}{{searched_medicine.name}} | {{ block.super }}{% endblock head_title %}
 
 {% block content %}
-<div class="container" style="margin-top: 5%;vertical-align: middle;">
+<div class="container-fluid">
 	<div class="row">
-		<a href="{% url 'shoppingPortalApp:main'%}" class="back-main" style="text-decoration: none;color: black"><i class="fa fa-arrow-left" style="font-size:35px;"></i></a>
+		<div class="col-md-8 offset-1">
+			<a href="{% url 'shoppingPortalApp:main'%}" class="back-main" style="text-decoration: none;color: black"><i class="fa fa-arrow-left" style="font-size:35px;"></i></a>
+		</div>
+		<div class="col-md-3">
+      <a href="{% url 'shopping_cart:order_summary' %}" class="notification" style="text-decoration: none;">
+
+		<span>View Cart</span>
+		<span class="badge">{{ current_order.get_no_of_cart_items }}</span>
+
+      </a>   
+		</div>
 	</div>
+</div>
+<div class="container" style="margin-top: 5%;vertical-align: middle;">
+
 	<div class="row">
 		<div class="col-md-4" style="text-align: center;">
 			<img src="{{ searched_medicine.image.url }}" class="medicine_image">
@@ -31,9 +44,9 @@
 			</a>
 			{% endif %}
 				<br><br>
-			<a href="{% url 'shopping_cart:order_summary'%}" style="color: white;">
+<!-- 			<a href="{% url 'shopping_cart:order_summary'%}" style="color: white;">
 				<button class="button"><span>Go To Cart</span></button>
-			</a>
+			</a> -->
 		</div>
 		<div class="col-md-8">
 			<h1>{{ searched_medicine.name }}</h1><hr><br>
@@ -52,7 +65,7 @@
 		</div>
 	</div>	
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock content %}
 
 

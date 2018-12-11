@@ -62,17 +62,18 @@
         {% csrf_token %}
         <div style="text-align: center;">
           <div class="autocomplete" style="width: 30%;">
-            <input type="text" name="query" id="query" placeholder="Search For A Medicine Here...">
+            <input type="text" name="query" id="query" class="query" placeholder="Search For A Medicine Here...">
           </div>
-          <input type="submit" id="search-submit" value="Search"> 
+          <input type="submit" id="search-submit" class="search_bt" value="Search"> 
         </div>
       </form>
     </div>
     {% if request.user.is_authenticated %}
     <div class="col-md-3" style="text-align: center;">
-      <a href="{% url 'shopping_cart:order_summary' %}" style="text-decoration: none;">
-        <span class="button-cart">Click here to view cart</span>
-      </a>      
+      <a href="{% url 'shopping_cart:order_summary' %}" class="notification" style="text-decoration: none;">
+        <span>View Cart</span>
+        <span class="badge">{{ current_order.get_no_of_cart_items }}</span>
+      </a>   
     </div>
     {% else %}
     <div class="col-md-3" style="text-align: center;">
@@ -118,14 +119,14 @@
 		</div> -->
 		{% endfor %}
 	</div>
-</div><br><br>  
+</div><br><br> <br><br> <br><br>  
 <!-- 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-sm-6" style="background-color: green;text-align: center;">
 				<a href="{% url 'shoppingPortalApp:add_medicine' %}" class="bt-add-medicine" style="text-decoration: none;" ><i class="fa fa-plus"></i> Add Medicine</a>
 			</div>
 			<div class="col-md-6 col-sm-6"  style="background-color: red;text-align: center;">
-				<a href="{% url 'shoppingPortalApp:del_medicine' %}" class="bt-del-medicine" style="text-decoration: none;" ><i class="fa fa-minus"></i> Delete Medicine</a>
+				<a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" class="bt-del-medicine" style="text-decoration: none;" ><i class="fa fa-minus"></i> Delete Medicine</a>
 			</div>
 		</div>
 	</div> -->

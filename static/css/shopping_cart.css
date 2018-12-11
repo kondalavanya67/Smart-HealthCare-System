@@ -61,6 +61,7 @@
 	    color: white;
 	    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
 	}
+
 	.button4 {
 	    background-color: #e20000;
 	    width: 30%;
@@ -69,6 +70,31 @@
 	}
 
 	.button4:hover {
+		word-spacing: 2px;
+	    color: white;
+	    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+	}
+
+	.button5 {
+	    background-color: #00e600;
+	    width: 50%;
+	    color: white; 
+	    border: 2px solid #00e600;
+	}
+
+	.button5:hover {
+		word-spacing: 2px;
+	    color: white;
+	    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+	}
+	.button6 {
+	    background-color: #3c3e42;
+	    width: 50%;
+	    color: white; 
+	    border: 2px solid #3c3e42;
+	}
+
+	.button6:hover {
 		word-spacing: 2px;
 	    color: white;
 	    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
@@ -110,9 +136,10 @@
 }
 
 #footer2 {
+
   background: #000;
   color: #fff;
-  /*position: fixed;*/
+  position: fixed;
   height: 90px;
   bottom: 0px;
   left: 0px;
@@ -120,4 +147,54 @@
   margin-bottom: 0px;
 }
 
+
+
+input[type=text] {
+	border:none;
+	border-bottom: 1px solid black;
+ 	width: 100%;
+ 	padding: 10px;
+}
+input[type=number] {
+	border:none;
+	border-bottom: 1px solid black;
+ 	width: 100%;
+ 	padding: 10px;
+}
+
+input[type=text]:focus {
+	outline: none;
+	border-bottom: 1px solid #002df9;
+}
+
+input[type=number]:focus {
+	outline: none;
+	border-bottom: 1px solid #002df9;
+}
+
+.button11 {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 7px 25px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.3s; /* Safari */
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.button12 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+.button12:hover {
+  background-color: #4CAF50;
+  color: white;
+}
 
