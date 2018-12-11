@@ -10,21 +10,10 @@ from django.utils.encoding import force_bytes, force_text
 from .forms import  LoginForm, RegisterForm,Add_Rmp_Profile
 from .models import rmpContact
 from myapp.models import Rmplist,Profile
-<<<<<<< HEAD
 from shopping_cart.models import Order
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 
-=======
-from django.contrib import messages
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.template.loader import render_to_string
-from django.core.mail import send_mail
-from django.db import connection,IntegrityError
-import random
-from django.urls import reverse_lazy
-from django.contrib.auth.models import User
->>>>>>> 63bdbf636ac566fb6d01a6ee73d5368c9edfc3ef
 
 def login_page(request):
 	form=LoginForm(request.POST or None)
@@ -162,4 +151,3 @@ def myOrders(request):
 		'my_orders' : my_orders,
 	}
 	return render(request,'rmp/show_rmp_profile.html',context)
-

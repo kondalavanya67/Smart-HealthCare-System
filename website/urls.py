@@ -20,6 +20,7 @@ from users import views as user_views
 urlpatterns = [
 
     path('', home, name='home'),
+    path('admin/',admin.site.urls),
     path('logout/', log_out, name='logout'),
     path('contact_page/', contact_page , name='contact_page'),
     path('contact/', contact , name='contact'),
@@ -54,8 +55,12 @@ urlpatterns = [
         auth_views.PasswordResetCompleteView.as_view(),
         name='password_reset_complete'),
 
+<<<<<<< HEAD
     path('search/', include('search.urls')),
     path('restframework/', include('restframework.urls')),
+=======
+   
+>>>>>>> 4bfaaa03ba4c18689d6a17676e9e405ea7c5a376
 
 
 
@@ -73,7 +78,10 @@ urlpatterns = [
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),
    # path('activate/<uidb64>/<token>', activate_account, name='activate'),
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
+<<<<<<< HEAD
     path('admin/', admin.site.urls),
+=======
+>>>>>>> 4bfaaa03ba4c18689d6a17676e9e405ea7c5a376
     path('', include('myapp.urls'), name='myapp'),
     path('users/',include('users.urls'), name='users'),
     path('rmp/', include('rmp.urls')),

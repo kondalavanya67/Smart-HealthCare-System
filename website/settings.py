@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rmp',
-    'doctor',
     'shoppingPortalApp',
     'doctor_home',
     'booking',

@@ -1,17 +1,27 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import medicine
 from django.http import HttpResponse
-
+from django.urls import reverse,reverse_lazy
 from .forms import *
 from shopping_cart.models import Order, OrderItem
 from rmp.models import rmpContact
 # Create your views here.
 
-@login_required(login_url='/rmp/login/')
+
+def get_user_pending_order(request):
+    user_profile = get_object_or_404(rmpContact, user=request.user)
+    order = Order.objects.filter(owner=user_profile, is_ordered=False)
+    if order.exists():
+        return order[0]
+    return 0
+
+
+@login_required(login_url=reverse_lazy('rmp:login_rmp_profile'))
 def index(request):
 	medicines = medicine.objects.all()
+	existing_order = get_user_pending_order(request)
 	if request.user:
 		login_status = True
 	else:
@@ -20,7 +30,7 @@ def index(request):
 	content = {
 	"all_medicines" : medicines,
 	"login_status"  : login_status,
-
+	"current_order" : existing_order,
 	}
 	return render(request, 'shoppingPortalApp/index_list.html',content)
 
@@ -29,14 +39,17 @@ def showMedicine_name(request, name):
     user_profile = get_object_or_404(rmpContact, user=request.user)
     order = Order.objects.filter(owner=user_profile, is_ordered=False)
     item_status = False
+    existing_order = get_user_pending_order(request)
     if order:
     	order_temp = Order.objects.filter(owner=user_profile, is_ordered=False).first()
     	for item in order_temp.items.all():
     		if(instance.name==item.product.name):
     			item_status = True
+    print()
     context_data = {
         "searched_medicine" : instance,
         "status" : item_status,
+        'current_order':existing_order,
     }
     return render(request, 'shoppingPortalApp/result.html',context_data)
 
@@ -66,36 +79,64 @@ def result(request):
 	return render(request, 'shoppingPortalApp/after_search.html',content)
 
 def index_add(request):
-    form = add_medicine_Form(request.POST or None,request.FILES or None)
-    if form.is_valid():
-        instance = form.save(commit= False)
-        instance.save()
-        messages.success(request, "Succesfully Added")
-    else:
-    	messages.error(request, "Not Succesfully Added")
-    context = {
-        "form" : form,
-        "page_name": "Add",
-        "success" : "Succesfully Added",
-        "failure" : "Not Succesfully Added"
-    }
-    return render(request,'shoppingPortalApp/index_add.html',context)
+	if request.method=="POST":
+		form = add_medicine_Form(request.POST or None,request.FILES or None)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.save()
+			messages.success(request, "Succesfully Added")
+	else:
+		form = add_medicine_Form(request.POST or None,request.FILES or None)
+	context = {
+	"form" : form,
+	}
+	return render(request,'shoppingPortalApp/index_add.html',context)
+
+    
 
 def added(request):
 	context = {}
 	return render(request,'shoppingPortalApp/added.html',context)
 
 
-def index_delete(request):
+def index_delete_edit(request):
 	form = del_medicine_Form(request.POST or None)
-	if form.is_valid():
-		to_del = request.POST['name']	
-		instance = get_object_or_404(medicine, name=to_del)
-		instance.delete()
-		messages.success(request, "Succesfully Deleted")
+	medicines = medicine.objects.all()
+	to_del = None
+	if request.method == 'POST':
+		if form.is_valid():
+			to_del = form.cleaned_data['name_to_del']
+	if to_del:
+		medicines = medicine.objects.filter(name=to_del)
 	else:
-		messages.error(request, "No Such Medicine")
+		medicines = medicine.objects.all()
 	context = {
         "form" : form,
+        "medicines" : medicines,
     }
 	return render(request, 'shoppingPortalApp/index_del.html',context)
+
+
+def delete(request,med_id):
+	instance = get_object_or_404(medicine,id=med_id)
+	instance.delete()
+	return redirect(reverse('shoppingPortalApp:del_edit_medicine'))
+
+def update_medicine(request,med_id):
+	instance = get_object_or_404(medicine,id=med_id)
+	form = update_medicine_Form(request.POST or None)
+	medicines = medicine.objects.all()
+	if request.method == 'POST':
+		if form.is_valid():
+			instance.name  = form.cleaned_data['name']
+			instance.about = form.cleaned_data['about']
+			instance.usage = form.cleaned_data['usage']
+			instance.price = form.cleaned_data['price']
+			instance.manufacturedBy = form.cleaned_data['manufacturedBy']
+			instance.save()
+	context = {
+        "form" : form,
+        "instance" : instance,
+        "medicines" : medicines,
+    }
+	return render(request, 'shoppingPortalApp/update_medicine.html',context)

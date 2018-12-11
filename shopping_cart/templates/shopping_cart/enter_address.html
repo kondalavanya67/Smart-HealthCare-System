@@ -1,0 +1,96 @@
+{% extends "shopping_cart/base.html" %}
+{% load widget_tweaks %}
+
+{% block enter_address %}
+{{ block.super }}
+
+
+<br>
+<div class="container">
+	<form role="form" action="" method="POST">
+	{% csrf_token %}
+		<div class="row">
+			<div class="col-md-8">
+				<h1>Enter Details of Patient</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				Patient Name<br>
+				{{ form.patient_name }}<!-- <input type="text" name="patient_name"> -->
+			</div>
+			<div class="col-md-4">
+				Phone Number<br>
+				{{ form.patient_phno }}<!-- <input type="text" name="patient_phno"> -->
+			</div>
+		</div>
+
+		<br><br><br>
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Address</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				{{ form.deliver_addr_houseno }}<br>
+				House No.
+			</div>
+			<div class="col-md-4">
+				{{ form.deliver_addr_street }}<br>
+				Street/Area
+			</div>
+		</div>
+
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				{{ form.deliver_addr_district }}<br>
+				District
+			</div>
+			<div class="col-md-4">
+				{{ form.deliver_addr_pincode }}<br>
+				Pincode
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				{{ form.deliver_addr_state }}
+				<br>State
+			</div>
+			<div class="col-md-4">
+				
+				{{ form.deliver_addr_country }}
+				Country
+			</div>
+		</div><br>
+		<div class="row">
+			<div class="col-md-8">
+				Payment Method : {{ form.payment_method }}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-8 submit_form">
+				<input type="submit" class="button11 button12" value="Proceed To Pay">
+			</div>
+		</div>
+		<br><br><br>
+	</form>
+</div>
+
+
+{% endblock enter_address %}
+
+	
