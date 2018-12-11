@@ -27,6 +27,7 @@ urlpatterns = [
     path('about/', about , name='about'),
     path('how_we_work/', how_we_work , name='how_we_work'),
     url(r'^doctor_home/$',doctor_home, name='doctor_home'),
+    # url(r'^doctor_home/$',doctor_verification_required, name='doctor_verification_required'),
     url(r'^doctor/', include(("doctor_home.url","doctor"), namespace= 'doctor')),
     #(r'^$',home_page , name='home_page'),
     url(r'^login/$', login_page, name='login' ),
