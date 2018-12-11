@@ -19,8 +19,9 @@ class rmpContact(models.Model):
 
     )
 
- 
+   
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True,blank=True)
+    profile_photo=models.ImageField(upload_to='media_/profile_pic/')
     first_name=models.CharField(max_length=250)
     last_name=models.CharField(max_length=500)
     gender=models.CharField(max_length=10, choices=GENDER_CHOICES)

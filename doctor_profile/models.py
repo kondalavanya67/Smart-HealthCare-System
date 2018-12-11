@@ -54,8 +54,10 @@ class Profile(models.Model):
 
     def get_absolute_url_upcoming_appointments(self):
         return reverse('myapp:doctor_upcoming_appointments',kwargs={'pk':self.pk})
+
     def get_absolute_url_attended_appointments(self):
         return reverse('myapp:doctor_attended_appointments',kwargs={'pk':self.pk})
+        
     def get_absolute_url_slot(self):
         return reverse('myapp:doctor_slot',kwargs={'pk':self.pk})
 
@@ -65,9 +67,7 @@ class Profile(models.Model):
     def get_absolute_url_booking(self):
         return reverse('booking:enter_paitent_details',kwargs={'pk':self.pk})
 
-# def profile_pre_save_reciever(sender,instance,*args,**kwargs):
-#     if len(instance.mobile_no) != 10:
-#         raise
+
 
 
 class BookingDate(models.Model):
