@@ -149,6 +149,20 @@
 
 
 
+#footer3 {
+
+  background: #000;
+  color: #fff;
+  position: fixed;
+  height: 70px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
+
+
+
 input[type=text] {
 	border:none;
 	border-bottom: 1px solid black;
