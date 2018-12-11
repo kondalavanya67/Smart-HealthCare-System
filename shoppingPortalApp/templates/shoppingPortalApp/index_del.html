@@ -8,19 +8,27 @@
 <div class="container" style="text-align: center;">
 	<div class="row">
 		<div class="col-md-12" style="font-size: 50px;">
-			Edit/Delete the Medicine Here
+			Edit / Delete the Medicine Here
 		</div>
+	</div><br>
+	<div class="row">
 		<div class="col-md-12">
 
 				<div class="container" style="text-align: center;">
 					<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-11">
 						<form method="POST" action="">
 							{% csrf_token %}
-							{{ form.name_to_del | attr:"placeholder:Enter Medicine Name.."}}
+							<div class="col-md-6">
+							{{ form.name_to_del | add_class:"md-del-input" | attr:"placeholder:Search Medicine Name..."}}
+							</div>
+							<div class="col-md-2">
+								<input type="submit" class="del_submit" value="Search">
+							</div>
+							<div class="col-md-2">
+								<button class="del_submit"><a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" style="text-decoration:none;color: white;">Show all Medicines</a></button>
+							</div>
 
-							<input type="submit" value="Search">
-							<button><a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" style="text-decoration:none;">Show all Medicines</a></button>
 						</form>
 					</div>
 					</div>
@@ -41,16 +49,20 @@
 		<tr>
 			<td>{{ medicine.name }}</td>
 			<td>
-				<a href="{% url 'shoppingPortalApp:update_medicine' medicine.id %}">Edit</a>
+				<a href="{% url 'shoppingPortalApp:update_medicine' medicine.id %}">
+					<i class="fa fa-edit" id="edit-icon" style="font-size:25px;"></i>
+				</a>
 			</td>
 			<td>
-				<a href="{% url 'shoppingPortalApp:delete' medicine.id %}">Delete</a>
+				<a href="{% url 'shoppingPortalApp:delete' medicine.id %}">
+					<i class="fa fa-trash-o" style="font-size:25px"></i>
+				</a>
 			</td>
 		</tr>
 		{% endfor %}
 	</table>
 </div>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 {% endblock content %}
 

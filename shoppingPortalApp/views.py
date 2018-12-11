@@ -84,7 +84,8 @@ def index_add(request):
 		if form.is_valid():
 			instance = form.save(commit=False)
 			instance.save()
-			messages.success(request, "Succesfully Added")
+			return redirect(reverse('shoppingPortalApp:successful_add',kwargs={'name':"added",}))
+			# messages.success(request, "Succesfully Added")
 	else:
 		form = add_medicine_Form(request.POST or None,request.FILES or None)
 	context = {
@@ -94,8 +95,8 @@ def index_add(request):
 
     
 
-def added(request):
-	context = {}
+def added(request,name):
+	context = {'action':name,}
 	return render(request,'shoppingPortalApp/added.html',context)
 
 
@@ -103,6 +104,7 @@ def index_delete_edit(request):
 	form = del_medicine_Form(request.POST or None)
 	medicines = medicine.objects.all()
 	to_del = None
+	print("hellohello")
 	if request.method == 'POST':
 		if form.is_valid():
 			to_del = form.cleaned_data['name_to_del']
@@ -123,20 +125,9 @@ def delete(request,med_id):
 	return redirect(reverse('shoppingPortalApp:del_edit_medicine'))
 
 def update_medicine(request,med_id):
-	instance = get_object_or_404(medicine,id=med_id)
-	form = update_medicine_Form(request.POST or None)
-	medicines = medicine.objects.all()
-	if request.method == 'POST':
-		if form.is_valid():
-			instance.name  = form.cleaned_data['name']
-			instance.about = form.cleaned_data['about']
-			instance.usage = form.cleaned_data['usage']
-			instance.price = form.cleaned_data['price']
-			instance.manufacturedBy = form.cleaned_data['manufacturedBy']
-			instance.save()
-	context = {
-        "form" : form,
-        "instance" : instance,
-        "medicines" : medicines,
-    }
-	return render(request, 'shoppingPortalApp/update_medicine.html',context)
+    instance = medicine.objects.get(id=med_id)
+    form=Modify_Medicine_Form(request.POST or None, instance=instance)
+    if form.is_valid():
+            form.save()
+            return redirect(reverse('shoppingPortalApp:successful_add', kwargs={'name':"edited",}))
+    return render(request,'shoppingPortalApp/update_medicine.html',{'form':form})

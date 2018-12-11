@@ -24,4 +24,8 @@ class update_medicine_Form(forms.Form):
     manufacturedBy = forms.CharField(max_length = 120)
     price = forms.FloatField()
             
+class Modify_Medicine_Form(forms.ModelForm):
+    class Meta:
+        model = medicine
+        exclude=('image','updated',)
         
