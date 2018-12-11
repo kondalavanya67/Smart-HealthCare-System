@@ -124,12 +124,12 @@ def make_profile(request):
 			profile=form.save(commit=False)
 			profile.user=user
 			profile.save()
-			new = rmpContact.objects.last()
-			Rmplist.objects.create(rmp_list=new)
-		return redirect('/rmp/show_rmp_profile/')
+			# new = rmpContact.objects.last()
+			# Rmplist.objects.create(rmp_list=new)
+			return redirect('/rmp/show_rmp_profile/')
 	else:
 		form=Add_Rmp_Profile(initial={'user':user,'email_id':user.email})
-		return render(request,'rmp/make_rmp_profile.html',{'form':form})
+	return render(request,'rmp/make_rmp_profile.html',{'form':form})
 
 @login_required(login_url=reverse_lazy('rmp:login_rmp_profile'))
 def modify_profile(request):

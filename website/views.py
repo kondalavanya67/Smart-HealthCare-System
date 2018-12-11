@@ -20,7 +20,7 @@ from django.db import connection,IntegrityError
 import random
 from django.contrib.auth.models import User
 from doctor_profile.views import Profile
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 
 
@@ -39,12 +39,19 @@ def doctor_home(request):
 
 	context={
 
-	   "premium_content":"Hello u r logged out",
-	   "profile":profile
+		"premium_content":"Hello u r logged out",
+		"profile":profile
 	}
 	if request.user.is_authenticated:
 		context["premium_content"]="you are logged in"
-	return render(request, "doctor_homepage.html", context=context)
+	if(profile.verified==True):
+		print('&&')
+		return render(request,'doctor_homepage.html',context)
+	else:
+		print('%%')
+		return redirect(reverse('doctor_profile:verification'))
+
+	# return render(request, "doctor_homepage.html", context=context)
 
 
 def about(request):

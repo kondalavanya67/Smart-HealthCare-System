@@ -61,6 +61,8 @@ class Profile(models.Model):
         
     def get_absolute_url_slot(self):
         return reverse('myapp:doctor_slot',kwargs={'pk':self.pk})
+    def get_absolute_url_verify(self):
+        return reverse('myapp:verify',kwargs={'pk':self.pk})
 
     def __str__(self):
         return str(self.id)

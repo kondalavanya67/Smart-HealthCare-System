@@ -16,7 +16,9 @@ from django.utils.decorators import method_decorator
 from rest_framework import viewsets
 from .serializers import ProfileSerializer
 
-
+# Create your views here.
+def verification(request):
+    return render(request,'verification.html')
 def index(request):
 
     #print(user)
@@ -159,8 +161,7 @@ def Show_Profile(request):
             return render(request,'show_profile.html',context)
         else:
             print('%%')
-            return render(request, "verification.html", {})
-
+            return redirect(reverse('doctor_profile:verification'))
 
 
 

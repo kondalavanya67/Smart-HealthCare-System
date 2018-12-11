@@ -6,7 +6,7 @@
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
-      <a href="index.html" class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
+      <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,7 +29,7 @@
             <a href='{% url "logout" %}' class="nav-link">Logout</a>
           </li>
           {% else %}
-          
+
           <li class="nav-item">
             <a href='{% url "login" %}' class="nav-link">Login</a>
           </li>
@@ -74,12 +74,12 @@
               <p>+91 0000 00 0000</p>
               <p>You can also contact us on facebook. Please click on message us button below to message us.</p>
 
-<div class="fb-messengermessageus" 
-  messenger_app_id="323145528483418" 
+<div class="fb-messengermessageus"
+  messenger_app_id="323145528483418"
   page_id="255118918510880"
   color="white"
   size="large" >
-</div>  
+</div>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
-      <a href="index.html" class="navbar-brand"><b></b>SMART HEALTHCARE SYSTEM</b></a>
+      <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,7 +34,7 @@
             <a href='{% url "logout" %}' class="nav-link">Logout</a>
           </li>
           {% else %}
-          
+
           <li class="nav-item">
             <a href='{% url "login" %}' class="nav-link">Login</a>
           </li>
@@ -70,7 +70,7 @@
                         </div>
                     {% endfor %}
                 {% endif %}
-                
+
   {{ form.username | add_class:"form-control" | attr:"placeholder:Username"  }}<br>
   {{ form.email | add_class:"form-control" | attr:"placeholder:email" }}<br>
   {{ form.password | add_class:"form-control" | attr:"placeholder:password"  }}<br>

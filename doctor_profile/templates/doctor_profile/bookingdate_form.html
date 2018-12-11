@@ -40,10 +40,10 @@ button:hover, a:hover {
 
 
 {% load static %}
--- NAV BAR -->
+ <!-- NAV BAR  -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
-        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+        <a href='{% url "doctor_home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -108,28 +108,6 @@ button:hover, a:hover {
   </nav>
 
   <div class="container-fluid" style="background-image:url({% static 'img/dates.jpg' %});background-repeat; background-size:cover;height:530px">
-
-    <!-- <div class="row ">
-      <div class="col-sm-6 col-md-6 ">
-        <div class="panel-body ">
-          <form class="form-horizonatal" action="" method="post">
-            {% csrf_token %}
-            {% include 'prescription/prescription-template.html' %}
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Submit </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> -->
-
-
-
-
-
-
 
     <div class="card">
       <form class="form-horizonatal" action="" method="post">
