@@ -28,6 +28,7 @@ class bank_customer(models.Model):
 
 class OnlinePayment(models.Model):
 	transaction_id = models.CharField(max_length=20)
+	amount_paid = models.IntegerField()
 	customer = models.ForeignKey(bank_customer, on_delete=models.SET_NULL, null=True)
 
 	def __str__(self):

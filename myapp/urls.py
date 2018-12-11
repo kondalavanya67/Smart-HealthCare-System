@@ -27,6 +27,6 @@ urlpatterns = [
     path('admin1/s/<pk>/',views.doctor_verify_confirmation,name='verify'),
 
     path('admin1/rmp_appointments_past/<pk>/',views.rmp_appointments_past, name='rmp_appointments_past'),
-
+    path('admin1/online-shopping-history/',views.shop_history, name='shop_history'),
     url('',include('users.urls')),
 ]

@@ -29,14 +29,11 @@ def add_to_cart(request, item_id):
 	order_item, status = OrderItem.objects.get_or_create(product=product)
 	user_order, status = Order.objects.get_or_create(owner=user_profile,is_ordered=False)
 	order_item.quantity = 1
+	order_item.save()
 	user_order.items.add(order_item)
 	if status:
 		user_order.ref_code = generate_order_id()
 		user_order.save()
-	for item in user_order.items.all():
-		item.quantity = 1
-		item.save()
-	# messages.info(request, "item added to cart")
 	return redirect(reverse('shoppingPortalApp:medicine', kwargs={'name':product.name}))
 
 def delete_from_cart(request, item_id):

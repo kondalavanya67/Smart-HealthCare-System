@@ -10,6 +10,8 @@ from .models import Post, Rmplist
 from doctor_profile.models import Profile,Slot
 from rmp.models import rmpContact
 from booking.models import AppointmentDetials
+from shopping_cart.models import Order
+from payment.models import OnlinePayment
 # Create your views here.
 
 @login_required(login_url=reverse_lazy('login_admin'))
@@ -74,11 +76,6 @@ def show_slots(request,pk):
     dates=Slot.objects.filter(doctor=profile)
     return render(request,'myapp/slots.html',{'slots':dates})
 
-# def a(request,pk):
-#     if(pk):
-#         print('ioioioi')
-#     return HttpResponse('ok')
-
 def doctor_verify_confirmation(request,pk):
 
     print('**')
@@ -110,9 +107,7 @@ def fullviewrmp(request, pk):
 def adminpage(request):
     return render(request, 'myapp/adminpage.html')
 
-@login_required(login_url=reverse_lazy('login_admin'))
-def payment(request):
-    return render(request, 'myapp/payment.html')
+
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def appointment(request):
@@ -193,3 +188,12 @@ def rmp_appointments_past(request,pk):
     }
 
     return render(request,'myapp/rmp_appointments_past.html',context=context)
+
+def shop_history(request):
+    orders = Order.objects.all()
+    return render(request,'myapp/total_order.html',{'orders':orders,})
+
+@login_required(login_url=reverse_lazy('login_admin'))
+def payment(request):
+    payment_history = OnlinePayment.objects.all()
+    return render(request, 'myapp/payment.html',{'payments' : payment_history,})

@@ -312,6 +312,41 @@
   box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
 }
 
+.del_submit1{
+  width: 100%;
+  padding: 7px;
+  color: white;
+  border:none;
+  background-color: green;
+  border:1px solid green;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.del_submit1:hover{
+  /*border:1px solid blue;*/
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+
+.del_submit2{
+  width: 100%;
+  padding: 7px;
+  color: white;
+  border:none;
+  background-color: red;
+  border:1px solid red;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.del_submit2:hover{
+  /*border:1px solid blue;*/
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+}
 
 
 

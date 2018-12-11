@@ -1,4 +1,32 @@
-{% extends 'myapp/base.html' %}
-{% block content %}
-    <h3>yet to complete </h3>
-{% endblock content %}
+{% extends "myapp/base.html" %}
+{% block total_orders %}
+	<div class="container-fluid">
+		<h1>Payments till Now</h1><br>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>Transaction ID</th>
+						<th>Customer Name</th>
+						<th>Paid Money</th>
+						<th>Bank</th>
+						<th>Transaction Status</th>
+					</tr>
+					</thead>
+					<tbody>
+					{% for payment in payments %}
+					<tr>
+						<td>{{ payment.transaction_id }}</td>
+						<td>{{ payment.customer.customer_name }}</td>
+						<td>{{ payment.amount_paid }}</td>
+						<td>{{ payment.customer.Bank.bank_name }}</td>
+						<td><span style="color: green">Completed</span></td>
+					</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock total_orders %}

@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12" style="text-align: center;">
+			<div class="col-md-12" style="text-align: center;margin-top: 5%">
 				<h1>Pay Here...</h1>
 			</div>
 			<div class="col-md-12" style="text-align: center;margin-top: 1%;">
@@ -65,57 +65,11 @@
 	</div>
 
 	<br><br>
-<div class="container">
-	<table class="table table-striped">
-		<tr>
-			<th>
-				Customer Name
-			</th>
-			<th>
-				Bank
-			</th>
-			<th>
-				Card Number
-			</th>
-			<th>
-				Card Type
-			</th>
-			<th>
-				Card CVV
-			</th>
-			<th>
-				Bank Balance
-			</th>
-		</tr>
-		{% for customer in customers %}
-		<tr>
-			<td>
-				{{ customer.customer_name }}
-			</td>
-			<td>
-				{{ customer.Bank }}
-			</td>
-			<td>
-				{{ customer.card_no }}
-			</td>
-			<td>
-				{{ customer.card_type }}
-			</td>
-			<td>
-				{{ customer.card_cvv }}
-			</td>
-			<td>
-				{{ customer.bank_balance }}
-			</td>
-		</tr>
-		{% endfor %}
-	</table>
-</div>
+
 <div class="container">
 	<div class="row" style="text-align: center;">
 		<div class="col-md-12">
 			<h5><i class="fa fa-bank" style="font-size:30px"></i>&nbsp Dummy Bank for Sample Payment Purpose.</h5>
-			(Use above details for Payment)
 		</div>
 	</div>
 </div>
