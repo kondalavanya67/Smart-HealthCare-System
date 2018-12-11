@@ -59,8 +59,9 @@ function relocate_appointment()
     <br>
         <div class="card">
            <img src="{{profile.profile_photo.url}}" alt="profile_photo" style="width:100%;min-height:400px">
-        </div>
-
+        </div><br><br>
+        <a href="{% url 'shopping_cart:order' %}">Shopping Order History</a><br><br>
+        <a href="{% url 'shopping_cart:order_summary' %}">Current Pending Order</a>
         <br>
 
 
@@ -76,7 +77,7 @@ function relocate_appointment()
         </div>
 
           <br><br>
-         
+
 
             <br><br>
 
@@ -131,4 +132,3 @@ function relocate_appointment()
 
 <br><br><br><br>
 {% endblock %}
-
