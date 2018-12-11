@@ -1,7 +1,27 @@
 {% extends "myapp/base.html" %}
 
 {% block content %}
+<style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            font-size: 20px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        tr:nth-child(odd) {
+            background-color: #a5a9ad;
+        }
+    </style>
 
   <div class="container-fluid">
           <div class="col-sm-8 col-md-9">

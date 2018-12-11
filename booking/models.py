@@ -49,6 +49,7 @@ class PaitentDetails(models.Model):
 
 
 
+
 class AppointmentDetials(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
     viedo_chat_link=models.CharField(max_length=100)

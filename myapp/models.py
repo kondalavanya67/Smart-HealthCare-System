@@ -1,8 +1,5 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
-from django.urls import reverse
-from django.urls import reverse
 from doctor_profile.models import Profile
 from rmp.models import rmpContact
 
@@ -13,3 +10,8 @@ class Post(models.Model):
 
 class Rmplist(models.Model):
     rmp_list = models.ForeignKey('rmp.rmpContact', on_delete=models.CASCADE)
+
+
+class appointment(models.Model):
+    patient_name = models.ForeignKey('booking.PaitentDetails', on_delete=models.CASCADE)
+    booking = models.ForeignKey('booking.AppointmentDetials', on_delete=models.CASCADE)

@@ -35,6 +35,8 @@ def make_profile(request):
             profile_item.save()
 
             return render(request, "verification.html", {})
+
+        
     else:
 
         form=Add_Profile(initial={'user':user,'email_id':user.email})

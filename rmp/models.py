@@ -32,8 +32,16 @@ class rmpContact(models.Model):
 
     medicines = models.ManyToManyField(medicine, blank=True)
 
+    def __str__(self):
+        return str(self.id)
 
+    def get_absolute_url(self):
+        return reverse('myapp:myapp-fullrmplist',kwargs={'pk':self.pk})
 
+    def get_absolute_url_rmp_upcoming_appointments(self):
+        return reverse('myapp:rmp_upcoming_appointments', kwargs={'pk': self.pk})
+    def get_absolute_url_rmp_attended_appointments(self):
+        return reverse('myapp:rmp_attended_appointments', kwargs={'pk': self.pk})
 
-
-
+    def get_absolute_url_rmp_patientdetail(self):
+        return reverse('myapp:myapp-patientdetail', kwargs={'pk': self.pk})
