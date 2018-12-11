@@ -1,2 +1,27 @@
-Your Profile is awaiting confirmation
-<a href='{% url "logout" %}' class="nav-link">Logout</a>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block doctor_edit %}
+<!-- NAV BAR  -->
+     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+     <div class="container">
+       <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarCollapse">
+         <ul class="navbar-nav ml-auto">
+           <li class="nav-item active">
+             <a href='{% url "logout" %}' class="nav-link">Logout</a>
+           </li>
+         </ul>
+       </div>
+     </div>
+   </nav>
+<br><br><br><br><br><br><br><br><br><br><br>
+<h2 style="text-align:center;vertical-align:middle">Your Profile is awaiting confirmation</h2>
+<br><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock %}

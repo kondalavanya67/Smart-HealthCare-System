@@ -15,12 +15,21 @@ from booking.models import AppointmentDetials
 @login_required(login_url=reverse_lazy('login_admin'))
 def index(request):
 
-        doctors = Profile.objects.all()
+        doctors = Profile.objects.filter(verified=True)
         context = {
 
     	   "doctor" : doctors,
     	}
         return render(request, 'myapp/index.html',context=context)
+
+def doctor_verify(request):
+        doctors = Profile.objects.filter(verified=False)
+        print('%%')
+        context = {
+
+    	   "doctor" : doctors,
+    	}
+        return render(request, 'myapp/doctor_verify.html',context=context)
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def doctor_detail(request, pk):
@@ -64,6 +73,21 @@ def show_slots(request,pk):
     last_name=profile.last_name
     dates=Slot.objects.filter(doctor=profile)
     return render(request,'myapp/slots.html',{'slots':dates})
+
+# def a(request,pk):
+#     if(pk):
+#         print('ioioioi')
+#     return HttpResponse('ok')
+
+def doctor_verify_confirmation(request,pk):
+
+    print('**')
+    print("hello")
+    profile = get_object_or_404(Profile, pk=pk)
+    print('**')
+    profile.verified=True
+    profile.save()
+    return redirect(reverse("myapp:doctor_verify"))
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def rmpdetails(request):
@@ -160,5 +184,3 @@ def patientdetails(request, pk):
 @login_required(login_url=reverse_lazy('login_admin'))
 def feedback(request):
     return render(request, 'myapp/feedback.html')
-
-

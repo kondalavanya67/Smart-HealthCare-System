@@ -14,12 +14,17 @@ urlpatterns = [
     path('admin1/rmplist/search/rmp_upcoming_appointments/<pk>/', views.rmp_upcoming_appointments,name='rmp_upcoming_appointments'),
     path('admin1/rmplist/search/rmp_attended_appointments/<pk>/', views.rmp_attended_appointments,name='rmp_attended_appointments'),
     url('^admin1/payment/',views.payment,name='myapp-payment'),
+    url('^admin1/doctor_verification/',views.doctor_verify,name='doctor_verification_required'),
+
     url('^admin1/appointment/',views.appointment,name='myapp-appointment'),
     url('^admin1/feedback/',views.feedback,name='myapp-feedback'),
     path('admin1/doctorlist/search/<pk>/',views.doctor_detail, name='doctor_detail'),
     path('admin1/doctorlist/search/doctor_upcoming_appointments/<pk>/',views.doctor_upcoming_appointments, name='doctor_upcoming_appointments'),
     path('admin1/doctorlist/search/doctor_attended_appointments/<pk>/',views.doctor_attended_appointments, name='doctor_attended_appointments'),
     path('admin1/doctorlist/search/slot/<pk>/',views.show_slots, name='doctor_slot'),
+    path('admin1/doctor_verification/verify', views.doctor_verify_confirmation, name='doctor_verify'),
+    # path('admin1/doctor_verification/verify/<pk>/',views.a, name='doctor_verify'),
+    path('admin1/s/<pk>/',views.doctor_verify_confirmation,name='verify'),
 
     url('',include('users.urls')),
 ]

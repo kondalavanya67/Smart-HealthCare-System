@@ -15,7 +15,8 @@ from django.db import IntegrityError
 from django.utils.decorators import method_decorator
 
 # Create your views here.
-
+def verification(request):
+    return render(request,'verification.html')
 def index(request):
 
     #print(user)
@@ -36,7 +37,7 @@ def make_profile(request):
 
             return render(request, "verification.html", {})
 
-        
+
     else:
 
         form=Add_Profile(initial={'user':user,'email_id':user.email})
