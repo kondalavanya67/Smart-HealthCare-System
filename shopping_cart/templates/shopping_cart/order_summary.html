@@ -41,10 +41,28 @@
 							</div>
 							<div class="col-md-2" style="text-align: center;">
 								<div class="delete" style="width: 50%;">
-									<a href="{% url 'shopping_cart:delete_from_cart' item.product.id %}" style="text-decoration: none;">
+									<a href="{% url 'shopping_cart:delete_from_cart' item.product.id %}" data-toggle="tooltip" data-placement="bottom" title="Remove"style="text-decoration: none;">
 										<span class="delete-link"><i class="fa fa-close "></i></span>
 									</a>
-								</div>
+								</div><br>
+								<select id="{{ item.product.name }}">
+									<option value="0">{{item.quantity}}</option>
+									<option value="1">
+										1
+									</option>
+									<option value="2">
+										2
+									</option>
+									<option value="3">
+										3
+									</option>
+									<option value="4">
+										4
+									</option>
+									<option value="5">
+										5
+									</option>
+								</select>
 							</div>
 						</div>
 						</div>
@@ -58,7 +76,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-3 offset-md-1" >
+		<div class="col-md-4" >
 			<div class="row" style="background-color: rgb(242,242,244);">
 				<div class="col-md-12">
 					<h1>To Pay</h1><hr>
@@ -69,14 +87,20 @@
 				<div class="col-md-12">
 
 						<div class="row">
-							<div class="col-md-6" style="text-align: left;"><b>Medicine</b></div>
-							<div class="col-md-6"  style="text-align: right;"><b>Price</b></div>
+							<div class="col-md-5" style="text-align: left;"><b>Medicine</b></div>
+							<div class="col-md-3" style="text-align: center;"><b>Quantity</b></div>
+							<div class="col-md-4"  style="text-align: right;"><b>Price</b></div>
 						</div>
 						{% for item in order.get_cart_items %}
 						<div class="row">
-							<div class="col-md-6"  style="text-align: left;">{{ item.product.name }}</div>
-							<div class="col-md-6" style="text-align: right;">
-								Rs. <span style="color: red;">{{ item.product.price }}</span>
+							<div class="col-md-5"  style="text-align: left;">
+								{{ item.product.name }} 
+							</div>
+							<div class="col-md-3"  style="text-align: center;">
+								<span class="quantity_no">{{ item.quantity }}</span>
+							</div>
+							<div class="col-md-4" style="text-align: right;">
+								Rs. <span style="color: red;">{{ item.order_item_total }}</span>
 							</div>
 						</div>
 						{% endfor %}
@@ -91,7 +115,7 @@
 						</div><br>
 						<div class="row">
 							<div class="col-md-12" style="text-align: center;">
-								<a href="{% url 'shopping_cart:purchase_success' %}" style="text-decoration: none;" class="button button1">
+								<a href="{% url 'shopping_cart:enter_address' %}" style="text-decoration: none;" class="button button1">
 									Proceed to Checkout &nbsp<i class="fa fa-chevron-circle-right"></i>
 								</a>
 							</div>
@@ -123,7 +147,7 @@
 	</div>
 </div><br><br>
 
-	<footer id="footer2" class="text-center p-4">
+	<footer id="footer" class="text-center p-4">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -133,7 +157,38 @@
 			</div>
 		</div>
 	</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+<script>
+	{% for item in order.get_cart_items %}
+
+  $("#{{ item.product.name }}").change(function () {
+    var url = '{% url "shopping_cart:order_summary_ajax" %}';  // get the url of the `load_cities` view
+    var q = $(this).val();  // get the selected country ID from the HTML input
+    console.log(q)
+    $.ajax({                       // initialize an AJAX request
+      url: url,               // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+      data: {
+        '{{ item.product.name }}': q,    // add the country id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `load_cities` view function
+        
+        // $(".hello").html(data);  // replace the contents of the city input with the data that came from the server
+        console.log(data)
+        // items = document.getElementsByClassName('quantity_no')
+        // item_cnt = 0
+        for (x in data){
+        	document.getElementById('x').innerHTML = data[x];
+        }
+
+      }
+    });
+	window.location.reload();
+	window.location.href=window.location.href;
+
+  });
+  {% endfor %}
+</script>
 
 {% endblock order_summary %}
 

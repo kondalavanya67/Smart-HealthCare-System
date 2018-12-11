@@ -9,6 +9,7 @@ from django.db.models import Max
 from django.views.generic import FormView, CreateView
 from doctor_profile.models import BookingDate,Slot
 from django.contrib.auth.decorators import login_required
+from doctor_profile.models import Profile
 
 @login_required(login_url=('rmp:login_rmp_profile'))
 def doctor_list(request):
@@ -181,10 +182,11 @@ class AppointmentDetialsCreate(CreateView):
 		slots.slot_status=True
 		slots.save()
 		appointment.save()
-
+		
 		context={
 
 		    "object":appointment,
+		   
 		}
 		return render(self.request,'booking/booking_confirmation.html', context=context)
 		# return super(AppointmentDetialsCreate, self).form_valid(form)

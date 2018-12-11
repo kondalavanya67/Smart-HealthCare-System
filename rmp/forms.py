@@ -8,22 +8,37 @@ User=get_user_model()
 
 
 class LoginForm(forms.Form):
-	username=forms.CharField()
-	password=forms.CharField(widget=forms.PasswordInput())
+	username=forms.CharField(widget=forms.TextInput(attrs={'class': 'form-label-group'}))
+	password=forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-label-group'}))
 
-class RegisterForm(forms.Form):
-	username=forms.CharField()
-	email=forms.EmailField()
-	password=forms.CharField(widget=forms.PasswordInput())
-	password2=forms.CharField(label='Confirm Password',widget=forms.PasswordInput())
 
-	def clean(self):
-		data=self.cleaned_data
-		password=self.cleaned_data.get("password")
-		password2=self.cleaned_data.get("password2")
-		if password2 != password:
-			raise forms.ValidationError("Passwords donot match")
-		return data
+class RegisterForm(forms.ModelForm):
+	username=forms.CharField(widget=forms.TextInput(attrs={'class': 'form-label-group'}))
+	email=forms.EmailField(widget=forms.TextInput(attrs={'class': 'form-label-group'}))
+	password=forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-label-group'}))
+	password1=forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-label-group'}))
+	class Meta:
+   		model=User
+   		fields=('username','email','password','password1')
+	def clean_username(self):
+		username=self.cleaned_data.get('username')
+		qs = User.objects.filter(username=username)
+		if qs.exists():
+			raise forms.ValidationError("username is not available please take other")
+		return username
+	def clean_email(self):
+		email=self.cleaned_data.get('email')
+		qs = User.objects.filter(email=email)
+		if qs.exists():
+			raise forms.ValidationError("email is not available please take other")
+		return email
+	def clean_password1(self):
+		#data=self.cleaned_data
+		password=self.cleaned_data.get('password')
+		password1=self.cleaned_data.get('password1')
+		if password != password1:
+			raise forms.ValidationError("Passwords are not matching!!!!!!")
+		return password1
 
 
 

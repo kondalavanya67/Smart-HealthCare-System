@@ -19,7 +19,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
+	<style>
+		.remove {
+		    display: none;
+		}
+		    
+		.order_item:hover .remove {
+		    display: block;
+		}
+	</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -61,6 +69,8 @@
 	<div>
 		{% block order_summary %}{% endblock order_summary %}
 		{% block purchase_success %}{% endblock purchase_success %}
+		{% block enter_address %}{% endblock enter_address %}
+		{% block purchase_success_cod %}{% endblock purchase_success_cod %}
 	</div>
 
 

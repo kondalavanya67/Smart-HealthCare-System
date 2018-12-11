@@ -154,7 +154,7 @@
                                   <td> {{appointment.paitent.symptoms}}</td>
                                   <td><a style="pointer-events: none; display: inline-block;" id='attend{{appointment.id}}' href="{{appointment.viedo_chat_link}}"> Attend Patient </a></td>
                                   <td><a style="pointer-events: none; display: inline-block;" id='prescription{{appointment.id}}' href='{% url "prescription:Prescription_Add1" appointment_id=appointment.pk %}'> Make Prescription </a></td>
-                                  <td><button type="button" name="check" onclick='check_link("{{appointment.date}}","{{appointment.time.start_time}}","{{appointment.id}}");'> Refresh </button>
+                                  <td><button type="button" class="btn btn-default" name="check" onclick='check_link("{{appointment.date}}","{{appointment.time.start_time}}","{{appointment.id}}");'> Refresh </button></td>
 
                               </tr>
                           {% endfor %}

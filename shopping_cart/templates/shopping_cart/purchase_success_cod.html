@@ -1,0 +1,68 @@
+{% extends "shopping_cart/base.html" %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+
+{% block purchase_success_cod %}
+<div class="container offset-1" style="margin-top: 5%;" >
+	<div class="row">
+		<div class="col-md-8">
+	<table class="table" style="border:1px solid black">
+		<tr>
+			<td colspan="2" style="text-align: center;">
+				<i class="fa fa-check-circle" style="color:green;font-size: 40px;"></i><br>
+				Your Order Has been Placed
+			</td>
+		</tr>
+		<tr>
+			<th>Patient Name</th>
+			<td>{{p_name }}</td>
+		</tr>
+		<tr>
+			<th>Patient Phone Number</th>
+			<td>{{p_phno }}</td>
+		</tr>
+		<tr>
+			<th>Deliver To</th>
+			<td>
+				{{p_houseno}},{{p_street}},{{p_district}},{{p_pincode}},{{p_state}},{{p_country}}.
+			</td>
+		</tr>
+	</table>
+		<div style="text-align: center;">
+			We'll Notify you when your order reaches your place.<br><br>
+			<a class="button button5" href="{% url 'shoppingPortalApp:main' %}" style="text-decoration:none;">
+				<i class="fa fa-chevron-circle-left"></i> &nbsp Buy more medicines?
+			</a>
+			<a class="button button6" href="{% url 'home' %}" style="text-decoration:none;">
+				<i class="fa fa-chevron-circle-left"></i> &nbsp Go To HomePage
+			</a>
+		</div>
+		</div>
+		<div class="col-md-3 offset-1">
+			<img src="{% static 'img/ShopOnline/happy.jpeg' %}" width="300" alt='Stay Healthy'><br>
+			<h1 style="text-align: center;">Stay Healthy</h1>
+			<h1 style="text-align: center;">Live Happy</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8" style="text-align: center;">
+
+		</div>
+	</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br>
+	<footer id="footer2" class="text-center p-4">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<p>Copyright &copy;
+					<span id="year"></span> Smart HealthCare</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+{% endblock purchase_success_cod %}
+

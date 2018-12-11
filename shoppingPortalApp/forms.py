@@ -14,11 +14,14 @@ class add_medicine_Form(forms.ModelForm):
             "manufacturedBy",
         ]
         
-class del_medicine_Form(forms.ModelForm):
-    class Meta:
-        model = medicine
-        fields = [
-            "name",
-        ]
+class del_medicine_Form(forms.Form):
+    name_to_del = forms.CharField(max_length=25)
+
+class update_medicine_Form(forms.Form):
+    name = forms.CharField(max_length = 120)
+    about = forms.CharField(max_length = 120)
+    usage = forms.CharField(max_length = 120)
+    manufacturedBy = forms.CharField(max_length = 120)
+    price = forms.FloatField()
             
         

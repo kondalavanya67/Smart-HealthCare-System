@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rmp',
-    'doctor',
     'shoppingPortalApp',
     'doctor_home',
     'booking',
@@ -56,6 +55,8 @@ INSTALLED_APPS = [
     'PIL',
     'rmp_work_history',
     'shopping_cart',
+    'rest_framework',
+    'restframework',
 
 ]
 

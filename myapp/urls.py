@@ -26,5 +26,7 @@ urlpatterns = [
     # path('admin1/doctor_verification/verify/<pk>/',views.a, name='doctor_verify'),
     path('admin1/s/<pk>/',views.doctor_verify_confirmation,name='verify'),
 
+    path('admin1/rmp_appointments_past/<pk>/',views.rmp_appointments_past, name='rmp_appointments_past'),
+
     url('',include('users.urls')),
 ]

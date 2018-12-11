@@ -24,12 +24,20 @@
           <li class="nav-item">
             <a href='{% url "contact" %}' class="nav-link">Contact</a>
           </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a href='{% url "logout" %}' class="nav-link">Logout</a>
+          </li>
+          {% else %}
+          
           <li class="nav-item">
             <a href='{% url "login" %}' class="nav-link">Login</a>
           </li>
-          <li class="nav-item">
+           <li class="nav-item">
             <a href='{% url "rmp:login_rmp_profile" %}' class="nav-link">Rmp Login</a>
           </li>
+          {% endif %}
+         
           <li class="nav-item nav-item-shop" style="background-color:red;border: 15px;">
             <a href='{% url "shoppingPortalApp:main" %}' class="nav-link-shop" style="text-decoration: none;margin-top: 3px;">Shop Medicines</a>
           </li>
@@ -52,7 +60,7 @@
               <h1 class="display-2 text-black">Complete rural health care</h1>
               <p class="lead text-black">Get connected to specialised docor in every field thopurh your RMP. Also the hassle of getting out of your town.
                 </p>
-              <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
+              <a href='{% url "rmp:make_rmp_profile" %}' class="btn btn-danger btn-lg">Sign Up Now</a>
             </div>
           </div>
         </div>
@@ -62,7 +70,7 @@
             <div class="carousel-caption d-none d-sm-block mb-5">
               <h1 class="display-2 text-black ">Get Recommendations</h1>
               <p class="lead text-black">Get specialised recommendations from experienced doctors rom your hometown.</p>
-              <a href="#" class="btn btn-primary btn-lg">Learn More</a>
+              <a href="#home-icons" class="btn btn-primary btn-lg">Learn More</a>
             </div>
           </div>
         </div>
@@ -72,7 +80,7 @@
             <div class="carousel-caption d-none d-sm-block text-right mb-5">
               <h1 class="display-2 text-black">Buy medicines online</h1>
               <p class="lead text-black">Get your medicines delivered at your doorstep guranteed.</p>
-              <a href="#" class="btn btn-success btn-lg">Learn More</a>
+              <a href='{% url "rmp:login_rmp_profile" %}' class="btn btn-success btn-lg">Learn More</a>
             </div>
           </div>
         </div>
@@ -130,8 +138,7 @@
         <div class="col">
           <div class="container pt-5">
             <h1>Are You Ready To Get Started?</h1>
-            <p class="d-none d-md-block">Join our exciting journey. Now no one will die due will lack of medical practitoners. Let everyone stay fit and healthy
-              consequatur soluta.</p>
+            <p class="d-none d-md-block">Join our exciting journey. Now no one will die due will lack of medical practitoners. Let everyone stay fit and healthy.</p>
           </div>
         </div>
       </div>
@@ -144,7 +151,7 @@
         <div class="col-md-6 align-self-center">
           <h3>Doctors and Departments</h3>
           <p>We have specialists of all avialable departments. We check diseases of all stages. If we won't be able to erve online we take initivate to send doctors offline. To search for a specific doctor of department </p>
-          <a href="about.html" class="btn btn-outline-danger btn-lg">Search</a>
+          <a href='{% url "about" %}' class="btn btn-outline-danger btn-lg">Search</a>
         </div>
         <div class="col-md-6">
           <img src='{% static "img/doctor_dept.png" %}' alt="doctor" class="img-fluid">

@@ -1,81 +1,24 @@
 {% extends "myapp/base.html" %}
 {% block content %}
-    <style>
+<br>
+<h1 style="text-align: center">Doctor List</h1>
+<br><br>
 
-        .zoom:hover {
-            transform: scale(1.1);
-        }
-
-        .column {
-            float: left;
-            width: 33.3%;
-            margin-bottom: 16px;
-            padding: 0 8px;
-        }
-
-        @media screen and (max-width: 650px) {
-            .column {
-                width: 100%;
-                display: block;
-            }
-        }
-
-        .card {
-            box-shadow: 0 4px 8px 0 slategray;
-        }
-
-        .container {
-            padding: 0 16px;
-        }
-
-        .container::after, .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .title {
-            color: grey;
-        }
-
-        .button {
-            border: none;
-            outline: 0;
-            display: inline-block;
-            padding: 8px;
-            color: white;
-            background-color: rgba(9,50,255,0.13);
-            text-align: center;
-            cursor: pointer;
-            width: 100%;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .button:hover {
-            background-color: #777;
-            text-decoration: none;
-        }
-    </style>
-    <br>
-    <h1><em>Doctor List</em></h1>
-    <br>
-    <div class="row">
-        {% for doctors in doctor %}
-            <div class="column">
-                <div class="card">
-                    <div class="zoom">
-                        <img src="{{ doctors.profile_photo.url }}" class="img-responsive img_list"  style="margin-top: 5%; height:250px;width:100%"><br><hr>
-                    </div>
-                    <div class="container">
-                        <h5>{{doctors.first_name}} {{doctors.last_name}}</h5>
-                        Speciality : <span>{{ doctors.speciality }}</span><br>
-                        Hospital:<a href="#"> {{doctors.hospital}}</a><br><br>
-                        <div class="button"><a href='{{ doctors.get_absolute_url_show }}'>View</a></div>
-                        <br><br><br><br>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+<div class="container">
+  <div class="row">
+    {% for doctors in doctor %}
+    <div class="col-md-5 medicine_1">
+      <div class="col-md-12" >
+        <img src="{{ doctors.profile_photo.url }}" class="img-responsive img_list"  style="margin-top: 5%; height:250px;width:100%"><br><hr>
+        <h5>{{doctors.first_name}} {{doctors.last_name}}</h5>
+        Speciality : <span>{{ doctors.speciality }}</span><br>
+        Hospital:<a href="#"> {{doctors.hospital}}</a><br><br>
+        <button class="btn btn-default"><a href='{{ doctors.get_absolute_url_show }}'>View</a></button>
+        <br><br><br><br>
+      </div>
     </div>
+    {% endfor %}
+  </div>
+</div>
+
 {% endblock content %}

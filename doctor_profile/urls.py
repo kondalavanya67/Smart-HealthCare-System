@@ -1,6 +1,9 @@
 from django.conf.urls import url
 from django.urls import path
 from . import views
+from rest_framework import routers
+from .views import ProfileViewSet
+
 app_name='doctor_profile'
 urlpatterns=[
     path('',views.index,name='index'),
@@ -19,3 +22,7 @@ urlpatterns=[
     #path('show_profile/<str:doctor_id>',views.Show_Profile,name='show_profile'),
     #path('modify_profile/'views.Modify_Profile_Databse,name='modify_profile'),
     ]
+
+
+
+

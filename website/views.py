@@ -20,7 +20,8 @@ from django.db import connection,IntegrityError
 import random
 from django.contrib.auth.models import User
 from doctor_profile.views import Profile
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
+from django.contrib import messages
 
 
 def home(request):
@@ -92,6 +93,7 @@ def login_page(request):
 			login(request, user)
 			return redirect("/doctor_home")
 		else:
+			messages.error(request, 'Invalid login credentials')
 			print("error")
 
 	return render(request, "login.html", context=context)
@@ -126,6 +128,7 @@ def user_register(request):
             return render(request,'verify.html', context)
     else:
     	form=RegisterForm()
+    	messages.error(request, 'Invalid login credentials')
     context={
     'form':form
     }

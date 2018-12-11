@@ -20,6 +20,7 @@ from users import views as user_views
 urlpatterns = [
 
     path('', home, name='home'),
+    path('admin/',admin.site.urls),
     path('logout/', log_out, name='logout'),
     path('contact_page/', contact_page , name='contact_page'),
     path('contact/', contact , name='contact'),
@@ -31,8 +32,8 @@ urlpatterns = [
     url(r'^doctor/', include(("doctor_home.url","doctor"), namespace= 'doctor')),
     #(r'^$',home_page , name='home_page'),
     url(r'^login/$', login_page, name='login' ),
-    url(r'^register/$',user_register , name='user_register' ),
-    url(r'^new_user_reg/$',new_user_reg , name='new_user_reg' ),
+    url(r'^doctor/register/$',user_register , name='user_register' ),
+    url(r'^doctor/new_user_reg/$',new_user_reg , name='new_user_reg' ),
     url(r'^password/change/$',
         auth_views.PasswordChangeView.as_view(),
         name='password_change'),
@@ -54,9 +55,7 @@ urlpatterns = [
         auth_views.PasswordResetCompleteView.as_view(),
         name='password_reset_complete'),
 
-    path('search/', include('search.urls')),
-
-
+    path('restframework/', include('restframework.urls')),
 
     path('shoponline/', include('shoppingPortalApp.urls')),
     path('shoponline/', include('shopping_cart.urls')),
@@ -70,9 +69,11 @@ urlpatterns = [
     #url(r'^activate/$', activate, name='activate'),
 
     #path('account-activation-email-sent', account_activation_email_sent, name='account_activation_email_sent'),
-   # path('activate/<uidb64>/<token>', activate_account, name='activate'),
+   # path('activate/<uidb64>/token>', activate_account, name='activate'),
   #  path('resend-activation-link', generate_new_activation_link, name='resend_activation_link'),
-    path('admin/', admin.site.urls),
+
+
+
     path('', include('myapp.urls'), name='myapp'),
     path('users/',include('users.urls'), name='users'),
     path('rmp/', include('rmp.urls')),
