@@ -15,7 +15,9 @@ from rmp.models import rmpContact
 from booking.models import AppointmentDetials
 from shopping_cart.models import Order
 from payment.models import OnlinePayment
-# Create your views here.
+from rmp.models import rmpContact
+from django.urls import reverse,reverse_lazy
+
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def index(request):
@@ -27,7 +29,7 @@ def index(request):
         }
         return render(request, 'myapp/index.html',context=context)
 
-    
+
 
 def doctor_verify(request):
         doctors = Profile.objects.filter(verified=False)
@@ -37,6 +39,15 @@ def doctor_verify(request):
     	   "doctor" : doctors,
     	}
         return render(request, 'myapp/doctor_verify.html',context=context)
+
+def rmp_verify(request):
+        rmps = rmpContact.objects.filter(verified=False)
+        print('%%')
+        context = {
+
+    	   "rmps" : rmps,
+    	}
+        return render(request, 'myapp/rmp_verify.html',context=context)
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def doctor_detail(request, pk):
@@ -90,6 +101,17 @@ def doctor_verify_confirmation(request,pk):
     profile.verified=True
     profile.save()
     return redirect(reverse("myapp:doctor_verify"))
+
+def rmp_verify_confirmation(request,pk):
+
+    print('**')
+    print("hello")
+    profile = get_object_or_404(rmpContact, pk=pk)
+    print('**')
+    profile.verified=True
+    profile.save()
+    return redirect(reverse("myapp:rmp_verification_required"))
+
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def rmpdetails(request):

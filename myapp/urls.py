@@ -15,6 +15,7 @@ urlpatterns = [
     path('admin1/rmplist/search/rmp_attended_appointments/<pk>/', views.rmp_attended_appointments,name='rmp_attended_appointments'),
     url('^admin1/payment/',views.payment,name='myapp-payment'),
     url('^admin1/doctor_verification/',views.doctor_verify,name='doctor_verification_required'),
+    url('^admin1/rmp_verification/',views.rmp_verify,name='rmp_verification_required'),
 
     url('^admin1/appointment/',views.appointment,name='myapp-appointment'),
     url('^admin1/feedback/',views.feedback,name='myapp-feedback'),
@@ -27,6 +28,7 @@ urlpatterns = [
     path('admin1/doctor_verification/verify', views.doctor_verify_confirmation, name='doctor_verify'),
     # path('admin1/doctor_verification/verify/<pk>/',views.a, name='doctor_verify'),
     path('admin1/s/<pk>/',views.doctor_verify_confirmation,name='verify'),
+    path('admin1/r/<pk>/',views.rmp_verify_confirmation,name='verify-rmp'),
 
     path('admin1/rmp_appointments_past/<pk>/',views.rmp_appointments_past, name='rmp_appointments_past'),
     path('admin1/online-shopping-history/',views.shop_history, name='shop_history'),
