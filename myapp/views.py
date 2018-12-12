@@ -218,6 +218,7 @@ def newsletter(request):
     }
     return render(request, 'myapp/newsletters.html',context=context)
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def rmp_appointments_past(request,pk):
     appointments = AppointmentDetials.objects.filter(user=pk)
     context={
@@ -226,6 +227,7 @@ def rmp_appointments_past(request,pk):
 
     return render(request,'myapp/rmp_appointments_past.html',context=context)
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def shop_history(request):
     orders = Order.objects.all()
     return render(request,'myapp/total_order.html',{'orders':orders,})
@@ -235,6 +237,7 @@ def payment(request):
     payment_history = OnlinePayment.objects.all()
     return render(request, 'myapp/payment.html',{'payments' : payment_history,})
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def rmp_order_history(request, rmp_id):
     instance = get_object_or_404(rmpContact,id=rmp_id)
     orders = Order.objects.filter(owner=instance)
