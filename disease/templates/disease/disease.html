@@ -16,11 +16,6 @@
               <a href='{% url "doctor_home" %}' class="nav-link">Home</a>
             </li>
 
-<!--
-            <li class="nav-item">
-              <a href='{% url "contact_doctor" %}' class="nav-link">Contact</a>
-            </li> -->
-
             <li class="nav-item">
               <a href='{% url "work_history:index" %}' class="nav-link">Work History</a>
             </li>
@@ -37,28 +32,34 @@
         </div>
       </div>
     </nav>
-<h2>Get Disease Detail</h2>
+<div style="background-image: url('http://www.michelledalessandrohatt.com/wp-content/uploads/2015/01/FREE___Background_1_by_3ric_Design.png')">
+<br>
+<h2 style='color : white'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Disease </h2>
+<form class="form-inline" action="">
+  <div class="form-group">
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{form}} &nbsp&nbsp&nbsp&nbsp
+  </div>
 
-  <form method="get">
-    {{ form.as_p }}
-    <button type="submit">search</button>
-  </form>
-  <!-- {% for key in search_result.disease.keys %}
-    <h3>{{search_result.disease.key}}</h3>
-   <h3>{{search_result.disease.symptoms}}</h3>
-    <h3>{{search_result.disease.symptoms}}</h3> -->
-  <!-- {% endfor %}    -->
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+<br><br>
 {% if search_result %}
-<h3>symptoms</h3>
-<h4>{{search_result.disease.symptoms}}</h4>
-<h3>transmission</h3>
-<h4>{{search_result.disease.transmission}}</h4>
-<h3>diagnosis</h3>
-<h4>{{search_result.disease.diagnosis}}</h4>
-<h3>treatment</h3>
-<h4>{{search_result.disease.treatment}}</h4>
-<h3>prevention</h3>
-<h4>{{search_result.disease.prevention}}</h4>
-
+<div class="container">
+  <div class="jumbotron">
+<h1>Symptoms</h1>
+<p>{{search_result.disease.symptoms}}</p>
+<h1>Transmission</h1>
+<p>{{search_result.disease.transmission}}</p>
+<h1>Diagnosis</h1>
+<p>{{search_result.disease.diagnosis}}</p>
+<h1>Treatment</h1>
+<p>{{search_result.disease.treatment}}</p>
+<h1>Prevention</h1>
+<p>{{search_result.disease.prevention}}</p>
+</div>
+</div>
 {% endif %}
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
 {% endblock %}

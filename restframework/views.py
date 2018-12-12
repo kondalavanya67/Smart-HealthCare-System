@@ -8,24 +8,46 @@ from booking.models import AppointmentDetials,PaitentDetails
 # Create your views here.
 
 class DoctorProfileViewSet(viewsets.ModelViewSet):
-    queryset = Profile.objects.all()
+
     serializer_class = DoctorProfileSerializer
 
+    def get_queryset(self):
+        queryset = Profile.objects.all()
+        qs=self.request.query_params.get("q")
+        if qs is not None:
+            queryset=queryset.filter(speciality=qs)
+        return queryset
+
 class RmpProfileViewSet(viewsets.ModelViewSet):
-    queryset = rmpContact.objects.all()
+
     serializer_class = RmpProfileSerializer
+    def get_queryset(self):
+        queryset = rmpContact.objects.all()
+        qs=self.request.query_params.get("q")
+        if qs is not None:
+            queryset=queryset.filter(locality=qs)
+        return queryset
 
 class AppointmentDetialsViewSet(viewsets.ModelViewSet):
-    queryset = AppointmentDetials.objects.all()
+
     serializer_class = AppointmentDetialsSerializer
+    def get_queryset(self):
+        queryset = AppointmentDetials.objects.all()
+        qs=self.request.query_params.get("q")
+        if qs is not None:
+            queryset=queryset.filter(is_attended=qs)
+        return queryset
 
 class PaitentDetailsViewSet(viewsets.ModelViewSet):
-    queryset = PaitentDetails.objects.all()
+
     serializer_class = PaitentDetailsSerializer
+    def get_queryset(self):
+        queryset = PaitentDetails.objects.all()
+        qs=self.request.query_params.get("q")
+        if qs is not None:
+            queryset=queryset.filter(is_attended=qs)
+        return queryset
 
 class SlotViewSet(viewsets.ModelViewSet):
     queryset = Slot.objects.all()
     serializer_class = SlotSerializer
-
-
-
