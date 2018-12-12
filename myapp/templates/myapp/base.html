@@ -8,15 +8,16 @@
 
     <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
     <link rel="stylesheet" type="text/css" href="{% static 'myapp/main.css' %}">
-    <title>Adminpage</title>
+    <title class="icon fa fa-user-md">Admin Panel</title>
 </head>
 <body>
 <header class="site-header" style="color:#000000 ">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'myapp:adminpage' %}">ADMIN PAGE</a>
+            <a class="navbar-brand icon fa fa-user-md" style="font-size: 30px" href="{% url 'myapp:adminpage' %}">&nbsp&nbspADMIN PANEL</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,6 +34,9 @@
                     </li>
                     <li class="nav-item">
                         <a href='{% url "myapp:myapp-feedback" %}' class="nav-link">Feedbacks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='{% url "myapp:myapp-newsletter" %}' class="nav-link">NewsLetters</a>
                     </li>
                     <li class="nav-item">
                         <a href='{% url "logout" %}' class="nav-link">Logout</a>

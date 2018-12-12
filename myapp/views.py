@@ -1,10 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy,reverse
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.core.mail import send_mail, BadHeaderError
 from booking.models import AppointmentDetials,PaitentDetails
+from myapp.forms import ContactForm,NewsLetter
 from prescription.models import Prescription
 from .models import Post, Rmplist
 from doctor_profile.models import Profile,Slot
@@ -20,9 +23,9 @@ def index(request):
         doctors = Profile.objects.filter(verified=True)
         context = {
 
-    	   "doctor" : doctors,
-    	}
-        return render(request, 'myapp/index.html',context=context)
+        "doctor" : doctors,
+    }
+    return render(request, 'myapp/index.html',context=context)
 
 def doctor_verify(request):
         doctors = Profile.objects.filter(verified=False)
@@ -91,7 +94,7 @@ def rmpdetails(request):
     doctors = rmpContact.objects.all()
     context = {
 
-       "doctor" : doctors,
+        "doctor" : doctors,
     }
     return render(request, 'myapp/rmplist.html',context=context)
 
@@ -111,20 +114,20 @@ def adminpage(request):
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def appointment(request):
-        user = request.user
-        profile = Profile.objects.get(user=user)
-        appointments = AppointmentDetials.objects.filter(doctor_id=profile.id).filter(is_attended=False)
-        first_name = profile.first_name
-        last_name = profile.last_name
-        print(user)
-        print(appointments)
-        if not appointments:
-            context = "No Appointments"
-        else:
-            context = " "
-        return render(request, 'myapp/appointment.html',
-                      {'context': context, 'appointments': appointments, 'first_name': first_name,
-                       'last_name': last_name})
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    appointments = AppointmentDetials.objects.filter(doctor_id=profile.id).filter(is_attended=False)
+    first_name = profile.first_name
+    last_name = profile.last_name
+    print(user)
+    print(appointments)
+    if not appointments:
+        context = "No Appointments"
+    else:
+        context = " "
+    return render(request, 'myapp/appointment.html',
+                  {'context': context, 'appointments': appointments, 'first_name': first_name,
+                   'last_name': last_name})
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def doc_work_history(request):
@@ -178,8 +181,18 @@ def patientdetails(request, pk):
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def feedback(request):
-    return render(request, 'myapp/feedback.html')
+    feedback = ContactForm.objects.all()
+    context = {
+        "feedback" : feedback,
+    }
+    return render(request, 'myapp/feedback.html',context=context)
 
+def newsletter(request):
+    feedback1 = NewsLetter.objects.all()
+    context = {
+        "feedback1" : feedback1,
+    }
+    return render(request, 'myapp/newsletters.html',context=context)
 
 def rmp_appointments_past(request,pk):
     appointments = AppointmentDetials.objects.filter(user=pk)

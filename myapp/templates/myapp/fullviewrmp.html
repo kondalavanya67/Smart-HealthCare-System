@@ -24,6 +24,7 @@
             font-size: 20px;
             margin: 4px 2px;
             cursor: pointer;
+            height: 100px;
         }
         .button:hover{
             background-color: #777777;
@@ -66,12 +67,10 @@
                         </div>
                         <br><br>
                         <div class="btn-group btn-group-md" style='padding: 2px 15px'>
-                            <button class="button" href="{% url 'myapp:myapp-rmpdetail' %}"
-                                >Basic Info</button> 
-                            <button href='{{ profile.get_absolute_url_rmp_upcoming_appointments}}' class="button">Upcoming Appointments</button>
-                            <button href='{{ profile.get_absolute_url_rmp_attended_appointments}}' class="button">Attended Appointments</button>
-                            <button href='{{ profile.get_absolute_url_rmp_patientdetail }}' class="button">Patient details</button>
-                            <button href='#' class="button">Orders</button>
+                            <a href='{{ profile.get_absolute_url_rmp_upcoming_appointments}}'> <button class="button">Upcoming Appointments</button></a>
+                            <a href='{{ profile.get_absolute_url_rmp_attended_appointments}}'><button class="button">Attended Appointments</button></a>
+                            <a href='{{ profile.get_absolute_url_rmp_patientdetail }}'><button class="button">Patient details</button></a>
+                            <a href='#'> <button class="button">Orders</button></a>
                         </div>
 
                         <br><br>

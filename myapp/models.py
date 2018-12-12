@@ -15,3 +15,16 @@ class Rmplist(models.Model):
 class appointment(models.Model):
     patient_name = models.ForeignKey('booking.PaitentDetails', on_delete=models.CASCADE)
     booking = models.ForeignKey('booking.AppointmentDetials', on_delete=models.CASCADE)
+
+class ContactForm(models.Model):
+    first_name = models.CharField(max_length=250)
+    last_name = models.CharField(max_length=500)
+    email = models.EmailField()
+    mobile_no = models.BigIntegerField()
+    message = models.TextField()
+
+
+class NewsLetter(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField()
+
