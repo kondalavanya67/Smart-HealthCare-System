@@ -7,17 +7,19 @@
                 color: orange;
             }
             .button {
-                border: none;
-                color: black;
-                background-color: #edecea;
-                padding: 15px 35px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 20px;
-                margin: 4px 2px;
-                cursor: pointer;
-            }
+            border: none;
+            color: #00B4CC;
+            width: 180px;
+            background-color: #edecea;
+            padding: 15px 35px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            height: 100px;
+        }
             .button:hover{
                 background-color: #777777;
                 color: white;
@@ -74,7 +76,7 @@
                             <button class="button"><a href='{{ doctor.get_absolute_url_upcoming_appointments}}'>Upcoming Appointments</a></button>
                             <button class="button"><a href='{{ doctor.get_absolute_url_attended_appointments}}'>Attended Appointments</a></button>
                             <button class="button"><a href='{{ doctor.get_absolute_url_slot}}'>Doctor Slots</a></button>
-                        </div>
+                           </div>
 
                         <br>
                         <div style='padding: 0px 45px'>

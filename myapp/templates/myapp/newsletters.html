@@ -21,11 +21,9 @@
             background-color: #a5a9ad;
         }
     </style>
-        <h3><em style="font-size: 50px;">Feedbacks</em></h3>
+    <h3><em style="font-size: 50px;">Newsletters</em></h3>
         
         <div class="container-fluid">
-
-
                 <div class="col-sm-8 col-md-12" style="padding-right:20px">
 
                     <div class="panel panel-default" style="padding-right:20px">
@@ -41,21 +39,14 @@
                           <tr>
                               <th>Name</th>
                               <th>Email</th>
-                              <th>Mobile number</th>
-                              <th>Message </th>
-
-
                           </tr>
                           </thead>
                           <tbody>
-                          {% for feeds in feedback %}
+                          {% for feeds in feedback1 %}
                       
-                              <tr>
-                                  
-                                  <td> {{feeds.first_name}} {{feeds.last_name}}</td>
+                              <tr>                                  
+                                  <td> {{feeds.name}}</td>
                                   <td> {{feeds.email}}</td>
-                                  <td> {{feeds.mobile_no}}</td>
-                                  <td> {{feeds.message}}</td>
                               </tr>
                           {% endfor %}
                           </tbody>

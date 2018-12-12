@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load widget_tweaks %}
 {% load static %}
 
 {% block home %}
@@ -229,9 +229,10 @@
         <div class="col">
           <h1>Sign Up For Our Newsletter</h1>
           <p>Get acees to out voultary programs and initiatives taken by our members. You can have the opportunity to participate in these initiatives</p>
-          <form class="form-inline justify-content-center">
-            <input type="text" class="form-control mb-2 mr-2" placeholder="Enter Name">
-            <input type="text" class="form-control mb-2 mr-2" placeholder="Enter Email">
+          <form class="form-inline justify-content-center" method="POST">
+            {% csrf_token %}
+            {{form.name | add_class:"form-control mr-2 mb-2" | attr:"placeholder:Name" }}
+            {{form.email | add_class:"form-control mr-2 mb-2" | attr:"placeholder:Email" }}
             <button class="btn btn-primary mb-2">Submit</button>
           </form>
         </div>

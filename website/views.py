@@ -21,14 +21,23 @@ import random
 from django.contrib.auth.models import User
 from doctor_profile.views import Profile
 from django.urls import reverse_lazy
+from myapp.forms import contactForm,newsLetter
+from django import forms
 
 
 def home(request):
-	context={
-	   "premium_content":"Hello u r logged out"
+	if request.method == "POST":
+		form=newsLetter(request.POST, request.FILES)
+		if form.is_valid():
+			instance=form.save(commit=False)
+			instance.save()
+			print(instance)
+			return redirect('home')
+	else:
+		form = newsLetter()
+	context ={
+	    "form":form,
 	}
-	if request.user.is_authenticated:
-		context["premium_content"]="you are logged in"
 	return render(request, "index.html", context=context)
 
 @login_required(login_url=reverse_lazy('login'))
@@ -52,8 +61,28 @@ def about(request):
 def how_we_work(request):
 	return render(request, "how_we_work.html", {})
 
+
 def contact(request):
-	return render(request, "contact.html", {})
+	if request.method=="POST":
+		form=contactForm(request.POST, request.FILES)
+		if form.is_valid():
+			details=form.save(commit=False)
+			details.save()
+			print(details)
+
+			return redirect('contact')
+	else:
+		form  = contactForm()
+	context = {
+        "form":form,
+     }
+	return render(request, 'contact.html',context=context)
+
+def contact_page(request):
+
+    return render(request, "contact_page.html", {'first_name':first_name,'last_name':last_name,'email':email,'mobile_no':mobile_no,'message':message})
+
+
 
 def doctor_contact(request):
 	return render(request, "contact_doctor.html", {})
@@ -169,3 +198,4 @@ def log_out(request):
 	logout(request)
 
 	return redirect('/')
+
