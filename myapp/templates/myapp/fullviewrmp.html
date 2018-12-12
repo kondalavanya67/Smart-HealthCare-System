@@ -70,7 +70,7 @@
                             <a href='{{ profile.get_absolute_url_rmp_upcoming_appointments}}'> <button class="button">Upcoming Appointments</button></a>
                             <a href='{{ profile.get_absolute_url_rmp_attended_appointments}}'><button class="button">Attended Appointments</button></a>
                             <a href='{{ profile.get_absolute_url_rmp_patientdetail }}'><button class="button">Patient details</button></a>
-                            <a href='#'> <button class="button">Orders</button></a>
+                            <a href='{% url "myapp:rmp_order_history" profile.id %}'> <button class="button">Orders</button></a>
                         </div>
 
                         <br><br>

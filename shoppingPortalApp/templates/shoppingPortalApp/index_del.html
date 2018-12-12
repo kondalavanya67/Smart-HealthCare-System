@@ -29,10 +29,7 @@
 								<button class="del_submit"><a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" style="text-decoration:none;color: white;">Show all Medicines</a></button>
 							</div>
 							<div class="col-md-2">
-								<button class="del_submit2" style="background-color: red;"><a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" style="text-decoration:none;color: white;">Add Medicine</a></button>
-							</div>
-							<div class="col-md-2">
-								<button class="del_submit1" style="background-color: green;"><a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" style="text-decoration:none;color: white;">Delete Medicine</a></button>
+								<button class="del_submit2" style="background-color: red;"><a href="{% url 'shoppingPortalApp:add_medicine' %}" style="text-decoration:none;color: white;">Add Medicine</a></button>
 							</div>
 
 						</form>
@@ -68,7 +65,7 @@
 		{% endfor %}
 	</table>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 {% endblock content %}
 

@@ -81,12 +81,12 @@
 						<p>Here, the services we provide</p>
 					</header>
 					<div class="image-grid">
-						<a href="#" class="image"><img src="{% static 'myapp/images/pic03.jpg' %}" alt="" /></a>
+						<a href="{% url 'myapp:doctor_verification_required' %}" class="image"><img src="{% static 'myapp/images/pic03.jpg' %}" alt="" /></a>
 						<a href="{% url 'myapp:myapp-index' %}" class="image"><img src="{% static 'myapp/images/pic04.jpg' %}" alt="" /></a>
 						<a href="{% url 'myapp:myapp-payment' %}" class="image"><img src="{% static 'myapp/images/pic05.jpg' %}" alt="" /></a>
-						<a href="#" class="image"><img src="{% static 'myapp/images/pic06.jpg' %}" alt="" /></a>
+						<a href="{% url 'myapp:myapp-newsletter' %}" class="image"><img src="{% static 'myapp/images/pic06.jpg' %}" alt="" /></a>
 						<a href="{% url 'myapp:myapp-rmpdetails' %}" class="image"><img src="{% static 'myapp/images/pic07.jpg' %}" alt="" /></a>
-						<a href="#" class="image"><img src="{% static 'myapp/images/pic08.jpg' %}" alt="" /></a>
+						<a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" class="image"><img src="{% static 'myapp/images/pic08.jpg' %}" alt="" /></a>
 						<a href="{% url 'myapp:myapp-feedback' %}" class="image"><img src="{% static 'myapp/images/pic09.jpg' %}" alt="" /></a>
 						<a href="{% url 'myapp:myapp-appointment' %}" class="image"><img src="{% static 'myapp/images/pic10.jpg' %}" alt="" /></a>
 					</div>

@@ -43,7 +43,7 @@ button:hover, a:hover {
 -- NAV BAR -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
-        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCATRE SYSTEM</b></a>
+        <a href='{% url "home" %}' class="navbar-brand"><b>SMART HEALTHCARE SYSTEM</b></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -107,7 +107,7 @@ button:hover, a:hover {
   </div>
   </nav>
 
-  <div class="container-fluid" style="background-image:url({% static 'img/prescription.jpg' %});background-repeat; background-size:cover;height:530px">
+  <div class="container-fluid" style="background-image:url({% static 'img/prescription.jpg' %});background-repeat; background-size:cover;height:680px">
 
     <!-- <div class="row ">
       <div class="col-sm-6 col-md-6 ">
@@ -126,12 +126,12 @@ button:hover, a:hover {
     </div> -->
 
 
+<br><br><br><br>
 
 
 
 
-
-    <div class="card">
+    <div class="card mx-auto"><br><br>
       <form class="form-horizonatal" action="" method="post" id="AppointmentCreateForm" data-slots-url="{% url 'booking:ajax_load_slots' %}" novalidate>
         {% csrf_token %}
         {% include 'prescription/prescription-template.html' %}
@@ -139,8 +139,8 @@ button:hover, a:hover {
           {{ form.as_table }}
       </table> -->
         <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">Submit </button>
+          <div class="col-sm-offset-2 col-sm-12">
+            <button type="submit" class="btn btn-success btn-default">Submit </button>
             </div>
             </div>
         </form>

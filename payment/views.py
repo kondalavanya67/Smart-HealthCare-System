@@ -12,7 +12,7 @@ from .extras import generate_order_id
 
 def payment_online_cod(request):
 	customers = bank_customer.objects.all()
-	admin_bank = get_object_or_404(bank_customer, customer_name='Admin of SHS')
+	admin_bank = get_object_or_404(bank_customer, customer_name='Admin')
 	if request.method=="POST":
 		form=enter_payment_details(request.POST or None)
 		if form.is_valid():

@@ -23,14 +23,14 @@ urlpatterns = [
     path('admin1/doctorlist/search/doctor_upcoming_appointments/<pk>/',views.doctor_upcoming_appointments, name='doctor_upcoming_appointments'),
     path('admin1/doctorlist/search/doctor_attended_appointments/<pk>/',views.doctor_attended_appointments, name='doctor_attended_appointments'),
     path('admin1/doctorlist/search/slot/<pk>/',views.show_slots, name='doctor_slot'),
-<<<<<<< HEAD
+
     path('admin1/doctor_verification/verify', views.doctor_verify_confirmation, name='doctor_verify'),
     # path('admin1/doctor_verification/verify/<pk>/',views.a, name='doctor_verify'),
     path('admin1/s/<pk>/',views.doctor_verify_confirmation,name='verify'),
 
     path('admin1/rmp_appointments_past/<pk>/',views.rmp_appointments_past, name='rmp_appointments_past'),
     path('admin1/online-shopping-history/',views.shop_history, name='shop_history'),
-=======
->>>>>>> fd4985a4fe09e5ca522e095c35515a713a58a431
+    path('admin1/order-history/<rmp_id>/',views.rmp_order_history, name='rmp_order_history'),
+
     url('',include('users.urls')),
 ]

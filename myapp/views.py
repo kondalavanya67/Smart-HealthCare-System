@@ -24,8 +24,10 @@ def index(request):
         context = {
 
         "doctor" : doctors,
-    }
-    return render(request, 'myapp/index.html',context=context)
+        }
+        return render(request, 'myapp/index.html',context=context)
+
+    
 
 def doctor_verify(request):
         doctors = Profile.objects.filter(verified=False)
@@ -210,3 +212,17 @@ def shop_history(request):
 def payment(request):
     payment_history = OnlinePayment.objects.all()
     return render(request, 'myapp/payment.html',{'payments' : payment_history,})
+
+def rmp_order_history(request, rmp_id):
+    instance = get_object_or_404(rmpContact,id=rmp_id)
+    orders = Order.objects.filter(owner=instance)
+    sum = 0
+    for order_cost in orders:
+        sum = sum + order_cost.get_cart_total()
+    context = {
+        'order_count' : orders.count(),
+        'total_order_count' : sum,
+        'instance': instance,
+        'orders': orders,
+    }
+    return render(request, 'myapp/rmp_order_history.html',context)
