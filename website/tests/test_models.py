@@ -6,6 +6,7 @@ from django.utils import timezone
 import datetime
 from doctor_profile.models import Profile, BookingDate, Slot
 from prescription.models import Prescription, Item
+from rmp.models import rmpContact
 
 @pytest.mark.django_db
 class TestModels(TestCase):
@@ -94,3 +95,45 @@ class TestModels(TestCase):
         prescription= Prescription.objects.get(prescription_id=1)
         item=Item.objects.get(prescription=prescription)
         self.assertEqual(str(item),'Rustox')
+
+
+@pytest.mark.django_db
+class TestModels(TestCase):
+    def setUp(self):
+        user1 = User.objects.create(username='testuser1', password='HelloWorld@123', email='testuser1@gmail.com')
+        # User.objects.create(username='testuser2', password='helloworld@123', email='testuser2@gmail.com')
+        rmpContact.objects.create(
+            user=user1,
+            profile_photo='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+            first_name="Kalpa",
+            last_name="Handique",
+            gender='Male',
+            email_id=user1.email,
+            mobile_no='7086113177',
+            qualification='MBSS',
+            locality='Chennai',
+            hospital='SIMS',)
+
+
+###################RMP PROFILE #########################
+    def test_self_ini_profile(self):
+        profile= rmpContact.objects.get(first_name="Kalpa")
+        self.assertEqual(str(profile), str(1))
+
+    def test_get_absolute_url(self):
+        profile= rmpContact.objects.get(first_name="Kalpa")
+        self.assertEqual(profile.get_absolute_url(), '/admin1/rmplist/search/1/')
+
+    def test_get_absolute_url_rmp_upcoming_appointments(self):
+        profile= rmpContact.objects.get(first_name="Kalpa")
+        self.assertEqual(profile.get_absolute_url_rmp_upcoming_appointments(), '/admin1/rmplist/search/rmp_upcoming_appointments/1/')
+    def test_get_absolute_url_rmp_attended_appointments(self):
+        profile= rmpContact.objects.get(first_name="Kalpa")
+        self.assertEqual(profile.get_absolute_url_rmp_attended_appointments(), '/admin1/rmplist/search/rmp_attended_appointments/1/')
+
+    def test_get_absolute_url_rmp_patientdetail(self):
+        profile= rmpContact.objects.get(first_name="Kalpa")
+        self.assertEqual(profile.get_absolute_url_rmp_patientdetail(), '/admin1/rmplist/fullview/patientdetails/1/')
+   
+
+  
