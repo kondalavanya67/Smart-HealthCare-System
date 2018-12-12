@@ -44,10 +44,10 @@ class RegisterForm(forms.ModelForm):
 
 
 class Add_Rmp_Profile(forms.ModelForm):
-    email_id=forms.CharField(widget=forms.EmailInput)
+    # email_id=forms.CharField(widget=forms.EmailInput)
     class Meta:
         model=rmpContact
-        exclude = ('user','medicines',)
+        exclude = ('user','medicines','email_id')
 
     def clean_mobile_no(self):
         mobile_no = self.cleaned_data['mobile_no']

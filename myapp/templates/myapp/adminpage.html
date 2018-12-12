@@ -28,8 +28,7 @@
 				<ul class="links">
           <li><a href="{% url 'myapp:myapp-index' %}">Doctor</a></li>
           <li><a href="{% url 'myapp:myapp-rmpdetails' %}">RMP Doctor</a></li>
-          <li><a href="{% url 'myapp:myapp-payment' %}">Payment Details</a></li>
-
+					<li><a href='{% url "myapp:myapp-feedback" %}'>Feedbacks</a></li>
 				   	<li><a href="{% url 'myapp:doctor_verification_required' %}"> Doctor-verification </a></li>
 						<li><a href="{% url 'shoppingPortalApp:del_edit_medicine' %}">E - Medics Medicines</a></li>
 						<li><a href="{% url 'myapp:shop_history' %}">Online Shopping History</a></li>
