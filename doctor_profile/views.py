@@ -35,6 +35,7 @@ def make_profile(request):
             profile_item=form.save(commit=False)
             profile_item.user = user
             profile_item.verified=False
+            profile_item.email_id=user.email
             profile_item.save()
 
             return render(request, "verification.html", {})

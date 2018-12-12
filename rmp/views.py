@@ -108,6 +108,7 @@ def make_profile(request):
 			profile=form.save(commit=False)
 			profile.user=user
 			profile.verified=False
+			profile.email_id=user.email
 			profile.save()
 
 			return redirect(reverse('doctor_profile:verification'))

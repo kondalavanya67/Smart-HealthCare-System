@@ -3,7 +3,7 @@ from .models import Profile,BookingDate,Slot
 # from pyuploadcare.dj.models import ImageField
 class Add_Profile(forms.ModelForm):
 
-    email_id=forms.CharField(widget=forms.EmailInput)
+    # email_id=forms.CharField(widget=forms.EmailInput)
     dob=forms.DateField(
         widget=forms.DateInput(
         attrs={
@@ -16,7 +16,7 @@ class Add_Profile(forms.ModelForm):
 # )
     class Meta:
         model=Profile
-        exclude = ('user','verified')
+        exclude = ('user','verified','email_id',)
 
     def clean_mobile_no(self):
         mobile_no = self.cleaned_data['mobile_no']
