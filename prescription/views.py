@@ -24,6 +24,17 @@ from django.contrib.auth.models import User
 def index(request):
     return render(request,'prescription_home.html')
 
+@login_required(login_url=reverse_lazy('login'))
+def make_prescription(request):
+    if request.method=="POST":
+        form=Make_Prescription(request.POST)
+        if form.is_valid():
+            profile_item=form.save(commit=False)
+            profile_item.save()
+            #return redirect('/profile/show_profile/'+str(profile_item.doctor_id))
+    else:
+        form=Make_Prescription()
+    return render(request,'new_file.html',{'form':form})
 
 class DetailView(generic.DetailView):
     model=Prescription
