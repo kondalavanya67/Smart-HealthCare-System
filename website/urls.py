@@ -59,6 +59,8 @@ urlpatterns = [
 
     path('shoponline/', include('shoppingPortalApp.urls')),
     path('shoponline/', include('shopping_cart.urls')),
+    path('payment/', include('payment.urls')),
+
     path('profile/',include('doctor_profile.urls')),
     path('disease/',include('disease.urls')),
     path('prescription/',include('prescription.urls')),

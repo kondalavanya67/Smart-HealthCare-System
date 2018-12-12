@@ -10,4 +10,4 @@ import datetime
 def generate_order_id():
     date_str = date.today().strftime('%Y%m%d')[2:] + str(datetime.datetime.now().second)
     rand_str = "".join([random.choice(string.digits) for count in range(3)])
-    return 'SHS' + date_str + rand_str
+    return 'T' + date_str + rand_str

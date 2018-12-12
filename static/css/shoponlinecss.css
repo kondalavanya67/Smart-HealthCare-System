@@ -273,11 +273,80 @@
 
 
 
+.fa-edit{
+  color: black;
+}
+.fa-edit:hover{
+  color:blue;
+}
+
+.fa-trash-o{
+  color: black;
+}
+.fa-trash-o:hover{
+  color: red;
+}
+
+
+.md-del-input{
+  border: 1px solid lightblue;
+  padding: 6px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.del_submit{
+  width: 100%;
+  padding: 7px;
+  color: white;
+  border:none;
+  background-color: #00a5ff;
+  border:1px solid #00a5ff;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.del_submit:hover{
+  /*border:1px solid blue;*/
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+}
+
+.del_submit1{
+  width: 100%;
+  padding: 7px;
+  color: white;
+  border:none;
+  background-color: green;
+  border:1px solid green;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.del_submit1:hover{
+  /*border:1px solid blue;*/
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+}
 
 
 
+.del_submit2{
+  width: 100%;
+  padding: 7px;
+  color: white;
+  border:none;
+  background-color: red;
+  border:1px solid red;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
 
-
+.del_submit2:hover{
+  /*border:1px solid blue;*/
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
+}
 
 
 

@@ -77,7 +77,7 @@
           		</th>
           		<td>
 					{% for item in order.get_cart_items %}
-						{{ forloop.counter }} . {{ item.product.name }} 
+						{{ forloop.counter }} . {{ item.product.name }} ({{item.quantity}})
 						(<span style="color: red;"><i class="fa fa-rupee" style="font-size: 14px;"></i>{{ item.product.price }}</span>) <br>
 					{% endfor %}
           		</td>

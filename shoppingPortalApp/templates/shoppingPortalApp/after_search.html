@@ -69,19 +69,24 @@
 {% if value %}
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3 medicine_1">
-				<div class="col-md-12">
-					<img src="{{ searched_medicine.image.url }}" width="220" class="img-responsive" style="margin-top: 5%"><hr>
-					<a href='{{ searched_medicine.get_absolute_url_page }}'>
-						{{ searched_medicine.name }}
-					</a> <br>
-					Price : <span style="color: red;"><i class="fa fa-rupee" style="font-size: 14px;"></i>{{ searched_medicine.price }}</span><br><br>
-					<i><span style="font-size: 10px;">by <a href="#">{{searched_medicine.manufacturedBy}}</a></span></i>
-					<br><br><br><br>
-				</div>
-			</div>
+    <div class="col-md-3 medicine_hover">
+      <div class="card medicine_1" style="text-align: center;border: none;">
+        <img class="card-img-top img_list" src="{{ searched_medicine.image.url }}" alt="{{searched_medicine.name}}" style="width:100%;">
+        <div class="card-body">
+          <h4 class="card-title">{{searched_medicine.name}}</h4>
+          <p class="card-text">
+            <i><span style="font-size: 10px;">by <a href="#">{{searched_medicine.manufacturedBy}}</a></span></i><br>
+            Price : <span style="color: red;"><i class="fa fa-rupee" style="font-size: 14px;"></i>{{ searched_medicine.price }}</span>
+          </p>
+          <a href="{% url 'shoppingPortalApp:medicine' searched_medicine.name %}" class="btn btn-primary">
+            Click to Buy
+          </a>
+        </div>
+      </div>
+      <br>  
+    </div>
 		</div>
-	</div>
+	</div><br><br><br>
 {% else %}
 	<div style="text-align: center;font-size: 25px;word-spacing: 4.5px;">
 		Sorry !! We couldn't find <span style="color: red;">{{searchItem}}</span>

@@ -29,14 +29,11 @@ def add_to_cart(request, item_id):
 	order_item, status = OrderItem.objects.get_or_create(product=product)
 	user_order, status = Order.objects.get_or_create(owner=user_profile,is_ordered=False)
 	order_item.quantity = 1
+	order_item.save()
 	user_order.items.add(order_item)
 	if status:
 		user_order.ref_code = generate_order_id()
 		user_order.save()
-	for item in user_order.items.all():
-		item.quantity = 1
-		item.save()
-	# messages.info(request, "item added to cart")
 	return redirect(reverse('shoppingPortalApp:medicine', kwargs={'name':product.name}))
 
 def delete_from_cart(request, item_id):
@@ -94,27 +91,21 @@ def enter_address(request):
 			existing_order.payment_method = form.cleaned_data['payment_method']
 			existing_order.save()
 			if(existing_order.payment_method == "Cash On Delivery"):
-				context = {
-
-				}
-				return redirect(reverse('shopping_cart:purchase_success_cod'))
-			return redirect(reverse('shopping_cart:purchase_success'))
+				return redirect(reverse('shopping_cart:purchase_success', kwargs={'payment_mode':'cod'}))
+			elif(existing_order.payment_method == "Pay Online"):
+				return redirect(reverse('payment:payment_online_cod'))
 	else:
-
 		form=enter_paymentMethod()
 	return render(request,'shopping_cart/enter_address.html',{'form': form,})
 
-def purchase_success(request):
+def purchase_success(request,payment_mode):
 	user_profile = get_object_or_404(rmpContact, user=request.user)
 	current_order, status = Order.objects.get_or_create(owner=user_profile,is_ordered=False)
 	current_order.is_ordered = True
-	current_order.save()
-	return render(request, 'shopping_cart/purchase_success.html', {})
-
-def purchase_success_cod(request):
-	user_profile = get_object_or_404(rmpContact, user=request.user)
-	current_order, status = Order.objects.get_or_create(owner=user_profile,is_ordered=False)
-	current_order.is_ordered = True
+	if(payment_mode=='cod'):
+		payment_method = 'Cash On Delivery'
+	else:
+		payment_method = 'Online Payment'
 	context = {
 		'p_name' : current_order.patient_name,
 		'p_phno' : current_order.patient_phno,
@@ -124,6 +115,7 @@ def purchase_success_cod(request):
 		'p_pincode' : current_order.deliver_addr_pincode,
 		'p_state' : current_order.deliver_addr_state,
 		'p_country' : current_order.deliver_addr_country,
+		'payment_method' : payment_method,
 	}
 	current_order.save()
 	return render(request, 'shopping_cart/purchase_success_cod.html',context)

@@ -1,0 +1,44 @@
+{% extends "myapp/base.html" %}
+{% block total_orders %}
+	<div class="container-fluid">
+		<h1>Orders Upto Now</h1><br>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>Order ID</th>
+						<th>RMP Doctor</th>
+						<th>Medicines</th>
+						<th>Mode Of Payment</th>
+						<th>Under Patient</th>
+						<th>Total Cost of Order</th>
+						<th>Order Status</th>
+					</tr>
+					</thead>
+					<tbody>
+					{% for order in orders %}
+					<tr>
+						<td>{{ order.ref_code }}</td>
+						<td>{{ order.owner.first_name }}</td>
+						<td>
+							{% for item in  order.get_cart_items %}
+								{{item.product.name}}<br>
+							{% endfor %}
+						</td>
+						<td>{{ order.payment_method }}</td>
+						<td>{{ order.patient_name }}</td>
+						<td><span style="color: red;">{{ order.get_cart_total }}/-</span></td>
+						{% if order.is_ordered %}
+							<td><span style="color: green">Delivered</span></td>
+						{% else %}
+							<td><span style="color: orange">Processing</span></td>
+						{% endif %}
+					</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock total_orders %}
