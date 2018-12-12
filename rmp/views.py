@@ -108,7 +108,8 @@ def new_user_reg(request):
 			login(request,new_user)
 			print(new_user)
 			return redirect('/rmp/make_rmp_profile/')
-
+	else:
+		return HttpResponse('Please give correct OTP')
 def make_profile(request):
 	user = request.user
 	if request.method=="POST":
