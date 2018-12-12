@@ -6,13 +6,13 @@ User=get_user_model()
 class ContactForm(forms.Form):
 	fullname=forms.CharField(widget=forms.TextInput(
 		attrs={
-		    "class":"form-control form-group", 
+		    "class":"form-control form-group form-label-group", 
 		    "id":"form_full_name", 
 		    "placeholder":"Your full name"}))
 	email=forms.EmailField(
 		widget=forms.EmailInput(
 			attrs={
-			    "class":"form-control",
+			    "class":"form-control form-label-group",
 			    "placeholder":"enter your email"}))
 	content=forms.CharField(widget=forms.Textarea(
 		attrs={

@@ -18,12 +18,25 @@
             <div class="form-group">
             <form method="POST">
               {% csrf_token %}
+               
+                {% for message in messages %}
+
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                     </div>
+               {% endfor %}
               First Name:{{ form.first_name | add_class:"form-control"  }}
               Last Name:{{ form.last_name | add_class:"form-control" }}
               Age:{{ form.age | add_class:"form-control" }}
               Gender:{{ form.gender | add_class:"form-control"  }}
+              <span class="text-danger-small">{{form.mobile_no.errors}}</span>
+
               Mobile No:{{ form.mobile_no | add_class:"form-control" }}
-      
+                  <span class="text-danger-small">{{form.symptoms.errors}}</span>
+
               Symptoms:{{ form.symptoms | add_class:"form-control" }}
               Description of Illness:{{ form.description_of_illness | add_class:"form-control"}}
              

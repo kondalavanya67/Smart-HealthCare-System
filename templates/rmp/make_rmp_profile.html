@@ -25,6 +25,8 @@
               Last Name:{{ form.last_name | add_class:"form-control" }}
               Email:{{ form.email_id | add_class:"form-control" }}
               Gender:{{ form.gender | add_class:"form-control"  }}
+            <span class="text-danger-small">{{form.mobile_no.errors}}</span>
+
               Mobile No:{{ form.mobile_no | add_class:"form-control" }}
               Qualification:{{ form.qualification | add_class:"form-control"}}
               Locality:{{ form.locality | add_class:"form-control" }}

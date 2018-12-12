@@ -10,6 +10,8 @@ from django.views.generic import FormView, CreateView
 from doctor_profile.models import BookingDate,Slot
 from django.contrib.auth.decorators import login_required
 from doctor_profile.models import Profile
+from django.contrib import messages
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 @login_required(login_url=('rmp:login_rmp_profile'))
 def doctor_list(request):
