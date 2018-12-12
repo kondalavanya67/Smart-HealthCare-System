@@ -39,7 +39,7 @@
 .payment-form .block-heading h2,
 .payment-form .block-heading h3 {
   margin-bottom:1.2rem;
- 
+
 }
 
 
@@ -103,41 +103,41 @@
         <div class="block-heading">
           <h2>Confirm your details</h2>
         </div>
-        
+
           <div class="products mx-auto col-lg-4">
             <h1 class="title">Details</h1>
             <div class="item">
               <span class="price">{{paitent.first_name}} {{paitent.last_name}}</span>
               <p class="item-name">Name: </p>
-              
+
             </div>
             <div class="item">
               <span class="price">{{paitent.age}}</span>
-              <p class="item-name">Age: </p>  
+              <p class="item-name">Age: </p>
             </div>
             <div class="item">
               <span class="price">{{paitent.gender}}</span>
-              <p class="item-name">Gender: </p>  
+              <p class="item-name">Gender: </p>
             </div>
             <div class="item">
               <span class="price"> {{paitent.description_of_illness}}</span>
-              <p class="item-name">Description of Illness: </p>  
+              <p class="item-name">Description of Illness: </p>
             </div>
             <div class="item">
               <span class="price"> {{paitent.mobile_no}}</span>
-              <p class="item-name">Mobile No : </p>  
+              <p class="item-name">Mobile No : </p>
             </div>
-            
-            
+
+
             <div class="form-group col-sm-12" style="padding-bottom: 30px; padding-top: 30px;">
-                <a href="{{ paitent.get_absolute_url_booking_confirmation }}"><button type="button" class="btn btn-primary btn-block">Proceed to pay</button></a>
+                <a href="{{ paitent.get_absolute_url_booking_confirmation }}"><button type="button" class="btn btn-primary btn-block">Proceed To Slot Booking</button></a>
               </div>
           </div>
-          
-              
+
+
             </div>
           </div>
-     
+
       </div>
     </section>
   </main>
