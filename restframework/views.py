@@ -49,5 +49,10 @@ class PaitentDetailsViewSet(viewsets.ModelViewSet):
         return queryset
 
 class SlotViewSet(viewsets.ModelViewSet):
-    queryset = Slot.objects.all()
     serializer_class = SlotSerializer
+    def get_queryset(self):
+        queryset = Slot.objects.all()
+        qs=self.request.query_params.get("q")
+        if qs is not None:
+            queryset=queryset.filter(slot_status=qs)
+        return queryset

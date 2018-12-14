@@ -11,7 +11,7 @@ from booking.models import AppointmentDetials
 def index1(request):
     user=request.user
     profile = Profile.objects.get(user=user)
-    appointments=AppointmentDetials.objects.filter(doctor_id=profile.id).filter(is_attended=True)
+    appointments=AppointmentDetials.objects.filter(doctor_id=profile.id).filter(is_attended=True).order_by('date').order_by('time')
     first_name=profile.first_name
     last_name=profile.last_name
     print("JKKKJK")
