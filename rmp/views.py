@@ -113,6 +113,9 @@ def new_user_reg(request):
 			print(new_user)
 			return redirect('/rmp/make_rmp_profile/')
 
+	else:
+		return HttpResponse('Please give correct OTP')
+
 @login_required(login_url=reverse_lazy('rmp:login_rmp_profile'))
 def make_profile(request):
 	user = request.user

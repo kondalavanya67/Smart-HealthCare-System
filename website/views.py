@@ -147,6 +147,9 @@ def new_user_reg(request):
 			login(request,new_user)
 			print(new_user)
 			return redirect('/profile/make_profile')
+	else:
+		return HttpResponse('Please give correct OTP')
+
 
 def reset_password(request):
 	if request.method=='POST':
