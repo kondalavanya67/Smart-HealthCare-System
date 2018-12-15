@@ -1,22 +1,16 @@
 from django.db import models
 from django.urls import reverse
 from doctor_profile.models import Profile
-# Create your models here.
 from django.urls import reverse
 from doctor_profile.models import Profile
-# from booking.models import AppointmentDetials
 
 
 class Prescription(models.Model):
-    #doctor_id=models.CharField(max_length=200)
     doctor=models.ForeignKey(Profile,on_delete=models.CASCADE,null=True,blank=True)
     prescription_id=models.CharField(max_length=30,unique=True)
     prescription_date=models.DateTimeField(auto_now_add=True)
-    # appointment=models.ForeignKey(AppointmentDetials,on_delete=models.CASCADE,null=True,blank=True)
     pdf= models.FileField(upload_to='media_/pdf/', null=True, blank=True)
-    #doctor_id=models.ForeignKey(Profile,)
-    #doctor_name=models.CharField(max_length=30)
-    #patient_name=models.CharField(max_length=30)
+
     def __str__(self):
         return self.prescription_id
 
