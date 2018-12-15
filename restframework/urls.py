@@ -15,7 +15,7 @@ router.register(r'doctor', DoctorProfileViewSet, base_name='Profile')
 router.register(r'rmp', RmpProfileViewSet, base_name='rmpContact')
 router.register(r'appointments', AppointmentDetialsViewSet, base_name='AppointmentDetials')
 router.register(r'paitent_details', PaitentDetailsViewSet, base_name='PaitentDetails')
-router.register(r'slot', SlotViewSet)
+router.register(r'slot', SlotViewSet, base_name='Slot')
 
 
 

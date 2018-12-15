@@ -1,4 +1,4 @@
-{% extends "shoppingPortalApp/base.html" %}
+{% extends "myapp/base.html" %}
 {% load widget_tweaks %}
 
 
@@ -16,25 +16,28 @@
 
 				<div class="container" style="text-align: center;">
 					<div class="row">
-					<div class="col-md-11">
-						<form method="POST" action="">
-							{% csrf_token %}
-							<div class="col-md-4">
-							{{ form.name_to_del | add_class:"md-del-input" | attr:"placeholder:Search Medicine Name..."}}
-							</div>
-							<div class="col-md-2">
-								<input type="submit" class="del_submit" value="Search">
-							</div>
-							<div class="col-md-2">
-								<button class="del_submit"><a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" style="text-decoration:none;color: white;">Show all Medicines</a></button>
-							</div>
-							<div class="col-md-2">
-								<button class="del_submit2" style="background-color: red;"><a href="{% url 'shoppingPortalApp:add_medicine' %}" style="text-decoration:none;color: white;">Add Medicine</a></button>
+					<!-- <div class="col-md-12"> -->
+				<div class="container">
+					<div class="row">
+				<form method="POST" action="" class="col-md-6">
+					{% csrf_token %}
+					
+					{{ form.name_to_del | add_class:"md-del-input" | attr:"placeholder:Search Medicine Name..."}}
+						<input type="submit" class="del_submit" value="Search">
+					
+
+
+				</form>
+					<div class="col-md-3">
+						<button class="del_submit"><a href="{% url 'shoppingPortalApp:del_edit_medicine' %}" style="text-decoration:none;color: white;">Show all Medicines</a></button>
+					</div>
+					<div class="col-md-3">
+						<button class="del_submit2" style="background-color: red;"><a href="{% url 'shoppingPortalApp:add_medicine' %}" style="text-decoration:none;color: white;">Add Medicine</a></button>
+					</div>
+					<!-- </div> -->
+					<!-- </div>		 -->
 							</div>
 
-						</form>
-					</div>
-					</div>
 				</div>
 						
 		</div>

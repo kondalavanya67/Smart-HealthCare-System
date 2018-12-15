@@ -149,15 +149,15 @@ button:hover, a:hover {
 <script>
   $("#id_date").change(function () {
     var url = $("#AppointmentCreateForm").attr("data-slots-url");  // get the url of the `load_cities` view
-    var dateId = $(this).val();  // get the selected country ID from the HTML input
+    var dateId = $(this).val();  // get the selected 
 
-    $.ajax({                       // initialize an AJAX request
-      url: url,               // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+    $.ajax({                       // initialize 
+      url: url,               
       data: {
-        'date': dateId       // add the country id to the GET parameters
+        'date': dateId       
       },
-      success: function (data) {   // `data` is the return of the `load_cities` view function
-        $("#id_time").html(data);  // replace the contents of the city input with the data that came from the server
+      success: function (data) {   // `data` is the return 
+        $("#id_time").html(data);  // replace the contents  with the data that came from the server
      
       }
     });

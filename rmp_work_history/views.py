@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url=('rmp:login_rmp_profile'))
 def index(request):
     user=request.user
-    appointments = AppointmentDetials.objects.filter(user=user).filter(is_attended=False)
+    appointments = AppointmentDetials.objects.filter(user=user).filter(is_attended=False).order_by('date').order_by('time')
     context={
         "appointments":appointments,
     }
@@ -20,7 +20,7 @@ def index(request):
 @login_required(login_url=('rmp:login_rmp_profile'))
 def history(request):
     user=request.user
-    appointments1 = AppointmentDetials.objects.filter(user=user).filter(is_attended=True)
+    appointments1 = AppointmentDetials.objects.filter(user=user).filter(is_attended=True).order_by('date').order_by('time')
     context={
         "appointments1":appointments1,
     }

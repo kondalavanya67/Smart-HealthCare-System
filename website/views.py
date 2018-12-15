@@ -79,11 +79,13 @@ def contact(request):
 			details.save()
 			print(details)
 
-			return redirect('contact')
+			return render(request, 'contact.html',context={'message':'Thank you we will reach out to you soon','submit':0})
 	else:
 		form  = contactForm()
 	context = {
         "form":form,
+        "message":' ',
+        "submit":1,
      }
 	return render(request, 'contact.html',context=context)
 

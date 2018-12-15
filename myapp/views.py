@@ -30,7 +30,7 @@ def index(request):
         return render(request, 'myapp/index.html',context=context)
 
 
-
+@login_required(login_url=reverse_lazy('login_admin'))
 def doctor_verify(request):
         doctors = Profile.objects.filter(verified=False)
         print('%%')
@@ -40,6 +40,7 @@ def doctor_verify(request):
     	}
         return render(request, 'myapp/doctor_verify.html',context=context)
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def rmp_verify(request):
         rmps = rmpContact.objects.filter(verified=False)
         print('%%')
@@ -92,6 +93,7 @@ def show_slots(request,pk):
     dates=Slot.objects.filter(doctor=profile)
     return render(request,'myapp/slots.html',{'slots':dates})
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def doctor_verify_confirmation(request,pk):
 
     print('**')
@@ -102,6 +104,7 @@ def doctor_verify_confirmation(request,pk):
     profile.save()
     return redirect(reverse("myapp:doctor_verify"))
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def rmp_verify_confirmation(request,pk):
 
     print('**')
@@ -218,6 +221,7 @@ def newsletter(request):
     }
     return render(request, 'myapp/newsletters.html',context=context)
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def rmp_appointments_past(request,pk):
     appointments = AppointmentDetials.objects.filter(user=pk)
     context={
@@ -226,6 +230,7 @@ def rmp_appointments_past(request,pk):
 
     return render(request,'myapp/rmp_appointments_past.html',context=context)
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def shop_history(request):
     orders = Order.objects.all()
     return render(request,'myapp/total_order.html',{'orders':orders,})
@@ -235,6 +240,7 @@ def payment(request):
     payment_history = OnlinePayment.objects.all()
     return render(request, 'myapp/payment.html',{'payments' : payment_history,})
 
+@login_required(login_url=reverse_lazy('login_admin'))
 def rmp_order_history(request, rmp_id):
     instance = get_object_or_404(rmpContact,id=rmp_id)
     orders = Order.objects.filter(owner=instance)
