@@ -9,12 +9,12 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url=('rmp:login_rmp_profile'))
 def index(request):
     user=request.user
-    appointments = AppointmentDetials.objects.filter(user=user)
+    appointments = AppointmentDetials.objects.filter(user=user).filter(is_attended=False)
     context={
         "appointments":appointments,
     }
-  
-    
+
+
     return render(request,'rmp_work_history/index.html',context=context)
 
 @login_required(login_url=('rmp:login_rmp_profile'))
@@ -24,7 +24,5 @@ def history(request):
     context={
         "appointments1":appointments1,
     }
-    
+
     return render(request,'rmp_work_history/history.html',context=context)
-
-
