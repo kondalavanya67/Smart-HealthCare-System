@@ -21,7 +21,7 @@ from django.db import connection,IntegrityError
 import random
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
-
+from django.urls import reverse,reverse_lazy
 
 def login_page(request):
 	form=LoginForm(request.POST or None)
@@ -44,25 +44,6 @@ def login_page(request):
 
 	return render(request, "rmp/login.html", context=context)
 
-#User = get_user_model()
-#def register_page(request):
-#	form=RegisterForm(request.POST or None)
-#	context= {
-#		"form":form
-#	}
-#
-#	if form.is_valid():
-#		print(form.cleaned_data)
-#		username=form.cleaned_data.get("username")
-#		email=form.cleaned_data.get("email")
-#		password=form.cleaned_data.get("password")
-#		new_user=User.objects.create_user(username=username, email=email, password=password)
-#
-#		login(request,new_user)
-#		print(new_user)
-#		return redirect('/rmp/make_rmp_profile/')
-#
-#	return render(request, "rmp/register.html", context=context)
 def email_verify(form):
 	rand_numb=random.randint(10000, 999999)
 	global b
@@ -126,10 +107,11 @@ def make_profile(request):
 		if form.is_valid():
 			profile=form.save(commit=False)
 			profile.user=user
+			profile.verified=False
 			profile.save()
-			# new = rmpContact.objects.last()
-			# Rmplist.objects.create(rmp_list=new)
-			return redirect('/rmp/show_rmp_profile/')
+
+			return redirect(reverse('doctor_profile:verification'))
+
 	else:
 		form=Add_Rmp_Profile(initial={'user':user,'email_id':user.email})
 	return render(request,'rmp/make_rmp_profile.html',{'form':form})
@@ -151,7 +133,14 @@ def Show_Profile(request):
 	context={
 		'profile':profile
 	}
-	return render(request,'rmp/show_rmp_profile.html',context)
+	if(profile.verified==True):
+		print('&&')
+		return render(request,'rmp/show_rmp_profile.html',context)
+	else:
+		print('%%')
+		return redirect(reverse('doctor_profile:verification'))
+
+
 
 @login_required(login_url=reverse_lazy('rmp:login_rmp_profile'))
 def myOrders(request):

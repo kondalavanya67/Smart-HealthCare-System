@@ -10,6 +10,8 @@ from .models import Post, Rmplist
 from doctor_profile.models import Profile,Slot
 from rmp.models import rmpContact
 from booking.models import AppointmentDetials
+from rmp.models import rmpContact
+from django.urls import reverse,reverse_lazy
 # Create your views here.
 
 @login_required(login_url=reverse_lazy('login_admin'))
@@ -30,6 +32,15 @@ def doctor_verify(request):
     	   "doctor" : doctors,
     	}
         return render(request, 'myapp/doctor_verify.html',context=context)
+
+def rmp_verify(request):
+        rmps = rmpContact.objects.filter(verified=False)
+        print('%%')
+        context = {
+
+    	   "rmps" : rmps,
+    	}
+        return render(request, 'myapp/rmp_verify.html',context=context)
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def doctor_detail(request, pk):
@@ -88,6 +99,17 @@ def doctor_verify_confirmation(request,pk):
     profile.verified=True
     profile.save()
     return redirect(reverse("myapp:doctor_verify"))
+
+def rmp_verify_confirmation(request,pk):
+
+    print('**')
+    print("hello")
+    profile = get_object_or_404(rmpContact, pk=pk)
+    print('**')
+    profile.verified=True
+    profile.save()
+    return redirect(reverse("myapp:rmp_verification_required"))
+
 
 @login_required(login_url=reverse_lazy('login_admin'))
 def rmpdetails(request):
