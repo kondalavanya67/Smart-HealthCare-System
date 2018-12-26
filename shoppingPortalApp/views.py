@@ -43,7 +43,7 @@ def showMedicine_name(request, name):
     if order:
     	order_temp = Order.objects.filter(owner=user_profile, is_ordered=False).first()
     	for item in order_temp.items.all():
-    		if(instance.name==item.product.name):
+    		if(instance.name==item.name):
     			item_status = True
     print()
     context_data = {

@@ -26,10 +26,11 @@ def add_to_cart(request, item_id):
 	user_profile = get_object_or_404(rmpContact, user=request.user)
 
 	product = medicine.objects.filter(id=item_id).first()
-	order_item, status = OrderItem.objects.get_or_create(product=product)
+	# order_item, status = OrderItem.objects.get_or_create(product=product)
+	order_item = OrderItem.objects.create(name=product.name,about=product.about,usage=product.usage,manufacturedBy=product.manufacturedBy,price=product.price,image=product.image)
 	user_order, status = Order.objects.get_or_create(owner=user_profile,is_ordered=False)
-	order_item.quantity = 1
-	order_item.save()
+	# order_item.quantity = 1
+	# order_item.save()
 	user_order.items.add(order_item)
 	if status:
 		user_order.ref_code = generate_order_id()
@@ -40,7 +41,6 @@ def delete_from_cart(request, item_id):
 	item_to_delete = OrderItem.objects.filter(pk=item_id)
 	if item_to_delete.exists():
 		item_to_delete[0].delete()
-		# messages.info(request, "Item has been deleted from cart")	
 	return redirect(reverse('shopping_cart:order_summary'))
 
 def delete_from_cart2(request, item_id):
@@ -63,12 +63,12 @@ def order_summary_ajax(request):
 	existing_order = get_user_pending_order(request)
 	quantity_dict = dict()
 	for item in existing_order.items.all():
-		quantity_no = request.GET.get(item.product.name)
+		quantity_no = request.GET.get(item.name)
 		if quantity_no != None:
 			print(int(quantity_no))
 			item.quantity = int(quantity_no)
 			item.save()
-			quantity_dict[item.product.name] = item.quantity
+			quantity_dict[item.name] = item.quantity
 	
 	context = {'order': existing_order}
 	return JsonResponse(quantity_dict)

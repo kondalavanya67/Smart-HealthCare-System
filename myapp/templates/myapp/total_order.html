@@ -23,7 +23,7 @@
 						<td>{{ order.owner.first_name }}</td>
 						<td>
 							{% for item in  order.get_cart_items %}
-								{{item.product.name}}<br>
+								{{item.name}}<br>
 							{% endfor %}
 						</td>
 						<td>{{ order.payment_method }}</td>
