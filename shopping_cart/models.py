@@ -2,30 +2,27 @@ from django.db import models
 from django.core.validators import MinValueValidator
 
 from rmp.models import rmpContact
-from shoppingPortalApp.models import medicine
-# Create your models here.
-
-	# MEDICINE_TYPE_CHOICE = (
-	# 		('syrup','syrup'),
-	# 		('capsules','capsules'),
-	# 	)
-# medicine_type = models.CharField(max_length=20, choices = MEDICINE_TYPE_CHOICE)
 
 class OrderItem(models.Model):
-	product = models.OneToOneField(medicine,on_delete=models.CASCADE,primary_key=True,)
+	name = models.CharField(max_length = 120)
+	about = models.TextField()
+	usage = models.TextField()
+	manufacturedBy = models.CharField(max_length = 120)
+	price = models.FloatField(null=False)
 	is_ordered = models.BooleanField(default=False)
 	quantity = models.IntegerField(default=1)
 	date_added = models.DateTimeField(auto_now=True)
 	date_ordered = models.DateTimeField(null=True)
+	image = models.ImageField(null=True, blank=True)
 
 	def __str__(self):
-		return self.product.name
+		return self.name
 
 	def order_item_total(self):
-		return self.quantity * self.product.price
+		return self.quantity * self.price
 
 	def order_item_name(self):
-		return self.product.name
+		return self.name
 
 class Order(models.Model):
 	PaymentMode = (
@@ -56,10 +53,7 @@ class Order(models.Model):
 		return count
 
 	def get_cart_total(self):
-		return sum([item.product.price * item.quantity for item in self.items.all()])
+		return sum([item.price * item.quantity for item in self.items.all()])
 
 	# def __str__(self):
 	# 	return self.owner.first_name
-
-
-
