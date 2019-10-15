@@ -57,6 +57,6 @@ If you are admin you will be directed to admin homepage.
 (5)	Manage departments: here he can find options to modify department details and time slots of doctors etc.
 
 
-
+##
 
 
